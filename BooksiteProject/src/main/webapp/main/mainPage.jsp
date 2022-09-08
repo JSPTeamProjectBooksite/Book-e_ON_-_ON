@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,10 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>여기가 메인페이지</h1>
+	<h1>여기가 메인페이지</h1>
 
-<!-- 이현우 확인했습니다. -->
-<!-- 안성환 확인했습니다. -->
-<!-- 김하영 확인했습니다. -->
+	<!-- 이현우 확인했습니다. -->
+	<!-- 안성환 확인했습니다. -->
+	<!-- 김하영 확인했습니다. -->
+	<!-- 최진영 확인했습니다. -->
 </body>
 </html>
