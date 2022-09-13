@@ -1,7 +1,7 @@
 
 .wrap{ max-width: 1280px; margin: 0 auto;}
 
-main{ width: 100%; min-height: 800px; background-image: url(/images/mainBg.jpg); position: relative;}
+main{ width: 100%; min-height: 800px; background-image: url(../source/mainPage_Bg.jpg); position: relative;}
 main .mainDoor .mainText{position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); font-size: 20px; width: 400px; text-align: center;}
 main .mainDoor .startBtn{position: absolute; left: 50%; bottom: 10px; transform: translate(-50%, 0); padding: 20px 100px; border-radius: 10px; border: 0; font-size: 20px;}
 main .mainDoor .startBtn:hover{cursor: pointer;}
