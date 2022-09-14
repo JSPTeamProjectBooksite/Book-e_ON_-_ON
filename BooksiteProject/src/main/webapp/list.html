@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body{
+        width: 1200px;
+        margin: 0 auto;
+    }
+
+    #wrap{
+        margin: 0 auto;
+        width: 1200px;
+        /* background-color: #FBCEB1; */
+    }
+
+    #header{
+        height: 75px;
+        background-color:tomato;
+    }
+
+    #container{
+        position: relative;
+        /* background-color: aquamarine; */
+    }
+
+    #list_contents{
+        height: 550px;
+        /* background-color: blueviolet; */
+    }
+    #footer{
+        height: 200px;
+        background-color: darkslategrey;
+    }
+
+    .slideBookStyle{
+        float: left;
+        width: 12%;
+        height: 100%;
+        display: flex;
+        line-height : 300px;
+    }
+
+    .bookImageStyle{
+        margin: auto;
+        width: 90%;
+    }
+
+</style>
+<!-- 이미지 슬라이드 구현용 스크립트 -->
+<script>
+
+    var index = 0;
+
+    // 슬아이드 할 책 경로
+    var bookList = [
+        "source/기분이.jpg",
+        "source/노인과바다.jpg",
+        "source/배부른데.png",
+        "source/아몬드.jpg",
+        "source/죽고싶지만.jpg",
+        "source/창문.png",
+        "source/코딩하기1.png",
+        "source/코딩하기2.png"
+    ];
+
+    var slideList = [
+        "0","1","2","3","4","5","6"
+    ];
+    // 이전 버튼을 눌렀을 때
+    function clickBefore(){
+        index--;
+        if(index < 0) index = bookList.length;
+        setList();
+        vewListPage();
+    }
+    // 다음 버튼을 눌렀을 때
+    function clickNext(){
+        index++;
+        if(index == bookList.length) index = 0;
+        setList();
+        vewListPage();
+    }
+    // 슬라이드에 이미지를 셋팅하는 메서드
+    function setList(){
+        for(var i = 0; i < slideList.length; i++){
+            slideList[i] = bookList[(i+index)%bookList.length];
+        }
+    }
+
+    // 슬라이드에 이미지를 불러오는 메서드
+    function vewListPage(){
+        for(var i = 0; i < slideList.length; i++){
+            document.getElementById("index"+i).src = slideList[i];
+        }
+    }
+
+</script>
+</head>
+<body>
+<!-- 메인 -->
+<div id="wrap">
+    <div id="header">여기는 해더</div>
+    <!-- 공간 띄우기 -->
+    <div style="height: 100px;"></div>
+
+    <!-- 슬라이드 광고 -->
+    <div>
+        <div style="
+            height: 350px;
+            border-radius: 25px;
+            background-color:darkgrey;
+        ">
+            <div style="
+                float: left;
+                width: 5%;
+                height: 100%;
+                text-align: center;
+                line-height : 350px;
+            ">
+                <input type="button" value="앞으로" onclick="clickBefore()">
+            </div>
+    
+            <div class="slideBookStyle">
+                <img class="bookImageStyle" id="index0" alt="">
+            </div>
+            
+            <div class="slideBookStyle">
+                <img class="bookImageStyle" id="index1" alt="">
+            </div>
+            
+            <div class="slideBookStyle">
+                <img class="bookImageStyle" id="index2" alt="">
+            </div>
+    
+            <div class="slideBookStyle" style="width: 18%;">
+                <img class="bookImageStyle" id="index3" alt="">
+            </div>
+            
+            <div class="slideBookStyle">
+                <img class="bookImageStyle" id="index4" alt="">
+            </div>
+            
+            <div class="slideBookStyle">
+                <img class="bookImageStyle" id="index5" alt="">
+            </div>
+            
+            <div class="slideBookStyle">
+                <img class="bookImageStyle" id="index6" alt="">
+            </div>
+    
+            <div style="
+                float: left;
+                width: 5%;
+                height: 100%;
+                text-align: center;
+                line-height : 350px;
+                /* background-color: aqua; */
+            ">
+                <input type="button" value="뒤로" onclick="clickNext()">
+            </div>
+        </div>
+        <div style="
+            height: 85px;
+            /* background-color: aquamarine; */
+            text-align: center;
+        ">
+            <div style="
+                font-size: 24px;
+                margin-top: 10px;
+            ">
+                사실 이것 중에 아몬드 말고 읽은 거 없다!!<br>
+                그래서 얘 감정 어캐되냐?! (광고글?)(스포글ㅋㅋ)
+            </div>
+        </div>
+    </div>
+
+    <!-- 슬라이드 이미지 셋팅 스크립트 -->
+    <script>
+        setList();
+        vewListPage();
+    </script>
+
+    <!-- 주제별 선정 -->
+    <!-- 타입 1 -->
+    <div style="
+        height: 380px;
+        /* background-color:khaki; */
+    ">
+        <div style="
+            height: 75px;
+            font-size: 32px;
+            font-weight: 600;
+            color: gray;
+        ">
+            인기 도서
+        </div>
+        <div style="
+            text-align: center;
+        ">
+            <div style="
+                float: left;
+                width: 200px;
+            ">
+                <img style="
+                    height: 180px;
+                " src="source/코딩하기1.png" alt="">
+                <div style="
+                    margin: auto;
+                    height: 50px;
+                    width: 180px;
+                    font-size: 14px;
+                    font-weight: 600;
+                ">
+                    밥처먹고 코딩만 하기 1
+                </div>
+                <div style="
+                    font-size: 12px;
+                ">
+                    코딩에 미친놈 지음
+                </div>
+            </div>
+
+            <div style="
+                float: left;
+                width: 200px;
+            ">
+                <img style="
+                    height: 180px;
+                " src="source/코딩하기1.png" alt="">
+                <div style="
+                    margin: auto;
+                    height: 50px;
+                    width: 180px;
+                    font-size: 14px;
+                    font-weight: 600;
+                ">
+                    밥처먹고 코딩만 하기 1
+                </div>
+                <div style="
+                    font-size: 12px;
+                ">
+                    코딩에 미친놈 지음
+                </div>
+            </div>
+
+
+            <div style="
+                float: left;
+                width: 200px;
+            ">
+                <img style="
+                    height: 180px;
+                " src="source/코딩하기1.png" alt="">
+                <div style="
+                    margin: auto;
+                    height: 50px;
+                    width: 180px;
+                    font-size: 14px;
+                    font-weight: 600;
+                ">
+                    밥처먹고 코딩만 하기 1
+                </div>
+                <div style="
+                    font-size: 12px;
+                ">
+                    코딩에 미친놈 지음
+                </div>
+            </div>
+
+
+            <div style="
+                float: left;
+                width: 200px;
+            ">
+                <img style="
+                    height: 180px;
+                " src="source/코딩하기1.png" alt="">
+                <div style="
+                    margin: auto;
+                    height: 50px;
+                    width: 180px;
+                    font-size: 14px;
+                    font-weight: 600;
+                ">
+                    밥처먹고 코딩만 하기 1
+                </div>
+                <div style="
+                    font-size: 12px;
+                ">
+                    코딩에 미친놈 지음
+                </div>
+            </div>
+
+
+            <div style="
+                float: left;
+                width: 200px;
+            ">
+                <img style="
+                    height: 180px;
+                " src="source/코딩하기1.png" alt="">
+                <div style="
+                    margin: auto;
+                    height: 50px;
+                    width: 180px;
+                    font-size: 14px;
+                    font-weight: 600;
+                ">
+                    밥처먹고 코딩만 하기 1
+                </div>
+                <div style="
+                    font-size: 12px;
+                ">
+                    코딩에 미친놈 지음
+                </div>
+            </div>
+
+
+            <div style="
+                float: left;
+                width: 200px;
+            ">
+                <img style="
+                    height: 180px;
+                " src="source/코딩하기1.png" alt="">
+                <div style="
+                    margin: auto;
+                    height: 50px;
+                    width: 180px;
+                    font-size: 14px;
+                    font-weight: 600;
+                ">
+                    밥처먹고 코딩만 하기 1
+                </div>
+                <div style="
+                    font-size: 12px;
+                ">
+                    코딩에 미친놈 지음
+                </div>
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+    <div id="footer">여기는 푸터</div>
+</div>
+
+</body>
+</html>
