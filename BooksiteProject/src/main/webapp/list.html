@@ -60,24 +60,25 @@
     var index = 0;
 
     // 슬아이드 할 책 경로
-    var bookList = [
-        "source/기분이.jpg",
-        "source/노인과바다.jpg",
-        "source/배부른데.png",
-        "source/아몬드.jpg",
-        "source/죽고싶지만.jpg",
-        "source/창문.png",
-        "source/코딩하기1.png",
-        "source/코딩하기2.png"
+    const bookList = [
+        "기분이_태도가_되지_않으려면",
+        "노인과_바다",
+        "밥을_왜먹냐_코딩만해도_배부른데",
+        "밥처먹고_코딩만_하기1",
+        "밥처먹고_코딩만_하기2",
+        "아몬드",
+        "죽고_싶지만_떡볶이는_먹고_싶어",
+        "창문넘어_도망친_100세_노인",
+        "하루도_쉬운_날이_없어"
     ];
-
+    
     var slideList = [
-        "0","1","2","3","4","5","6"
+        "","","","","","",""
     ];
     // 이전 버튼을 눌렀을 때
     function clickBefore(){
         index--;
-        if(index < 0) index = bookList.length;
+        if(index < 0) index = bookList.length-1;
         setList();
         vewListPage();
     }
@@ -88,6 +89,31 @@
         setList();
         vewListPage();
     }
+    //해당 슬라이드가 클릭 되었을때
+    function clickSlide(num){
+        if(num == 3) return goToDetailPage(slideList[3]);
+
+        if(num < 3){
+            for(var i = 3; i > num; i--){
+                clickBefore();
+            }
+        }else if(num > 3){
+            for(var i = 3; i < num; i++){
+                clickNext();
+            }
+        }
+    }
+
+    // 책 페이지 연결
+    function goToDetailPage(title){
+        location.href=title+".html";
+    }
+
+    // 제목 파싱
+    function getTitle(num){
+        return document.getElementById("popularityBookImage_" + num).src.replace("source/book/","").replace(".png","");
+    }
+
     // 슬라이드에 이미지를 셋팅하는 메서드
     function setList(){
         for(var i = 0; i < slideList.length; i++){
@@ -98,8 +124,30 @@
     // 슬라이드에 이미지를 불러오는 메서드
     function vewListPage(){
         for(var i = 0; i < slideList.length; i++){
-            document.getElementById("index"+i).src = slideList[i];
+            document.getElementById("index"+i).src = "source/book/" + slideList[i] + ".png";
         }
+    }
+
+    // 인기순위
+    // 인기순위에 책을 셋팅하는 메소드
+    function setPopularity(){
+        var copyList = JSON.parse(JSON.stringify(bookList));
+        var num = 0;
+
+        for(var i = 0; i < 6; i++){
+            while(true){
+                num = randomNum(6);
+                if(copyList[num] == "used") continue;
+                document.getElementById("popularityBookImage_" + i).src = "source/book/" + bookList[num] + ".png";
+                document.getElementById("popularityBookTitle_" + i).innerHTML = bookList[num].replace(/_/g," ");
+                copyList[num] = "used";
+                break;
+            }
+        }
+    }
+    // 난수(랜덤)을 생성하는 메소드 (예: 6 = 0 ~ 5)
+    function randomNum(num){
+        return Math.floor(Math.random() * num);
     }
 
 </script>
@@ -129,31 +177,31 @@
             </div>
     
             <div class="slideBookStyle">
-                <img class="bookImageStyle" id="index0" alt="">
+                <img class="bookImageStyle" id="index0" alt="" onclick="clickSlide(0)">
             </div>
             
             <div class="slideBookStyle">
-                <img class="bookImageStyle" id="index1" alt="">
+                <img class="bookImageStyle" id="index1" alt="" onclick="clickSlide(1)">
             </div>
             
             <div class="slideBookStyle">
-                <img class="bookImageStyle" id="index2" alt="">
+                <img class="bookImageStyle" id="index2" alt="" onclick="clickSlide(2)">
             </div>
     
             <div class="slideBookStyle" style="width: 18%;">
-                <img class="bookImageStyle" id="index3" alt="">
+                <img class="bookImageStyle" id="index3" alt="" onclick="clickSlide(3)">
             </div>
             
             <div class="slideBookStyle">
-                <img class="bookImageStyle" id="index4" alt="">
+                <img class="bookImageStyle" id="index4" alt="" onclick="clickSlide(4)">
             </div>
             
             <div class="slideBookStyle">
-                <img class="bookImageStyle" id="index5" alt="">
+                <img class="bookImageStyle" id="index5" alt="" onclick="clickSlide(5)">
             </div>
             
             <div class="slideBookStyle">
-                <img class="bookImageStyle" id="index6" alt="">
+                <img class="bookImageStyle" id="index6" alt="" onclick="clickSlide(6)">
             </div>
     
             <div style="
@@ -205,150 +253,157 @@
         <div style="
             text-align: center;
         ">
+            <!-- 1번째(0) 인기도서 -->
             <div style="
                 float: left;
                 width: 200px;
             ">
                 <img style="
                     height: 180px;
-                " src="source/코딩하기1.png" alt="">
+                " id="popularityBookImage_0" alt="" onclick="goToDetailPage(getTitle(0))">
                 <div style="
                     margin: auto;
                     height: 50px;
                     width: 180px;
                     font-size: 14px;
                     font-weight: 600;
-                ">
-                    밥처먹고 코딩만 하기 1
+                " id="popularityBookTitle_0">
+                    (책 제목)
                 </div>
                 <div style="
                     font-size: 12px;
-                ">
-                    코딩에 미친놈 지음
+                " id="popularityBookMaker_0">
+                    (지은이 이름) 지음<br>
+                    (DB준비중)
                 </div>
             </div>
 
+            <!-- 2번째(1) 인기도서 -->
             <div style="
                 float: left;
                 width: 200px;
             ">
                 <img style="
                     height: 180px;
-                " src="source/코딩하기1.png" alt="">
+                " id="popularityBookImage_1" alt="" onclick="goToDetailPage(getTitle(1))">
                 <div style="
                     margin: auto;
                     height: 50px;
                     width: 180px;
                     font-size: 14px;
                     font-weight: 600;
-                ">
-                    밥처먹고 코딩만 하기 1
+                " id="popularityBookTitle_1">
+                    (책 제목)
                 </div>
                 <div style="
                     font-size: 12px;
-                ">
-                    코딩에 미친놈 지음
+                " id="popularityBookMaker_1">
+                    (지은이 이름) 지음<br>
+                    (DB준비중)
                 </div>
             </div>
 
-
+            <!-- 3번째(2) 인기도서 -->
             <div style="
                 float: left;
                 width: 200px;
             ">
                 <img style="
                     height: 180px;
-                " src="source/코딩하기1.png" alt="">
+                " id="popularityBookImage_2" alt="" onclick="goToDetailPage(getTitle(2))">
                 <div style="
                     margin: auto;
                     height: 50px;
                     width: 180px;
                     font-size: 14px;
                     font-weight: 600;
-                ">
-                    밥처먹고 코딩만 하기 1
+                " id="popularityBookTitle_2">
+                    (책 제목)
                 </div>
                 <div style="
                     font-size: 12px;
-                ">
-                    코딩에 미친놈 지음
+                " id="popularityBookMaker_2">
+                    (지은이 이름) 지음<br>
+                    (DB준비중)
                 </div>
             </div>
 
-
+            <!-- 4번째(3) 인기도서 -->
             <div style="
                 float: left;
                 width: 200px;
             ">
                 <img style="
                     height: 180px;
-                " src="source/코딩하기1.png" alt="">
+                " id="popularityBookImage_3" alt="" onclick="goToDetailPage(getTitle(3))">
                 <div style="
                     margin: auto;
                     height: 50px;
                     width: 180px;
                     font-size: 14px;
                     font-weight: 600;
-                ">
-                    밥처먹고 코딩만 하기 1
+                " id="popularityBookTitle_3">
+                    (책 제목)
                 </div>
                 <div style="
                     font-size: 12px;
-                ">
-                    코딩에 미친놈 지음
+                " id="popularityBookMaker_3">
+                    (지은이 이름) 지음<br>
+                    (DB준비중)
                 </div>
             </div>
 
-
+            <!-- 5번째(4) 인기도서 -->
             <div style="
                 float: left;
                 width: 200px;
             ">
                 <img style="
                     height: 180px;
-                " src="source/코딩하기1.png" alt="">
+                " id="popularityBookImage_4" alt="" onclick="goToDetailPage(getTitle(4))">
                 <div style="
                     margin: auto;
                     height: 50px;
                     width: 180px;
                     font-size: 14px;
                     font-weight: 600;
-                ">
-                    밥처먹고 코딩만 하기 1
+                " id="popularityBookTitle_4">
+                    (책 제목)
                 </div>
                 <div style="
                     font-size: 12px;
-                ">
-                    코딩에 미친놈 지음
+                " id="popularityBookMaker_4">
+                    (지은이 이름) 지음<br>
+                    (DB준비중)
                 </div>
             </div>
 
-
+            <!-- 6번째(5) 인기도서 -->
             <div style="
                 float: left;
                 width: 200px;
             ">
                 <img style="
                     height: 180px;
-                " src="source/코딩하기1.png" alt="">
+                " id="popularityBookImage_5" alt="" onclick="goToDetailPage(getTitle(5))">
                 <div style="
                     margin: auto;
                     height: 50px;
                     width: 180px;
                     font-size: 14px;
                     font-weight: 600;
-                ">
-                    밥처먹고 코딩만 하기 1
+                " id="popularityBookTitle_5">
+                    (책 제목)
                 </div>
                 <div style="
                     font-size: 12px;
-                ">
-                    코딩에 미친놈 지음
+                " id="popularityBookMaker_5">
+                    (지은이 이름) 지음<br>
+                    (DB준비중)
                 </div>
             </div>
 
-
-
+            <script>setPopularity();</script>
         </div>
 
     </div>
