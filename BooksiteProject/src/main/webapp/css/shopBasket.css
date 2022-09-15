@@ -1,0 +1,49 @@
+@charset "utf-8";
+
+#wrap{
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+:root{
+    --myGrayColor : #c6c6c6;
+}
+
+main{margin: 50px 0 100px 0;}
+
+.basket{ width: 1000px; margin: 0 auto; }
+.basket .baseketTitle{ color: #6a6a6a; margin: 10px 5px; font-size: 20px;}
+
+
+table.bookList{ border-collapse: collapse; margin-bottom: 20px;}
+table.bookList th{ padding: 5px; text-align: center; border-bottom: 1px solid var(--myGrayColor); border-top: 1px solid var(--myGrayColor);}
+table.bookList td{ text-align: center; border-bottom: 1px solid var(--myGrayColor);}
+
+.bookItem { width: 1200px; height: 250px; position:relative;}
+.bookItem:active{ box-shadow: inset 2px 2px 10px rgb(0, 0, 0, 0.1); transform: scale( 0.99 );}
+.bookItem .selected{ width: 5%;}
+.bookItem .selected input[type=checkbox] { width: 20px; height: 20px;}
+.bookItem .bookImg{ width: 12%;}
+.bookItem .bookImg img{ width: 100%; height: 100%; object-fit: cover;}
+.bookItem .bookTitle{ width: 23%;}
+.bookItem .bookMoney{ width: 15%;}
+.bookItem .bookCount{ width: 15%;}
+.bookItem .bookCount input[type=number] { width: 80%;     writing-mode:vertical-lr ;}
+.bookItem .bookMoneySum{ width: 15%;}
+.bookItem .bookDeliveryTime{ width: 15%;}
+
+
+
+table.selectBookMoney{ width: 100%; border-collapse: collapse;}
+table.selectBookMoney tr> *{ border: 1px solid var(--myGrayColor);}
+table.selectBookMoney th {background-color: #7ca7d2; height: 50px;}
+
+table.selectBookMoney td {text-align: end; height: 90px; padding: 10px; font-size: 20px;}
+table.selectBookMoney td.bookValue {width: 40%; }
+table.selectBookMoney td.bookDeliveryValue {width: 20%;}
+table.selectBookMoney td.bookLastValue {width: 40%; color: red;}
+
+.basketBtns { text-align: end;}
+.basketBtns button{ width: 180px; height: 50px; border: none; border-radius: 5px; margin: 40px 20px; font-weight: bold; cursor: pointer;}
+.basketBtns button.selectBookPurchaseBtn{ background-color: #ff9696;}
+.basketBtns button.selectBookSaveBtn{ background:#9a9a9a}
