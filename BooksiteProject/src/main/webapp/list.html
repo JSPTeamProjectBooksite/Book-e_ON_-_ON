@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>도서목록</title>
 <style>
     *{
         margin: 0;
@@ -54,26 +54,14 @@
     }
 
 </style>
+<script src="./js/bookList.js"></script>
 <!-- 이미지 슬라이드 구현용 스크립트 -->
 <script>
 
     var index = 0;
-
-    // 슬아이드 할 책 경로
-    const bookList = [
-        "기분이_태도가_되지_않으려면",
-        "노인과_바다",
-        "밥을_왜먹냐_코딩만해도_배부른데",
-        "아몬드",
-        "밥처먹고_코딩만_하기1",
-        "밥처먹고_코딩만_하기2",
-        "죽고_싶지만_떡볶이는_먹고_싶어",
-        "창문넘어_도망친_100세_노인",
-        "하루도_쉬운_날이_없어"
-    ];
     
     var slideList = [
-        "","","","","","",""
+        0,0,0,0,0,0,0
     ];
     // 이전 버튼을 눌렀을 때
     function clickBefore(){
@@ -105,41 +93,50 @@
     }
 
     // 책 페이지 연결
-    function goToDetailPage(title){
-        location.href=title+".html";
+    function goToDetailPage(BID){
+        document.listPageForm.BID.value = BID;
+        document.getElementById("BIDform").submit();
     }
 
-    // 제목 파싱
-    function getTitle(num){
-        return document.getElementById("popularityBookImage_" + num).src.replace("source/book/","").replace(".png","");
-    }
-
+    
     // 슬라이드에 이미지를 셋팅하는 메서드
     function setList(){
         for(var i = 0; i < slideList.length; i++){
-            slideList[i] = bookList[(i+index)%bookList.length];
+            slideList[i] = bookList[(i+index)%bookList.length].BID;
         }
     }
-
+    
     // 슬라이드에 이미지를 불러오는 메서드
     function vewListPage(){
         for(var i = 0; i < slideList.length; i++){
-            document.getElementById("index"+i).src = "source/book/" + slideList[i] + ".png";
+            document.getElementById("index"+i).src = bookList[slideList[i]].image;
         }
+        document.getElementById("ad").innerHTML = bookList[slideList[3]].ad;
     }
-
+    
+    
     // 인기순위
     // 인기순위에 책을 셋팅하는 메소드
+    var popList = new Array(6);
+    
+    // 제목 파싱
+    function getTitle(num){
+        return popList[num];
+    }
     function setPopularity(){
-        var copyList = JSON.parse(JSON.stringify(bookList));
+        var copyList = new Array(bookList.length);
         var num = 0;
 
         for(var i = 0; i < 6; i++){
             while(true){
-                num = randomNum(6);
+                num = randomNum(bookList.length);   //0~8
                 if(copyList[num] == "used") continue;
-                document.getElementById("popularityBookImage_" + i).src = "source/book/" + bookList[num] + ".png";
-                document.getElementById("popularityBookTitle_" + i).innerHTML = bookList[num].replace(/_/g," ");
+
+                popList[i] = num;
+
+                document.getElementById("popularityBookImage_" + i).src = bookList[num].image;
+                document.getElementById("popularityBookTitle_" + i).innerHTML = bookList[num].title;
+                document.getElementById("popularityBookAuthor_" + i).innerHTML = bookList[num].author;
                 copyList[num] = "used";
                 break;
             }
@@ -158,6 +155,11 @@
     <div id="header">여기는 해더</div>
     <!-- 공간 띄우기 -->
     <div style="height: 100px;"></div>
+
+    <!-- 전송폼 -->
+    <form action="./DetailPage.jsp" name="listPageForm" id="BIDform" method="get">
+        <input type="hidden" name="BID" value="">
+    </form>
 
     <!-- 슬라이드 광고 -->
     <div>
@@ -223,18 +225,17 @@
             <div style="
                 font-size: 24px;
                 margin-top: 10px;
-            ">
-                아 몬드 넥스트 레벨~<br>
+            " id="ad">
                 (광고글)
             </div>
         </div>
+        <!-- 슬라이드 이미지 셋팅 스크립트 -->
+        <script>
+            setList();
+            vewListPage();
+        </script>
     </div>
 
-    <!-- 슬라이드 이미지 셋팅 스크립트 -->
-    <script>
-        setList();
-        vewListPage();
-    </script>
 
     <!-- 주제별 선정 -->
     <!-- 타입 1 -->
@@ -272,9 +273,8 @@
                 </div>
                 <div style="
                     font-size: 12px;
-                " id="popularityBookMaker_0">
-                    (지은이 이름) 지음<br>
-                    (DB준비중)
+                " id="popularityBookAuthor_0">
+                    (지은이)
                 </div>
             </div>
 
@@ -297,9 +297,8 @@
                 </div>
                 <div style="
                     font-size: 12px;
-                " id="popularityBookMaker_1">
-                    (지은이 이름) 지음<br>
-                    (DB준비중)
+                " id="popularityBookAuthor_1">
+                    (지은이)
                 </div>
             </div>
 
@@ -322,9 +321,8 @@
                 </div>
                 <div style="
                     font-size: 12px;
-                " id="popularityBookMaker_2">
-                    (지은이 이름) 지음<br>
-                    (DB준비중)
+                " id="popularityBookAuthor_2">
+                    (지은이)
                 </div>
             </div>
 
@@ -347,9 +345,8 @@
                 </div>
                 <div style="
                     font-size: 12px;
-                " id="popularityBookMaker_3">
-                    (지은이 이름) 지음<br>
-                    (DB준비중)
+                " id="popularityBookAuthor_3">
+                    (지은이)
                 </div>
             </div>
 
@@ -372,9 +369,8 @@
                 </div>
                 <div style="
                     font-size: 12px;
-                " id="popularityBookMaker_4">
-                    (지은이 이름) 지음<br>
-                    (DB준비중)
+                " id="popularityBookAuthor_4">
+                    (지은이)
                 </div>
             </div>
 
@@ -397,9 +393,8 @@
                 </div>
                 <div style="
                     font-size: 12px;
-                " id="popularityBookMaker_5">
-                    (지은이 이름) 지음<br>
-                    (DB준비중)
+                " id="popularityBookAuthor_5">
+                    (지은이)
                 </div>
             </div>
 
