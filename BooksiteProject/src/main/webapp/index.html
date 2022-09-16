@@ -14,45 +14,88 @@
     	#wrap{
     		margin: auto;
     		max-width: 1200px;
+			height: 100vh;
     	}
+		td{
+			text-align: center;
+			vertical-align: middle;
+		}
+
+		#content li{
+			margin-bottom: 25px;
+		}
+
+		#content td{
+			text-align: left;
+			padding: 10px;
+		}
     </style>
 </head>
 <body>
 <div id="wrap">
-	<div style="height: 10vh;">
+	<div id="header">
+		<table style="width: 100%; background:lightgray;">
+			<tr style="height: 15px;"></tr>
+			<tr style="height: 100px;">
+				<td style="width: 100px;"></td>
+				<td>
+					<h1>도서 판매 사이트</h1>
+					<h2>조 이름 (미정)</h2>
+				</td>
+				<td style="width: 100px;">
+					<a href="https://github.com/JSPTeamProjectBooksite/Book-e_ON_-_ON" target="_blank">
+						<img src="./source/ico/git.png" alt="GIT" style="
+							width: 80%;
+							height: 80%;
+							border-radius: 50px;
+						">
+					</a>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<b>이현우</b>, 최진영, 김하영, 안성환, 김지나
+				</td>
+			</tr>
+		</table>
 	</div>
-	<div>
-		<h1>책 판매 사이트</h1>
-		<h2>조 이름 (미정)</h2>
-		<br>
-		<b>이현우</b>, 최진영, 김하영, 안성환, 김지나
+
+	<div style="height: 100px"></div>
+
+	<div id="content">
+		<table style="margin:auto">
+			<tr>
+				<td>
+					<ul style="list-style: none;">
+						<li>
+							<a href="./주차별정리/1주차/1week.html" style="
+								font-size: 32px;
+								font-weight: 800;
+							">
+								1주차
+							</a>
+						</li>
+						<li>
+							<a href="./2week.html" style="
+								font-size: 32px;
+								font-weight: 800;
+							">
+								2주차(개발중)
+							</a>
+						</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td style="
+					font-size: 20px;
+					font-weight: 600;
+				">
+					'(개발중)'이 적힌 주차가 최신화됩니다. 특이 사항이 없을시, 금요일 오전에 주차가 변경됩니다.
+				</td>
+			</tr>
+		</table>
 	</div>
-	<div style="height: 100px">
-	
-	</div>
-	<div>
-		<h1>
-			<a href="./주차별정리/1주차/1week.html">
-				1주차
-			</a>
-		</h1>
-		<br>
-		<h1>
-			<a href="./2week.html">
-				2주차(준비중)
-			</a>
-		</h1>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-	</div>
-	<h3>
-		'(준비중)'이 적힌 주차가 최신화됩니다. 특이 사항이 없을시, 금요일 오전에 주차가 변경됩니다.
-	</h3>
 </div>
-    
 </body>
 </html>
