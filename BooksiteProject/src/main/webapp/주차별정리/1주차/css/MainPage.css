@@ -1,0 +1,13 @@
+
+.wrap{ max-width: 1280px; margin: 0 auto;}
+
+main{ width: 100%; min-height: 800px; background-image: url(../source/mainPage/mainPage_Bg.jpg); position: relative;}
+main .mainDoor .mainText{position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); font-size: 20px; width: 400px; text-align: center;}
+main .mainDoor .startBtn{position: absolute; left: 50%; bottom: 10px; transform: translate(-50%, 0); padding: 20px 100px; border-radius: 10px; border: 0; font-size: 20px;}
+main .mainDoor .startBtn:hover{cursor: pointer;}
+
+
+/* 위로가기 기능 안씀
+ main .mainDoor .topUp{position: fixed; right: 10px; bottom: 10px; transform: translate(-50%, 0); background-color: rgb(175, 175, 175); width: 50px; height: 50px; font-size: 13px; line-height: 40px; padding: 5px 5px; border-radius: 100px; border: 0;}
+main .mainDoor .topUp:hover{cursor: pointer;} */
+
