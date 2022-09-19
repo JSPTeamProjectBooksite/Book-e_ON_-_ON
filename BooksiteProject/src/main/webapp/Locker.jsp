@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@include file="header.html"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +11,6 @@
 </head>
 <body>
 	<div class="wrap">
-		<div w3-include-html="header.html"></div>
 		<main>
 			<h1>보관함</h1>
 			<div class="container">
@@ -60,7 +60,7 @@
 				</div>
 			</div>
 		</main>
-		<div w3-include-html="footer.html"></div>
+		<%@include file="footer.html"%>
 	</div>
 </body>
 </html>
