@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,12 +8,12 @@
 	url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jua&display=swap');
 </style>
 <link rel="stylesheet" href="css/Register.css">
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 	<div class="container">
-		<h1>È¸¿ø°¡ÀÔ</h1>
+		<h1>íšŒì›ê°€ì…</h1>
 		<form>
 			<div>
 				<input class="inputGroup" type="text" placeholder="Your name">
@@ -39,19 +39,19 @@
 			</div>
 			<div>
 				<input class="checkboxGroup" type="checkbox"> <span
-					class="allTerms"> ¸ğµç ¾à°ü¿¡ µ¿ÀÇÇÕ´Ï´Ù. </span>
+					class="allTerms"> ëª¨ë“  ì•½ê´€ì— ë™ì˜í•©ë‹ˆë‹¤. </span>
 			</div>
 			<div class="terms">
 				<div>
-					<input type="checkbox"> <span> Book-e On & On ÀÌ¿ë¾à°ü
-						(ÇÊ¼ö) </span>
+					<input type="checkbox"> <span> Book-e On & On ì´ìš©ì•½ê´€
+						(í•„ìˆ˜) </span>
 				</div>
 				<div>
-					<input type="checkbox"> <span> Book-e On & On Ä¿¹Â´ÏÆ¼
-						ÀÌ¿ë¾à°ü (ÇÊ¼ö) </span>
+					<input type="checkbox"> <span> Book-e On & On ì»¤ë®¤ë‹ˆí‹°
+						ì´ìš©ì•½ê´€ (í•„ìˆ˜) </span>
 				</div>
 				<div>
-					<input type="checkbox"> <span> °³ÀÎ Á¤º¸ ¼öÁı ¹× ÀÌ¿ë (ÇÊ¼ö) </span>
+					<input type="checkbox"> <span> ê°œì¸ ì •ë³´ ìˆ˜ì§‘ ë° ì´ìš© (í•„ìˆ˜) </span>
 				</div>
 			</div>
 			<input class="submit" type="submit" value="Register">
