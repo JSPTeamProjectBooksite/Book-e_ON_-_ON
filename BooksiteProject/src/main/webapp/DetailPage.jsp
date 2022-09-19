@@ -17,14 +17,22 @@
 	    /* background-color: #FBCEB1; */
 	}
 	
-	#container{
-	    /* background-color: aquamarine; */
-	}
-	
 	#book_contents{
-	    height: 550px;
-	    /* background-color: blueviolet; */
+        max-width: 100%;
 	}
+    #book_contents td{
+        padding: 10px;
+
+    }
+    .btnStyle{
+        text-align: center;
+        padding: 13px 0;
+        display: inline-block;
+        width: 250px; 
+        height: 60px;
+        border-radius: 10px;
+    }
+
 	#footer{
 	    height: 200px;
 	    background-color: darkslategrey;
@@ -34,6 +42,7 @@
 <script type="text/javascript">
 	//타이틀 변경
 	var BID = <%= request.getParameter("BID") %>;
+
 	function setPage() {
 		document.title = bookList[<%= request.getParameter("BID") %>].title;
 		
@@ -50,12 +59,25 @@
 		document.getElementById("author").innerHTML = bookList[BID].author + " 지음";
 		document.getElementById("prise").innerHTML = prise +" 원";
 	}
+
+    function clickBtn(btn){
+
+        if(btn=="locker"){
+            document.getElementById("sendForm").action = "./Locker.jsp";
+        }else if(btn=="pay"){
+            document.getElementById("sendForm").action = "./paymentPage.jsp";
+        }else if(btn=="shopCart"){
+            document.getElementById("sendForm").action = "./ShopCart.jsp";
+        }
+        document.getElementById("sendForm").submit();
+    }
+
 </script>
 <title>페이지 이동 중...</title>
 </head>
 <body>
 <div id="wrap">
-       <div style="
+    <div style="
         height: 75px; 
         background-color: aqua
     ;">
@@ -63,7 +85,8 @@
     </div>
 
     <div style="height: 50px"></div>
-    <div id="container">
+
+    <div>
         <div style="
             width: 700px;
             font-size: 38px;
@@ -83,170 +106,62 @@
             width: 200px;
         " id="author">(지은이)</div>
     </div>
+
     <hr>
-    <div id="book_contents">
-        <div style="
-        margin-top: 20px;
-        text-align:center;
-        display:table;
-        height:500px; 
-        /* background-color:brown; */
-        float:left;
-        margin-left: 20px;
+    <div>
+        <table id="book_contents" style="
+            width: 100%;
+           	font-weight: 600;
+           	font-size: 24px;
         ">
-            <div style="
-                display:table-cell;
-                vertical-align:middle;
+            <tr style="
+            	font-weight: 800;
+            	font-size: 28px;
             ">
-                <img style="
-                    max-height: 500px;
-                " id="image">
-            </div>
-        </div>
-        <div style="
-        margin-top: 20px;
-        width: 710px; 
-        height:500px; 
-        /* background-color:chocolate; */
-        margin-left: 20px;
-        float:left;
-        ">
-            <div style="
-                margin-top: 20px;
-                width: 200px; 
-                height:250px; 
-                /* background-color:cadetblue; */
-                margin-left: 20px;
-                margin-bottom: 20px;
-                float:left;
-            ">
-                <div style="
-                    height: 45px;
-                    font-size: 32px;
-                    font-weight: 400;
-                    font-family: 고딕;
-                ">
-                    판매가
-                </div>
-                <div style="
-                    height: 45px;
-                    font-size: 32px;
-                    font-weight: 400;
-                    font-family: 고딕;
-                    margin-top: 45px;
-                ">
-                    배송료
-                </div>
-                <div style="
-                    height: 45px;
-                    font-size: 32px;
-                    font-weight: 400;
-                    font-family: 고딕;
-                    margin-top: 45px;
-                ">
-                    예상 배송일
-                </div>
-            </div>
-            <div style="
-                margin-top: 20px;
-                width: 455px; 
-                height:250px; 
-                /* background-color:darkgoldenrod; */
-                margin-left: 20px;
-                float:left;
-            ">
-                <div style="
-                    height: 45px;
-                    font-size: 38px;
-                    font-weight: 900;
-                    font-family: 고딕;
-                " id="prise">
-                    (가격)
-                </div>
-                <div style="
-                    height: 45px;
-                    font-size: 32px;
-                    font-weight: 400;
-                    font-family: 고딕;
-                    margin-top: 45px;
-                ">
-                    On&On에선 단 1권도 무료
-                </div>
-                <div style="
-                    height: 45px;
-                    font-size: 32px;
-                    font-weight: 400;
-                    font-family: 고딕;
-                    margin-top: 45px;
-                ">
-                    주문일에서 평균 2일 소요
-                </div>
-            </div>
-            <div style="
-                clear: both;
-                width: 675px; 
-                height:190px; 
-                /* background-color:aquamarine; */
-                margin-left: 20px;
-            ">
-                <hr>
-                <div>
-                    주문수량
-                </div>
-
-                <div style="
-                    margin-top: 80px;
-                ">
-                    <div style="
-                        float: right;
-                        height: 50px;
-                        width: 30%;
-                        border-radius: 10px;
-                        background-color:darkgrey;
-                        text-align: center;
-                        line-height : 50px;
-                        font-size: 20px;
-                        font-weight: 800;
-                    ">
-                        보관함 저장
-                    </div>
-                    <div style="
-                        margin-right: 20px;
-                        float: right;
-                        height: 50px;
-                        width: 30%;
-                        border-radius: 10px;
-                        background-color:lightpink;
-                        text-align: center;
-                        line-height : 50px;
-                        font-size: 20px;
-                        font-weight: 800;
-                    ">
-                        바로 구매
-                    </div>
-                    <div style="
-                        margin-right: 20px;
-                        float: right;
-                        height: 50px;
-                        width: 30%;
-                        border-radius: 10px;
-                        background-color: skyblue;
-                        text-align: center;
-                        line-height : 50px;
-                        font-size: 20px;
-                        font-weight: 800;
-                    ">
-                        장바구니 담기
-                    </div>
-                </div>
-
-
-            </div>
-        </div>
+                <td rowspan="5">
+                    <img style="
+                        max-height: 500px;
+                    " id="image">
+                </td>
+                <td>판매가</td>
+                <td id="prise">(가격)</td>
+            </tr>
+            <tr>
+                <td>배송료</td>
+                <td>On&On에선 단 1권도 무료</td>
+            </tr>
+            <tr>
+                <td>예상 배송일</td>
+                <td>주문일에서 평균 2일 소요</td>
+            </tr>
+            <tr style="height: 150px;">
+                <td colspan="2">
+                    <form action="" method="get" id="sendForm">
+                        선택 수량: <input type="number" style="
+                        width: 60px; 
+                        height: 38px; 
+                        font-size: 24px;
+                        " name="select" value="1" min="1"> 권<br>
+                    </form>
+                </td>
+            </tr>
+            <tr style="height: 120px;">
+                <td colspan="2">
+                    <span class="btnStyle" style="
+                        background:skyblue;
+                    " onclick="clickBtn('shopCart')" >장바구니 담기</span>
+                    <span class="btnStyle" style="
+                        background:darksalmon;
+                    " onclick="clickBtn('pay')" >바로 구매</span>
+                    <span class="btnStyle" style="
+                        background:darkgray;
+                    " onclick="clickBtn('locker')">보관함 저장</span>
+                </td>
+            </tr>
+        </table>
     </div>
-    <div style="
-        /* background-color: cadetblue; */
-    ">
+    
+    <div >
         <hr>
         <div style="height: 30px;"></div>
         <div style="
