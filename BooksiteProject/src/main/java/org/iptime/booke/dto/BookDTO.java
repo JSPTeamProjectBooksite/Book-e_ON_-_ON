@@ -1,25 +1,25 @@
 package org.iptime.booke.dto;
 
 public class BookDTO{
-	String bookImg;
+	String img;
 	String title;
 	int money;
 	int deliveryTime;
 	
-	public BookDTO(String bookImg, String title, int money, int deliveryTime) {
+	public BookDTO(String img, String title, int money, int deliveryTime) {
 		super();
-		this.bookImg = bookImg;
+		this.img = img;
 		this.title = title;
 		this.money = money;
 		this.deliveryTime = deliveryTime;
 	}
 
-	public String getBookImg() {
-		return bookImg;
+	public String getImg() {
+		return img;
 	}
 
-	public void setBookImg(String bookImg) {
-		this.bookImg = bookImg;
+	public void setImg(String img) {
+		this.img = img;
 	}
 
 	public String getTitle() {
