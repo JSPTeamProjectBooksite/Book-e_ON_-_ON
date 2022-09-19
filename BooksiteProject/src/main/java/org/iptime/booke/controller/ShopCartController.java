@@ -54,4 +54,5 @@ class Book{
 		this.money = money;
 		this.deliveryTime = deliveryTime;
 	}
+	
 }
