@@ -13,7 +13,7 @@
 </head>
 <body>
     <div class="wrap">
-        <div w3-include-html="header.html"></div>
+        <%@ include file="header.html" %>
 
         <main>
             <section class="mainDoor">
@@ -33,7 +33,7 @@
             </section>
         </main>
 
-        <div w3-include-html="footer.html"></div>
+        <%@ include file="footer.html" %>
     </div>
 </body>
 </html>
