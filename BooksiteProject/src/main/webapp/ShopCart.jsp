@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@  %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,14 +14,12 @@
         integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
         crossorigin="anonymous">
     </script>
-    <script src="js/includeHTML.js"></script>
     <script src="js/shopBasket.js"></script>
     <title>장바구니</title>
 </head>
 <body>
     <div id="wrap">
-        <div w3-include-html="header.html"></div>
-
+		<%@ include file="header.html" %>
         <main>
             <div class="basket">
                 <h1 class="baseketTitle">장바구니</h1>
@@ -34,33 +32,17 @@
                         <th>합계</th>
                         <th>배송일정</th>
                     </tr>
+                    <c:forEach var="book" items="${bookList}">
                     <tr class="bookItem">
                         <td class="selected"><img src="source/ico/check_box_false.svg" alt="체크박스"></td>
-                        <td class="bookImg"><img src="source/book/기분이_태도가_되지_않으려면.png" alt="상품 이미지"></td>
-                        <td class="bookTitle">기분이 태도가 되지 않으려면</td>
-                        <td class="bookMoney">14,000원</td>
+                        <td class="bookImg"><img src="${ book.img }" alt="상품 이미지"></td>
+                        <td class="bookTitle">${ book.title }</td>
+                        <td class="bookMoney">${ book.money }</td>
                         <td class="bookCount"><input type="number"></td>
                         <td class="bookMoneySum">14,000원</td>
-                        <td class="bookDeliveryTime">평균 2일 소요</td>
+                        <td class="bookDeliveryTime">평균 ${ book.deliveryTime }일 소요</td>
                     </tr>
-                    <tr class="bookItem">
-                        <td class="selected"><img src="source/ico/check_box_false.svg" alt="체크박스"></td>
-                        <td class="bookImg"><img src="source/book/기분이_태도가_되지_않으려면.png" alt="상품 이미지"></td>
-                        <td class="bookTitle">기분이 태도가 되지 않으려면</td>
-                        <td class="bookMoney">14,000원</td>
-                        <td class="bookCount"><input type="number"></td>
-                        <td class="bookMoneySum">14,000원</td>
-                        <td class="bookDeliveryTime">평균 2일 소요</td>
-                    </tr>
-                    <tr class="bookItem">
-                        <td class="selected"><img src="source/ico/check_box_false.svg" alt="체크박스"></td>
-                        <td class="bookImg"><img src="source/book/기분이_태도가_되지_않으려면.png" alt="상품 이미지"></td>
-                        <td class="bookTitle">기분이 태도가 되지 않으려면</td>
-                        <td class="bookMoney">14,000원</td>
-                        <td class="bookCount"><input type="number"></td>
-                        <td class="bookMoneySum">14,000원</td>
-                        <td class="bookDeliveryTime">평균 2일 소요</td>
-                    </tr>
+                    </c:forEach>
                 </table>
                 <table class="selectBookMoney">
                     <tr>
@@ -82,7 +64,7 @@
             </div>
         </main>
 
-        <div w3-include-html="footer.html"></div>
+        <%@ include file="footer.html" %>
     </div>
 </body>
 </html>
