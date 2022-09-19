@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@  %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +16,7 @@
     </script>
     <script src="js/includeHTML.js"></script>
     <script src="js/shopBasket.js"></script>
-    <title>Main Page</title>
+    <title>장바구니</title>
 </head>
 <body>
     <div id="wrap">
