@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" href="css/Locker.css">
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <script src="js/includeHTML.js"></script>
 <title>Insert title here</title>
 </head>
@@ -12,50 +12,50 @@
 	<div class="wrap">
 		<div w3-include-html="header.html"></div>
 		<main>
-			<h1>บธฐüวิ</h1>
+			<h1>๋ณด๊ด€ํ•จ</h1>
 			<div class="container">
 				<div class="wrapper">
 					<div class="rect">
-						<a href="#"><img src="source/book/ฟชวเภฺ.png"></a><span>
-							ฟชวเภฺ </span><span class="author"> ภฺรป </span>
+						<a href="#"><img src="source/book/์—ญํ–์.png"></a><span>
+							์—ญํ–์ </span><span class="author"> ์์ฒญ </span>
 					</div>
 					<div class="rect">
-						<a href="#"><img src="source/book/ฟชวเภฺ.png"></a><span>
-							ฟชวเภฺ </span><span class="author"> ภฺรป </span>
+						<a href="#"><img src="source/book/์—ญํ–์.png"></a><span>
+							์—ญํ–์ </span><span class="author"> ์์ฒญ </span>
 					</div>
 					<div class="rect">
-						<a href="#"><img src="source/book/ฟชวเภฺ.png"></a><span>
-							ฟชวเภฺ </span><span class="author"> ภฺรป </span>
+						<a href="#"><img src="source/book/์—ญํ–์.png"></a><span>
+							์—ญํ–์ </span><span class="author"> ์์ฒญ </span>
 					</div>
 					<div class="rect">
-						<a href="#"><img src="source/book/ฟชวเภฺ.png"></a><span>
-							ฟชวเภฺ </span><span class="author"> ภฺรป </span>
+						<a href="#"><img src="source/book/์—ญํ–์.png"></a><span>
+							์—ญํ–์ </span><span class="author"> ์์ฒญ </span>
 					</div>
 					<div class="rect">
-						<a href="#"><img src="source/book/ฟชวเภฺ.png"></a><span>
-							ฟชวเภฺ </span><span class="author"> ภฺรป </span>
+						<a href="#"><img src="source/book/์—ญํ–์.png"></a><span>
+							์—ญํ–์ </span><span class="author"> ์์ฒญ </span>
 					</div>
 				</div>
 				<div class="wrapper">
 					<div class="rect">
-						<a href="#"><img src="source/book/ฟชวเภฺ.png"></a><span>
-							ฟชวเภฺ </span><span class="author"> ภฺรป </span>
+						<a href="#"><img src="source/book/์—ญํ–์.png"></a><span>
+							์—ญํ–์ </span><span class="author"> ์์ฒญ </span>
 					</div>
 					<div class="rect">
-						<a href="#"><img src="source/book/ฟชวเภฺ.png"></a><span>
-							ฟชวเภฺ </span><span class="author"> ภฺรป </span>
+						<a href="#"><img src="source/book/์—ญํ–์.png"></a><span>
+							์—ญํ–์ </span><span class="author"> ์์ฒญ </span>
 					</div>
 					<div class="rect">
-						<a href="#"><img src="source/book/ฟชวเภฺ.png"></a><span>
-							ฟชวเภฺ </span><span class="author"> ภฺรป </span>
+						<a href="#"><img src="source/book/์—ญํ–์.png"></a><span>
+							์—ญํ–์ </span><span class="author"> ์์ฒญ </span>
 					</div>
 					<div class="rect">
-						<a href="#"><img src="source/book/ฟชวเภฺ.png"></a><span>
-							ฟชวเภฺ </span><span class="author"> ภฺรป </span>
+						<a href="#"><img src="source/book/์—ญํ–์.png"></a><span>
+							์—ญํ–์ </span><span class="author"> ์์ฒญ </span>
 					</div>
 					<div class="rect">
-						<a href="#"><img src="source/book/ฟชวเภฺ.png"></a><span>
-							ฟชวเภฺ </span><span class="author"> ภฺรป </span>
+						<a href="#"><img src="source/book/์—ญํ–์.png"></a><span>
+							์—ญํ–์ </span><span class="author"> ์์ฒญ </span>
 					</div>
 				</div>
 			</div>
