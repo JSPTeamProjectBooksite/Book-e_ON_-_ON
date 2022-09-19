@@ -16,7 +16,7 @@ import org.iptime.booke.dto.BookDTO;
 /**
  * Servlet implementation class ShopBasketController
  */
-@WebServlet("/cart")
+@WebServlet("/shopcart")
 public class ShopCartController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
