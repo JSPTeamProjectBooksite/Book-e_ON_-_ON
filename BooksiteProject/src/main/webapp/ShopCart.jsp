@@ -23,8 +23,6 @@
         <main>
             <div class="basket">
                 <h1 class="baseketTitle">장바구니</h1>
-
-                <form action="#" method="post">
                 <table class="bookList">
                     <tr>
                         <!-- <th></th> -->
@@ -64,13 +62,9 @@
                     <button type="button" class="selectBookSaveBtn">보관함 저장</button>
                 </div>
             </div>
-            </form>
         </main>
 
         <%@ include file="footer.html" %>
     </div>
-
-
-
 </body>
 </html>
