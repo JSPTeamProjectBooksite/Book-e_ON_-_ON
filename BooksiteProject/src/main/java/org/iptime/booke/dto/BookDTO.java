@@ -22,7 +22,6 @@ public class BookDTO{
 	
 	// 자기가 쓸 생성자 + getter, setter
 	
-
 	public String getImg() {
 		return img;
 	}
