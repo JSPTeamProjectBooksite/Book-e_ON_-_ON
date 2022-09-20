@@ -29,7 +29,7 @@ table.bookList td{ text-align: center; border-bottom: 1px solid var(--myGrayColo
 .bookItem .bookTitle{ width: 23%;}
 .bookItem .bookMoney{ width: 15%;}
 .bookItem .bookCount{ width: 15%;}
-.bookItem .bookCount input[type=number] { width: 80%;     writing-mode:vertical-lr ;}
+.bookItem .bookCount input[type=number] { width: 50%; text-align: end;}
 .bookItem .bookMoneySum{ width: 15%;}
 .bookItem .bookDeliveryTime{ width: 15%;}
 
