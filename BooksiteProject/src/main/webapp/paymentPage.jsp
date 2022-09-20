@@ -15,8 +15,8 @@
 
     <body>
         <div class="wrap">
-            <div w3-include-html="header.html">
-            </div>
+            <%@ include file="header.html" %>
+   
             <table>
                 <caption>결제하기</caption>
                 <thead>
@@ -40,7 +40,7 @@
                     </tr>
                 </thead>
                 <tr>
-                    <td><img src="source/book/하루도_쉬운_날이_없어.png" width="200px" height="270px"></td>
+                    <td><img src= ${paymentList[0].img }width="200px" height="270px"></td>
                     <td>하루도 쉬운 날이 없어</td>
                     <td style="font-size: larger;"><b>14,000원</b>
                         <br><small>수량 : 1개</small>
@@ -55,6 +55,7 @@
                     </td>
                 </tr>
             </table>
+            <%@ include file="footer.html" %>
         </div>
 
     </body>
