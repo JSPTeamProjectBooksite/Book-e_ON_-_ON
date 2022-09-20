@@ -21,4 +21,10 @@ $(function (){
     // 마우스가 밖으로 벗어났거나, 버튼을 땠을 때 클릭 효과를 제거함 
     $('.bookItem').mouseup(function() { $(this).removeClass('bookItemClick') }); 
     $('.bookItem').mouseout(function() { $(this).removeClass('bookItemClick') });
+
+    $('.selectBookSaveBt').click(selectBookSaveBtnFun());
 });
+
+function selectBookSaveBtnFun(){
+    alert("하이");
+}

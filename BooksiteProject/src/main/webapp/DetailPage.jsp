@@ -92,7 +92,7 @@
             font-size: 38px;
             font-weight: 700;
             font-family: 고딕;
-        " id="title">(제목)
+        " >${ book.title }
         </div>
         <div style="
             font-size: 15px;
