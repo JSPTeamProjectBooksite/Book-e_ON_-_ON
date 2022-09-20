@@ -6,6 +6,7 @@ public class BookDTO{
 	String title;
 	int money; // <- title로 바꾸죠
 	int deliveryTime;
+	String name;
 	
 	// 디테일페이지
 	String ad;
