@@ -40,13 +40,13 @@
 						<a href="./MainPage.jsp">메인 페이지</a>
 					</li>
 					<li>
-						<a href="./list.html">리스트 페이지</a>
+						<a href="./ListPage.jsp">리스트 페이지</a>
 					</li>
 					<li>
 						<a href="./paymentPage.jsp">결제 페이지</a>
 					</li>
 					<li>
-						<a href="./Login.html">로그인 페이지</a>
+						<a href="./LoginPage.jsp">로그인 페이지</a>
 					</li>
 					<li>
 						<a href="./Register.jsp">회원가입 페이지</a>
@@ -73,9 +73,9 @@
 				<br><br>
 				<!-- 월요일 오전 공지사항 -->
 				<h3>
-					<span style="cursor: hand;" onclick="if(mondayAm.style.display=='none'){mondayAm.style.display='';} else{mondayAm.style.display = 'none';}">[09-19 월 오전 개발작업]</span>
+					<span style="cursor: hand;" onclick="if(monday.style.display=='none'){monday.style.display='';} else{monday.style.display = 'none';}">[09-19 월 개발작업]</span>
 				</h3>
-				<div id="mondayAm" style="display: none">
+				<div id="monday" style="display: none">
 					<hr>
 						<br>
 						우선 이번주 작업과 개인 할일이 정해졌습니다.<br>
@@ -99,12 +99,28 @@
 				</div>
 				<br>
 				<h3>
-					<span style="cursor: hand;" onclick="if(mondayPm.style.display=='none'){mondayPm.style.display='';} else{mondayPm.style.display = 'none';}">[09-19 월 오후 개발작업]</span>
+					<span style="cursor: hand;" onclick="if(tuesday.style.display=='none'){tuesday.style.display='';} else{tuesday.style.display = 'none';}">[09-20 화 개발작업]</span>
 				</h3>
-				<div id="mondayPm" style="display: none">
+				<div id="tuesday" style="display: none">
 					<hr>
 						<br>
-						추가중<br>
+						저희는 단계별로 프로젝트 개발을 하고 있습니다.<br>
+						<br>
+						기본(중요)기능이 들어갈 페이지 몇개를 우선 만든 후 이 몇페이지로 생긴 개발 경험을 토대로 디자인, 노하우, 등을 정의해서 추가페이지와 기능을 늘려나가는 방식으로 개발할건데요.<br>
+						<br>
+						저번주엔 html로 우선 레이아웃을 정의하고, 몇몇 페이지를 만드는 작업을 했습니다. 다만, html로 작업시 a태그의 href로 페이지를 연결해서, 모든 책의 소개페이지를 만들어야하는 등 DB(서버)사용에 어려움이 있기에 더미데이터를 JSON형태로 해서 페이지의 기능을 간략하게 테스트 했습니다.<br>
+						<br>
+						이번주는 JSP로 이전하는 작업과 거기에 맞게 서블릿을 정의한 후 각 페이지의 기능을 구현하는 작업을 할려 했으나, 이 과정에서 저희조는 개발력(?) 편차가 큰편이라고 느꼈습니다.<br>
+						<br>
+						기능개발에 있어서는 이 편차를 해결하지 않는 한 개발에 큰 애로사항이 있다고 여겨, 이를 해결하기 위해 어제 투표를 진행한 결과 1번 [프로젝트 우선 방식]이 뽑혔습니다.<br>
+						하지만, 이방식은 개발력이 높은 사람이 선발대로서 우선 개발을 하고 나머지 조원들이 이를 뒤따라가는 방식입니다. 이방식으론 조원들은 실력적 향상이 없고, 기여도의 분배 문제가 생길 수 밖에 없습니다. 그래서 저는 이방식보다, 2번 [과제, 스터디 방식]으로 프로젝트를 진행할려고 합니다.<br>
+						이럴꺼면 '어제 투표 왜했냐?!' 하시겠지만, 프로젝트 진행에 있어 필요한 과정이라고 생각합니다. <del>싫으면 조장하세요.</del><br>
+						<br>
+						이제부터 <b>'과제형 프로젝트 진행 방식'</b>으로 명명하겠습니다. 제가 오전에 당일 개발할 기능에 맞는 부분을 가르쳐주면, 이를 활용해서 본인이 만든(html)페이지를 jsp화 하고, 서블릿을 만들어서 페이지 간 연결을 구현합니다.<br>
+						<br>
+						어제 몇몇 조원과 얘기를 나눈결과 get post방식이나, innerHTML, getParameter()같은 기본적인 구문조차 잡혀있지 않은 모습을 보였습니다.<br>
+						<br>
+						오늘은 이를 활용하여 본인이 만든페이지 간의 연결을 구현 할 예정입니다.<br>
 						<br>
 					<hr>
 				</div>
