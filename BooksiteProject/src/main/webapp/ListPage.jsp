@@ -56,26 +56,28 @@
     }
 
 </style>
+<!-- 
 <script src="./js/bookList.js"></script>
+ -->
 <!-- 이미지 슬라이드 구현용 스크립트 -->
 <script>
 
     var index = 0;
     
-    var slideList = [
+    var slideList = [//2,1,4,5,6,3
         0,0,0,0,0,0,0
     ];
     // 이전 버튼을 눌렀을 때
     function clickBefore(){
         index--;
-        if(index < 0) index = bookList.length-1;
+        if(index < 0) index = ${bookList.length-1};
         setList();
         vewListPage();
     }
     // 다음 버튼을 눌렀을 때
     function clickNext(){
         index++;
-        if(index == bookList.length) index = 0;
+        if(index == ${bookList.length}) index = 0;
         setList();
         vewListPage();
     }
@@ -104,7 +106,7 @@
     // 슬라이드에 이미지를 셋팅하는 메서드
     function setList(){
         for(var i = 0; i < slideList.length; i++){
-            slideList[i] = bookList[(i+index)%bookList.length].BID;
+            slideList[i] = ${bookList}[(i+index)%${bookList}.length].BID;
         }
     }
     
@@ -152,6 +154,10 @@
 </script>
 </head>
 <body>
+<script type="text/javascript">
+	alert(${bookList}.length);
+</script>
+
 <!-- 메인 -->
 <div id="wrap">
     <div id="header">여기는 해더</div>
