@@ -34,11 +34,11 @@
                     </tr>
                     <c:forEach var="book" items="${bookList}">
                     <tr class="bookItem">
-                        <td class="selected"><img src="source/ico/check_box_false.svg" alt="체크박스"></td>
+                        <td class="bookCheck"><img src="source/ico/check_box_false.svg" alt="체크박스"></td>
                         <td class="bookImg"><img src="${ book.img }" alt="상품 이미지"></td>
                         <td class="bookTitle">${ book.title }</td>
                         <td class="bookMoney">${ book.money }</td>
-                        <td class="bookCount"><input type="number"></td>
+                        <td class="bookCount"><input type="number" min="1" max="999"></td>
                         <td class="bookMoneySum">14,000원</td>
                         <td class="bookDeliveryTime">평균 ${ book.deliveryTime }일 소요</td>
                     </tr>

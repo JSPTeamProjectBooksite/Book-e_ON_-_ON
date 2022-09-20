@@ -17,7 +17,7 @@
         <div class="wrap">
             <div w3-include-html="header.html">
             </div>
-            <table class="T1">
+            <table>
                 <caption>결제하기</caption>
                 <thead>
 

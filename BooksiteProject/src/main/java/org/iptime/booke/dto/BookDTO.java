@@ -1,11 +1,17 @@
 package org.iptime.booke.dto;
 
 public class BookDTO{
+	// 장바구니페이지
 	String img;
 	String title;
-	int money;
+	int money; // <- title로 바꾸죠
 	int deliveryTime;
 	
+	// 디테일페이지
+	String ad;
+	String author;
+	
+	// 장바구니페이지 
 	public BookDTO(String img, String title, int money, int deliveryTime) {
 		super();
 		this.img = img;
@@ -13,6 +19,9 @@ public class BookDTO{
 		this.money = money;
 		this.deliveryTime = deliveryTime;
 	}
+	
+	// 자기가 쓸 생성자 + getter, setter
+	
 
 	public String getImg() {
 		return img;

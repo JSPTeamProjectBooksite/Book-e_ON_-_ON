@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/orderConfirm.css">
+    <link rel="stylesheet" href="css/public.css">
+    <script src="js/includeHTML.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="chrome">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주문확인 페이지</title>
+</head>
+
+<body>
+    <div class="wrap">
+        <div w3-include-html="header.html"></div>
+
+        <div class="block"></div>
+        <h3 style="text-align: center;">고객님, 주문 완료 되었습니다!
+            <br>주문해주셔서 감사합니다.
+        </h3>
+        <table>
+            <tr>
+                <td>주문일자</td>
+                <td>주문번호</td>
+                <td>주문금액</td>
+                <td>주문상품</td>
+                <td>주문수량</td>
+                <td>비고</td>
+            </tr>
+            <tr>
+                <!-- 임의의 주문번호 만들어 카운트 -->
+                <td>2022-09-19</td>
+                <td>Count</td>
+                <td>14,000원</td>
+                 <!-- 클릭 시, 상품 상세 페이지로 이동  -->
+                <td><a href="detail.html"> 쉬운 날이 없어</a></td>
+                <td> 1 </td>
+                <td>상세내역보기</td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
