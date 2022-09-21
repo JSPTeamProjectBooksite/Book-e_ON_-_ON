@@ -16,13 +16,24 @@ public class BookDTO{
 	String img;
 	int money; // <- title로 바꾸죠
 	int deliveryTime;
-//	String name; 
+
 
 	// 결제페이지 
-	String name;
-	String adress;
+	String name; // title 아니고 주문자 성명
+	String address;
+	int orderQuantity;
+	String email;
 		
 	
+	public BookDTO(String image, String title, int money, String name, String address, int orderQuantity, String email) {
+		this.image = image;
+		this.title = title;
+		this.money = money;
+		this.name = name;
+		this.address = address;
+		this.orderQuantity = orderQuantity;
+		this.email = email;
+	}
 	public BookDTO( int BID, String title, String image, String author, String publisher, int price, String ad, String introduce) {
 		this.BID = BID;
 		this.title = title;
@@ -162,14 +173,38 @@ public class BookDTO{
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	
-	
-	public String getAdress() {
-		return adress;
+	public int getOrderQuantity() {
+		return orderQuantity;
 	}
 	
 	
-	public void setAdress(String adress) {
-		this.adress = adress;
+	public void setOrderQuantity(int orderQuantity) {
+		this.orderQuantity = orderQuantity;
 	}
+	
+	
+	public String getEmail() {
+		return email;
+	}
+	
+	
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	
+	public String getAddress() {
+		return address;
+	}
+	
+	
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	
+	
+	
+	
 }

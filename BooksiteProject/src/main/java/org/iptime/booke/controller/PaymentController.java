@@ -19,20 +19,21 @@ public class PaymentController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		List<BookDTO> paymentList = Payment();
-		RequestDispatcher dispatcher = req.getRequestDispatcher("./paymentPage.jsp");
-		dispatcher.forward(req, resp);
+		List<BookDTO> bookList = daoo();
+		req.setAttribute("bookList", bookList);
+		
+		req.getRequestDispatcher("/paymentPage.jsp").forward(req, resp);
 	}
 
 	protected void dopost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doGet(req, resp);
 	}
 
-	private List<BookDTO> Payment() {
-		List<BookDTO> paymentList = new ArrayList<BookDTO>();
+	private List<BookDTO> daoo() {
+		List<BookDTO> bookList = new ArrayList<BookDTO>();
 
-		paymentList.add(new BookDTO("source/book/하루도_쉬운_날이_없어.png", "하루도 쉬운 날이 없어", 14000, "김부기", "경기도 성남시 분당구 돌마로46 5층", 1));
-		return paymentList;
+		bookList.add(new BookDTO("source/book/기분이_태도가_되지_않으려면.png", "기분이 태도가 되지 않으려면", 14000, "김부기", "경기도 성남시 분당구 돌마로46 5층", 1, "bookies@gamil.com"));
+		return bookList;
 
 	}
 }

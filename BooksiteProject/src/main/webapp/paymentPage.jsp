@@ -26,24 +26,24 @@
                     </tr>
                     <tr>
                         <th>배송지 정보</th>
-                        <th colspan="2">김부기
-                            <br><br>경기도 성남시 분당구 돌마로46 5층
-                        </th>
+                        <th colspan="2">${ bookList.name}
+                            <br><br>${bookList.address}</th>
                     </tr>
 
                     <tr>
                         <th>주문자/이메일정보</th>
-                        <th colspan="2">김부기 / bookies@gmail.com</th>
+                        <th colspan="2">${ book.name} / ${book.eamil}</th>
                     </tr>
                     <tr>
-                        <th colspan="3">주문상품 : 1개</th>
+                        <th colspan="3">주문상품 : ${book.orderQuantity}개</th>
                     </tr>
                 </thead>
                 <tr>
-                    <td><img src= ${paymentList[0].img }width="200px" height="270px"></td>
+                    <td><img src= ${book.img}
+                    width="200px" height="270px"></td>
                     <td>하루도 쉬운 날이 없어</td>
-                    <td style="font-size: larger;"><b>14,000원</b>
-                        <br><small>수량 : 1개</small>
+                    <td style="font-size: larger;"><b>${book.money}</b>
+                        <br><small>수량 : ${book.orderQuantity}개</small>
                     </td>
                 </tr>
                 <tr>
@@ -51,7 +51,7 @@
                         [추후개발예정]</th>
                 </tr>
                 <tr>
-                    <td colspan="3" ; align="center"><button style="width: 1280px;height: 55px;">14,000원 결제하기</button>
+                    <td colspan="3" ; align="center"><button style="width: 1280px;height: 55px;">${book.money}원 결제하기</button>
                     </td>
                 </tr>
             </table>
