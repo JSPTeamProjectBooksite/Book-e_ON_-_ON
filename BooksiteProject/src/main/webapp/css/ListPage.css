@@ -1,0 +1,83 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+
+    background: #c1adff;
+}
+
+#wrap{
+    margin: 0 auto;
+    max-width: 1300px;
+    background-color: white;
+}
+#contents{
+    margin: 0 auto;
+    width: 1200px;
+    background-color: white;
+}
+
+
+#header{
+    height: 75px;
+    background-color:tomato;
+}
+
+#container{
+    position: relative;
+    /* background-color: aquamarine; */
+}
+
+#list_contents{
+    height: 550px;
+    /* background-color: blueviolet; */
+}
+#footer{
+    height: 200px;
+    background-color: darkslategrey;
+}
+
+.slideBookStyle{
+    float: left;
+    width: 13%;
+    height: 100%;
+    display: flex;
+    line-height : 300px;
+}
+
+.bookImageStyle{
+    width: 100%;
+}
+
+#slideTable{
+    border-radius: 25px;
+    background-color:darkgrey;
+    width: 100%;
+}
+
+#slideTable th td{
+    padding: 5px;
+    text-align: center;
+}
+
+
+.bookTh{
+    vertical-align: bottom;
+}
+
+
+#searchTable{
+    margin:5px;
+}
+
+
+#searchTable td{
+    width: 16.6%;
+    text-align: center;
+}
+.bookImageTd{
+    vertical-align: bottom;
+}

@@ -53,6 +53,15 @@
         width: 90%;
     }
 
+    #searchTable{
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    #searchTable td{
+        text-align: center;
+    }
+
 </style>
 <script src="./js/bookList.js"></script>
 <!-- 이미지 슬라이드 구현용 스크립트 -->
@@ -160,6 +169,8 @@
     <form action="./DetailPage.jsp" name="listPageForm" id="BIDform" method="get">
         <input type="hidden" name="BID" value="">
     </form>
+    
+
 
     <!-- 슬라이드 광고 -->
     <div>
@@ -236,10 +247,105 @@
         </script>
     </div>
 
+    <!-- 검색창 -->
+    <form action="" style="margin-top: 100px;">
+        <div style="height: 100px;">
+            <div style="height:70px; width: 700px; background:turquoise; margin: auto; padding: 10px; text-align: center; border-radius: 10px;">
+                <input type="text" name="search" style="width: 550px; height: 50px; font-size: 32px; border: none;">
+                <input type="submit" value="검색" style="width: 100px; height: 50px;">
+            </div>
+        </div>
+    </form>
+
+    <!-- 검색결과 (평소에는 보이지 않으나, 검색창 검색값이 있을 경우 해당 div에 출력) -->
+    <div style="display: '';">
+
+        <div style="
+            height: 75px;
+            font-size: 32px;
+            font-weight: 600;
+            color: gray;
+        ">
+            검색 결과
+        </div>
+
+        <div style="text-align: center;">
+            ""의 검색 결과 입니다.
+        </div>
+
+        <div>
+            <table style="width: 100%;" id="searchTable">
+                <tr>
+                    <td>
+                        <img src="./source/book/노인과_바다.png" alt="" style="max-width: 160px;">
+                    </td>
+                    <td>
+                        <img src="./source/book/노인과_바다.png" alt="" style="max-width: 160px;">
+                    </td>
+                    <td>
+                        <img src="./source/book/노인과_바다.png" alt="" style="max-width: 160px;">
+                    </td>
+                    <td>
+                        <img src="./source/book/노인과_바다.png" alt="" style="max-width: 160px;">
+                    </td>
+                    <td>
+                        <img src="./source/book/노인과_바다.png" alt="" style="max-width: 160px;">
+                    </td>
+                    <td>
+                        <img src="./source/book/노인과_바다.png" alt="" style="max-width: 160px;">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        (책이름)
+                    </td>
+                    <td>
+                        (책이름)
+                    </td>
+                    <td>
+                        (책이름)
+                    </td>
+                    <td>
+                        (책이름)
+                    </td>
+                    <td>
+                        (책이름)
+                    </td>
+                    <td>
+                        (책이름)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        (저자)
+                    </td>
+                    <td>
+                        (저자)
+                    </td>
+                    <td>
+                        (저자)
+                    </td>
+                    <td>
+                        (저자)
+                    </td>
+                    <td>
+                        (저자)
+                    </td>
+                    <td>
+                        (저자)
+                    </td>
+                </tr>
+            </table>
+        </div>        
+
+    </div>
+
+
 
     <!-- 주제별 선정 -->
     <!-- 타입 1 -->
     <div style="
+        display: '';
         height: 380px;
         /* background-color:khaki; */
     ">

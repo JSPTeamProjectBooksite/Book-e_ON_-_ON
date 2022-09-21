@@ -1,8 +1,10 @@
 const hero = document.querySelector('.hero');
 const slider = document.querySelector('.slider');
+const slider2 = document.querySelector('.slider2');
 const logo = document.querySelector('#logo');
 const hamburger = document.querySelector('.hamburger');
 const headline = document.querySelector('.headline');
+const listPageBtn = document.querySelector('#listPageBtn');
 
 const tl = new TimelineMax();
 
@@ -49,6 +51,40 @@ tl.fromTo(
     {opacity: 1, x: 0 },
     "-=0.5"
 )
+.fromTo(
+    listPageBtn,
+    1,
+    {opacity: 0, x: 30 }, //
+    {opacity: 1, x: 0 }
+)
+
+const tl2 = new TimelineMax();
+
+function clickListPage(){
+
+    tl2.clear()
+
+    tl2.set(slider,{y:"0%"}).set(slider2, {y:"-100%",opacity: 0})
+    
+    tl2
+    .fromTo(
+        slider,
+        1.5,
+        {y: "0%"},
+        {y: "100%"}
+    ).fromTo(
+        slider2,
+        1.5,
+        {y: "-100%", opacity: 1},
+        {y: "0%"},
+        "-=1.5"
+    )
+    tl2.set(slider,{y:"0%"}).set(slider2, {y:"-100%", opacity: 0, onComplete: goList})
+}
+
+function goList(){
+    location.href="../ListPage.jsp";
+}
 
 const intro = document.querySelector('.intro');
 const video = intro.querySelector('video');
@@ -125,3 +161,4 @@ setInterval(() => {
         video.currentTime = delay;
     }
 }, 41.6);
+

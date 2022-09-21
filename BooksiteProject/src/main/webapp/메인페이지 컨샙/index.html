@@ -19,17 +19,29 @@
             <div class="hero">
                 <img src="./img/photo-1526243741027-444d633d7365.jpg" alt="book">
                 <h1 class="headline">온앤온에서<br>하루종일 독서On</h1>
+                <div style="
+                    position: absolute;
+                    top: 70%;
+                    right: 8%;
+                    width: 200px;
+                    height: 100px;
+                    background: rgb(157, 20, 220);
+                    border-radius: 25px;
+                    z-index: 4;
+                    text-align: center;
+                " id="listPageBtn" onclick="clickListPage()">책 읽으러 가기<br>디자인은 신경쓰지마세요.</div>
             </div>
         </section>
     </header>
 
     <div class="slider"></div>
+    <div class="slider2"></div>
 
     <div style="height: 10vh;"></div>
 
     <div class="intro">
 
-        <div id="text1" class="text" style="opacity: 1; background: #742192;">
+        <div id="text1" class="text" style="opacity: 1; background: #3A3C84;">
             <h1>On & On 에 잘 오셨습니다.</h1>
         </div>
         <div id="text2" class="text">
@@ -49,12 +61,14 @@
         </div>
         <div id="text7" class="text" style="background: #c1adff;">
         </div>
-    
+        
         <video src="./video/Pexels Videos-Bible Pages Turning 2268807.mp4"></video>
     </div>
-
+    <!-- 다시배경색을 바꿔야한다. -->
     <div style="background: #c1adff;">
-        여기부터 이제 광고글 넣기
+        <div id="warp">
+            <h1><a href="">독서 하러가기 >></a></h1>
+        </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"
