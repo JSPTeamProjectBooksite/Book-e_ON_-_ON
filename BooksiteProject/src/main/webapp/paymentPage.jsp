@@ -32,24 +32,24 @@
 					<tr>
 						<th>배송지 정보</th>
 
-						<th colspan="2">${ bookList[0].name}<br> <br>${bookList[0].address}
+						<th colspan="2">${ bookList.name}<br> <br>${bookList.address}
 						</th>
 					</tr>
 
 					<tr>
 						<th>주문자/이메일정보</th>
-						<th colspan="2">${ bookList[0].name }/${ bookList[0].email }</th>
+						<th colspan="2">${ bookList.name }/${ bookList.email }</th>
 					</tr>
 					<tr>
-						<th colspan="3">주문상품 : ${ bookList[0].orderQuantity }개</th>
+						<th colspan="3">주문상품 : ${ bookList.orderQuantity }개</th>
 					</tr>
 				</thead>
 				<tr>
-					<td><img src="${ bookList[0].image }" width="200px"
+					<td><img src="${ bookList.image }" width="200px"
 						height="270px"></td>
 					<td>${bookList[0].title }</td>
-					<td style="font-size: larger;"><b>${ bookList[0].money }</b> <br>
-						<small>수량 : ${bookList[0].orderQuantity}개</small></td>
+					<td style="font-size: larger;"><b>${ bookList.money }</b> <br>
+						<small>수량 : ${bookList.orderQuantity}개</small></td>
 				</tr>
 				<tr>
 					<th colspan="3" style="text-align: center">결재방법<br>
@@ -58,7 +58,7 @@
 				</tr>
 				<tr>
 					<td colspan="3" align="center"><button type="button"
-							style="width: 1280px; height: 55px;">${bookList[0].money}원
+							style="width: 1280px; height: 55px;">${bookList.money}원
 							결제하기</button></td>
 				</tr>
 			</c:forEach>

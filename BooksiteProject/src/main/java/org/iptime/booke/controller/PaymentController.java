@@ -33,6 +33,7 @@ public class PaymentController extends HttpServlet {
 
 		bookList.add(new BookDTO("source/book/기분이_태도가_되지_않으려면.png", "기분이 태도가 되지 않으려면", 42000, "김부기",
 				"경기도 성남시 분당구 돌마로46 5층", 3, "bookies@gamil.com", "010-1234-4321"));
+	
 		return bookList;
 
 	}
