@@ -30,7 +30,7 @@
                 <a href="#">비밀번호 찾기</a>
             </div>
             <input class="submit" type="submit" value="Login">
-            <input class="button" type="button" value="회원가입" href="./MainPage.html">
+            <input class="button" type="button" value="회원가입" href="./Register.jsp">
         </form>
     </div>
 </body>
