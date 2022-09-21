@@ -5,23 +5,30 @@ public class MemberDTO {
 	private int gender;
 	private String id;
 	private String password;
-	private int phoneNumber;
+	private String phoneNumber;
 	private String address;
 	
-//	public MemberDTO(String id, String password) {
-//		this.id = id;
-//		this.password = password;
-//	}
-
-	public MemberDTO(String name, int gender, String id, String password, int phoneNumber, String address) {
-		super();
+	public MemberDTO() {
+		
+	}
+	
+	public MemberDTO(String name,String id, String password, String phoneNumber, String address) {
 		this.name = name;
-		this.gender = gender;
 		this.id = id;
 		this.password = password;
 		this.phoneNumber = phoneNumber;
 		this.address = address;
 	}
+
+//	public MemberDTO(String name, int gender, String id, String password, int phoneNumber, String address) {
+//		super();
+//		this.name = name;
+//		this.gender = gender;
+//		this.id = id;
+//		this.password = password;
+//		this.phoneNumber = phoneNumber;
+//		this.address = address;
+//	}
 
 	public String getName() {
 		return name;
@@ -55,11 +62,11 @@ public class MemberDTO {
 		this.password = password;
 	}
 
-	public int getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 

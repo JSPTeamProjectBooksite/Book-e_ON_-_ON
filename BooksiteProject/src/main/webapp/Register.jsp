@@ -14,9 +14,9 @@
 <body>
 	<div class="container">
 		<h1>회원가입</h1>
-		<form>
+		<form action="register" method="get" name="register">
 			<div>
-				<input class="inputGroup" type="text" placeholder="Your name">
+				<input class="inputGroup" type="text" placeholder="Your name" name="user_name">
 			</div>
 			<div>
 				<select class="selectGroup" name="gender" id="gender">
@@ -26,16 +26,16 @@
 				</select>
 			</div>
 			<div>
-				<input class="inputGroup" type="text" placeholder="ID">
+				<input class="inputGroup" type="text" placeholder="ID" name="user_id">
 			</div>
 			<div>
-				<input class="inputGroup" type="password" placeholder="Password">
+				<input class="inputGroup" type="password" placeholder="Password" name="user_pw">
 			</div>
 			<div>
-				<input class="inputGroup" type="number" placeholder="Phone number">
+				<input class="inputGroup" type="number" placeholder="Phone number" name="user_phoneNumber">
 			</div>
 			<div>
-				<input class="inputGroup" type="address" placeholder="Address">
+				<input class="inputGroup" type="address" placeholder="Address" name="user_address">
 			</div>
 			<div>
 				<input class="checkboxGroup" type="checkbox"> <span

@@ -9,16 +9,43 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class RegisterController
- */
+import org.iptime.booke.dao.MemberDAO;
+import org.iptime.booke.dto.MemberDTO;
+
 @WebServlet("/register")
 public class RegisterController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
+
+		// 폼값 받기
+		String userName = request.getParameter("user_name");
+		String userId = request.getParameter("user_id");
+		String userPwd = request.getParameter("user_pw");
+		String userPhoneNumber = request.getParameter("user_phoneNumber");
+		String userAddress = request.getParameter("user_address");
+
+		// 폼값을 DTO 객체에 저장
+		MemberDTO memberDTO = new MemberDTO();
+		memberDTO.setName(userName);
+		memberDTO.setId(userId);
+		memberDTO.setPassword(userPwd);
+		memberDTO.setPhoneNumber(userPhoneNumber);
+		memberDTO.setAddress(userAddress);
+
+		MemberDAO dao = new MemberDAO();
+		int iResult = dao.SignUp(memberDTO);
+		dao.close();
+
+		// 성공 or 실패?
+		if (iResult == 1) {
+			System.out.println("회원가입 성공");
+			response.sendRedirect("./LoginPage.jsp");
+			return;
+		} else {
+			System.out.println("회원가입 실패");
+		}
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("./Register.jsp");
 		dispatcher.forward(request, response);
@@ -28,7 +55,5 @@ public class RegisterController extends HttpServlet {
 			throws ServletException, IOException {
 		doGet(request, response);
 	}
-	
-	
 
 }
