@@ -6,6 +6,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+    body{
+        background: #c1adff;
+    }
     nav{
     	margin: auto;
         width: 80vw;

@@ -83,7 +83,7 @@ function clickListPage(){
 }
 
 function goList(){
-    location.href="../ListPage.jsp";
+    location.href="../testPage1.jsp";
 }
 
 const intro = document.querySelector('.intro');
