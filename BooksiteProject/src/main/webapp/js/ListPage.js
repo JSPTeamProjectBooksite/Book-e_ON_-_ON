@@ -6,14 +6,14 @@ var slideList = [//2,1,4,5,6,3
 // 이전 버튼을 눌렀을 때
 function clickBefore(){
     index--;
-    if(index < 0) index = ${bookList.length-1};
+    if(index < 0) index = "${bookList.length-1"};
     setList();
     vewListPage();
 }
 // 다음 버튼을 눌렀을 때
 function clickNext(){
     index++;
-    if(index == ${bookList.length}) index = 0;
+    if(index == "${bookList.length}") index = 0;
     setList();
     vewListPage();
 }

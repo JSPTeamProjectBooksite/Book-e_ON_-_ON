@@ -4,26 +4,11 @@
     box-sizing: border-box;
 }
 
-html{
-
-    background: #c1adff;
-}
-
-#wrap{
-    margin: 0 auto;
-    max-width: 1300px;
-    background-color: white;
-}
 #contents{
-    margin: 0 auto;
-    width: 1200px;
-    background-color: white;
-}
-
-
-#header{
-    height: 75px;
-    background-color:tomato;
+    margin: auto;
+	background: white;
+	width: 1200px;
+	/* 이건 꼭넣을 것!! */
 }
 
 #container{
@@ -34,10 +19,6 @@ html{
 #list_contents{
     height: 550px;
     /* background-color: blueviolet; */
-}
-#footer{
-    height: 200px;
-    background-color: darkslategrey;
 }
 
 .slideBookStyle{
@@ -58,7 +39,7 @@ html{
     width: 100%;
 }
 
-#slideTable th td{
+#slideTable th,td{
     padding: 5px;
     text-align: center;
 }
@@ -66,6 +47,7 @@ html{
 
 .bookTh{
     vertical-align: bottom;
+    width:13%;
 }
 
 

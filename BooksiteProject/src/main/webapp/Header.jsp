@@ -43,10 +43,10 @@
                         버튼1
                     </th>
                     <th class="button">
-                        버튼2
+                        <a href="/shopcart">장바구니</a>
                     </th>
                     <th class="button">
-                        로그인
+                        <a href="/login">로그인</a>
                     </th>
                 </tr>
             </table>

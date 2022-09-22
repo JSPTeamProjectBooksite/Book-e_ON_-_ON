@@ -35,7 +35,8 @@ public class BookDTO {
 		this.email = email;
 		this.phoneNumber = phoneNumber;
 	}
-
+	
+	//리스트 페이지
 	public BookDTO(int BID, String title, String image, String author, String publisher, int price, String ad,
 			String introduce) {
 		this.BID = BID;
@@ -46,6 +47,15 @@ public class BookDTO {
 		this.price = price;
 		this.ad = ad;
 		this.introduce = introduce;
+	}
+	
+	//리스트페이지 (슬라이드목록)
+	public BookDTO(int BID, String title, String image, String author, String ad) {
+		this.BID = BID;
+		this.title = title;
+		this.image = image;
+		this.author = author;
+		this.ad = ad;
 	}
 
 	// 장바구니페이지

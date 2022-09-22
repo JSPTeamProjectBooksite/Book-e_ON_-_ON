@@ -54,7 +54,7 @@ tl.fromTo(
 .fromTo(
     listPageBtn,
     1,
-    {opacity: 0, x: 30 }, //
+    {opacity: 0, x: -30 }, //
     {opacity: 1, x: 0 }
 )
 
@@ -83,7 +83,7 @@ function clickListPage(){
 }
 
 function goList(){
-    location.href="../testPage1.jsp";
+    location.href="/list";
 }
 
 const intro = document.querySelector('.intro');

@@ -49,6 +49,7 @@
 <body>
     <footer>
         <div style="height: 350px;
+            min-width: 1200px;
             background: #3A3C84;
             position: relative;
         ">
