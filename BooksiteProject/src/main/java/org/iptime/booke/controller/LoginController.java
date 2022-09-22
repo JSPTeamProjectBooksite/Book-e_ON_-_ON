@@ -35,8 +35,9 @@ public class LoginController extends HttpServlet {
 		if (memberDTO.getId() != null) {
 //			request.setAttribute("UserId", memberDTO.getId());
 //			request.setAttribute("UserName", memberDTO.getName());
-//			response.sendRedirect("LoginForm.jsp");
+			response.sendRedirect("./ListPage.jsp");
 			System.out.println("로그인 성공");
+			return;
 		} else {
 //			request.setAttribute("LoginErrMsg", "로그인 오류입니다.");
 //			request.getRequestDispatcher("LoginForm.jsp").forward(request, response);
