@@ -19,12 +19,12 @@
 <body>
 	<div class="container">
 		<h1>로그인</h1>
-		<form>
+		<form action="login" method="get" name="login">
 			<div>
-				<input class="init" type="text" placeholder="ID">
+				<input class="init" type="text" placeholder="ID" name="user_id">
 			</div>
 			<div>
-				<input class="init" type="password" placeholder="PW">
+				<input class="init" type="password" placeholder="PW" name="user_pw">
 			</div>
 			<div class="group">
 				<a href="#">아이디 찾기</a> <a href="#">비밀번호 찾기</a>
