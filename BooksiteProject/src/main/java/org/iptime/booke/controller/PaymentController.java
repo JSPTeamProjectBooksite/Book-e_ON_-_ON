@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.iptime.booke.dto.BookDTO;
 
-@WebServlet("/paymentPage")
+@WebServlet("/payment")
 public class PaymentController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

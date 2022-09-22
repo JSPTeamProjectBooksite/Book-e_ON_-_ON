@@ -8,6 +8,8 @@
 table {
     border: 1px;
     border-spacing: 0px;
+    margin: 20px; width: 1280px;
+    border-collapse: collapse;
 }
 
 th {
@@ -19,7 +21,7 @@ th {
 }
 
 td.title {
-    width: 200px;
+   
     border-bottom: none;
 }
 
@@ -35,6 +37,7 @@ td.content {
     height: 10px;
     height: 10px;
     border-bottom: none;
+    font-size: medium;
 }
 
 td.subj {
@@ -43,9 +46,11 @@ td.subj {
     font-size: large;
     border-top: none;
     padding-top: 40px;
-    padding-bottom: 15px;
+    padding-bottom: 10px;
 }
 
 td.stickybar{
     background-color: aqua;
+    width: 300px;
+
 }
