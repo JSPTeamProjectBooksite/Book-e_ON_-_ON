@@ -26,7 +26,7 @@
 			<div>
 				<input class="init" type="password" placeholder="PW" name="user_pw">
 			</div>
-			<div class="group">
+			<div class="group">	
 				<a href="#">아이디 찾기</a> <a href="#">비밀번호 찾기</a>
 			</div>
 			<input class="submit" type="submit" value="Login"> 
