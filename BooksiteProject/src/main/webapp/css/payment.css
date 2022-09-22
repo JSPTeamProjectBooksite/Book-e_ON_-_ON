@@ -48,9 +48,15 @@ td.subj {
     padding-top: 40px;
     padding-bottom: 10px;
 }
-
-td.stickybar{
-    background-color: aqua;
-    width: 300px;
+/* 
+td.stb2{
+    text-align: right;
+    width: 10px;
 
 }
+
+th.stb{
+    text-align: left;
+    font-size: medium;
+
+} */
