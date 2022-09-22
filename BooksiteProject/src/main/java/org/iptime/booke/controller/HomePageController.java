@@ -12,13 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class MainPageController
  */
-@WebServlet("/main")
-public class MainPageController extends HttpServlet {
+@WebServlet("/home")
+public class HomePageController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("./MainPage.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("./HomePage.jsp");
 		dispatcher.forward(request, response);
 		
 	}

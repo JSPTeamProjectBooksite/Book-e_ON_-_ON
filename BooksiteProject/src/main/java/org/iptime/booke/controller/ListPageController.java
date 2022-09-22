@@ -15,7 +15,7 @@ import org.iptime.booke.dto.BookDTO;
 /**
  * Servlet implementation class ListPageController
  */
-@WebServlet("/list")
+@WebServlet("/main")
 public class ListPageController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -31,7 +31,7 @@ public class ListPageController extends HttpServlet {
 		request.setAttribute("popularList", popularList);
 		
 		
-		request.getRequestDispatcher("/ListPage.jsp").forward(request, response);
+		request.getRequestDispatcher("/MainPage.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

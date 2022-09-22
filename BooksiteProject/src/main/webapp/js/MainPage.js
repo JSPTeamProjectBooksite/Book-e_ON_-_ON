@@ -1,164 +1,88 @@
-const hero = document.querySelector('.hero');
-const slider = document.querySelector('.slider');
-const slider2 = document.querySelector('.slider2');
-const logo = document.querySelector('#logo');
-const hamburger = document.querySelector('.hamburger');
-const headline = document.querySelector('.headline');
-const listPageBtn = document.querySelector('#listPageBtn');
+var index = 0;
 
-const tl = new TimelineMax();
-
-tl.fromTo(
-    hero, //변화를 줄 id 이름
-    1, //변화를 할 시간(초)
-    {height: "0%"}, //처음 상태
-    {height: "80%", ease: Power2.easeInOut }    //변화 후 상태
-    //정리하면, 길이가 0%에서 80%까지 1초에 걸려 늘어나는 효과를 출력한다.
-).fromTo(
-    hero, 
-    1.2, 
-    {width: "100%"},
-    {width: "80%", ease: Power2.easeInOut }
-)
-.fromTo(
-    slider,
-    1.2,
-    {y: "-100%"},
-    {y: "0%", ease: Power2.easeInOut},
-    "-=1.2"
-    //각 이미지 효과은 위에서 부터 1, 1.2, 1,2 초 동안 차례대로 진행되는데,
-    //이 -=1.2로 슬라이더 효과의 시작시간을 줄였다.
-    //이 슬라이더 효과는 2번째 효과와 동시에 일어나게된다.
-)
-.fromTo(
-    logo,
-    0.5,
-    {opacity: 0, x: 30 }, //
-    {opacity: 1, x: 0 },
-    "-=0.5"
-)
-.fromTo(
-    hamburger,
-    0.5,
-    {opacity: 0, x: 30 }, //
-    {opacity: 1, x: 0 },
-    "-=0.5"
-)
-.fromTo(
-    headline,
-    0.5,
-    {opacity: 0, x: 30 }, //
-    {opacity: 1, x: 0 },
-    "-=0.5"
-)
-.fromTo(
-    listPageBtn,
-    1,
-    {opacity: 0, x: -30 }, //
-    {opacity: 1, x: 0 }
-)
-
-const tl2 = new TimelineMax();
-
-function clickListPage(){
-
-    tl2.clear()
-
-    tl2.set(slider,{y:"0%"}).set(slider2, {y:"-100%",opacity: 0})
-    
-    tl2
-    .fromTo(
-        slider,
-        1.5,
-        {y: "0%"},
-        {y: "100%"}
-    ).fromTo(
-        slider2,
-        1.5,
-        {y: "-100%", opacity: 1},
-        {y: "0%"},
-        "-=1.5"
-    )
-    tl2.set(slider,{y:"0%"}).set(slider2, {y:"-100%", opacity: 0, onComplete: goList})
+var slideList = [//2,1,4,5,6,3
+    0,0,0,0,0,0,0
+];
+// 이전 버튼을 눌렀을 때
+function clickBefore(){
+    index--;
+    if(index < 0) index = "${bookList.length-1"};
+    setList();
+    vewListPage();
 }
-
-function goList(){
-    location.href="/list";
+// 다음 버튼을 눌렀을 때
+function clickNext(){
+    index++;
+    if(index == "${bookList.length}") index = 0;
+    setList();
+    vewListPage();
 }
+//해당 슬라이드가 클릭 되었을때
+function clickSlide(num){
+    if(num == 3) return goToDetailPage(slideList[3]);
 
-const intro = document.querySelector('.intro');
-const video = intro.querySelector('video');
-const text1 = document.querySelector('#text1');
-const text2 = document.querySelector('#text2');
-const text3 = document.querySelector('#text3');
-const text4 = document.querySelector('#text4');
-const text5 = document.querySelector('#text5');
-const text6 = document.querySelector('#text6');
-const text7 = document.querySelector('#text7');
-//END SECTION
-const section = document.querySelector('section');
-const end = section.querySelector('h1');
-
-
-//Text Animation
-// const textAnim = TweenMax.fromTo(text1, 3, {opacity: 1},{opacity: 0});
-
-//SCROLLMAGIC
-const controller = new ScrollMagic.Controller();
-
-const textAnimation = new TimelineMax()
-.fromTo(text1, 2, {opacity: 1}, {opacity: 0})
-.fromTo(text2, 1, {opacity: 0}, {opacity: 0.7})
-.to(text2, 1, {opacity: 0}, "+=1")
-.fromTo(text3, 1, {opacity: 0}, {opacity: 0.7})
-.to(text3, 1, {opacity: 0}, "+=1")
-.fromTo(text4, 1, {opacity: 0}, {opacity: 0.7})
-.to(text4, 1, {opacity: 0}, "+=1")
-.fromTo(text5, 1, {opacity: 0}, {opacity: 0.7})
-.to(text5, 1, {opacity: 0}, "+=1")
-.fromTo(text6, 1, {opacity: 0}, {opacity: 0.7})
-.fromTo(text7, 2, {opacity: 0}, {opacity: 1}, "+=1")
-
-//Scenes
-let scene = new ScrollMagic.Scene({
-    duration: 18000,
-    triggerElement: intro,
-    triggerHook: 0
-})
-.addIndicators()
-.setPin(intro)
-.addTo(controller);
-
-
-let scene2 = new ScrollMagic.Scene({
-    duration: 18000, // 시간
-    triggerElement: intro,
-    triggerHook: 0
-})
-.addIndicators()
-.setTween(textAnimation)
-.addTo(controller);
-// .setTween(textAnim)
-
-
-//Video Animation
-let accelamount = 0.1;
-let scrollpos = 0;
-let wh = window.innerHeight;
-let delay = 0;
-
-scene.on("update", e => {
-    scrollpos = (e.scrollPos - wh) / 1000;
-});
-
-setInterval(() => {
-    delay += (scrollpos - delay) * accelamount/(1 + accelamount);
-    // delay += (scrollpos - delay) * accelamount;
-    console.log(scrollpos, delay);
-    
-    // video.currentTime = scrollpos;
-    if (delay > 0){
-        video.currentTime = delay;
+    if(num < 3){
+        for(var i = 3; i > num; i--){
+            clickBefore();
+        }
+    }else if(num > 3){
+        for(var i = 3; i < num; i++){
+            clickNext();
+        }
     }
-}, 41.6);
+}
 
+// 책 페이지 연결
+function goToDetailPage(BID){
+    document.listPageForm.BID.value = BID;
+    document.getElementById("BIDform").submit();
+}
+
+
+// 슬라이드에 이미지를 셋팅하는 메서드
+function setList(){
+    for(var i = 0; i < slideList.length; i++){
+        slideList[i] = ${bookList}[(i+index)%${bookList}.length].BID;
+    }
+}
+
+// 슬라이드에 이미지를 불러오는 메서드
+function vewListPage(){
+    for(var i = 0; i < slideList.length; i++){
+        document.getElementById("index"+i).src = bookList[slideList[i]].image;
+    }
+    document.getElementById("ad").innerHTML = bookList[slideList[3]].ad;
+}
+
+
+// 인기순위
+// 인기순위에 책을 셋팅하는 메소드
+var popList = new Array(6);
+
+// 제목 파싱
+function getTitle(num){
+    return popList[num];
+}
+function setPopularity(){
+    var copyList = new Array(bookList.length);
+    var num = 0;
+
+    for(var i = 0; i < 6; i++){
+        while(true){
+            num = randomNum(bookList.length);   //0~8
+            if(copyList[num] == "used") continue;
+
+            popList[i] = num;
+
+            document.getElementById("popularityBookImage_" + i).src = bookList[num].image;
+            document.getElementById("popularityBookTitle_" + i).innerHTML = bookList[num].title;
+            document.getElementById("popularityBookAuthor_" + i).innerHTML = bookList[num].author;
+            copyList[num] = "used";
+            break;
+        }
+    }
+}
+// 난수(랜덤)을 생성하는 메소드 (예: 6 = 0 ~ 5)
+function randomNum(num){
+    return Math.floor(Math.random() * num);
+}

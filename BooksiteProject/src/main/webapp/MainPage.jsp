@@ -1,91 +1,196 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<title>도서목록</title>
 <link rel="stylesheet" href="./css/MainPage.css">
-<title>메인 페이지</title>
+<!-- <script src="./js/ListPage.js"></script> -->
+<!-- 
+<script src="./js/bookList.js"></script>
+ -->
+<script type="text/javascript">
+	function goToDetailPage(bid){
+        document.mainPageForm.BID.value = bid;
+        document.getElementById("BIDform").submit();
+	}
+</script> 
 </head>
 <body>
-    <header>
-        <nav>
-            <h3 id="logo">BOOK-e On & On</h3>
-            <img class="hamburger" src="./source/mainPage/burger.svg" alt="hamburger">
-        </nav>
-        <section>
-            <div class="hero">
-                <img src="./source/mainPage/photo-1526243741027-444d633d7365.jpg" alt="book">
-                <h1 class="headline">온앤온에서<br>하루종일 독서On</h1>
-                <div style="
-                    position: absolute;
-                    top: 63%;
-                    right: 10%;
-                    width: 20%;
-                    z-index: 4;
-                    text-align: center;
-                " id="listPageBtn" onclick="clickListPage()">
-                    <img src="./source/mainPage/goToRead.png" alt="">
+<!-- 메인 -->
+<div id="wrap">
+	<%@include file="./Header.jsp" %>
+    <div id="contents">
+        <!-- 공간 띄우기 -->
+        <div style="height: 100px;"></div>
+    
+        <!-- 전송폼 -->
+        <form action="./detail" name="mainPageForm" id="BIDform" method="get">
+            <input type="hidden" name="BID" value="">
+        </form>
+    
+        <!-- 슬라이드 광고 -->
+        <div>
+            <div>
+                <table id="slideTable">
+                    <tr>
+                        <th rowspan="2" style="width: 5%;">
+                            <input type="button" value="앞으로" onclick="clickBefore()">
+                        </th>
+                        <th class="bookTh">
+                            <img src= ${ slideList[0].image } class="bookImageStyle" id="index0" alt="" onclick="clickSlide(0)">
+                        </th>
+                        <th class="bookTh">
+                            <img src= ${ slideList[1].image } class="bookImageStyle" id="index1" alt="" onclick="clickSlide(1)">
+                        </th>
+                        <th class="bookTh">
+                            <img src= ${ slideList[2].image } class="bookImageStyle" id="index2" alt="" onclick="clickSlide(2)">
+                        </th>
+                        <th style="width: 15%;" class="bookTh">
+                            <img src= ${ slideList[3].image } class="bookImageStyle" id="index3" alt="" onclick="goToDetailPage(${ slideList[3].BID })">
+                        </th>
+                        <th class="bookTh">
+                            <img src= ${ slideList[4].image } class="bookImageStyle" id="index4" alt="" onclick="clickSlide(4)">
+                        </th>
+                        <th class="bookTh">
+                            <img src= ${ slideList[5].image } class="bookImageStyle" id="index5" alt="" onclick="clickSlide(5)">
+                        </th>
+                        <th class="bookTh">
+                            <img src= ${ slideList[6].image } class="bookImageStyle" id="index6" alt="" onclick="clickSlide(6)">
+                        </th>
+                        <th rowspan="2" style="width: 5%;">
+                            <input type="button" value="뒤로" onclick="clickNext()">
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>${ slideList[0].title }</td>
+                        <td>${ slideList[1].title }</td>
+                        <td>${ slideList[2].title }</td>
+                        <td>${ slideList[3].title }</td>
+                        <td>${ slideList[4].title }</td>
+                        <td>${ slideList[5].title }</td>
+                        <td>${ slideList[6].title }</td>
+                    </tr>
+                </table>
+            </div>
+            <div style="
+            	text-align: center;
+                font-size: 24px;
+                margin-top: 10px;
+            	" id="ad">
+                ${ slideList[3].ad }
+            </div>
+        </div>
+    
+        <!-- 검색창 -->
+        <form action="/main" style="margin-top: 100px;">
+            <div style="height: 100px;">
+                <div style="height:70px; width: 700px; background:turquoise; margin: auto; padding: 10px; text-align: center; border-radius: 10px;">
+                    <input type="text" name="search" style="width: 550px; height: 50px; font-size: 32px; border: none;">
+                    <input type="submit" value="검색" style="width: 100px; height: 50px;">
                 </div>
             </div>
-        </section>
-    </header>
-
-    <div class="slider"></div>
-    <div class="slider2"></div>
-
-    <div style="height: 10vh;"></div>
-
-    <div class="intro">
-
-        <div id="text1" class="text" style="opacity: 1; background: #3A3C84;">
-            <h1>On & On 에 잘 오셨습니다.</h1>
-        </div>
-        <div id="text2" class="text">
-            <h1>이제가세요.</h1>
-        </div>
-        <div id="text3" class="text">
-            <h1>장난입니다 가지마세요.</h1>
-        </div>
-        <div id="text4" class="text">
-            <h1>책 읽어야죠</h1>
-        </div>
-        <div id="text5" class="text">
-            <h1>이거 만드는거 힘들었어요.</h1>
-        </div>
-        <div id="text6" class="text">
-            <h1>누가 감성맨트 좀 생각해줘요.</h1>
-        </div>
-        <div id="text7" class="text" style="background: #c1adff;">
+        </form>
+    
+        <!-- 검색결과 (평소에는 보이지 않으나, 검색창 검색값이 있을 경우 해당 div에 출력) -->
+        <div style="display: none;" id="searchDiv">
+    
+            <div style="
+                height: 75px;
+                font-size: 32px;
+                font-weight: 600;
+                color: gray;
+            ">
+                검색 결과
+            </div>
+    
+            <div style="text-align: center;">
+                " <%= request.getParameter("search") %> "의 검색 결과 입니다.
+            </div>
+    
+            <span>
+            	<c:forEach var="book" items="${searchList}">
+	                <table border="1" style="width: 180px; display:inline-block;" id="searchTable">
+	                    <tr>
+	                        <td class="bookImageTd">
+	                            <img src= ${ book.image } alt="" style="width: 100%;"
+	                            	onclick="goToDetailPage(${ book.BID })">
+	                        </td>
+	                    </tr>
+	                    <tr>
+	                        <td>
+	                            ${ book.title }
+	                        </td>
+	                    </tr>
+	                    <tr>
+	                        <td>
+	                            ${ book.author }
+	                        </td>
+	                    </tr>
+	                </table>
+            	</c:forEach>
+            </span>
         </div>
         
-        <video src="./source/mainPage/Pexels Videos-Bible Pages Turning 2268807.mp4"></video>
-    </div>
-    <!-- 다시배경색을 바꿔야한다. -->
-    <div style="background: #c1adff;">
-        <div id="warp">
-            <h1><a href="">독서 하러가기 >></a></h1>
+    	<!-- 임시 스크립트 파일 -->
+		<script type="text/javascript">
+			var str = "<%= request.getParameter("search") %>";
+			
+			if(str != "null"){
+				if(str.length < 2){
+					alert("2글자 이상만 검색가능합니다.");
+				}
+				else{				
+					document.getElementById('searchDiv').style.display = "";
+				}
+			}
+		</script>
+    
+        <!-- 주제별 선정 -->
+        <!-- 타입 1 -->
+        <div style="
+            display: '';
+            /* background-color:khaki; */
+        ">
+            <div style="
+                height: 75px;
+                font-size: 32px;
+                font-weight: 600;
+                color: gray;
+            ">
+                인기 도서
+            </div>
+            <div style="
+                text-align: center;
+            ">
+                <table>
+                    <tr>
+                    	<c:forEach var="book" items="${popularList}">
+	                        <td class="bookImageTd" style="width: 200px;">
+	                            <img id="popularityBookImage_0" alt="" src=${ book.image }  style="width: 100%;"
+	                            	onclick="goToDetailPage(${ book.BID })">
+	                        </td>
+                    	</c:forEach>
+                    </tr>
+                    <tr>
+                    	<c:forEach var="book" items="${popularList}">
+	                        <td>${ book.title }</td>
+                    	</c:forEach>
+                    </tr>
+                    <tr>
+                    	<c:forEach var="book" items="${popularList}">
+	                        <td>${ book.author }</td>
+                    	</c:forEach>
+                    </tr>
+                </table>
+            </div>
+    
         </div>
     </div>
+    <%@include file="./Footer.jsp" %>
+</div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"
-        integrity="sha512-HzAEuXwhLxwm/Jj+5ecdjzrRVrjuh2ZeIxyT1Ln37TO5pWNMnKBuU7cfd1wvRQ/k86w1oC174Yk1T7aRlBpIcA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer">
-        </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.js"
-        integrity="sha512-vWutwDjKJo+VMAA7IrS/ICTmVYXRMdqtXA27MSuPxGjkbYnKeUKPrIpfsAwIXCzaSDF/qRy/L85ko/yxW0AIiA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer">
-        </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"
-    integrity="sha512-DkPsH9LzNzZaZjCszwKrooKwgjArJDiEjA5tTgr3YX4E6TYv93ICS8T41yFHJnnSmGpnf0Mvb5NhScYbwvhn2w=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js"
-        integrity="sha512-0xrMWUXzEAc+VY7k48pWd5YT6ig03p4KARKxs4Bqxb9atrcn2fV41fWs+YXTKb8lD2sbPAmZMjKENiyzM/Gagw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/animation.gsap.js"
-    integrity="sha512-jlbgjhSLRQsQc/bits6lHjywF3n/NLO3Sz1rwa9gsUnCOi0f0lD/yAul75UNOzIiDg35zaJJ3BKT3zo6+i9lQA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer">
-    </script>
-    <script src="./js/MainPage.js"></script>
 </body>
 </html>

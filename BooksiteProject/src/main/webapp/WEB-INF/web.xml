@@ -5,7 +5,7 @@
 	version="4.0">
 	<display-name>BooksiteProject</display-name>
 	<welcome-file-list>
-		<welcome-file>MainPage.jsp</welcome-file>
+		<welcome-file>HomePage.jsp</welcome-file>
 		<!-- <welcome-file>index.html</welcome-file> <welcome-file>index.htm</welcome-file> 
 			<welcome-file>index.jsp</welcome-file> <welcome-file>default.html</welcome-file> 
 			<welcome-file>default.htm</welcome-file> <welcome-file>default.jsp</welcome-file> -->
