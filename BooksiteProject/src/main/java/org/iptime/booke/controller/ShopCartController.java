@@ -25,7 +25,7 @@ public class ShopCartController extends HttpServlet {
 		List<BookDTO> bookList = daooo();
 		request.setAttribute("bookList", bookList);
 
-		request.getRequestDispatcher("/ShopCart.jsp").forward(request, response);
+		request.getRequestDispatcher("/ShopCartPage.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

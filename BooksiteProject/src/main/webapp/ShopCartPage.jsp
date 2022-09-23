@@ -8,13 +8,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/public.css">
-    <link rel="stylesheet" href="css/shopCart.css">
+    <link rel="stylesheet" href="css/shopCartPage.css">
     <script
         src="https://code.jquery.com/jquery-3.6.1.js"
         integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
         crossorigin="anonymous">
     </script>
-    <script src="js/shopCart.js"></script>
+    <script src="js/shopCartPage.js"></script>
     <title>장바구니</title>
 </head>
 <body>
@@ -27,7 +27,6 @@
                 <form action="#" method="post">
                 <table class="bookList">
                     <tr>
-                        <!-- <th></th> -->
                         <th colspan="3">상품정보</th>
                         <th>판매가</th>
                         <th>주문수량</th>
