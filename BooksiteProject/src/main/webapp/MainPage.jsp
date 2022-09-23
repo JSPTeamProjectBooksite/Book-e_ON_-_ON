@@ -27,13 +27,16 @@
         <div style="height: 100px;"></div>
     
         <!-- 전송폼 -->
-        <form action="./detail" name="mainPageForm" id="BIDform" method="get">
+        <form action="/detail" name="mainPageForm" id="BIDform" method="get">
             <input type="hidden" name="BID" value="">
         </form>
     
         <!-- 슬라이드 광고 -->
-        <div>
-            <div>
+        <!-- 현제 사용할 예정이 없는 기능입니다.(다시만들기) -->
+
+        <div style="background:salmon; border-radius: 25px; text-align: center;">
+            슬라이드 기능 추가 예정
+            <div style="display: none">
                 <table id="slideTable">
                     <tr>
                         <th rowspan="2" style="width: 5%;">
@@ -74,13 +77,13 @@
                         <td>${ slideList[6].title }</td>
                     </tr>
                 </table>
-            </div>
-            <div style="
-            	text-align: center;
-                font-size: 24px;
-                margin-top: 10px;
-            	" id="ad">
-                ${ slideList[3].ad }
+                <div style="
+                    text-align: center;
+                    font-size: 24px;
+                    margin-top: 10px;
+                    " id="ad">
+                    ${ slideList[3].ad }
+                </div>
             </div>
         </div>
     

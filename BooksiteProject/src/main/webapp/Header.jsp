@@ -1,37 +1,100 @@
+<%@page import="javax.tools.DocumentationTool.Location"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
+<<<<<<< HEAD
+	pageEncoding="UTF-8"%>
+<%
+String userID = (String) session.getAttribute("user_id"); // 세션에서 아이디르 받아 userID에 저장합니다.
+boolean login = (userID == null) ? false : true; //로그인 되었는지 안되었는지 여부를 login에 불린으로 저장합니다.
+System.out.println(userID + "jgjg" + login);
+=======
     pageEncoding="UTF-8"%>
+<%
+	String userID = (String)session.getAttribute("user_id"); // 세션에서 아이디르 받아 userID에 저장합니다.
+	boolean login = (userID == null)? false : true; //로그인 되었는지 안되었는지 여부를 login에 불린으로 저장합니다.
+	System.out.println(userID + "jgjg" + login);
+<<<<<<< HEAD
+>>>>>>> 09339417cafade0cf0d8d8ce88b4a006974e52c2
+=======
+>>>>>>> 09339417cafade0cf0d8d8ce88b4a006974e52c2
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<!-- <script type="text/javascript">
+	function logOut(){
+		location.href="./LogOut.jsp";
+		location.reload();
+	}
+</script>  -->
 <title>Insert title here</title>
 <style>
-    body{
-        background: #c1adff;
-    }
-    nav{
-    	margin: auto;
-        width: 80vw;
-        min-width: 1200px
-    }
-    #headerTable{
-        margin-top: 25px;
-        margin-bottom: 25px;
-        width: 100%;
-        height: 100%;
-    }
-    #logo{
-        display: inline;
-        font-size: 32px;
-        font-family: sans-serif;
-        color: white;
-    }
-    .button{
-        width: 75px;
-    }
+body {
+	background: #c1adff;
+}
+
+nav {
+	margin: auto;
+	width: 80vw;
+	min-width: 1200px
+}
+
+#headerTable {
+	margin-top: 25px;
+	margin-bottom: 25px;
+	width: 100%;
+	height: 100%;
+}
+
+#logo {
+	display: inline;
+	font-size: 32px;
+	font-family: sans-serif;
+	color: white;
+}
+
+.button {
+	width: 75px;
+}
 </style>
 </head>
 <body>
+<<<<<<< HEAD
+	<header>
+		<nav>
+			<table id="headerTable">
+				<tr>
+					<th style="text-align: left;">
+						<h3 id="logo">BOOK-e On & On</h3>
+					</th>
+					<th class="button">버튼1
+					<th style="text-align: right;">
+						<%
+						if (login) {
+							out.print("\"" + userID + "\"님이 접속하셨습니다.");
+						}
+						//최상단부 스크립틀릿에 보시면 세션에서 로그인 됐을 경우 아이디가 저장돼있습니다.
+						//로그인값(false)이 아닐경우 출력됩니다.
+						%>
+					</th>
+					<th class="button"><a href="/shopcart">장바구니</a></th>
+
+					<%
+					if (login) {
+					%>
+					<th class="button"><a href="/logout">로그아웃</a></th>
+					<%
+					} else {
+					%>
+					<th class="button"><a href="/login">로그인</a></th>
+					<%
+					}
+					%>
+				</tr>
+			</table>
+		</nav>
+	</header>
+=======
     <header>
         <nav>
             <table id="headerTable">
@@ -39,19 +102,30 @@
                     <th style="text-align:left;">
                         <h3 id="logo">BOOK-e On & On</h3>
                     </th>
-                    <th class="button">
-                        버튼1
-                         <% out.print(session.getAttribute("user_id")); %>
+                    <th style="text-align: right;">
+                         <%
+                         if(login){ out.print("\"" + userID+"\"님이 접속하셨습니다."); }
+                         	//최상단부 스크립틀릿에 보시면 세션에서 로그인 됐을 경우 아이디가 저장돼있습니다.
+                         	//로그인값(false)이 아닐경우 출력됩니다.
+                         %>
                     </th>
                     <th class="button">
                         <a href="/shopcart">장바구니</a>
                     </th>
+                    
+                    <%if(login){ %>
+                    <th class="button">
+                        <a href="/logout">로그아웃</a>
+                    </th>
+                    <%}else{ %>
                     <th class="button">
                         <a href="/login">로그인</a>
                     </th>
+                    <%} %>
                 </tr>
             </table>
         </nav>
     </header>
+>>>>>>> 09339417cafade0cf0d8d8ce88b4a006974e52c2
 </body>
 </html>
