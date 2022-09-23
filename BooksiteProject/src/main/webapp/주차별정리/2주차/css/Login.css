@@ -21,7 +21,7 @@ body{
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background: url(../source/mainPage/books.jpg) no-repeat;
+    background: url(../source/Login/books.jpg) no-repeat;
     background-position: center;
     background-size: cover;
 }

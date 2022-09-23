@@ -5,8 +5,7 @@
 
 <head>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap')
-	;
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 </style>
 <link rel="stylesheet" href="css/Login.css">
 <meta charset="UTF-8">
