@@ -12,8 +12,6 @@ public class BookDTO {
 	String introduce;
 
 	// 장바구니페이지
-	String img;
-	int money; // <- title로 바꾸죠
 	int deliveryTime;
 
 	
@@ -40,11 +38,11 @@ public class BookDTO {
 	}
 
 	// 장바구니페이지
-	public BookDTO(String img, String title, int money, int deliveryTime) {
+	public BookDTO(String image, String title, int price, int deliveryTime) {
 		super();
-		this.img = img;
+		this.image = image;
 		this.title = title;
-		this.money = money;
+		this.price = price;
 		this.deliveryTime = deliveryTime;
 	}
 
@@ -110,22 +108,6 @@ public class BookDTO {
 
 	public void setIntroduce(String introduce) {
 		this.introduce = introduce;
-	}
-
-	public String getImg() {
-		return img;
-	}
-
-	public void setImg(String img) {
-		this.img = img;
-	}
-
-	public int getMoney() {
-		return money;
-	}
-
-	public void setMoney(int money) {
-		this.money = money;
 	}
 
 	public int getDeliveryTime() {
