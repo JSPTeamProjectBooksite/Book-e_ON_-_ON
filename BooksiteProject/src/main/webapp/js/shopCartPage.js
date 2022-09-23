@@ -27,10 +27,8 @@ $(function (){
     
     
     // submit 버튼들 
-    $('.selectBookPaymentBtn').click(function(){
-		$('#cartForm').attr('action', './payment');
-		console.log("dd")
-	})
+    $('.selectBookPaymentBtn').click(function(){ $('#cartForm').attr('action', './payment'); });
+    $('.selectBookSaveBtn').click(function(){ $('#cartForm').attr('action', '#'); });
 });
 /* 
 function selectBookGo(url, id){
