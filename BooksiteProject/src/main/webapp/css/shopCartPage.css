@@ -44,7 +44,7 @@ table.selectBookMoney td.bookLastValue {width: 40%; color: red;}
 
 .submitBtns { text-align: end;}
 .submitBtns button{ width: 180px; height: 50px; border: none; border-radius: 5px; margin: 40px 20px; font-weight: bold; cursor: pointer;}
-.submitBtns button.selectBookPurchaseBtn{ background-color: #ff9696;}
+.submitBtns button.selectBookPaymentBtn{ background-color: #ff9696;}
 .submitBtns button.selectBookSaveBtn{ background:#9a9a9a}
 
 input[name='check']{ display: none; }
