@@ -46,6 +46,14 @@ public class BookDTO {
 		this.deliveryTime = deliveryTime;
 	}
 
+	public BookDTO(String image, String title, int price) {
+	
+		this.image = image;
+		this.title = title;
+		this.price = price;
+	
+	}
+
 	public int getBID() {
 		return BID;
 	}

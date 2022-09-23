@@ -30,16 +30,16 @@
 				<tr>
 					<th>배송지 정보</th>
 
-					<th colspan="2">${ bookList[0].name}<br> <br>${bookList[0].address}
+					<th colspan="2">${ cusInfo.name}<br> <br>${cusInfo.address}
 					</th>
 				</tr>
 
 				<tr>
 					<th>주문자/이메일정보</th>
-					<th colspan="2">${ bookList[0].name }/${ bookList[0].email }</th>
+					<th colspan="2">${ cusInfo.name }/${ cusInfo.email }</th>
 				</tr>
 				<tr>
-					<th colspan="3">주문상품 : ${ bookList[0].orderQuantity }개</th>
+					<th colspan="3">주문상품 : ${ cusInfo.orderQuantity }개</th>
 				</tr>
 			</thead>
 			
@@ -47,8 +47,11 @@
 				<tr>
 					<td><img src="${ n.image }" width="200px" height="270px"></td>
 					<td>${n.title }</td>
-					<td style="font-size: larger;"><b>${ n.money }</b> <br> <small>수량
-							: ${n.orderQuantity}개</small></td>
+					<td style="font-size: larger;"><b>${ n.price }원</b> 
+					<br> <small>수량
+			: 3개</small></td> 
+			<!-- 추후 폼 값 받아오는 방식 재확인 필요-->
+			
 				</tr>
 			</c:forEach>
 			<tr>

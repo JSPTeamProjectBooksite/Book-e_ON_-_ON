@@ -6,13 +6,13 @@
 }
 
 table {
-    border: 1px;
     border-spacing: 0px;
     margin: 20px; width: 1280px;
     border-collapse: collapse;
 }
 
 th {
+
     text-align: left;
     padding: 30px;
     border-left: none;
@@ -22,41 +22,47 @@ th {
 
 td.title {
    
-    border-bottom: none;
-}
-
-
-td {
-
-    border-left: none;
-    border-right: none;
-    border-bottom: none;
+    height: 40px;
+    width: 300px;
 }
 
 td.content {
     height: 10px;
-    height: 10px;
-    border-bottom: none;
+    width: 300px;
+    /* border-bottom: none; */
     font-size: medium;
 }
 
 td.subj {
+    border-bottom: 1px solid rgb(77, 70, 70);
     font-weight: 550;
-    color: grey;
+    /* color: grey; */
     font-size: large;
     border-top: none;
     padding-top: 40px;
     padding-bottom: 10px;
 }
-/* 
-td.stb2{
-    text-align: right;
-    width: 10px;
+
+td.bnt{
+    width: 80px;
+    height: 80px;
 
 }
 
-th.stb{
-    text-align: left;
-    font-size: medium;
+td.paytool{
+    width: 430px;
+    height: 80px;
+}
 
-} */
+
+td.stickybar{
+    background-color: aqua;
+}
+
+td.order_title{
+    height: 25px;
+}
+
+td.block{
+    width: 200px;
+}

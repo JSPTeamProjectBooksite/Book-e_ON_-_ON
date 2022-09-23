@@ -46,7 +46,7 @@ public class MemberDTO {
 //		this.phoneNumber = phoneNumber;
 //		this.address = address;
 //	}
-
+	
 	public String getName() {
 		return name;
 	}
@@ -95,4 +95,22 @@ public class MemberDTO {
 		this.address = address;
 	}
 
+	public int getOrderQuantity() {
+		return orderQuantity;
+	}
+
+	public void setOrderQuantity(int orderQuantity) {
+		this.orderQuantity = orderQuantity;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+	
 }
