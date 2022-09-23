@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.iptime.booke.dao.MemberDAO;
 import org.iptime.booke.dto.MemberDTO;
@@ -19,9 +20,11 @@ public class LoginController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		HttpSession session = request.getSession();
+
 		String userId = request.getParameter("user_id");
 		String userPwd = request.getParameter("user_pw");
-
+		
 //		String oracleDriver = application.getInitParameter("OracleDriver");
 //		String oracleURL = application.getInitParameter("OracleURL");
 //		String oracleId = application.getInitParameter("OracleId");
@@ -33,10 +36,10 @@ public class LoginController extends HttpServlet {
 		dao.close();
 
 		if (memberDTO.getId() != null) {
-//			request.setAttribute("UserId", memberDTO.getId());
-//			request.setAttribute("UserName", memberDTO.getName());
-			response.sendRedirect("./ListPage.jsp");
-			System.out.println("로그인 성공");
+			session.setAttribute("UserId", memberDTO.getId());
+			session.setAttribute("UserName", memberDTO.getName());
+			response.sendRedirect("./main");
+			System.out.println("로그인 성공");	
 			return;
 		} else {
 //			request.setAttribute("LoginErrMsg", "로그인 오류입니다.");

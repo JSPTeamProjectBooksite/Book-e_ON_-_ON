@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.iptime.booke.dao.MemberDAO;
 import org.iptime.booke.dto.MemberDTO;
@@ -18,7 +19,7 @@ public class RegisterController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
 		// 폼값 받기
 		String userName = request.getParameter("user_name");
 		String userId = request.getParameter("user_id");
@@ -41,7 +42,7 @@ public class RegisterController extends HttpServlet {
 		// 성공 or 실패?
 		if (iResult == 1) {
 			System.out.println("회원가입 성공");
-			response.sendRedirect("./LoginPage.jsp");
+			response.sendRedirect("/main");	
 			return;
 		} else {
 			System.out.println("회원가입 실패");
