@@ -31,7 +31,7 @@
             <div class="cart">
                 <h1 class="cartTitle">장바구니</h1>
 
-                <form id="cartForm" action="#" method="POST">
+                <form id="cartForm" action="" method="POST">
                 <table class="bookList">
                     <tr>
                         <th colspan="3">상품정보</th>

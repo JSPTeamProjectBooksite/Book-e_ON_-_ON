@@ -35,8 +35,8 @@ public class PaymentController extends HttpServlet {
 
 	private List<BookDTO> daoo() {
 		List<BookDTO> bookList = new ArrayList<BookDTO>();
-		bookList.add(new BookDTO("source/book/기분이_태도가_되지_않으려면.png", "기분이 태도가 되지 않으려면", 42000));
-		bookList.add(new BookDTO("source/book/기분이_태도가_되지_않으려면.png", "기분이 태도가 되지 않으려면", 42000));
+		bookList.add(new BookDTO("source/book/기분이_태도가_되지_않으려면.png", "기분이 태도가 되지 않으려면", 42000L));
+		bookList.add(new BookDTO("source/book/기분이_태도가_되지_않으려면.png", "기분이 태도가 되지 않으려면", 42000L));
 	
 		return bookList;
 
