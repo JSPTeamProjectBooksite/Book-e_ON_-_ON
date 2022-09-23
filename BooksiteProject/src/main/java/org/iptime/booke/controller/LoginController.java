@@ -39,15 +39,18 @@ public class LoginController extends HttpServlet {
 			session.setAttribute("user_id", memberDTO.getId());
 			System.out.println(session.getAttribute("user_id"));
 //			session.setAttribute("user_name", memberDTO.getName());
-			response.sendRedirect("/main");
+			response.sendRedirect("./main");
 			System.out.println("로그인 성공");
 			System.out.println(memberDTO.getId() + "님!");
 			return;
 		} else {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("./login");
-			dispatcher.forward(request, response);
+//			request.setAttribute("LoginErrMsg", "로그인 오류입니다.");
+//			request.getRequestDispatcher("LoginForm.jsp").forward(request, response);
 			System.out.println("로그인 실패");
 		}
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("./LoginPage.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
