@@ -41,6 +41,7 @@
                     </th>
                     <th class="button">
                         버튼1
+                         <% out.print(session.getAttribute("user_id")); %>
                     </th>
                     <th class="button">
                         <a href="/shopcart">장바구니</a>

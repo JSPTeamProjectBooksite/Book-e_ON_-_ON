@@ -42,7 +42,7 @@ public class RegisterController extends HttpServlet {
 		// 성공 or 실패?
 		if (iResult == 1) {
 			System.out.println("회원가입 성공");
-			response.sendRedirect("/main");	
+			response.sendRedirect("./login");	
 			return;
 		} else {
 			System.out.println("회원가입 실패");

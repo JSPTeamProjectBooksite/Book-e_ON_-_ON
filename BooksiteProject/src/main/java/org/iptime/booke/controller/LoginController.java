@@ -36,10 +36,12 @@ public class LoginController extends HttpServlet {
 		dao.close();
 
 		if (memberDTO.getId() != null) {
-			session.setAttribute("UserId", memberDTO.getId());
-			session.setAttribute("UserName", memberDTO.getName());
+			session.setAttribute("user_id", memberDTO.getId());
+			System.out.println(session.getAttribute("user_id"));
+//			session.setAttribute("user_name", memberDTO.getName());
 			response.sendRedirect("./main");
-			System.out.println("로그인 성공");	
+			System.out.println("로그인 성공");
+			System.out.println(memberDTO.getId() + "님!");
 			return;
 		} else {
 //			request.setAttribute("LoginErrMsg", "로그인 오류입니다.");
