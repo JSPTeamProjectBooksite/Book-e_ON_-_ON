@@ -21,7 +21,7 @@ public class LogoutController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		
-		session.removeAttribute("Info");
+		session.removeAttribute("user_id");
 		
 		PrintWriter out = response.getWriter();
 		out.println("<script> history.back(); </script>");
