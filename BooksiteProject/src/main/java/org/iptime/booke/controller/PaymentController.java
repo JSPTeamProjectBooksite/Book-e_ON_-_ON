@@ -29,7 +29,7 @@ public class PaymentController extends HttpServlet {
 		req.getRequestDispatcher("/paymentPage.jsp").forward(req, resp);
 	}
 
-	protected void dopost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doGet(req, resp);
 	}
 
