@@ -10,12 +10,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	function logOut(){
 		location.href="./LogOut.jsp";
 		location.reload();
 	}
-</script>
+</script>  -->
 <title>Insert title here</title>
 <style>
     body{
@@ -64,7 +64,7 @@
                     
                     <%if(login){ %>
                     <th class="button">
-                        <a onclick="logOut()">로그아웃</a>
+                        <a href="/logout">로그아웃</a>
                     </th>
                     <%}else{ %>
                     <th class="button">
