@@ -1,0 +1,15 @@
+table{
+    background-color:rgb(248, 248, 248);
+    color: rgb(95, 93, 93);
+    width: 380px;
+}
+
+td{
+    text-align: right;
+    width: 10px;
+}
+
+th{
+    text-align: left;
+    font-size: medium;
+}

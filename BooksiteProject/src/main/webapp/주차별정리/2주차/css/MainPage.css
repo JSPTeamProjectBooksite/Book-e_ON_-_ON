@@ -1,0 +1,65 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#contents{
+    margin: auto;
+	background: white;
+	width: 1200px;
+	/* 이건 꼭넣을 것!! */
+}
+
+#container{
+    position: relative;
+    /* background-color: aquamarine; */
+}
+
+#list_contents{
+    height: 550px;
+    /* background-color: blueviolet; */
+}
+
+.slideBookStyle{
+    float: left;
+    width: 13%;
+    height: 100%;
+    display: flex;
+    line-height : 300px;
+}
+
+.bookImageStyle{
+    width: 100%;
+}
+
+#slideTable{
+    border-radius: 25px;
+    background-color:darkgrey;
+    width: 100%;
+}
+
+#slideTable th,td{
+    padding: 5px;
+    text-align: center;
+}
+
+
+.bookTh{
+    vertical-align: bottom;
+    width:13%;
+}
+
+
+#searchTable{
+    margin:5px;
+}
+
+
+#searchTable td{
+    width: 16.6%;
+    text-align: center;
+}
+.bookImageTd{
+    vertical-align: bottom;
+}

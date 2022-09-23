@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-position: center;
+}
+
+h1 {
+    font-size: 50px;
+    margin-top: 150px;
+}
+
+.container {
+    border: solid 1px;
+    border-radius: 25px;
+    width: 700px;
+    height: 500px;
+    text-align: center;
+}
+
+form .inputGroup {
+    width: 500px;
+    height: 30px;
+    margin-top: 10px;
+    text-align: center;
+    border-radius: 25px;
+    border: solid 1px;
+}
+
+.submit {
+    width: 500px;
+    height: 30px;
+    background-color: black;
+    color: white;
+    margin-top: 10px;
+    border-radius: 25px;
+    cursor: pointer;
+}

@@ -1,0 +1,126 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: #3A3C84;
+    font-family: sans-serif;
+}
+/* 애니메이션 효과 1 */
+.slider{
+    position: absolute;
+    top: 0;
+    left:0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to top, #3A3C84, #c1adff);
+    z-index: -1;
+}
+.slider2{
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    left:0;
+    width: 100%;
+    height: 100vh;
+    background: #c1adff;
+    z-index: -2;
+}
+
+nav{
+    display: grid;
+    grid-template-columns: 10% 1fr 1fr 10%;
+    min-height: 10vh;
+    color: white;
+    align-items: center;
+}
+
+#logo{
+    grid-column: 2/3;
+    font-size: 32px;
+}
+
+.hamburger{
+    justify-self: end;
+}
+
+section{
+    display: flex;
+    height: 80vh;
+    justify-content: center;
+    align-items: center;
+    /* background: cadetblue; */
+}
+
+.hero{
+    height: 60%;
+    width: 100%;
+    position: relative;
+}
+
+.hero img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.headline{
+    position: absolute;
+    top: 70%;
+    left: 8%;
+    font-size: 75px;
+    text-shadow: -1px 0 #FFFFFF, 0 1px #FFFFFF, 1px 0 #FFFFFF, 0 -1px #FFFFFF;
+    transform: translate(-20%, -70%);
+    color:rgb(68, 80, 169);
+    z-index: 3;
+}
+
+.hero::after{
+    content: "";
+    background: black;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0.3;
+}
+
+/* 애니메이션 효과 2 */
+
+
+.intro {
+    height: 100vh;
+}
+
+.intro video {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.text{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:black;
+    opacity: 0;
+}
+
+.intro h1 {
+    white-space:nowrap;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 5vw;
+    color: white;
+}
+
+#warp{
+    width: 100%;
+    height: 50vh;
+    text-align: center;
+}
