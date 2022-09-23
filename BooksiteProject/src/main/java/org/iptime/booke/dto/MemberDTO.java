@@ -8,8 +8,25 @@ public class MemberDTO {
 	private String phoneNumber;
 	private String address;
 	
+	// 결제페이지
+//	String name; // title 아니고 주문자 성명
+//	String address;
+	int orderQuantity;
+	String email;
+//	String phoneNumber;
+	
 	public MemberDTO() {
 		
+	}
+	
+	//결제페이지
+	public MemberDTO(String name, String address, int orderQuantity, String email,
+			String phoneNumber) {
+		this.name = name;
+		this.address = address;
+		this.orderQuantity = orderQuantity;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
 	}
 	
 	public MemberDTO(String name,String id, String password, String phoneNumber, String address) {

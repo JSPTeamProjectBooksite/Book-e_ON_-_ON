@@ -16,25 +16,6 @@ public class BookDTO {
 	int money; // <- title로 바꾸죠
 	int deliveryTime;
 
-	// 결제페이지
-	String name; // title 아니고 주문자 성명
-	String address;
-	int orderQuantity;
-	String email;
-	String phoneNumber;
-
-	//결제페이지
-	public BookDTO(String image, String title, int money, String name, String address, int orderQuantity, String email,
-			String phoneNumber) {
-		this.image = image;
-		this.title = title;
-		this.money = money;
-		this.name = name;
-		this.address = address;
-		this.orderQuantity = orderQuantity;
-		this.email = email;
-		this.phoneNumber = phoneNumber;
-	}
 	
 	//리스트 페이지
 	public BookDTO(int BID, String title, String image, String author, String publisher, int price, String ad,
@@ -154,47 +135,4 @@ public class BookDTO {
 	public void setDeliveryTime(int deliveryTime) {
 		this.deliveryTime = deliveryTime;
 	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public int getOrderQuantity() {
-		return orderQuantity;
-	}
-
-	public void setOrderQuantity(int orderQuantity) {
-		this.orderQuantity = orderQuantity;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
-
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
-	
-	
-
 }
