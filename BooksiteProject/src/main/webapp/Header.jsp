@@ -48,7 +48,6 @@ nav {
 </style>
 </head>
 <body>
-	<<<<<<< HEAD
 	<header>
 		<nav>
 			<table id="headerTable">
@@ -109,6 +108,5 @@ nav {
 			</table>
 		</nav>
 	</header>
-	>>>>>>> 09339417cafade0cf0d8d8ce88b4a006974e52c2
 </body>
 </html>
