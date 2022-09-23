@@ -63,8 +63,8 @@
                     <button type="button" class="selectBookPurchaseBtn">선택한 상품만 구매</button>
                     <button type="button" class="selectBookSaveBtn">보관함 저장</button>
                 </div>
+            	</form>
             </div>
-            </form>
         </main>
 
         <%@ include file="footer.html" %>
