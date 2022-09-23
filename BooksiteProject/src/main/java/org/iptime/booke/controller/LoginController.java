@@ -20,11 +20,9 @@ public class LoginController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		HttpSession session = request.getSession();
-
 		String userId = request.getParameter("user_id");
 		String userPwd = request.getParameter("user_pw");
-		
+
 //		String oracleDriver = application.getInitParameter("OracleDriver");
 //		String oracleURL = application.getInitParameter("OracleURL");
 //		String oracleId = application.getInitParameter("OracleId");
@@ -36,6 +34,7 @@ public class LoginController extends HttpServlet {
 		dao.close();
 
 		if (memberDTO.getId() != null) {
+			HttpSession session = request.getSession();
 			session.setAttribute("user_id", memberDTO.getId());
 			System.out.println(session.getAttribute("user_id"));
 //			session.setAttribute("user_name", memberDTO.getName());
@@ -44,13 +43,11 @@ public class LoginController extends HttpServlet {
 			System.out.println(memberDTO.getId() + "님!");
 			return;
 		} else {
-//			request.setAttribute("LoginErrMsg", "로그인 오류입니다.");
-//			request.getRequestDispatcher("LoginForm.jsp").forward(request, response);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("./LoginPage.jsp");
+			dispatcher.forward(request, response);
 			System.out.println("로그인 실패");
 		}
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("./LoginPage.jsp");
-		dispatcher.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
