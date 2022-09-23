@@ -1,18 +1,11 @@
 <%@page import="javax.tools.DocumentationTool.Location"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-<<<<<<< HEAD
 	pageEncoding="UTF-8"%>
 <%
 String userID = (String) session.getAttribute("user_id"); // 세션에서 아이디르 받아 userID에 저장합니다.
 boolean login = (userID == null) ? false : true; //로그인 되었는지 안되었는지 여부를 login에 불린으로 저장합니다.
 System.out.println(userID + "jgjg" + login);
 =======
-    pageEncoding="UTF-8"%>
-<%
-	String userID = (String)session.getAttribute("user_id"); // 세션에서 아이디르 받아 userID에 저장합니다.
-	boolean login = (userID == null)? false : true; //로그인 되었는지 안되었는지 여부를 login에 불린으로 저장합니다.
-	System.out.println(userID + "jgjg" + login);
-<<<<<<< HEAD
 >>>>>>> 09339417cafade0cf0d8d8ce88b4a006974e52c2
 =======
 >>>>>>> 09339417cafade0cf0d8d8ce88b4a006974e52c2
@@ -112,7 +105,7 @@ nav {
                     <th class="button">
                         <a href="/shopcart">장바구니</a>
                     </th>
-                    
+
                     <%if(login){ %>
                     <th class="button">
                         <a href="/logout">로그아웃</a>
