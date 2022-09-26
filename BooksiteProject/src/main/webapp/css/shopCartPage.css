@@ -11,8 +11,8 @@
 
 main{margin: 50px 0 100px 0;}
 
-.basket{ max-width: 1000px; margin: 0 auto; }
-.basket .baseketTitle{ color: #6a6a6a; margin: 10px 5px; font-size: 20px;}
+.cart{ max-width: 1000px; margin: 0 auto; }
+.cart .cartTitle{ color: #6a6a6a; margin: 10px 5px; font-size: 20px;}
 
 
 table.bookList{ border-collapse: collapse; margin-bottom: 20px;}
@@ -33,8 +33,6 @@ table.bookList td{ text-align: center; border-bottom: 1px solid var(--myGrayColo
 .bookItem .bookMoneySum{ width: 15%;}
 .bookItem .bookDeliveryTime{ width: 15%;}
 
-
-
 table.selectBookMoney{ width: 100%; border-collapse: collapse;}
 table.selectBookMoney tr> *{ border: 1px solid var(--myGrayColor);}
 table.selectBookMoney th {background-color: #7ca7d2; height: 50px;}
@@ -44,7 +42,9 @@ table.selectBookMoney td.bookValue {width: 40%; }
 table.selectBookMoney td.bookDeliveryValue {width: 20%;}
 table.selectBookMoney td.bookLastValue {width: 40%; color: red;}
 
-.basketBtns { text-align: end;}
-.basketBtns button{ width: 180px; height: 50px; border: none; border-radius: 5px; margin: 40px 20px; font-weight: bold; cursor: pointer;}
-.basketBtns button.selectBookPurchaseBtn{ background-color: #ff9696;}
-.basketBtns button.selectBookSaveBtn{ background:#9a9a9a}
+.submitBtns { text-align: end;}
+.submitBtns button{ width: 180px; height: 50px; border: none; border-radius: 5px; margin: 40px 20px; font-weight: bold; cursor: pointer;}
+.submitBtns button.selectBookPaymentBtn{ background-color: #ff9696;}
+.submitBtns button.selectBookSaveBtn{ background:#9a9a9a}
+
+input[name='check']{ display: none; }

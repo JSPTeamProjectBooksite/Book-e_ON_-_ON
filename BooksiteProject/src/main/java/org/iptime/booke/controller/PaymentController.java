@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.iptime.booke.dto.BookDTO;
+import org.iptime.booke.dto.MemberDTO;
 
 @WebServlet("/payment")
 public class PaymentController extends HttpServlet {
@@ -20,21 +21,22 @@ public class PaymentController extends HttpServlet {
 
 		List<BookDTO> bookList = daoo();
 		req.setAttribute("bookList", bookList);
-
+		
+		MemberDTO member = new MemberDTO("김부기","경기도 성남시 분당구 그린컴퓨터", 3, "bookie@gmail.com","010-1234-5678" );
+		req.setAttribute("cusInfo", member);
+		
+		
 		req.getRequestDispatcher("/paymentPage.jsp").forward(req, resp);
 	}
 
-	protected void dopost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doGet(req, resp);
 	}
 
 	private List<BookDTO> daoo() {
 		List<BookDTO> bookList = new ArrayList<BookDTO>();
-
-		bookList.add(new BookDTO("source/book/기분이_태도가_되지_않으려면.png", "기분이 태도가 되지 않으려면", 42000, "김부기",
-				"경기도 성남시 분당구 돌마로46 5층", 3, "bookies@gamil.com", "010-1234-4321"));
-		bookList.add(new BookDTO("source/book/기분이_태도가_되지_않으려면.png", "기분이 태도가 되지 않으려면", 42000, "김부기",
-				"경기도 성남시 분당구 돌마로46 5층", 3, "bookies@gamil.com", "010-1234-4321"));
+		bookList.add(new BookDTO("source/book/기분이_태도가_되지_않으려면.png", "기분이 태도가 되지 않으려면", 42000L));
+		bookList.add(new BookDTO("source/book/기분이_태도가_되지_않으려면.png", "기분이 태도가 되지 않으려면", 42000L));
 	
 		return bookList;
 

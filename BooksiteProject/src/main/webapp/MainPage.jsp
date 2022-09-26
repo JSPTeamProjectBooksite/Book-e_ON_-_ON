@@ -27,11 +27,12 @@
         <div style="height: 100px;"></div>
     
         <!-- 전송폼 -->
-        <form action="./detail" name="mainPageForm" id="BIDform" method="get">
+        <form action="/detail" name="mainPageForm" id="BIDform" method="get">
             <input type="hidden" name="BID" value="">
         </form>
     
         <!-- 슬라이드 광고 -->
+
         <div>
             <div>
                 <table id="slideTable">
