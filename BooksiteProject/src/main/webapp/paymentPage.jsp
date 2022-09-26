@@ -17,7 +17,7 @@
 
 <body>
 	<div class="wrap">
-		<%@ include file="header.html"%>
+		<%@ include file="./Header.jsp"%>
 
 		<table>
 			<caption>결제하기</caption>
@@ -65,7 +65,7 @@
 			</tr>
 
 		</table>
-		<%@ include file="footer.html"%>
+		<%@ include file="./Footer.jsp"%>
 	</div>
 
 </body>
