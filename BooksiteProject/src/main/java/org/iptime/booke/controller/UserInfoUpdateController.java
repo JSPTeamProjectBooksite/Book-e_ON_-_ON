@@ -1,9 +1,7 @@
 package org.iptime.booke.controller;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,31 +13,37 @@ import javax.servlet.http.HttpSession;
 import org.iptime.booke.dao.MemberDAO;
 import org.iptime.booke.dto.MemberDTO;
 
-@WebServlet("/userInfo")
-public class UserInfoController extends HttpServlet {
+@WebServlet("/userInfoUpdate")
+public class UserInfoUpdateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 
-		String UserId = (String) session.getAttribute("user_id");
-		System.out.println(UserId);
+		String userNewPw = request.getParameter("new_password");
 
-		session.setAttribute("user_id", UserId);
+		MemberDTO dto = new MemberDTO();
+		dto.setId(session.getAttribute("user_id").toString());
+		dto.setPassword(userNewPw);
 
 		MemberDAO dao = new MemberDAO();
-
-		MemberDTO userInfo = dao.userInfo((String)session.getAttribute("user_id"));
-		System.out.println(userInfo);
+		int iResult = dao.updateUserEdit(dto);
 		dao.close();
 
-		request.setAttribute("userInfo", userInfo);
-		request.getRequestDispatcher("./UserInfo.jsp").forward(request, response);
+		if (iResult == 1) {
+			System.out.println("회원정보 수정 성공!!!");
+			System.out.println("비밀번호가 성공적으로 변경되었습니다. 다시 로그인 해주세요.");
+			response.sendRedirect("./login");
+			
+		} else {
+			System.out.println("회원정보 수정 실패!!!");
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 		doGet(request, response);
 	}
 

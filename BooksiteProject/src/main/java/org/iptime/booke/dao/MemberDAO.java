@@ -87,8 +87,8 @@ public class MemberDAO extends JDBConnect {
 		}
 		return mid;
 	}
-	
-	public String findPassword(String member_name, String member_id , String member_address) {
+
+	public String findPassword(String member_name, String member_id, String member_address) {
 		String mpass = null;
 
 		try {
@@ -108,7 +108,7 @@ public class MemberDAO extends JDBConnect {
 		}
 		return mpass;
 	}
-	
+
 	public MemberDTO userInfo(String id) {
 		try {
 
@@ -118,7 +118,8 @@ public class MemberDAO extends JDBConnect {
 			rs = psmt.executeQuery();
 
 			if (rs.next()) {
-				MemberDTO dto = new MemberDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
+				MemberDTO dto = new MemberDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getString(5));
 				System.out.println("이름 : " + rs.getString(1));
 				System.out.println("아이디 : " + rs.getString(2));
 				System.out.println("비밀번호 : " + rs.getString(3));
@@ -133,7 +134,25 @@ public class MemberDAO extends JDBConnect {
 
 		return null;
 	}
-	
+
+	public int updateUserEdit(MemberDTO dto) {
+		int result = 0;
+
+		try {
+			String query = "UPDATE TBL_USER SET password = ? WHERE id = ?";
+
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, dto.getPassword());
+			psmt.setString(2, dto.getId());
+
+			result = psmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println("회원정보 수정 중 예외 발생");
+			e.printStackTrace();
+		}
+		return result;
+	}
+
 	public static void main(String[] args) {
 		MemberDAO dao = new MemberDAO();
 		dao.userInfo("green");

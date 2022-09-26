@@ -54,7 +54,7 @@ System.out.println(recentURI+"해더");
 						//로그인값(false)이 아닐경우 출력됩니다.
 						%>
 						<br>
-						<a href="/userInfoController">마이페이지</a>
+						<a href="/userInfo">마이페이지</a>
 						<%
 						}
 						%>
@@ -65,7 +65,6 @@ System.out.println(recentURI+"해더");
 					if (login) {
 					%>
 					<th class="button"><a href="/logout">로그아웃</a></th>
-					<th class="button"><a href="./Password.jsp">[회원정보]</a></th>
 					<%
 					} else {
 					%>
