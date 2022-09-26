@@ -22,7 +22,7 @@ public class LogoutController extends HttpServlet {
 		session.removeAttribute("user_id");
 
 		PrintWriter out = response.getWriter();
-		out.println("<script> history.back(); </script>");
+		out.println("<script> history.back(); location.reload();</script>");
 
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
