@@ -108,5 +108,35 @@ public class MemberDAO extends JDBConnect {
 		}
 		return mpass;
 	}
+	
+	public MemberDTO userInfo(String id) {
+		try {
+
+			String sql = "SELECT * FROM TBL_USER WHERE id = ?";
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, id);
+			rs = psmt.executeQuery();
+
+			if (rs.next()) {
+				MemberDTO dto = new MemberDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
+				System.out.println("이름 : " + rs.getString(1));
+				System.out.println("아이디 : " + rs.getString(2));
+				System.out.println("비밀번호 : " + rs.getString(3));
+				System.out.println("핸드폰번호 : " + rs.getString(4));
+				System.out.println("주소 : " + rs.getString(5));
+				return dto;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+	
+	public static void main(String[] args) {
+		MemberDAO dao = new MemberDAO();
+		dao.userInfo("green");
+	}
 
 }
