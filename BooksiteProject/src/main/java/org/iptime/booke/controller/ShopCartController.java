@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.iptime.booke.dao.BookDAO;
 import org.iptime.booke.dto.BookDTO;
 import org.iptime.booke.utils.CookieManager;
 
@@ -22,8 +23,24 @@ public class ShopCartController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		List<BookDTO> bookList = new ArrayList<BookDTO>();
+		
+//		String cValue = CookieManager.readCookie(request, "cart");
+		String cValue = "1/2/3/4/5/6/7";
+				
+		System.out.printf("[Cookie] cart : %s\n", cValue);
+		String[] bookIds = cValue.split("/");
+		
+		BookDAO bookDAO = new BookDAO();
+		
+		for(String id : bookIds) {
+			System.out.println(id);
+			Long idL = Long.valueOf(id);
+			BookDTO dto = bookDAO.readBook(idL);
+			bookList.add(dto);
+		}
+		bookDAO.close();
 
-		List<BookDTO> bookList = daooo(request);
 		request.setAttribute("bookList", bookList);
 
 		request.getRequestDispatcher("/ShopCartPage.jsp").forward(request, response);
@@ -32,22 +49,5 @@ public class ShopCartController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);
-	}
-
-	private List<BookDTO> daooo(HttpServletRequest request) {
-		List<BookDTO> bookList = new ArrayList<BookDTO>();
-		
-		String cValue = CookieManager.readCookie(request, "cart");
-				
-		// 책의 id를 입력받음
-		System.out.printf("[Cookie] cart : %s\n", cValue);
-
-
-		bookList.add(new BookDTO("source/book/기분이_태도가_되지_않으려면.png", "기분이 태도가 되지 않으려면", 14000L, 2L));
-		bookList.add(new BookDTO("source/book/기분이_태도가_되지_않으려면.png", "기분이 태도가 되지 않으려면", 14000L, 2L));
-		bookList.add(new BookDTO("source/book/기분이_태도가_되지_않으려면.png", "기분이 태도가 되지 않으려면", 14000L, 2L));
-		
-
-		return bookList;
 	}
 }

@@ -1,5 +1,7 @@
 package org.iptime.booke.dto;
 
+import java.util.Date;
+
 public class BookDTO {
 	Long bid;
 	String image;
@@ -20,11 +22,39 @@ public class BookDTO {
 	String contents;
 	Long visit;
 	String publicationDate;
-	String registDate;
-	String updateDate;
+	Date registDate;
+	Date updateDate;
 	String ad;
 
-	
+	// default 생성자
+	public BookDTO(Long bid, String image, String title, String author, String translator, Long price, Long deliveryFee,
+			Long estimatedDeliveryDate, Long total_pages, Long weight, Long isbn, String bookCategoryId,
+			String introduce, String introduceImage, String publisher, String publisherReview, String contents,
+			Long visit, String publicationDate, Date registDate, Date updateDate, String ad) {
+		this.bid = bid;
+		this.image = image;
+		this.title = title;
+		this.author = author;
+		this.translator = translator;
+		this.price = price;
+		this.deliveryFee = deliveryFee;
+		this.estimatedDeliveryDate = estimatedDeliveryDate;
+		this.total_pages = total_pages;
+		this.weight = weight;
+		this.isbn = isbn;
+		this.bookCategoryId = bookCategoryId;
+		this.introduce = introduce;
+		this.introduceImage = introduceImage;
+		this.publisher = publisher;
+		this.publisherReview = publisherReview;
+		this.contents = contents;
+		this.visit = visit;
+		this.publicationDate = publicationDate;
+		this.registDate = registDate;
+		this.updateDate = updateDate;
+		this.ad = ad;
+	}
+
 	//리스트 페이지
 	public BookDTO(Long bid, String title, String image, String author, String publisher, Long price, String ad,
 			String introduce) {
@@ -215,19 +245,19 @@ public class BookDTO {
 		this.publicationDate = publicationDate;
 	}
 
-	public String getRegistDate() {
+	public Date getRegistDate() {
 		return registDate;
 	}
 
-	public void setRegistDate(String registDate) {
+	public void setRegistDate(Date registDate) {
 		this.registDate = registDate;
 	}
 
-	public String getUpdateDate() {
+	public Date getUpdateDate() {
 		return updateDate;
 	}
 
-	public void setUpdateDate(String updateDate) {
+	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
 	}
 

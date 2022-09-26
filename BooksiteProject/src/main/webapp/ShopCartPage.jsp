@@ -19,9 +19,10 @@
         integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
         crossorigin="anonymous">
     </script>
-   	<script src="<c:url value="js/shopCartPage.js"><c:param name="dt" value="${nowDate}"/></c:url>"/>
-    </script>
-    <!-- <script src="js/shopCartPage.js"></script> -->
+    
+   	<%-- <script src="js/shopCartPage.js?ver=${nowDate}">
+    </script> --%>
+    <script src="js/shopCartPage.js"></script>
     <title>장바구니</title>
 </head>
 <body>
@@ -48,7 +49,7 @@
                         <td class="bookMoney">${ book.price }</td>
                         <td class="bookCount"><input type="number" min="1" max="999" name="bookCount"></td>
                         <td class="bookMoneySum">14,000원</td>
-                        <td class="bookDeliveryTime">평균 ${ book.deliveryTime }일 소요</td>
+                        <td class="bookDeliveryTime">평균 ${ book.estimatedDeliveryDate }일 소요</td>
                     </tr>
                     </c:forEach>
                 </table>
