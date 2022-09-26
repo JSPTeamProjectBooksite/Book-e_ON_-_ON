@@ -50,9 +50,13 @@ System.out.println(recentURI+"해더");
 						<%
 						if (login) {
 							out.print("\"" + userID + "\"님이 접속하셨습니다.");
-						}
 						//최상단부 스크립틀릿에 보시면 세션에서 로그인 됐을 경우 아이디가 저장돼있습니다.
 						//로그인값(false)이 아닐경우 출력됩니다.
+						%>
+						<br>
+						<a href="/userInfoController">마이페이지</a>
+						<%
+						}
 						%>
 					</th>
 					<th class="button"><a href="/shopcart">장바구니</a></th>
