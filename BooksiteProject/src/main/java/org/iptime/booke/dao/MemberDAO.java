@@ -68,4 +68,24 @@ public class MemberDAO extends JDBConnect {
 		return result;
 	}
 
+	public String findId(String member_name, String member_address) {
+		String mid = null;
+
+		try {
+			String sql = "SELECT ID FROM TBL_USER WHERE NAME=? AND ADDRESS =?";
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, member_name);
+			psmt.setString(2, member_address);
+			rs = psmt.executeQuery();
+
+			if (rs.next()) {
+				mid = rs.getString("id");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mid;
+	}
+
 }
