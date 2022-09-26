@@ -87,5 +87,26 @@ public class MemberDAO extends JDBConnect {
 		}
 		return mid;
 	}
+	
+	public String findPassword(String member_name, String member_id , String member_address) {
+		String mpass = null;
+
+		try {
+			String sql = "SELECT PASSWORD FROM TBL_USER WHERE NAME=? AND ID=? and ADDRESS =?";
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, member_name);
+			psmt.setString(2, member_id);
+			psmt.setString(3, member_address);
+			rs = psmt.executeQuery();
+
+			if (rs.next()) {
+				mpass = rs.getString("password");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mpass;
+	}
 
 }
