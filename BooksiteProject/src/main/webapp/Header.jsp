@@ -61,7 +61,7 @@ System.out.println(recentURI+"해더");
 					if (login) {
 					%>
 					<th class="button"><a href="/logout">로그아웃</a></th>
-					<th class="button"><a href="/logout">[회원정보]</a></th>
+					<th class="button"><a href="./Password.jsp">[회원정보]</a></th>
 					<%
 					} else {
 					%>

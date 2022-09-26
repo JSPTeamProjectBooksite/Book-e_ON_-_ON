@@ -34,7 +34,7 @@ public class UserInfoController extends HttpServlet {
 		dao.close();
 
 		request.setAttribute("userInfo", userInfo);
-		request.getRequestDispatcher("./test2.jsp").forward(request, response);
+		request.getRequestDispatcher("./UserInfo.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
