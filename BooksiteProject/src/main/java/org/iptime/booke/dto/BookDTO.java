@@ -24,6 +24,32 @@ public class BookDTO {
 	String updateDate;
 	String ad;
 
+	public BookDTO() {}
+	
+	public void DTOPrintOut() {
+		System.out.println(bid);
+		System.out.println(image);
+		System.out.println(title);
+		System.out.println(author);
+		System.out.println(translator);
+		System.out.println(price);
+		System.out.println(deliveryFee);
+		System.out.println(estimatedDeliveryDate);
+		System.out.println(total_pages);
+		System.out.println(weight);
+		System.out.println(isbn);
+		System.out.println(bookCategoryId);
+		System.out.println(introduce);
+		System.out.println(introduceImage);
+		System.out.println(publisher);
+		System.out.println(publisherReview);
+		System.out.println(contents);
+		System.out.println(visit);
+		System.out.println(publicationDate);
+		System.out.println(registDate);
+		System.out.println(updateDate);
+		System.out.println(ad);
+	}
 	
 	//리스트 페이지
 	public BookDTO(Long bid, String title, String image, String author, String publisher, Long price, String ad,
