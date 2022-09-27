@@ -142,6 +142,21 @@ public class MemberDAO extends JDBConnect {
 		return result;
 	}
 
+	public int ReSign(String id) {
+		int result = 0;
+		try {
+			String query = "DELETE FROM TBL_USER WHERE ID = '" + id + "'";
+			psmt = con.prepareStatement(query);
+
+			result = psmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return result;
+	}
+
 	public static void main(String[] args) {
 		MemberDAO dao = new MemberDAO();
 		dao.userInfo("green");

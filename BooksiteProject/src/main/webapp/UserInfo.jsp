@@ -34,5 +34,6 @@
 		</thead>
 	</table>
 	 <a href="./UserInfoUpdate.jsp">[회원정보수정]</a>
+	 <a href="./resign">[회원탈퇴]</a>
 </body>
 </html>
