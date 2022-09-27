@@ -48,7 +48,7 @@
                         <td class="bookMoney">${ book.price }</td>
                         <td class="bookCount"><input type="number" min="1" max="999" name="bookCount"></td>
                         <td class="bookMoneySum">14,000원</td>
-                        <td class="bookDeliveryTime">평균 ${ book.deliveryTime }일 소요</td>
+                        <td class="bookDeliveryTime">평균 ${ book.estimatedDeliveryDate }일 소요</td>
                     </tr>
                     </c:forEach>
                 </table>

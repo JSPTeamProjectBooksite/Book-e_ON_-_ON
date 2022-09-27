@@ -6,16 +6,17 @@ import org.iptime.booke.common.DBConnPool;
 import org.iptime.booke.dto.BookDTO;
 
 public class BookDAO extends DBConnPool{
-	public BookDTO readBook(int bId) {
-		BookDTO dto = null;
-		String query = "SELECT BID, IMAGE, TITLE, AUTHOR,TRANSLATOR, PRICE, DELIVERY_FEE, ESTIMATED_DELIVERY_DATE "
-					+ "FROM book_table "
-					+ "WHERE BID = ?;";
+	
+	public BookDTO readBook(Long bId) {
+		BookDTO dto = new BookDTO();
+		String query = "SELECT BID, IMAGE, TITLE, AUTHOR, TRANSLATOR, PRICE, DELIVERY_FEE, ESTIMATED_DELIVERY_DATE "
+				+ "FROM book_table "
+				+ "WHERE BID = ? ";
 		
 		try {
-			stmt = con.prepareStatement(query);
+			psmt = con.prepareStatement(query);
 			
-			psmt.setInt(1, bId);
+			psmt.setLong(1, bId);
 			
 			rs = psmt.executeQuery();
 
@@ -29,10 +30,14 @@ public class BookDAO extends DBConnPool{
 				dto.setDeliveryFee(rs.getLong("DELIVERY_FEE"));
 				dto.setEstimatedDeliveryDate(rs.getLong("ESTIMATED_DELIVERY_DATE"));
 			}
+			
+			return dto;
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return null;
 		}
 		
-		return dto;
+		
 	}
 }
