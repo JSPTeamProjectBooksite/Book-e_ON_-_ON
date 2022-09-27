@@ -47,8 +47,12 @@
         <!-- 검색창 -->
         <form action="/list">
             <div style="height: 100px;">
-                <div style="height:70px; width: 700px; background:turquoise; margin: auto; padding: 10px; text-align: center; border-radius: 10px;">
-                    <input type="text" name="search" style="width: 550px; height: 50px; font-size: 32px; border: none;">
+                <div style="height:70px; width: 700px; background:turquoise; margin: auto; padding: 10px; text-align: center; border-radius: 35px;">
+                    <select name="searchFeild" id="">
+                        <option value="title">제목</option>
+                        <option value="author">작가</option>
+                    </select>
+                    <input type="text" name="search" style="width: 400px; height: 50px; font-size: 32px; border: none;">
                     <input type="submit" value="검색" style="width: 100px; height: 50px;">
                 </div>
             </div>
@@ -72,7 +76,9 @@
                 검색 결과
             </div>
     
-            <div style="text-align: center;">
+            <div style="text-align: center;
+            	margin-bottom: 30px;
+            ">
                 " <%= request.getParameter("search") %> "의 검색 결과 입니다.
             </div>
     
@@ -91,7 +97,10 @@
 		                        <div id="searchListText">
 		                        	<div style="font-size:1.3vh">${ book.title }</div>
 		                        	<div style="margin-top:3px"></div>
-		                        	<div style="font-size:1.3vh">${ book.author }</div>
+		                        	<div style="
+                                    font-size:1.2vh;
+                                    color:dimgray;
+                                    ">${ book.author }</div>
 		                        </div>
 		                    </div>
 		            	</c:forEach>
