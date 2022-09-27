@@ -9,7 +9,7 @@ public class BookDTO {
 	Long price;
 	Long deliveryFee;
 	Long estimatedDeliveryDate;
-	Long total_pages;
+	Long totalPages;
 	Long weight;
 	Long isbn;
 	String bookCategoryId;
@@ -38,7 +38,7 @@ public class BookDTO {
 		System.out.println(price);
 		System.out.println(deliveryFee);
 		System.out.println(estimatedDeliveryDate);
-		System.out.println(total_pages);
+		System.out.println(totalPages);
 		System.out.println(weight);
 		System.out.println(isbn);
 		System.out.println(bookCategoryId);
@@ -157,11 +157,11 @@ public class BookDTO {
 	}
 
 	public Long getTotal_pages() {
-		return total_pages;
+		return totalPages;
 	}
 
-	public void setTotal_pages(Long total_pages) {
-		this.total_pages = total_pages;
+	public void setTotal_pages(Long totalPages) {
+		this.totalPages = totalPages;
 	}
 
 	public Long getWeight() {
