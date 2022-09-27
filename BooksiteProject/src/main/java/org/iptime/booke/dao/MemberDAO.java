@@ -8,17 +8,6 @@ import org.iptime.booke.common.JDBConnect;
 import org.iptime.booke.dto.MemberDTO;
 
 public class MemberDAO extends JDBConnect {
-	public MemberDAO() {
-
-	}
-
-	public MemberDAO(String drv, String url, String id, String pw) {
-		super(drv, url, id, pw);
-	}
-
-	public MemberDAO(ServletContext application) {
-		super(application);
-	}
 
 	public MemberDTO getMemberDTO(String uid, String upass) {
 		MemberDTO dto = new MemberDTO();

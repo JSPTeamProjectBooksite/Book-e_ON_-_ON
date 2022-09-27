@@ -46,7 +46,7 @@
                         <td class="bookImg"><img src="${ book.image }" alt="상품 이미지"></td>
                         <td class="bookTitle">${ book.title }</td>
                         <td class="bookMoney">${ book.price }</td>
-                        <td class="bookCount"><input type="number" min="1" max="999" name="bookCount"></td>
+                        <td class="bookCount"><input type="number" min="1" max="999" name="bookCount" value="${ book.count }"></td>
                         <td class="bookMoneySum">14,000원</td>
                         <td class="bookDeliveryTime">평균 ${ book.estimatedDeliveryDate }일 소요</td>
                     </tr>
