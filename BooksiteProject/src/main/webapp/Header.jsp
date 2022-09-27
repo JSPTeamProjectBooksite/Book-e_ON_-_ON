@@ -17,7 +17,7 @@ System.out.println(userID + "jgjg" + login);
     nav{
     	margin: auto;
         width: 80vw;
-        min-width: 1200px
+        min-width: 800px
     }
     #headerTable{
         margin-top: 25px;
@@ -54,7 +54,7 @@ System.out.println(userID + "jgjg" + login);
 						//로그인값(false)이 아닐경우 출력됩니다.
 						%>
 					</th>
-					<th class="button"><a href="/shopcart">장바구니</a></th>
+					<th class="button"><a href="/cart/list">장바구니</a></th>
 
 					<%
 					if (login) {
