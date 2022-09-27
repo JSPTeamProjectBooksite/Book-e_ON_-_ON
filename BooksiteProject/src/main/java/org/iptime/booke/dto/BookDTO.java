@@ -23,6 +23,9 @@ public class BookDTO {
 	String registDate;
 	String updateDate;
 	String ad;
+	
+	// 장바구니 수량
+	Integer count;
 
 	public BookDTO() {}
 	
@@ -264,6 +267,15 @@ public class BookDTO {
 	public void setAd(String ad) {
 		this.ad = ad;
 	}
+
+	public Integer getCount() {
+		return count;
+	}
+
+	public void setCount(Integer count) {
+		this.count = count;
+	}
+	
 	
 	
 }

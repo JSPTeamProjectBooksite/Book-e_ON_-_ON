@@ -35,7 +35,6 @@ public class ShopCartController extends HttpServlet {
 		BookDAO bookDAO = new BookDAO();
 		
 		for(String id : bookIds) {
-			System.out.println(id);
 			Long idL = Long.valueOf(id);
 			BookDTO dto = bookDAO.readBook(idL);
 			bookList.add(dto);
