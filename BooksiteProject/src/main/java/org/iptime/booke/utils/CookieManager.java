@@ -24,6 +24,7 @@ public class CookieManager {
                 String cookieName = c.getName();
                 if (cookieName.equals(cName)) {
                     cookieValue = c.getValue();  // 반환 값 갱신
+                    break;
                 }
             }
         }
