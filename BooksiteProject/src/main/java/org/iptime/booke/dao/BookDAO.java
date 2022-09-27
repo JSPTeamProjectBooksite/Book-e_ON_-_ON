@@ -1,11 +1,26 @@
 package org.iptime.booke.dao;
 
-import java.sql.SQLException;
 
 import org.iptime.booke.common.DBConnPool;
 import org.iptime.booke.dto.BookDTO;
 
 public class BookDAO extends DBConnPool{
+	
+	public Long nextNumber() {
+		String query = "SELECT seq_board_num.nextval FROM DUAL";
+		
+		try {
+			psmt = con.prepareStatement(query);
+			rs = psmt.executeQuery();
+
+			rs.next();
+			return rs.getLong(1);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 1L;
+		}
+	}
 	
 	public BookDTO readBook(Long bId) {
 		BookDTO dto = new BookDTO();
@@ -33,11 +48,9 @@ public class BookDAO extends DBConnPool{
 			
 			return dto;
 			
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
-		
-		
 	}
 }
