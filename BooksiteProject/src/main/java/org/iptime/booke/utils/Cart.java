@@ -19,19 +19,20 @@ public class Cart extends HttpServlet {
 	private void cartCookie(HttpServletResponse response, String cName,
             String cValue, int cTime) {
 		Cookie cookie = new Cookie(cName, cValue); 
-        cookie.setPath("/shopcart");       
+//        cookie.setPath("/shopcart/");       
         cookie.setMaxAge(cTime);     
         response.addCookie(cookie); 
 	}
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String bookId = (String) request.getAttribute("bookId");
+		String bookId = (String) request.getParameter("bookId");
 		
 		if(bookId != null)
 			cartCookie(response, bookId, bookId, 7 * (24*60*60));
 		
-		response.getWriter().println("<script>history.break()</script>");
+		System.out.println("[쿠키 생성] bookId : "+ bookId);
+		response.getWriter().println("<script>history.back();</script>");
 	}
 	
 	@Override
@@ -41,11 +42,12 @@ public class Cart extends HttpServlet {
 
 	@Override
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String bookId = (String) request.getAttribute("bookId");
+		String bookId = (String) request.getParameter("bookId");
 		
 		if(bookId != null)
 			cartCookie(response, bookId, bookId, 0); 
 		
-		response.getWriter().println("<script>history.break()</script>");
+		System.out.println("[쿠키 제거] bookId : "+ bookId);
+		response.getWriter().println("<script>history.back();</script>");
 	}
 }

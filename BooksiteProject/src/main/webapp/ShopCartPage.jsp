@@ -11,15 +11,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/public.css">
-    <link rel="stylesheet" href="css/shopCartPage.css">
+    <link rel="stylesheet" href="/css/public.css">
+    <link rel="stylesheet" href="/css/shopCartPage.css">
     
     <script
         src="https://code.jquery.com/jquery-3.6.1.js"
         integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
         crossorigin="anonymous">
     </script>
-   	<script src="<c:url value="js/shopCartPage.js"><c:param name="dt" value="${nowDate}"/></c:url>"/>
+   	<script src="<c:url value="/js/shopCartPage.js"><c:param name="dt" value="${nowDate}"/></c:url>"/>
     </script>
     <!-- <script src="js/shopCartPage.js"></script> -->
     <title>장바구니</title>
@@ -42,7 +42,7 @@
                     </tr>
                     <c:forEach var="book" items="${bookList}">
                     <tr class="bookItem">
-                        <td class="bookCheck"><img src="source/ico/check_box_false.svg" alt="체크박스"><input id="check" name="check" type="checkbox"></td>
+                        <td class="bookCheck"><img src="/source/ico/check_box_false.svg" alt="체크박스"><input id="check" name="check" type="checkbox"></td>
                         <td class="bookImg"><img src="${ book.image }" alt="상품 이미지"></td>
                         <td class="bookTitle">${ book.title }</td>
                         <td class="bookMoney">${ book.price }</td>
