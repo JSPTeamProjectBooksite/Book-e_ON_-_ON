@@ -24,23 +24,23 @@ public class ShopCartController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		List<BookDTO> bookList = new ArrayList<BookDTO>();
-		
 //		String cValue = CookieManager.readCookie(request, "cart");
 		String cValue = "1/2/3/4/5/6/7";
 				
 		System.out.printf("[Cookie] cart : %s\n", cValue);
 		String[] bookIds = cValue.split("/");
 		
+		List<BookDTO> bookList = new ArrayList<BookDTO>();
 		BookDAO bookDAO = new BookDAO();
 		
 		for(String id : bookIds) {
 			Long idL = Long.valueOf(id);
 			BookDTO dto = bookDAO.readBook(idL);
+			dto.setCount(1);
 			bookList.add(dto);
 		}
 		bookDAO.close();
-
+		
 		request.setAttribute("bookList", bookList);
 
 		request.getRequestDispatcher("/ShopCartPage.jsp").forward(request, response);

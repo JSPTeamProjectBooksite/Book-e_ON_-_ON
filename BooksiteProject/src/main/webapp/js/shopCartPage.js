@@ -42,8 +42,6 @@ function selectBookGo(url, id){
 };
 */
 
-
-
 function addCartCookie(id){
 	let addId = id + "";
 	let cookie = getCookie("cart");
