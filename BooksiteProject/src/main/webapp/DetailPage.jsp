@@ -69,7 +69,7 @@
         }else if(btn=="pay"){
             document.getElementById("sendForm").action = "/payment";
         }else if(btn=="shopCart"){
-            document.getElementById("sendForm").action = "/shopcart";
+            document.getElementById("sendForm").action = "/cart/list";
         }
         document.getElementById("sendForm").submit();
     }

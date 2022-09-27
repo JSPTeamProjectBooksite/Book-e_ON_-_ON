@@ -1,21 +1,37 @@
 package org.iptime.booke.dao;
 
-import java.sql.SQLException;
 
 import org.iptime.booke.common.DBConnPool;
 import org.iptime.booke.dto.BookDTO;
 
 public class BookDAO extends DBConnPool{
-	public BookDTO readBook(int bId) {
-		BookDTO dto = null;
-		String query = "SELECT BID, IMAGE, TITLE, AUTHOR,TRANSLATOR, PRICE, DELIVERY_FEE, ESTIMATED_DELIVERY_DATE "
-					+ "FROM book_table "
-					+ "WHERE BID = ?;";
+	
+	public Long nextNumber() {
+		String query = "SELECT seq_board_num.nextval FROM DUAL";
 		
 		try {
-			stmt = con.prepareStatement(query);
+			psmt = con.prepareStatement(query);
+			rs = psmt.executeQuery();
+
+			rs.next();
+			return rs.getLong(1);
 			
-			psmt.setInt(1, bId);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 1L;
+		}
+	}
+	
+	public BookDTO readBook(Long bId) {
+		BookDTO dto = new BookDTO();
+		String query = "SELECT BID, IMAGE, TITLE, AUTHOR, TRANSLATOR, PRICE, DELIVERY_FEE, ESTIMATED_DELIVERY_DATE "
+				+ "FROM book_table "
+				+ "WHERE BID = ? ";
+		
+		try {
+			psmt = con.prepareStatement(query);
+			
+			psmt.setLong(1, bId);
 			
 			rs = psmt.executeQuery();
 
@@ -29,10 +45,12 @@ public class BookDAO extends DBConnPool{
 				dto.setDeliveryFee(rs.getLong("DELIVERY_FEE"));
 				dto.setEstimatedDeliveryDate(rs.getLong("ESTIMATED_DELIVERY_DATE"));
 			}
-		} catch (SQLException e) {
+			
+			return dto;
+			
+		} catch (Exception e) {
 			e.printStackTrace();
+			return null;
 		}
-		
-		return dto;
 	}
 }

@@ -6,24 +6,43 @@ import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.iptime.booke.dao.BookDAO;
 import org.iptime.booke.dto.BookDTO;
-import org.iptime.booke.utils.CookieManager;
 
 /**
  * Servlet implementation class ShopBasketController
  */
-@WebServlet("/shopcart")
+@WebServlet("/cart/list")
 public class ShopCartController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		List<BookDTO> bookList = daooo(request);
+		List<BookDTO> bookList = new ArrayList<BookDTO>();
+		BookDAO bookDAO = new BookDAO();
+		Long max = bookDAO.nextNumber();
+		
+		Cookie[] cookies = request.getCookies();		
+		for(Cookie ck : cookies) {
+			String val = ck.getValue();
+			
+			// 쿠키의 값이 숫자인지, 너무 높은지 낮은지 검사
+			if(!val.matches("^[0-9]+$")) continue;
+			Long idL = Long.valueOf(val);
+			if(idL >= max || 0 >= idL) continue;
+			
+			BookDTO dto = bookDAO.readBook(idL);
+			dto.setCount(1);
+			
+			bookList.add(dto);
+		}
+		bookDAO.close();
+		
 		request.setAttribute("bookList", bookList);
 
 		request.getRequestDispatcher("/ShopCartPage.jsp").forward(request, response);
@@ -32,22 +51,5 @@ public class ShopCartController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);
-	}
-
-	private List<BookDTO> daooo(HttpServletRequest request) {
-		List<BookDTO> bookList = new ArrayList<BookDTO>();
-		
-		String cValue = CookieManager.readCookie(request, "cart");
-				
-		// 책의 id를 입력받음
-		System.out.printf("[Cookie] cart : %s\n", cValue);
-
-
-		bookList.add(new BookDTO("source/book/기분이_태도가_되지_않으려면.png", "기분이 태도가 되지 않으려면", 14000L, 2L));
-		bookList.add(new BookDTO("source/book/기분이_태도가_되지_않으려면.png", "기분이 태도가 되지 않으려면", 14000L, 2L));
-		bookList.add(new BookDTO("source/book/기분이_태도가_되지_않으려면.png", "기분이 태도가 되지 않으려면", 14000L, 2L));
-		
-
-		return bookList;
 	}
 }
