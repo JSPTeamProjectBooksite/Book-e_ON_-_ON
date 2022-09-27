@@ -9,7 +9,7 @@ public class BookDTO {
 	Long price;
 	Long deliveryFee;
 	Long estimatedDeliveryDate;
-	Long total_pages;
+	Long totalPages;
 	Long weight;
 	Long isbn;
 	String bookCategoryId;
@@ -23,7 +23,39 @@ public class BookDTO {
 	String registDate;
 	String updateDate;
 	String ad;
+	
+	// 장바구니 수량
+	Integer count;
 
+<<<<<<< HEAD
+=======
+	public BookDTO() {}
+	
+	public void DTOPrintOut() {
+		System.out.println(bid);
+		System.out.println(image);
+		System.out.println(title);
+		System.out.println(author);
+		System.out.println(translator);
+		System.out.println(price);
+		System.out.println(deliveryFee);
+		System.out.println(estimatedDeliveryDate);
+		System.out.println(totalPages);
+		System.out.println(weight);
+		System.out.println(isbn);
+		System.out.println(bookCategoryId);
+		System.out.println(introduce);
+		System.out.println(introduceImage);
+		System.out.println(publisher);
+		System.out.println(publisherReview);
+		System.out.println(contents);
+		System.out.println(visit);
+		System.out.println(publicationDate);
+		System.out.println(registDate);
+		System.out.println(updateDate);
+		System.out.println(ad);
+	}
+>>>>>>> 01ae0dd929fd2cedb70a4bd10dd12a1318e69246
 	
 	//리스트 페이지
 	public BookDTO(Long bid, String title, String image, String author, String publisher, Long price, String ad,
@@ -128,11 +160,11 @@ public class BookDTO {
 	}
 
 	public Long getTotal_pages() {
-		return total_pages;
+		return totalPages;
 	}
 
-	public void setTotal_pages(Long total_pages) {
-		this.total_pages = total_pages;
+	public void setTotal_pages(Long totalPages) {
+		this.totalPages = totalPages;
 	}
 
 	public Long getWeight() {
@@ -238,6 +270,15 @@ public class BookDTO {
 	public void setAd(String ad) {
 		this.ad = ad;
 	}
+
+	public Integer getCount() {
+		return count;
+	}
+
+	public void setCount(Integer count) {
+		this.count = count;
+	}
+	
 	
 	
 }
