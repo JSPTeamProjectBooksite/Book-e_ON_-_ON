@@ -30,44 +30,4 @@ $(function (){
     $('.selectBookPaymentBtn').click(function(){ $('#cartForm').attr('action', './payment'); });
     $('.selectBookSaveBtn').click(function(){ $('#cartForm').attr('action', '#'); });
 });
-/* 
-function selectBookGo(url, id){
-	$('#form-id').attr('action', url);
-	
-	addCartCookie(id);
-	
-    if(confirm("장바구니에 추가됐습니다.\n장바구니로 이동하시겠습니까?")){
-		location.href = "./shopcart";
-	}
-};
-*/
-
-
-
-function addCartCookie(id){
-	let addId = id + "";
-	let cookie = getCookie("cart");
-	
-	if(cookie != null)
-		cookie = cookie + "/" + addId;
-	else
-		cookie = addId;
-	
-	setCookie("cart", cookie, 3);
-}
-
-
-// 쿠키 설정 setCookie('pop', 'event0405', 7); /* pop=event0405, 7일 뒤 만료됨 */
-function setCookie(name, value, exp) {
-    var date = new Date();
-    date.setTime(date.getTime() + exp * 24 * 60 * 60 * 1000);
-    document.cookie = name + '=' + value + ';expires=' + date.toUTCString() + ';path=/';
-}
-
-
-/* 쿠키 얻기 getCookie('pop');  결과: pop0405 */
-function getCookie(name) {
-  var value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
-  return value? value[2] : null;
-}
 
