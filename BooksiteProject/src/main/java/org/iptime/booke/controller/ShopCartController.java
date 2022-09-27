@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.iptime.booke.dao.BookDAO;
 import org.iptime.booke.dto.BookDTO;
-import org.iptime.booke.utils.CookieManager;
 
 /**
  * Servlet implementation class ShopBasketController

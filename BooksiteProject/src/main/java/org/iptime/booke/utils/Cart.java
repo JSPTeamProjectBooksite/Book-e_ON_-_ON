@@ -1,6 +1,7 @@
 package org.iptime.booke.utils;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -29,6 +30,8 @@ public class Cart extends HttpServlet {
 		
 		if(bookId != null)
 			cartCookie(response, bookId, bookId, 7 * (24*60*60));
+		
+		response.getWriter().println("<script>history.break()</script>");
 	}
 	
 	@Override
@@ -42,5 +45,7 @@ public class Cart extends HttpServlet {
 		
 		if(bookId != null)
 			cartCookie(response, bookId, bookId, 0); 
+		
+		response.getWriter().println("<script>history.break()</script>");
 	}
 }
