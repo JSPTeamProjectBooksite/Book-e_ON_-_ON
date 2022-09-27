@@ -18,7 +18,7 @@ System.out.println(recentURI+"해더");
     nav{
     	margin: auto;
         width: 80vw;
-        min-width: 1200px
+        min-width: 800px
     }
     #headerTable{
         margin-top: 25px;

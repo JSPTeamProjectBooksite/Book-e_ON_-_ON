@@ -6,12 +6,32 @@
 <head>
 <meta charset="UTF-8">
 <style>
+	#wrap{
+		margin: auto;
+		max-width: 1200px;
+		min-width: 800px;
+		background: white;
+	}
+	
+	#searchDiv{
+		margin: auto;
+		width: 90%;
+	}
+
     #searchListDiv{
+    	border: 1px solid black;
+    	background: lightgrey;
         display: grid;
         grid-template-columns: repeat(6, 1fr);
-        gap: 10px;
+        gap: 25px;
         align-items: end;
     }
+    
+    #searchListText{
+    	height:80px;
+    	text-align:center;
+    }
+    
 </style>
 <script type="text/javascript">
 	function goToDetailPage(bid){
@@ -22,9 +42,10 @@
 <title>검색 결과</title>
 </head>
 <body>
+	<%@include file="./Header.jsp" %>
     <div id="wrap">
         <!-- 검색창 -->
-        <form action="/list" style="margin-top: 100px;">
+        <form action="/list">
             <div style="height: 100px;">
                 <div style="height:70px; width: 700px; background:turquoise; margin: auto; padding: 10px; text-align: center; border-radius: 10px;">
                     <input type="text" name="search" style="width: 550px; height: 50px; font-size: 32px; border: none;">
@@ -56,19 +77,32 @@
             </div>
     
             <div id="searchListDiv">
-            	<c:forEach var="book" items="${searchList}">
-                    <div>
-                        <img src= ${ book.image } alt="${ book.title } 이미지" style="width: 100%;"
-                            onclick="goToDetailPage( ${ book.bid } )">
-                        <div style="height:80px; text-align:center;">
-                            ${ book.title }
-                            <br>
-                            ${ book.author }
-                        </div>
-                    </div>
-            	</c:forEach>
+            	<c:choose>
+            		<c:when test="${ empty searchList }">
+            			<div>
+            				검색된 도서가 없습니다.(-_-)
+            			</div>
+            		</c:when>
+            		<c:otherwise>
+            			<c:forEach var="book" items="${searchList}">
+		                    <div>
+		                        <img src= ${ book.image } alt="${ book.title } 이미지" style="width: 100%;"
+		                            onclick="goToDetailPage( ${ book.bid } )">
+		                        <div id="searchListText">
+		                        	<div style="font-size:1.3vh">${ book.title }</div>
+		                        	<div style="margin-top:3px"></div>
+		                        	<div style="font-size:1.3vh">${ book.author }</div>
+		                        </div>
+		                    </div>
+		            	</c:forEach>
+            		</c:otherwise>
+            	</c:choose>
             </div>
+           	<div style="text-align:center;">
+           		${ map.pagingImg }
+           	</div>
         </div>
     </div>
+    <%@include file="./Footer.jsp" %>
 </body>
 </html>
