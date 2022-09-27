@@ -13,7 +13,7 @@
     }
 
     #footerTable{
-        min-width: 1200px;
+        min-width: 800px;
         width: 80vw;
         height: 100%;
         margin:auto;
@@ -49,7 +49,7 @@
 <body>
     <footer>
         <div style="height: 350px;
-            min-width: 1200px;
+            min-width: 800px;
             background: #3A3C84;
             position: relative;
         ">
