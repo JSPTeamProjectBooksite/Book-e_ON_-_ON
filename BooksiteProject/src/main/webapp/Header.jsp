@@ -59,7 +59,7 @@ System.out.println(recentURI+"해더");
 						}
 						%>
 					</th>
-					<th class="button"><a href="/shopcart">장바구니</a></th>
+					<th class="button"><a href="/cart/list">장바구니</a></th>
 
 					<%
 					if (login) {
