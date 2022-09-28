@@ -157,9 +157,9 @@ public class MemberDAO extends JDBConnect {
 		return result;
 	}
 
-	public static void main(String[] args) {
-		MemberDAO dao = new MemberDAO();
-		dao.userInfo("green");
-	}
+//	public static void main(String[] args) {
+//		MemberDAO dao = new MemberDAO();
+//		dao.userInfo("green");
+//	}
 
 }
