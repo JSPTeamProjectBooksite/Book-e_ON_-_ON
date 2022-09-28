@@ -69,7 +69,7 @@
         }else if(btn=="pay"){
             document.getElementById("sendForm").action = "/payment";
         }else if(btn=="shopCart"){
-            document.getElementById("sendForm").action = "/cart/list";
+            document.getElementById("sendForm").action = "/cart?bookId=${receivedValue.bid}";
         }
         document.getElementById("sendForm").submit();
     }
