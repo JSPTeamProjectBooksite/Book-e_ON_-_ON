@@ -7,9 +7,8 @@ public class MemberDTO {
 	private String password;
 	private String phoneNumber;
 	private String address;
-
-	int orderQuantity;
-	String email;
+//    private int orderQuantity;
+	private String email;
 	
 	public MemberDTO() {
 		
@@ -20,7 +19,7 @@ public class MemberDTO {
 			String phoneNumber) {
 		this.name = name;
 		this.address = address;
-		this.orderQuantity = orderQuantity;
+//		this.orderQuantity = orderQuantity;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
 	}
@@ -91,13 +90,13 @@ public class MemberDTO {
 		this.address = address;
 	}
 
-	public int getOrderQuantity() {
-		return orderQuantity;
-	}
-
-	public void setOrderQuantity(int orderQuantity) {
-		this.orderQuantity = orderQuantity;
-	}
+//	public int getOrderQuantity() {
+//		return orderQuantity;
+//	}
+//
+//	public void setOrderQuantity(int orderQuantity) {
+//		this.orderQuantity = orderQuantity;
+//	}
 
 	public String getEmail() {
 		return email;
