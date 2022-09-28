@@ -24,7 +24,7 @@ public class BookDTO {
 	String updateDate;
 	String ad;
 	
-	// 장바구니 수량
+	// 장바구니 수량 22
 	Integer count;
 
 	public BookDTO() {}
