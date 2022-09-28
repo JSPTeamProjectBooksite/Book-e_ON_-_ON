@@ -7,11 +7,10 @@
 <meta charset="UTF-8">
 <style>
 	#wrap{
-		margin: auto;
-		max-width: 1200px;
-		min-width: 800px;
-		background: white;
-	}
+        margin: auto;
+        max-width: 1200px;
+        min-width: 800px;
+    }
 	
 	#searchDiv{
 		margin: auto;
@@ -23,7 +22,7 @@
     	background: lightgrey;
         display: grid;
         grid-template-columns: repeat(6, 1fr);
-        gap: 25px;
+        gap: 2vw;
         align-items: end;
     }
     
@@ -43,8 +42,8 @@
 <title>검색 결과</title>
 </head>
 <body>
-	<%@include file="./Header.jsp" %>
     <div id="wrap">
+		<%@include file="./Header.jsp" %>
         <!-- 검색창 -->
         <form action="/list">
             <div style="height: 100px;">
@@ -96,10 +95,10 @@
 		                        <img src= ${ book.image } alt="${ book.title } 이미지" style="width: 100%;"
 		                            onclick="goToDetailPage( ${ book.bid } )">
 		                        <div id="searchListText">
-		                        	<div style="font-size:1.3vh">${ book.title }</div>
-		                        	<div style="margin-top:3px"></div>
+		                        	<div style="font-size:14px">${ book.title }</div>
+		                        	<div style="height: 3px"></div>
 		                        	<div style="
-                                    font-size:1.2vh;
+                                    font-size:12px;
                                     color:dimgray;
                                     ">${ book.author }</div>
 		                        </div>
@@ -112,7 +111,7 @@
            		${ map.pagingImg }
            	</div>
         </div>
+	    <%@include file="./Footer.jsp" %>
     </div>
-    <%@include file="./Footer.jsp" %>
 </body>
 </html>

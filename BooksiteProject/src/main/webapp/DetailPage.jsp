@@ -11,11 +11,10 @@
 	    box-sizing: border-box;
 	}
 	
-	#contents{
+    #wrap{
         margin: auto;
-        background: white;
-        width: 1200px;
-        /* 이건 꼭넣을 것!! */
+        max-width: 1200px;
+        min-width: 800px;
     }
 	
 	#book_contents{
@@ -55,8 +54,27 @@
         font-size: 24px;
 	}
 
-
-
+    /* 임시 애니메이션 효과  */
+    .box2{
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border-radius: 10px;
+        border: 1px lightgray solid;
+    }
+    .animation_2{
+        transition: all 0.2s linear;
+    }
+    .animation_2:hover{
+        transform: scale( 1.1 ) skewY( -5deg );
+        box-shadow: 0px 0px 5px 3px #91b5ea;
+    }
+    .animation_3{
+        transition: all 0.1s linear;
+    }
+    .animation_3:hover{
+        box-shadow: 0px 0px 10px 5px lightgrey inset;
+        transform: scale( 1.03 );
+    }
 </style>
 <script type="text/javascript">
 	//타이틀 변경
@@ -114,7 +132,7 @@
                     font-size: 28px;
                 ">
                     <td rowspan="5">
-                        <img src="${ receivedValue.image }" style="
+                        <img class="animation_2 box2" src="${ receivedValue.image }" style="
                             max-height: 500px;
                         " id="image">
                     </td>
@@ -144,13 +162,13 @@
                 </tr>
                 <tr style="height: 120px;">
                     <td colspan="2">
-                        <span class="btnStyle" style="
+                        <span class="btnStyle animation_3" style="
                             background:skyblue;
                         " onclick="clickBtn('shopCart')" >장바구니 담기</span>
-                        <span class="btnStyle" style="
+                        <span class="btnStyle animation_3" style="
                             background:darksalmon;
                         " onclick="clickBtn('pay')" >바로 구매</span>
-                        <span class="btnStyle" style="
+                        <span class="btnStyle animation_3" style="
                             background:darkgray;
                         " onclick="clickBtn('locker')">보관함 저장</span>
                     </td>

@@ -4,11 +4,10 @@
     box-sizing: border-box;
 }
 
-#contents{
+#wrap{
     margin: auto;
-	background: white;
-	width: 1200px;
-	/* 이건 꼭넣을 것!! */
+    max-width: 1200px;
+    min-width: 800px;
 }
 
 #container{
