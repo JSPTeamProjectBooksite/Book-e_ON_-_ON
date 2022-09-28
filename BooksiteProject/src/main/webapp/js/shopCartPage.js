@@ -1,5 +1,9 @@
-const checkBoxTrueImg = "source/ico/check_box_true.svg";
-const checkBoxFalseImg = "source/ico/check_box_false.svg";
+const checkBoxTrueImg = getContextPath() + "/source/ico/check_box_true.svg";
+const checkBoxFalseImg = getContextPath() + "/source/ico/check_box_false.svg";
+
+function getContextPath() {
+  return sessionStorage.getItem("contextpath");
+}
 
 $(function (){   
     // 장바구니에 있는 책을 누르면 버튼처럼 작동됨
@@ -11,7 +15,8 @@ $(function (){
 
         // 체크박스 이미지 변경
        	let checkImg = $(this).find('.bookCheck > img');
-        checkImg.attr('src', (checkImg.attr("src") == checkBoxFalseImg) ? checkBoxTrueImg:checkBoxFalseImg); 
+       	let src = (checkImg.attr("src") == checkBoxFalseImg) ? checkBoxTrueImg:checkBoxFalseImg;
+        checkImg.attr('src', src); 
         
         // 체크박스 실제로 변경
         let checkInput = $(this).find("input:checkbox[id='check']");

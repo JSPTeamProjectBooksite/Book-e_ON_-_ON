@@ -19,9 +19,11 @@
         integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
         crossorigin="anonymous">
     </script>
-   	<script src="<c:url value="/js/shopCartPage.js"><c:param name="dt" value="${nowDate}"/></c:url>"/>
+    <script type="text/javascript"> 
+    	sessionStorage.setItem("contextpath", "${pageContext.request.contextPath}"); 
     </script>
-    <!-- <script src="js/shopCartPage.js"></script> -->
+    <script src="${pageContext.request.contextPath}/js/shopCartPage.js">
+    </script>
     <title>장바구니</title>
 </head>
 <body>
@@ -42,8 +44,8 @@
                     </tr>
                     <c:forEach var="book" items="${bookList}">
                     <tr class="bookItem">
-                        <td class="bookCheck"><img src="/source/ico/check_box_false.svg" alt="체크박스"><input id="check" name="check" type="checkbox"></td>
-                        <td class="bookImg"><img src="${ book.image }" alt="상품 이미지"></td>
+                        <td class="bookCheck"><img src="${pageContext.request.contextPath}/source/ico/check_box_false.svg" alt="체크박스"><input id="check" name="check" type="checkbox"></td>
+                        <td class="bookImg"><img src="${pageContext.request.contextPath}/${book.image}" alt="상품 이미지"></td>
                         <td class="bookTitle">${ book.title }</td>
                         <td class="bookMoney">${ book.price }</td>
                         <td class="bookCount"><input type="number" min="1" max="999" name="bookCount" value="${ book.count }"></td>

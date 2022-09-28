@@ -16,6 +16,9 @@ import org.iptime.booke.dto.BookDTO;
 
 /**
  * Servlet implementation class ShopBasketController
+ * 장바구니 쿠키의 구성
+ *  key : id
+ *  value : id/count (책id와 수량은 '/'으로 구분됨)
  */
 @WebServlet("/cart/list")
 public class ShopCartController extends HttpServlet {
@@ -23,28 +26,35 @@ public class ShopCartController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		
 		List<BookDTO> bookList = new ArrayList<BookDTO>();
 		BookDAO bookDAO = new BookDAO();
-		Long max = bookDAO.nextNumber();
 		
-		Cookie[] cookies = request.getCookies();		
-		for(Cookie ck : cookies) {
-			String val = ck.getValue();
-			
-			// 쿠키의 값이 숫자인지, 너무 높은지 낮은지 검사
-			if(!val.matches("^[0-9]+$")) continue;
-			Long idL = Long.valueOf(val);
-			if(idL >= max || 0 >= idL) continue;
-			
-			BookDTO dto = bookDAO.readBook(idL);
-			dto.setCount(1);
-			
-			bookList.add(dto);
+		Cookie[] cookies = request.getCookies();	
+		
+		if(cookies != null) {
+			for(Cookie ck : cookies) {
+				try {
+					String[] val = ck.getValue().split("/");
+					String id = val[0];
+					int count = Integer.parseInt(val[1]);
+					
+					Long idL = Long.valueOf(id);
+					
+					BookDTO dto = bookDAO.readBook(idL);
+					dto.setCount(count);
+					
+					bookList.add(dto);
+				} catch (Exception e) {
+					continue;
+				}
+			}
 		}
 		bookDAO.close();
 		
 		request.setAttribute("bookList", bookList);
-
+		response.setCharacterEncoding("utf-8");
 		request.getRequestDispatcher("/ShopCartPage.jsp").forward(request, response);
 	}
 
