@@ -16,7 +16,7 @@
 
 <body>
 	<div class="wrap">
-		<%@ include file="./Header.jsp"%>
+		<%@ include file="header.html"%>
 
 		<div class="block"></div>
 
@@ -42,7 +42,7 @@
 				<td></td>
 			</tr>
 		</table>
-		<%@ include file="./Footer.jsp"%>
+		<%@ include file="footer.html"%>
 	</div>
 </body>
 

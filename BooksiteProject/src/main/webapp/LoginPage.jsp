@@ -5,7 +5,8 @@
 
 <head>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap')
+	;
 </style>
 <link rel="stylesheet" href="css/Login.css">
 <meta charset="UTF-8">
@@ -24,11 +25,12 @@
 			<div>
 				<input class="init" type="password" placeholder="PW" name="user_pw">
 			</div>
-			<div class="group">	
-				<a href="#">아이디 찾기</a> <a href="#">비밀번호 찾기</a>
+			<div class="group">
+				<a href="./findID">아이디 찾기</a> <a href="./findPassword">비밀번호 찾기</a>
 			</div>
-			<input class="submit" type="submit" value="Login"> 
-			<input class="button" type="button" value="회원가입" onclick="location.href='./Register.jsp'">
+			<input class="submit" type="submit" value="Login"> <input
+				class="button" type="button" value="회원가입"
+				onclick="location.href='./Register.jsp'">
 		</form>
 	</div>
 </body>

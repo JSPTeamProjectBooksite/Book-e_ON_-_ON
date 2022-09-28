@@ -1,30 +1,43 @@
 package org.iptime.booke.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.servlet.jsp.JspWriter;
 
-@WebServlet("/logout")
-public class LogoutController extends HttpServlet {
+import org.iptime.booke.dao.MemberDAO;
+import org.iptime.booke.dto.MemberDTO;
+
+@WebServlet("/userInfo")
+public class UserInfoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		session.removeAttribute("user_id");
 
-		PrintWriter out = response.getWriter();
-		out.println("<script> history.back(); location.reload();</script>");
+		String UserId = (String) session.getAttribute("user_id");
+		System.out.println(UserId);
 
+		session.setAttribute("user_id", UserId);
+
+		MemberDAO dao = new MemberDAO();
+
+		MemberDTO userInfo = dao.userInfo((String)session.getAttribute("user_id"));
+		System.out.println(userInfo);
+		dao.close();
+
+		request.setAttribute("userInfo", userInfo);
+		request.getRequestDispatcher("./UserInfo.jsp").forward(request, response);
 	}
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);

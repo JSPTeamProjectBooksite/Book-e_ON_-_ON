@@ -27,8 +27,6 @@ public class BookDTO {
 	// 장바구니 수량
 	Integer count;
 
-<<<<<<< HEAD
-=======
 	public BookDTO() {}
 	
 	public void DTOPrintOut() {
@@ -55,7 +53,6 @@ public class BookDTO {
 		System.out.println(updateDate);
 		System.out.println(ad);
 	}
->>>>>>> 01ae0dd929fd2cedb70a4bd10dd12a1318e69246
 	
 	//리스트 페이지
 	public BookDTO(Long bid, String title, String image, String author, String publisher, Long price, String ad,

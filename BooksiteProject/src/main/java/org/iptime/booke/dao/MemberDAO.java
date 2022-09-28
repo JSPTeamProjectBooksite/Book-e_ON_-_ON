@@ -57,8 +57,6 @@ public class MemberDAO extends JDBConnect {
 		return result;
 	}
 
-<<<<<<< HEAD
-=======
 	public String findId(String member_name, String member_address) {
 		String mid = null;
 
@@ -164,5 +162,4 @@ public class MemberDAO extends JDBConnect {
 		dao.userInfo("green");
 	}
 
->>>>>>> 01ae0dd929fd2cedb70a4bd10dd12a1318e69246
 }
