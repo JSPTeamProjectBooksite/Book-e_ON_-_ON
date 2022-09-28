@@ -37,6 +37,7 @@
 	function goToDetailPage(bid){
         document.mainPageForm.BID.value = bid;
         document.getElementById("BIDform").submit();
+        
 	}
 </script>
 <title>검색 결과</title>

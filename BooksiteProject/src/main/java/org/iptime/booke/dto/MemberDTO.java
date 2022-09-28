@@ -7,13 +7,9 @@ public class MemberDTO {
 	private String password;
 	private String phoneNumber;
 	private String address;
-	
-	// 결제페이지
-//	String name; // title 아니고 주문자 성명
-//	String address;
+
 	int orderQuantity;
 	String email;
-//	String phoneNumber;
 	
 	public MemberDTO() {
 		
