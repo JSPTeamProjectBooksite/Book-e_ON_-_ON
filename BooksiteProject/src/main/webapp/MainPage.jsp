@@ -50,7 +50,7 @@
                             <img src= ${ slideList[2].image } class="bookImageStyle" id="index2" alt="" onclick="clickSlide(2)">
                         </th>
                         <th style="width: 15%;" class="bookTh">
-                            <img src= ${ slideList[3].image } class="bookImageStyle" id="index3" alt="" onclick="goToDetailPage(${ slideList[3].bid })">
+                            <img src= ${ slideList[3].image } class="bookImageStyle" id="index3" alt="" onclick="goToDetailPage(${ slideList[3].BID })">
                         </th>
                         <th class="bookTh">
                             <img src= ${ slideList[4].image } class="bookImageStyle" id="index4" alt="" onclick="clickSlide(4)">
@@ -86,7 +86,7 @@
         </div>
     
         <!-- 검색창 -->
-        <form action="/list" style="margin-top: 100px;">
+        <form action="/main" style="margin-top: 100px;">
             <div style="height: 100px;">
                 <div style="height:70px; width: 700px; background:turquoise; margin: auto; padding: 10px; text-align: center; border-radius: 10px;">
                     <input type="text" name="search" style="width: 550px; height: 50px; font-size: 32px; border: none;">
@@ -117,7 +117,7 @@
 	                    <tr>
 	                        <td class="bookImageTd">
 	                            <img src= ${ book.image } alt="" style="width: 100%;"
-	                            	onclick="goToDetailPage(${ book.bid })">
+	                            	onclick="goToDetailPage(${ book.BID })">
 	                        </td>
 	                    </tr>
 	                    <tr>
@@ -171,7 +171,7 @@
                     	<c:forEach var="book" items="${popularList}">
 	                        <td class="bookImageTd" style="width: 200px;">
 	                            <img id="popularityBookImage_0" alt="" src=${ book.image }  style="width: 100%;"
-	                            	onclick="goToDetailPage(${ book.bid })">
+	                            	onclick="goToDetailPage(${ book.BID })">
 	                        </td>
                     	</c:forEach>
                     </tr>

@@ -67,7 +67,7 @@
         if(btn=="locker"){
             document.getElementById("sendForm").action = "./Locker.jsp";
         }else if(btn=="pay"){
-            document.getElementById("sendForm").action = "/payment";
+            document.getElementById("sendForm").action = "/paymentPage";
         }else if(btn=="shopCart"){
             document.getElementById("sendForm").action = "/cart/list";
         }
@@ -133,7 +133,7 @@
                     <td colspan="2">
                         <form action="" method="get" id="sendForm">
                         	<!-- 선택한 책과 갯수를 다음 폼에 전송 -->
-                            <input type="hidden" name="BID" value="${ receivedValue.bid }">
+                            <input type="hidden" name="BID" value="${ receivedValue.BID }">
                             선택 수량: <input type="number" style="
                             width: 60px; 
                             height: 38px; 
