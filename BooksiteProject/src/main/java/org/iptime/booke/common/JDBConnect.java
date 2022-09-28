@@ -6,8 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import javax.servlet.ServletContext;
-
 public class JDBConnect {
 	public Connection con;
 	public Statement stmt;
