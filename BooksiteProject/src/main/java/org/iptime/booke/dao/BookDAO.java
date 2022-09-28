@@ -43,7 +43,7 @@ public class BookDAO extends DBConnPool{
 				dto.setTranslator(rs.getString("TRANSLATOR"));
 				dto.setPrice(rs.getLong("PRICE"));
 				dto.setDeliveryFee(rs.getLong("DELIVERY_FEE"));
-				dto.setEstimatedDeliveryDate(rs.getLong("ESTIMATED_DELIVERY_DATE"));
+				dto.setEstimatedDeliveryDate(rs.getString("ESTIMATED_DELIVERY_DATE"));
 			}
 			
 			return dto;
