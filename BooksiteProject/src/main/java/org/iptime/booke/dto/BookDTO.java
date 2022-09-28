@@ -8,7 +8,7 @@ public class BookDTO {
 	String translator;
 	Long price;
 	Long deliveryFee;
-	Long estimatedDeliveryDate;
+	String estimatedDeliveryDate;
 	Long totalPages;
 	Long weight;
 	Long isbn;
@@ -77,7 +77,7 @@ public class BookDTO {
 	}
 
 	// 장바구니페이지
-	public BookDTO(String image, String title, Long price, Long estimatedDeliveryDate) {
+	public BookDTO(String image, String title, Long price, String estimatedDeliveryDate) {
 		super();
 		this.image = image;
 		this.title = title;
@@ -148,11 +148,11 @@ public class BookDTO {
 		this.deliveryFee = deliveryFee;
 	}
 
-	public Long getEstimatedDeliveryDate() {
+	public String getEstimatedDeliveryDate() {
 		return estimatedDeliveryDate;
 	}
 
-	public void setEstimatedDeliveryDate(Long estimatedDeliveryDate) {
+	public void setEstimatedDeliveryDate(String estimatedDeliveryDate) {
 		this.estimatedDeliveryDate = estimatedDeliveryDate;
 	}
 
