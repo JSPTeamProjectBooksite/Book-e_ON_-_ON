@@ -46,15 +46,15 @@
 				<tbody>
 					<tr>
 						<th>보내는 분</th>
-						<td>${paymentDTO.name}</td>
+						<td>${MemberDTO.name}</td>
 					</tr>
 					<tr>
 						<th>휴대폰</th>
-						<td>${paymentDTO.phoneNumber}</td>
+						<td>${MemberDTO.phoneNumber}</td>
 					</tr>
 					<tr>
 						<th>이메일</th>
-						<td>${paymentDTO.email}</td>
+						<td>${MemberDTO.email}</td>
 					</tr>
 				</tbody>
 			</table>
@@ -70,7 +70,7 @@
 				<tbody>
 					<tr>
 						<th>배송지</th>
-						<td class="block1">[기본배송지]<br>${paymentDTO.address}
+						<td class="block1">[기본배송지]<br>${MemberDTO.address}
 							그린아카데미
 						</td>
 					</tr>
@@ -96,7 +96,7 @@
 					<tr>
 						<td class="img"><img
 							src="/source/book/하루도_쉬운_날이_없어_Ver02.JPG"></td>
-						<td>[${paymentDTO.kind}] {paymentDTO.title}
+						<td>[${paymentDTO.kind}] ${paymentDTO.title}
 							<p style="color: rgb(252, 69, 69);">상품 금액 :
 								${paymentDTO.price}원 | 수량 : ${paymentDTO.orderQuantity}개</p>
 						</td>
