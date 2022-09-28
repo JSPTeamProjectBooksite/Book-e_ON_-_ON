@@ -35,7 +35,7 @@ public class Cart extends HttpServlet {
 		if(bookId != null)
 			cartCookie(response, bookId, bookCookie, 7 * (24*60*60));
 		
-		System.out.printf("[쿠키 생성] %s : %s ", bookId, bookCookie);
+		System.out.printf("[쿠키 생성] %s : %s \n", bookId, bookCookie);
 		response.getWriter().println("<script>history.back();</script>");
 	}
 	

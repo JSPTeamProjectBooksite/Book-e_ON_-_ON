@@ -19,7 +19,7 @@ $(function (){
         checkImg.attr('src', src); 
         
         // 체크박스 실제로 변경
-        let checkInput = $(this).find("input:checkbox[id='check']");
+        let checkInput = $(this).find("input:checkbox[type='checkbox']");
         checkInput.prop('checked', !checkInput.is(":checked"));
         
         // 버튼 클릭 효과
@@ -32,7 +32,7 @@ $(function (){
     
     
     // submit 버튼들 
-    $('.selectBookPaymentBtn').click(function(){ $('#cartForm').attr('action', './payment'); });
+    $('.selectBookPaymentBtn').click(function(){ $('#cartForm').attr('action', '/payment'); });
     $('.selectBookSaveBtn').click(function(){ $('#cartForm').attr('action', '#'); });
 });
 
