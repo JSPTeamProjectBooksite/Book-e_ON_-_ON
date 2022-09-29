@@ -2,6 +2,10 @@ package org.iptime.booke.dto;
 
 public class PaymentDTO {
 
+	/**
+	 * 
+	 */
+	String id;
 	String name;
 	String phoneNumber;
 	String email;
@@ -15,9 +19,10 @@ public class PaymentDTO {
 	public PaymentDTO() {
 	}
 
-	public PaymentDTO(String name, String phoneNumber, String email, String address, String image, String kind,
+	public PaymentDTO(String id, String name, String phoneNumber, String email, String address, String image, String kind,
 			String title, Long price, int orderQuantity) {
 
+		this.id = id;
 		this.name = name;
 		this.phoneNumber = phoneNumber;
 		this.email = email;
@@ -100,4 +105,14 @@ public class PaymentDTO {
 	public void setOrderQuantity(int orderQuantity) {
 		this.orderQuantity = orderQuantity;
 	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+	
+	
 }

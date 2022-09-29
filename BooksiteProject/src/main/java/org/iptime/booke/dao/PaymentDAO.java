@@ -11,7 +11,7 @@ public class PaymentDAO extends DBConnPool {
 	public List<MemberDTO> selectList() {
 		List<MemberDTO> list = new ArrayList<>();
 
-		String sql = "SELECT NAME, PHONENUMBER, EMAIL, ADDRESS " + "FROM TBL_USER" + "WHERE NAME = ?";
+		String sql = "SELECT ID, NAME, PHONENUMBER, EMAIL, ADDRESS " + "FROM TBL_USER" + "WHERE ID = ?";
 
 		try {
 			psmt = con.prepareStatement(sql);
@@ -20,6 +20,7 @@ public class PaymentDAO extends DBConnPool {
 			while (rs.next()) {
 				MemberDTO dto = new MemberDTO();
 
+				dto.setId(rs.getString("ID"));
 				dto.setName(rs.getString("NAME"));
 				dto.setPhoneNumber(rs.getString("PHONENUMBER"));
 				dto.setEmail(rs.getString("EMAIL"));

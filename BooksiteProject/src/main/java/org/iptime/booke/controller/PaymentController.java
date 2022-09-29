@@ -21,7 +21,11 @@ public class PaymentController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		PaymentDAO dao = new PaymentDAO();
-		
-		
+
+		String[] id = req.getParameterValues("selectedBooks");
+		for (String i : id) {
+			System.out.println(i);
+		}
+
 	}
 }
