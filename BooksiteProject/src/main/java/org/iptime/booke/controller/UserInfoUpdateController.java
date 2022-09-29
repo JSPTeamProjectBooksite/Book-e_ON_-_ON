@@ -34,8 +34,7 @@ public class UserInfoUpdateController extends HttpServlet {
 		if (iResult == 1) {
 			System.out.println("회원정보 수정 성공!!!");
 			System.out.println("비밀번호가 성공적으로 변경되었습니다. 다시 로그인 해주세요.");
-			response.sendRedirect("./login");
-			
+			response.sendRedirect("./login");			
 		} else {
 			System.out.println("회원정보 수정 실패!!!");
 		}
