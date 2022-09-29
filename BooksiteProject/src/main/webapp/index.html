@@ -68,8 +68,9 @@
 	<div id="content">
 		<table style="margin:auto; width: 100%; background:lightgrey">
 			<tr>
-				<td rowspan="2" style="width: 50%;">
-					<img style="width: 100%;" src="./source/etc/커밋권장_포스터.png" alt="커밋 권장 포스터(?)">
+				<td rowspan="2" style="width: 50%; margin: auto;">
+					<b onclick="changeImage()">저희 조를 소개합니다.(클릭)<b>
+					<img style="width: 100%;" src="" alt="커밋 권장 포스터(?)" id="titleImg">
 				</td>
 				<td style="vertical-align:top">
 					<hr>
@@ -120,4 +121,33 @@
 	<div style="height: 100px"></div>
 </div>
 </body>
+<script>
+	const imgList = [
+		"./source/etc/커밋권장.png",
+		"./source/etc/오체풀만족.png"
+	];
+	var index = randomNum(imgList.length);
+
+	document.getElementById("titleImg").src = imgList[index];
+
+	function changeImage(){
+		var ranNum;
+
+		while(imgList.length != 1){
+			ranNum = randomNum(imgList.length);
+
+			if(index != ranNum){
+				index = ranNum;
+				break;
+			}
+		}
+
+		document.getElementById("titleImg").src = imgList[index];
+	}
+
+	function randomNum(num){
+		return Math.floor(Math.random() * num);
+	}
+
+</script>
 </html>

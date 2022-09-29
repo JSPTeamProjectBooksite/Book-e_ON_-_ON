@@ -17,6 +17,21 @@
         document.getElementById("BIDform").submit();
 	}
 </script> 
+<!-- 임시 애니메이션 스타일 -->
+<style>
+    .animation_1{
+        transition: all 0.05s linear;
+    }
+    .animation_1:hover{
+        transform: scale( 1.1 );
+        box-shadow: 0px 0px 5px 3px #91b5ea;
+    }
+    .imgBox1{
+        border-radius: 15px;
+        border: 1px lightgray solid;
+    }
+</style>
+
 </head>
 <body>
 <!-- 메인 -->
@@ -34,48 +49,46 @@
         <!-- 슬라이드 광고 -->
 
         <div>
-            <div>
-                <table id="slideTable">
-                    <tr>
-                        <th rowspan="2" style="width: 5%;">
-                            <input type="button" value="앞으로" onclick="clickBefore()">
-                        </th>
-                        <th class="bookTh">
-                            <img src= ${ slideList[0].image } class="bookImageStyle" id="index0" alt="" onclick="clickSlide(0)">
-                        </th>
-                        <th class="bookTh">
-                            <img src= ${ slideList[1].image } class="bookImageStyle" id="index1" alt="" onclick="clickSlide(1)">
-                        </th>
-                        <th class="bookTh">
-                            <img src= ${ slideList[2].image } class="bookImageStyle" id="index2" alt="" onclick="clickSlide(2)">
-                        </th>
-                        <th style="width: 15%;" class="bookTh">
-                            <img src= ${ slideList[3].image } class="bookImageStyle" id="index3" alt="" onclick="goToDetailPage(${ slideList[3].bid })">
-                        </th>
-                        <th class="bookTh">
-                            <img src= ${ slideList[4].image } class="bookImageStyle" id="index4" alt="" onclick="clickSlide(4)">
-                        </th>
-                        <th class="bookTh">
-                            <img src= ${ slideList[5].image } class="bookImageStyle" id="index5" alt="" onclick="clickSlide(5)">
-                        </th>
-                        <th class="bookTh">
-                            <img src= ${ slideList[6].image } class="bookImageStyle" id="index6" alt="" onclick="clickSlide(6)">
-                        </th>
-                        <th rowspan="2" style="width: 5%;">
-                            <input type="button" value="뒤로" onclick="clickNext()">
-                        </th>
-                    </tr>
-                    <tr>
-                        <td>${ slideList[0].title }</td>
-                        <td>${ slideList[1].title }</td>
-                        <td>${ slideList[2].title }</td>
-                        <td>${ slideList[3].title }</td>
-                        <td>${ slideList[4].title }</td>
-                        <td>${ slideList[5].title }</td>
-                        <td>${ slideList[6].title }</td>
-                    </tr>
-                </table>
-            </div>
+            <table id="slideTable">
+                <tr>
+                    <th rowspan="2" style="width: 5%;">
+                        <input type="button" value="앞으로" onclick="clickBefore()">
+                    </th>
+                    <th class="bookTh">
+                        <img src= ${ slideList[0].image } class="bookImageStyle" id="index0" alt="" onclick="clickSlide(0)">
+                    </th>
+                    <th class="bookTh">
+                        <img src= ${ slideList[1].image } class="bookImageStyle" id="index1" alt="" onclick="clickSlide(1)">
+                    </th>
+                    <th class="bookTh">
+                        <img src= ${ slideList[2].image } class="bookImageStyle" id="index2" alt="" onclick="clickSlide(2)">
+                    </th>
+                    <th style="width: 15%;" class="bookTh">
+                        <img src= ${ slideList[3].image } class="bookImageStyle" id="index3" alt="" onclick="goToDetailPage(${ slideList[3].bid })">
+                    </th>
+                    <th class="bookTh">
+                        <img src= ${ slideList[4].image } class="bookImageStyle" id="index4" alt="" onclick="clickSlide(4)">
+                    </th>
+                    <th class="bookTh">
+                        <img src= ${ slideList[5].image } class="bookImageStyle" id="index5" alt="" onclick="clickSlide(5)">
+                    </th>
+                    <th class="bookTh">
+                        <img src= ${ slideList[6].image } class="bookImageStyle" id="index6" alt="" onclick="clickSlide(6)">
+                    </th>
+                    <th rowspan="2" style="width: 5%;">
+                        <input type="button" value="뒤로" onclick="clickNext()">
+                    </th>
+                </tr>
+                <tr>
+                    <td>${ slideList[0].title }</td>
+                    <td>${ slideList[1].title }</td>
+                    <td>${ slideList[2].title }</td>
+                    <td>${ slideList[3].title }</td>
+                    <td>${ slideList[4].title }</td>
+                    <td>${ slideList[5].title }</td>
+                    <td>${ slideList[6].title }</td>
+                </tr>
+            </table>
             <div style="
             	text-align: center;
                 font-size: 24px;
@@ -170,7 +183,7 @@
                     <tr>
                     	<c:forEach var="book" items="${popularList}">
 	                        <td class="bookImageTd" style="width: 200px;">
-	                            <img id="popularityBookImage_0" alt="" src=${ book.image }  style="width: 100%;"
+	                            <img class="animation_1 imgBox1" id="popularityBookImage_0" alt="" src=${ book.image }  style="width: 100%;"
 	                            	onclick="goToDetailPage(${ book.bid })">
 	                        </td>
                     	</c:forEach>

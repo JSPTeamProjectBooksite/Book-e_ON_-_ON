@@ -12,17 +12,16 @@ System.out.println(recentURI+"해더");
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-    body{
-        background: #c1adff;
-    }
-    nav{
-    	margin: auto;
-        width: 80vw;
-        min-width: 800px
-    }
+	header{
+		background: linear-gradient(to left, #d6fcfc, #91eaea);
+		margin: auto;
+		min-width: 800px;
+		height: 100px;
+		border-radius: 0px 0px 15px 15px;
+		box-shadow: 10px 5px 15px 3px #91b5ea;
+		margin-bottom: 25px;
+	}
     #headerTable{
-        margin-top: 25px;
-        margin-bottom: 25px;
         width: 100%;
         height: 100%;
     }
@@ -31,6 +30,7 @@ System.out.println(recentURI+"해더");
         font-size: 32px;
         font-family: sans-serif;
         color: white;
+        text-shadow: 3px 2px 2px #91b5ea;
     }
     .button{
         width: 75px;
@@ -39,42 +39,43 @@ System.out.println(recentURI+"해더");
 </head>
 <body>
 	<header>
-		<nav>
-			<table id="headerTable">
-				<tr>
-					<th style="text-align: left;">
-						<h3 id="logo">BOOK-e On & On</h3>
-					</th>
-					<th class="button">버튼1
-					<th style="text-align: right;">
-						<%
-						if (login) {
-							out.print("\"" + userID + "\"님이 접속하셨습니다.");
-						//최상단부 스크립틀릿에 보시면 세션에서 로그인 됐을 경우 아이디가 저장돼있습니다.
-						//로그인값(false)이 아닐경우 출력됩니다.
-						%>
-						<br>
-						<a href="/userInfo">마이페이지</a>
-						<%
-						}
-						%>
-					</th>
-					<th class="button"><a href="/cart/list">장바구니</a></th>
-
+		<table id="headerTable">
+			<tr>
+				<th style="width: 20px;"></th>
+				<th style="text-align: left;">
+					<h3 id="logo">BOOK-e On & On</h3>
+				</th>
+				<th class="button">버튼1
+				<th style="text-align: right;">
 					<%
 					if (login) {
+						out.print("\"" + userID + "\"님이 접속하셨습니다.");
+					//최상단부 스크립틀릿에 보시면 세션에서 로그인 됐을 경우 아이디가 저장돼있습니다.
+					//로그인값(false)이 아닐경우 출력됩니다.
 					%>
-					<th class="button"><a href="/logout">로그아웃</a></th>
-					<%
-					} else {
-					%>
-					<th class="button"><a href="/login?from=<%=recentURI%>">로그인</a></th>
+					<br>
+					<a href="/userInfo">마이페이지</a>
 					<%
 					}
 					%>
-				</tr>
-			</table>
-		</nav>
+				</th>
+				<th class="button"><a href="/cart/list">장바구니</a></th>
+
+				<%
+				if (login) {
+				%>
+				<th class="button"><a href="/logout">로그아웃</a></th>
+				<%
+				} else {
+				%>
+				<th class="button"><a href="/login?from=<%=recentURI%>">로그인</a></th>
+				<%
+				}
+				%>
+				<th style="width: 20px;"></th>
+			</tr>
+			<tr style="height: 15px;"></tr>
+		</table>
 	</header>
 </body>
 </html>

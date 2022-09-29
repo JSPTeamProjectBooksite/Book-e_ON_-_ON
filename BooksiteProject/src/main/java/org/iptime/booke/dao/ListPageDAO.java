@@ -54,15 +54,10 @@ public class ListPageDAO extends DBConnPool{
 				+ " WHERE rNum BETWEEN ? AND ?";
 		
 		try {
-			System.out.println("됐냐?1");
 			psmt = con.prepareStatement(query);
-			System.out.println("됐냐?2");
 			psmt.setString(1, map.get("start").toString());
-			System.out.println("됐냐?3");
 			psmt.setString(2, map.get("end").toString());
-			System.out.println("됐냐?4");
 			rs = psmt.executeQuery();
-			System.out.println("됐냐?5");
 			
 			while(rs.next()) {
 				BookDTO dto = new BookDTO();
@@ -78,7 +73,7 @@ public class ListPageDAO extends DBConnPool{
 				
 				board.add(dto);
 				
-				dto.DTOPrintOut();
+//				dto.DTOPrintOut();
 			}
 		}catch (Exception e) {
 			System.out.println("게시물 조회 중 예외 발생");
