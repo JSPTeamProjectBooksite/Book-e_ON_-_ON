@@ -26,34 +26,44 @@
     <div id="wrap">
 		<%@ include file="Header.jsp" %>
         <main>
+           	<!-- 장바구니 책 리스트 -->
             <div class="cart">
-            	<h1 class="cartTitle">장바구니</h1>
-
+			
                 <form id="cartForm" action="" method="POST">
 	                <input type="hidden" name="_method" value="POST">
 	                <table class="bookList">
+            			<caption class="cartTitle">장바구니</caption>
 	                    <tr>
-	                        <th colspan="3">상품정보</th>
-	                        <th>판매가</th>
-	                        <th>주문수량</th>
-	                        <th>합계</th>
-	                        <th>배송일정</th>
-	                        <th></th>
+	                        <th colspan="3" class="thBookInfo">상품정보</th>
+	                        <th class="thBookPrice">판매가</th>
+	                        <th class="thBookCount">주문수량</th>
+	                        <th class="thBookPriceSum">합계</th>
+	                        <th class="thBookDeliveryDate">배송일정</th>
 	                    </tr>
+	                    
+	                    <!-- 장바구니 안에 아무 것도 없을 때 -->
+	                    <c:if test="${empty bookList}">
+	                    <tr>
+	                    	<td colspan="7" style="height:200px; text-align: center;">장바구니 안에 아무 것도 없습니다..</td>
+	                    </tr>
+	                    </c:if>
+	                    
 	                    <c:forEach var="book" items="${bookList}">
 	                    <tr class="bookItem ">
 	                        <td class="bookCheck"><img src="${pageContext.request.contextPath}/source/ico/check_box_false.svg" alt="체크박스"><input class="bookCheckBox" name="selectedBooks" type="checkbox" value="${ book.bid }"></td>
 	                        <td class="bookImg"><img src="${pageContext.request.contextPath}/${book.image}" alt="상품 이미지"></td>
 	                        <td class="bookTitle">${ book.title }</td>
-	                        <td class="bookMoney">${ book.price }</td>
+	                        <td class="bookPrice">${ book.price }</td>
 	                        <td class="bookCount"><input type="number" min="1" max="999" name="bookCount" value="${ book.count }"></td>
-	                        <td class="bookMoneySum">14,000원</td>
-	                        <td class="bookDeliveryTime">평균 ${ book.estimatedDeliveryDate }일 소요</td>
+	                        <td class="bookPriceSum">14,000원</td>
+	                        <td class="bookDeliveryDate">평균 ${ book.estimatedDeliveryDate }일 소요</td>
 	                        <td class="bookDelete"><button type="button" class="bookDeleteBtn">X</button></td>
 	                    </tr>
 	                    </c:forEach>
 	                </table>
             	</form>
+            	
+            	<!-- 가격표 -->
                 <table class="selectBookMoney">
                     <tr>
                         <th>상품금액</th>

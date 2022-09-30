@@ -16,6 +16,11 @@
         max-width: 1200px;
         min-width: 800px;
     }
+    #contents{
+        width: 90%;
+        min-width: 800px;
+        margin: auto;
+    }
 	
 	#book_contents{
         max-width: 100%;
@@ -26,11 +31,11 @@
     }
     .btnStyle{
         text-align: center;
-        padding: 13px 0;
         display: inline-block;
-        width: 250px; 
+        width: 100%; 
         height: 60px;
         border-radius: 10px;
+        padding: 14px;
     }
 
 	#footer{
@@ -54,10 +59,15 @@
         font-size: 24px;
 	}
 
+    .tableMenu{
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        /* align-items: start; */
+        gap: 5px;
+    }
+
     /* 임시 애니메이션 효과  */
     .box2{
-        margin-top: 10px;
-        margin-bottom: 10px;
         border-radius: 10px;
         border: 1px lightgray solid;
     }
@@ -66,7 +76,7 @@
     }
     .animation_2:hover{
         transform: scale( 1.1 ) skewY( -5deg );
-        box-shadow: 0px 0px 5px 3px #91b5ea;
+        box-shadow: -20px -5px 10px 10px #91b5ea;
     }
     .animation_3{
         transition: all 0.1s linear;
@@ -125,30 +135,42 @@
             <table id="book_contents" style="
                 width: 100%;
                    font-weight: 600;
-                   font-size: 24px;
+                   font-size: 22px;
             ">
                 <tr style="
                     font-weight: 800;
-                    font-size: 28px;
+                    font-size: 24px;
                 ">
-                    <td rowspan="5">
+                    <td rowspan="5" style="width: 10%;">
                         <img class="animation_2 box2" src="${ receivedValue.image }" style="
                             max-height: 500px;
                         " id="image">
                     </td>
-                    <td>판매가</td>
-                    <td id="prise">${ bookPrice } 원</td>
+                    <td>
+                        <div class="tableMenu">
+                            <div>판매가</div>
+                            <div>${ bookPrice } 원</div>
+                        </div>
+                    </td>
                 </tr>
                 <tr>
-                    <td>배송료</td>
-                    <td>On&On에선 단 1권도 무료</td>
+                    <td>
+                        <div class="tableMenu">
+                            <div>배송료</div>
+                            <div>On&On에선 단 1권도 무료</div>
+                        </div>
+                    </td>
                 </tr>
                 <tr>
-                    <td>예상 배송일</td>
-                    <td>주문일에서 평균 2일 소요</td>
+                    <td>
+                        <div class="tableMenu">
+                            <div>예상 배송일</div>
+                            <div>주문일에서 평균 2일 소요</div>
+                        </div>
+                    </td>
                 </tr>
                 <tr style="height: 150px;">
-                    <td colspan="2">
+                    <td>
                         <form action="" method="get" id="sendForm">
                         	<!-- 선택한 책과 갯수를 다음 폼에 전송 -->
                             <input type="hidden" name="BID" value="${ receivedValue.bid }">
@@ -160,17 +182,24 @@
                         </form>
                     </td>
                 </tr>
-                <tr style="height: 120px;">
-                    <td colspan="2">
-                        <span class="btnStyle animation_3" style="
-                            background:skyblue;
-                        " onclick="clickBtn('shopCart')" >장바구니 담기</span>
-                        <span class="btnStyle animation_3" style="
-                            background:darksalmon;
-                        " onclick="clickBtn('pay')" >바로 구매</span>
-                        <span class="btnStyle animation_3" style="
-                            background:darkgray;
-                        " onclick="clickBtn('locker')">보관함 저장</span>
+                <tr style="height: 90px;">
+                    <td>
+                        <div style="
+                            display: grid;
+                            grid-template-columns: 1fr 1fr 1fr;
+                            align-items: end;
+                            gap: 5px;
+                        ">
+                            <div class="btnStyle animation_3" style="
+                                background:darkgray;
+                            " onclick="clickBtn('locker')">보관함</div>
+                            <div class="btnStyle animation_3" style="
+                                background:skyblue;
+                            " onclick="clickBtn('shopCart')" >장바구니</div>
+                            <div class="btnStyle animation_3" style="
+                                background:darksalmon;
+                            " onclick="clickBtn('pay')" >바로 구매</div>
+                        </div>
                     </td>
                 </tr>
             </table>

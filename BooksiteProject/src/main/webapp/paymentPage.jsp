@@ -11,12 +11,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="chrome">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
+<title>결제하기</title>
 <link rel="stylesheet" href="css/payment.css">
 </head>
 
 <body>
-	<%@ include file="./Header.jsp"%>
+	<%@ include file="Header.jsp"%>
 	<div class="wrap">
 
 		<div class="block0"></div>
@@ -38,25 +38,25 @@
                     
                     대폰, 이메일
                 </details> -->
-				</caption>
+				<!--</caption>-->
 				<colgroup>
 					<col style="width: px;">
 					<col>
 				</colgroup>
 				<tbody>
 					<tr>
-						<th>보내는 분</th>
-						<td>${MemberDTO.name}</td>
+
+						<th>받는분</th>
+						<td>${dto.name}(${dto.id})</td>
 					</tr>
 					<tr>
 						<th>휴대폰</th>
-						<td>${MemberDTO.phoneNumber}</td>
+						<td>${dto.phoneNumber}</td>
 					</tr>
 					<tr>
 						<th>이메일</th>
-						<td>${MemberDTO.email}</td>
+						<td>없음</td>
 					</tr>
-				</tbody>
 			</table>
 		</div>
 
@@ -70,7 +70,7 @@
 				<tbody>
 					<tr>
 						<th>배송지</th>
-						<td class="block1">[기본배송지]<br>${MemberDTO.address}
+						<td class="block1">[기본배송지]<br>${dto.address}
 							그린아카데미
 						</td>
 					</tr>
@@ -96,9 +96,9 @@
 					<tr>
 						<td class="img"><img
 							src="/source/book/하루도_쉬운_날이_없어_Ver02.JPG"></td>
-						<td>[${paymentDTO.kind}] ${paymentDTO.title}
+						<td>[장비구니 데이터(카테고리)] 하루도 쉬운 날이 없어(장바구니 데이터)
 							<p style="color: rgb(252, 69, 69);">상품 금액 :
-								${paymentDTO.price}원 | 수량 : ${paymentDTO.orderQuantity}개</p>
+								(장비구니 데이터)원 | 수량 : (장비구니 데이터)개</p>
 						</td>
 						</td>
 					</tr>
@@ -184,7 +184,7 @@
 						<td>
 							<button
 								style="width: 800px; height: 40px; font-size: 18px; font-weight: 560; color: #fff; background-color: rgb(255, 153, 153); border: 1px solid rgb(252, 140, 140); border-radius: 2px;"
-								type="button" name="final">${paymentDTO.price}원 결제하기</button>
+								type="button" name="final">${paymentDTO.price}원결제하기</button>
 						</td>
 					</tr>
 				</tbody>
@@ -235,8 +235,7 @@
 
 			</thead>
 		</table>
-
 	</div>
-	<%@ include file="/Footer.jsp"%>
+	<%@ include file="Footer.jsp"%>
 </body>
 </html>

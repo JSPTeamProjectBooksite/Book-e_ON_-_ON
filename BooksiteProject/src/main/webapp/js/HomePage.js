@@ -19,6 +19,22 @@ tl.fromTo(
     1.2, 
     {width: "100%"},
     {width: "80%", ease: Power2.easeInOut }
+).fromTo(
+    document.querySelector('#heroInImg'), 
+    1.2, 
+    {css:{borderRadius: "0px"}},
+    {css:{borderRadius: "100px"}}
+).fromTo(
+    document.querySelector('#heroTone'), 
+    1.2, 
+    {css:{borderRadius: "0px"}},
+    {css:{borderRadius: "100px"}},
+    "-=1.2"
+).to(
+    document.querySelector('#heroInImg'),
+    1.2,
+    {border: "2px solid white"},
+    "-=1.2"
 )
 .fromTo(
     slider,
@@ -29,6 +45,11 @@ tl.fromTo(
     //각 이미지 효과은 위에서 부터 1, 1.2, 1,2 초 동안 차례대로 진행되는데,
     //이 -=1.2로 슬라이더 효과의 시작시간을 줄였다.
     //이 슬라이더 효과는 2번째 효과와 동시에 일어나게된다.
+).to(
+    document.querySelector('#heroInImg'),
+    1.2,
+    { boxShadow: "15px 5px 50px 10px #bbd7ff"},
+    "-=0.5"
 )
 .fromTo(
     logo,
@@ -83,6 +104,7 @@ function clickListPage(){
 }
 
 function goList(){
+    // window.scrollTo(0,0);
     location.href="/main";
 }
 
@@ -95,6 +117,7 @@ const text4 = document.querySelector('#text4');
 const text5 = document.querySelector('#text5');
 const text6 = document.querySelector('#text6');
 const text7 = document.querySelector('#text7');
+const endroll = document.querySelector('#endroll');
 //END SECTION
 const section = document.querySelector('section');
 const end = section.querySelector('h1');
@@ -118,6 +141,7 @@ const textAnimation = new TimelineMax()
 .to(text5, 1, {opacity: 0}, "+=1")
 .fromTo(text6, 1, {opacity: 0}, {opacity: 0.7})
 .fromTo(text7, 2, {opacity: 0}, {opacity: 1}, "+=1")
+.set(endroll, {goList})
 
 //Scenes
 let scene = new ScrollMagic.Scene({
