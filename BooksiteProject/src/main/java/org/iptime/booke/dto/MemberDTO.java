@@ -2,7 +2,7 @@ package org.iptime.booke.dto;
 
 public class MemberDTO {
 	private String name;
-	private int gender;
+	private String gender;
 	private String id;
 	private String password;
 	private String phoneNumber;
@@ -50,11 +50,11 @@ public class MemberDTO {
 		this.name = name;
 	}
 
-	public int getGender() {
+	public String getGender() {
 		return gender;
 	}
 
-	public void setGender(int gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
 

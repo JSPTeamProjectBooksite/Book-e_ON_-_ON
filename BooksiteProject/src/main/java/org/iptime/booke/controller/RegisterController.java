@@ -22,16 +22,20 @@ public class RegisterController extends HttpServlet {
 		
 		// 폼값 받기
 		String userName = request.getParameter("user_name");
+		String userGender = request.getParameter("gender");
 		String userId = request.getParameter("user_id");
 		String userPwd = request.getParameter("user_pw");
+		String userEmail = request.getParameter("user_email");
 		String userPhoneNumber = request.getParameter("user_phoneNumber");
 		String userAddress = request.getParameter("user_address");
 
 		// 폼값을 DTO 객체에 저장
 		MemberDTO memberDTO = new MemberDTO();
 		memberDTO.setName(userName);
+		memberDTO.setGender(userGender);
 		memberDTO.setId(userId);
 		memberDTO.setPassword(userPwd);
+		memberDTO.setPassword(userEmail);
 		memberDTO.setPhoneNumber(userPhoneNumber);
 		memberDTO.setAddress(userAddress);
 

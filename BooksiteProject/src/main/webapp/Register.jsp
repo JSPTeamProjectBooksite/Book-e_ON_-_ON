@@ -32,6 +32,9 @@
 				<input class="inputGroup" type="password" placeholder="Password" name="user_pw">
 			</div>
 			<div>
+				<input class="inputGroup" type="email" placeholder="Email" name="user_email">
+			</div>
+			<div>
 				<input class="inputGroup" type="number" placeholder="Phone number" name="user_phoneNumber">
 			</div>
 			<div>
