@@ -4,16 +4,16 @@
 
 .wrap { width: 1280px; margin: 0 auto; }
 .wrap h2 { font-size: 28px; padding: 0 0 15px;}
-.wrap table th{ width: 150px;}
+.wrap table th{ width: 170px;}
 
 .block{ height: 10px;}
 
 
-.cusinfo h3{ font-size: 16.5px; border-bottom: 1.5px solid rgba(177, 175, 175, 0.329); padding: 0 0 10px;}
+.cusinfo h3{ font-size: 16.5px; border-bottom: 1.5px solid rgba(177, 175, 175, 0.329); padding: 40 0 10px;}
 .cusinfo table th { font-size: 13px; color:#444; text-align: left}
 .cusinfo table td { padding: 5px 0;font-size: 13px; color:#444; text-align: left; font-weight: bold;}
 
-.delinfo h3{ font-size: 16.5px; border-bottom: 1.5px solid rgba(177, 175, 175, 0.329); padding: 0 0 10px;}
+.delinfo h3{  font-size: 16.5px; border-bottom: 1.5px solid rgba(177, 175, 175, 0.329); padding: 40 0 10px;}
 .delinfo table th { font-size: 13px; color:#444; text-align: left}
 .delinfo table td { padding: 12px 0;font-size: 13px; color:#444; text-align: left; font-weight: bold;}
 .delinfo table td > button{ font-size: 11px; color:#444; text-align: left; font-weight: bold;
@@ -21,30 +21,30 @@
     border: 1px solid rgb(168, 167, 167); padding: 10 0 0 px; border-radius: 7%;}
 .delinfo table td.block{ border-bottom: 1px solid #444;}
 
-.prodinfo h3{ font-size: 16.5px; border-bottom: 1.5px solid rgba(177, 175, 175, 0.329); padding: 0 0 10px;}
+.prodinfo h3{ font-size: 16.5px; border-bottom: 1.5px solid rgba(177, 175, 175, 0.329); padding: 40 0 10px;}
 .prodinfo table td { font-size: 13px; color:#444; text-align: left; font-weight: bold;}
-.prodinfo.img{ width: 100px; height: 170px;}
-.prodinfo table td.img{width: 170px;}
+.prodinfo.img{ width: 100%; height: 100%;}
+.prodinfo table td.img{width: 100%; height:100%; object-fit: cover;}
 
-.point h3{ font-size: 16.5px; border-bottom: 1.5px solid rgba(177, 175, 175, 0.329); padding: 0 0 10px;}
+.point h3{  font-size: 16.5px; border-bottom: 1.5px solid rgba(177, 175, 175, 0.329); padding: 40 0 10px;}
 .point table th { font-size: 13px; color:#444; text-align: left}
 .point table td { padding: 15px 0; font-size: 13px; color:#444; text-align: left; font-weight: bold;}
-.point table td > input{ height: 20px;}
+.point table td > input{ height: 25px;}
 .point table td > button{ font-size: 11px; color:#444; text-align: left; font-weight: bold;
     width: 60px; height: 25px; background-color:rgb(255, 255, 255); 
     border: 1px solid rgb(168, 167, 167); padding: 10 0 0 px; border-radius: 7%;}
 .point table td select{ width: 180px;}
 
-.paymethod h3{ font-size: 16.5px; border-bottom: 1.5px solid rgba(177, 175, 175, 0.329); padding: 0 0 10px;}
-.paymethod table th { font-size: 14px; color:#444; text-align: left}
+.paymethod h3{  font-size: 16.5px; border-bottom: 1.5px solid rgba(177, 175, 175, 0.329); padding: 40 0 10px;}
+.paymethod table th {height: 140px; font-size: 14px; color:#444; text-align: left}
 .blockbnt{ height: 7px;}
 .paymethod table td.paybnt > a{ display: inline-block; height: 35px; text-align: center; font-size: 16px; line-height: 30px; margin: auto;}
 .paymethod table td.paybnt > a.bnt1{ width: 310px; background: #ffffff; border: 1px solid rgb(168, 167, 167)}
 .paymethod table td.paybnt > a.bnt2{ width: 150px; background: #ffffff; border: 1px solid rgb(168, 167, 167)}
 .paymethod table td.paybnt > a.bnt3{ width: 150px; background: #ffffff; border: 1px solid rgb(168, 167, 167)}
 
-.policy h3{ font-size: 16.5px; border-bottom: 1.5px solid rgba(177, 175, 175, 0.329); padding: 0 0 10px;}
-.policy table td { padding: 10px 0; font-size: 13px; color:#444; text-align: left; font-weight: bold;}
+.policy h3{  font-size: 16.5px; border-bottom: 1.5px solid rgba(177, 175, 175, 0.329); padding: 40 0 10px;}
+.policy table td { height: 80px; padding: 10px 0; font-size: 13px; color:#444; text-align: left; font-weight: bold;}
 
 .stickybar { width: 380px; position: sticky; background-color: rgb(232, 240, 240);  top: 0; float: right; top: 40px;}
 .stickybar table th { text-align: left; width: 180px;} 
