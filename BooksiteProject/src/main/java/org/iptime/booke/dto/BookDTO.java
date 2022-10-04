@@ -24,6 +24,9 @@ public class BookDTO {
 	String updateDate;
 	String ad;
 	
+	//선택수량
+	int select; //DB에 없으나, DTO의 인스턴스로 존재
+	
 	/* dto 값 받을때 쓰는거 (복사해서 쓰세요.)
 	
 	BookDTO dto = new BookDTO();
@@ -55,6 +58,14 @@ public class BookDTO {
 	
 	*/
 	
+	public int getSelect() {
+		return select;
+	}
+
+	public void setSelect(int select) {
+		this.select = select;
+	}
+
 	// 장바구니 수량 22
 	Integer count;
 
@@ -84,6 +95,18 @@ public class BookDTO {
 		System.out.println(updateDate);
 		System.out.println(ad);
 	}
+	
+	//결제페이지 사용
+	public void DTOPrintOut2() {
+		System.out.println(bid);
+		System.out.println(image);
+		System.out.println(title);
+		System.out.println(price);
+		System.out.println(bookCategoryId);
+		System.out.println(select);
+	}
+	
+	
 	
 	//리스트 페이지
 	public BookDTO(Long bid, String title, String image, String author, String publisher, Long price, String ad,
