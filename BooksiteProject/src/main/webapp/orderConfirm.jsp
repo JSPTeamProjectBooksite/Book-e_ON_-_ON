@@ -16,7 +16,7 @@
 
 <body>
 	<div class="wrap">
-		<%@ include file="header.html"%>
+		<%@ include file="Header.jsp"%>
 
 		<div class="block"></div>
 
@@ -37,12 +37,14 @@
 				<td>ON220919-1</td>
 				<td>42,000원</td>
 				<!-- 클릭 시, 상품 상세 페이지로 이동  -->
-				<td><a href="detail.html">기분이 태도가 되지 않으려면</a></td>
+				<td><a href="detail.jsp">기분이 태도가 되지 않으려면</a></td>
 				<td>1</td>
 				<td></td>
 			</tr>
 		</table>
-		<%@ include file="footer.html"%>
+		<div class="block2">
+		</div>
+		<%@ include file="Footer.jsp"%>
 	</div>
 </body>
 

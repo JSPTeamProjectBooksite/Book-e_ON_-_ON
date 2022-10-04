@@ -19,7 +19,7 @@ CREATE TABLE user_table (
 	register_date date, -- 가입일
 	address varchar2(500), -- 주소
 	post number(10) -- 글작성횟수
-)
+);
 
 CREATE SEQUENCE PID_seq_board_num
 	INCREMENT BY 1
@@ -27,7 +27,7 @@ CREATE SEQUENCE PID_seq_board_num
 	MINVALUE 1
 	nomaxvalue
 	nocycle
-	nocache
+	nocache;
 	
 INSERT INTO user_table (PID, name, id, password, birth, gender, email, phone_number, is_SNS, point, register_date, address, post)
 	VALUES (

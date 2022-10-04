@@ -7,7 +7,6 @@ public class MemberDTO {
 	private String password;
 	private String phoneNumber;
 	private String address;
-//    private int orderQuantity;
 	private String email;
 	
 	public MemberDTO() {
@@ -15,13 +14,13 @@ public class MemberDTO {
 	}
 	
 	//결제페이지
-	public MemberDTO(String name, String address, int orderQuantity, String email,
-			String phoneNumber) {
+	
+	public MemberDTO(String name, String id, String phoneNumber, String address) {
 		this.name = name;
-		this.address = address;
-//		this.orderQuantity = orderQuantity;
-		this.email = email;
+		this.id = id;
 		this.phoneNumber = phoneNumber;
+		this.address = address;
+		
 	}
 	
 	public MemberDTO(String name,String id, String password, String phoneNumber, String address) {

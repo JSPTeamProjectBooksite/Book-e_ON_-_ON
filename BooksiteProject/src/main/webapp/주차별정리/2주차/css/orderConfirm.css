@@ -34,3 +34,7 @@ caption {
 .top{
     border-top: 2px solid #333;
 }
+
+.block2{
+	height: 500px;
+}

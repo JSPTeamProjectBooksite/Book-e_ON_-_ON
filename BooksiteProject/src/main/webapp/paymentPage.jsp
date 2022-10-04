@@ -16,9 +16,8 @@
 </head>
 
 <body>
-	<%@ include file="Header.jsp"%>
 	<div class="wrap">
-
+		<%@ include file="Header.jsp"%>
 		<div class="block0"></div>
 
 		<h2>
@@ -47,15 +46,11 @@
 					<tr>
 
 						<th>받는분</th>
-						<td>${dto.name}(${dto.id})</td>
+						<td>${ delinfo.name }(${ delinfo.id })</td>
 					</tr>
 					<tr>
 						<th>휴대폰</th>
-						<td>${dto.phoneNumber}</td>
-					</tr>
-					<tr>
-						<th>이메일</th>
-						<td>없음</td>
+						<td>${ delinfo.phoneNumber }</td>
 					</tr>
 			</table>
 		</div>
@@ -70,13 +65,12 @@
 				<tbody>
 					<tr>
 						<th>배송지</th>
-						<td class="block1">[기본배송지]<br>${dto.address}
-							그린아카데미
-						</td>
+						<td class="block1">[기본배송지]<br>${ delinfo.address }</td>
 					</tr>
 					<tr>
 						<th>상세 정보</th>
-						<td>김부기 / 010-1234-1234 <br>배송메세지 | 없음
+						<td>${ delinfo.name }/ ${ delinfo.address } <br>배송메세지 |
+							없음
 							<button type="button" name="주소수정버튼">수정하기</button>
 						</td>
 
@@ -93,18 +87,63 @@
 					<col>
 				</colgroup>
 				<tbody>
+
 					<tr>
-						<td class="img"><img
-							src="/source/book/하루도_쉬운_날이_없어_Ver02.JPG"></td>
-						<td>[장비구니 데이터(카테고리)] 하루도 쉬운 날이 없어(장바구니 데이터)
-							<p style="color: rgb(252, 69, 69);">상품 금액 :
-								(장비구니 데이터)원 | 수량 : (장비구니 데이터)개</p>
+						<td class="img"><img src="/source/book/하루도_쉬운_날이_없어.png"></td>
+						<td>[국내도서] 하루도 쉬운 날이 없어
+							<p style="color: rgb(252, 69, 69);">상품 금액 : 원 | 수량 : 개</p>
 						</td>
 						</td>
 					</tr>
+					
 				</tbody>
 			</table>
 		</div>
+		
+		<div class="stickybar">
+		<table>
+			<tr>
+			<thead>
+				<th>주문금액</th>
+				<td>{paymentDTO.price}원</td>
+				<br>
+				<tr>
+					<td class="small"><small> ㄴ상품금액</small></td>
+					<td><small> ${paymentDTO.price} 원</small></td>
+				</tr>
+				<tr>
+					<td class="small"><small> ㄴ할인금액</small></td>
+					<td><small> -0 원</small></td>
+				</tr>
+				
+				<tr>
+					<th>배송비</th>
+					<td>0원</td>
+				</tr>
+
+				<tr>
+					<th>쿠폰할인</th>
+					<td>0원</td>
+				</tr>
+
+				<tr>
+					<th>적립금 사용</th>
+					<td>0원</td>
+				</tr>
+
+				<tr>
+					<th>적립금 사용</th>
+					<td>0원</td>
+				</tr>
+
+				<tr>
+					<th>최종결제금액</th>
+					<td>${paymentDTO.price}원</td>
+				</tr>
+
+			</thead>
+		</table>
+	</div>
 
 		<div class="point">
 			<h3>쿠폰/적립금</h3>
@@ -182,60 +221,18 @@
 				<tbody>
 					<tr>
 						<td>
-							<button
-								style="width: 800px; height: 40px; font-size: 18px; font-weight: 560; color: #fff; background-color: rgb(255, 153, 153); border: 1px solid rgb(252, 140, 140); border-radius: 2px;"
-								type="button" name="final">${paymentDTO.price}원결제하기</button>
+							<button type="button" style="width: 1280px; height: 40px; font-size: 18px; font-weight: 560; color: #fff; background-color: rgb(255, 153, 153); border: 1px solid rgb(252, 140, 140); border-radius: 2px;"
+								type="button" name="final" onclick="./orderConfirm.jsp">14,000원 결제하기</button>
+								
 						</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
-	</div>
+		<!-- 여기</div>삭제 -->
 
-	<div class="stickybar">
-		<table>
-			<tr>
-			<thead>
-				<th>주문금액</th>
-				<td>{paymentDTO.price}원</td>
-				<br>
-				<tr>
-					<td class="small"><small> ㄴ상품금액</small></td>
-					<td><small> ${paymentDTO.price} 원</small></td>
-				</tr>
-				<tr>
-					<td class="small"><small> ㄴ상품할인금액</small></td>
-					<td><small> -0 원</small></td>
-				</tr>
-				</tr>
-				<tr>
-					<th>배송비</th>
-					<td>0원</td>
-				</tr>
-
-				<tr>
-					<th>쿠폰할인</th>
-					<td>0원</td>
-				</tr>
-
-				<tr>
-					<th>적립금 사용</th>
-					<td>0원</td>
-				</tr>
-
-				<tr>
-					<th>적립금 사용</th>
-					<td>0원</td>
-				</tr>
-
-				<tr>
-					<th>최종결제금액</th>
-					<td>${paymentDTO.price}원</td>
-				</tr>
-
-			</thead>
-		</table>
-	</div>
+	
 	<%@ include file="Footer.jsp"%>
+	</div>
 </body>
 </html>
