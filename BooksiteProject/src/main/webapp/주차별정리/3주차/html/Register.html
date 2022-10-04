@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jua&display=swap');
+    </style>
+    <link rel="stylesheet" href="css/Register.css">
+    <script src="js/Register.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1> 회원가입 </h1>
+        <form>
+            <div>
+                <input class="inputGroup" type="text" placeholder="Your name" required>
+            </div>
+            <div>
+                <select class="selectGroup" name="gender" id="gender">
+                    <option value="Select"> Gender </option>
+                    <option value="Man"> Man </option>
+                    <option value="Woman"> Woman </option>
+                </select>
+            </div>
+            <div>
+                <input class="inputGroup" type="text" placeholder="ID" required>
+            </div>
+            <div>
+                <input class="inputGroup" type="password" placeholder="Password" required>
+            </div>
+            <div>
+                <input class="inputGroup" type="tel" placeholder="Phone number" required>
+            </div>
+            <div>
+                <input class="inputGroup" type="address" placeholder="Address" required>
+            </div>
+            <div>
+                <input class="checkboxGroup" type="checkbox" required>
+                <span class="allTerms"> 모든 약관에 동의합니다. </span>
+            </div>
+            <div class="terms">
+                <div>
+                    <input type="checkbox" required>
+                    <span> Book-e On & On 이용약관 (필수) </span>
+                </div>
+                <div>
+                    <input type="checkbox" required>
+                    <span> Book-e On & On 커뮤니티 이용약관 (필수) </span>
+                </div>
+                <div>
+                    <input type="checkbox" required>
+                    <span> 개인 정보 수집 및 이용 (필수) </span>
+                </div>
+            </div>
+            <input class="submit" type="submit" value="Register">
+        </form>
+    </div>
+</body>
+
+</html>

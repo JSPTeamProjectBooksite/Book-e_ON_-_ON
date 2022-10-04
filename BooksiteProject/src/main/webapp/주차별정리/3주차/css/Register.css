@@ -1,0 +1,97 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    align-items: center;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    background: url(../source/Register/background.png) no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.container {
+    border: 1px solid;
+    width: 700px;
+    height: 600px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    box-shadow: 5px 5px 10px rgba(1, 1, 1, 0.1),
+        inset 3px 3px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 25px;
+}
+
+.submit {
+    width: 500px;
+    height: 30px;
+    border-radius: 25px;
+    background-color: black;
+    color: white;
+    margin-top: 15px;
+    cursor: pointer;
+    font-family: 'Jua', sans-serif;
+    font-size: 20px;
+}
+
+form .inputGroup {
+    width: 500px;
+    height: 30px;
+    border-radius: 25px;
+    margin-top: 15px;
+    border: 1px solid;
+    text-align: center;
+    font-family: 'Jua', sans-serif;
+    font-size: 20px;
+}
+
+form .selectGroup {
+    border-radius: 25px;
+    margin-top: 15px;
+    font-size: 20px;
+    width: 500px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid;
+    font-family: 'Jua', sans-serif;
+    appearance: none;
+}
+
+h1 {
+    margin-top: 15px;
+    font-size: 50px;
+    color: white;
+    font-family: 'Jua', sans-serif;
+}
+
+form .checkboxGroup {
+    width: 22px;
+    height: 22px;
+    margin-top: 15px;
+}
+
+form .allTerms {
+    font-size: 30px;
+    color: white;
+    margin-top: 15px;
+    font-weight: bold;
+    font-family: 'Jua', sans-serif;
+}
+
+form .terms {
+    /* width: 400px; */
+    padding: 0 100px;
+    /* margin-left: 200px; */
+    margin-top: 2px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: start;
+    color: white;
+    font-family: 'Jua', sans-serif;
+}

@@ -1,0 +1,36 @@
+.wrap {
+    width: 1280px;
+    margin: 0 auto;
+}
+
+table {
+    margin: 25px;
+    width: 1280px;
+    border-spacing: 0;
+    border-collapse: collapse;
+    border-bottom: none;
+    
+}
+
+
+tr,td {
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #cccccc;
+    border-top: 1px solid #cccccc;
+    padding: 15px;
+    text-align: left;
+    font-size: 18px;
+}
+
+caption {
+    text-align: left;
+    font-size: 24px;
+    font-weight: bold;
+    color: dimgrey;
+    margin-bottom: 12px;
+}
+
+.top{
+    border-top: 2px solid #333;
+}
