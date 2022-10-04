@@ -85,10 +85,42 @@
         box-shadow: 0px 0px 10px 5px lightgrey inset;
         transform: scale( 1.03 );
     }
+
+    #popup{
+        display: none;
+        width:100%;
+        height:100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0,0,0,0.6);
+        z-index: 999;
+    }
+    #popupBox{
+        position: absolute;
+        top: 50%;
+        left:50%;
+        transform: translate(-50%,-50%);
+        width: 300px;
+        height: 200px;
+        background: #91b5ea;
+        z-index: 1000;
+
+        color: white;
+    }
+
 </style>
 <script type="text/javascript">
 	//타이틀 변경
 	document.title = "${ receivedValue.title }";
+    
+    function showPopup(){
+        document.getElementById("popup").style.display = 'block';
+    }
+    function hidePopup(){
+        document.getElementById("popup").style.display = 'none';
+    }
 
     function clickBtn(btn){
 
@@ -98,10 +130,10 @@
             document.getElementById("sendForm").action = "/payment";
         }else if(btn=="shopCart"){
             document.getElementById("sendForm").action = "/cart?bookId=${receivedValue.bid}";
+            showPopup();
         }
         document.getElementById("sendForm").submit();
     }
-
 </script>
 <title>페이지 이동 중...</title>
 </head>
@@ -241,6 +273,16 @@
         </div>
     </div> <!-- contents end -->
     <%@include file="./Footer.jsp" %>
+</div>
+<!-- 팝업창 -->
+<div id="popup">
+    <div id="popupBox">
+        <h2>장바구니에 담겼습니다.</h2>
+        <div>
+            <button type="button" onclick="location.href='/cart/list'">장바구니가기</button>
+            <button type="button" onclick="hidePopup()">닫기</button>
+        </div>
+    </div>
 </div>
 </body>
 </html>
