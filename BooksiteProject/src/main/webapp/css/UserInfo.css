@@ -1,0 +1,67 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-position: center;
+}
+
+h1 {
+    font-size: 30px;
+    text-align: left;
+    margin-top: 50px;
+    margin-bottom: 10px;
+}
+
+.container {
+    width: 500px;
+    height: 500px;
+    padding: 50px;
+    text-align: center;
+    margin-top: 150px;
+    border: 1px solid;
+}
+
+table {
+    width: 100%;
+    border-top: 1px solid;
+    border-collapse: collapse;
+}
+
+th, td {
+    border-bottom: 1px solid;
+    border-left: 1px solid;
+    padding: 10px;
+}
+
+th {
+    /* color: gray; */
+    background-color: #eef1f8;
+}
+
+th:first-child, td:first-child {
+    border-left: none;
+}
+
+div .Resign {
+    margin-top: 10px;
+    text-align: right;
+}
+
+.button {
+    display: inline-block;
+    width: 120px;
+    height: 35px;
+    color: white;
+    background-color: #4E9CAF;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    padding: 5px;
+    line-height: 25px;
+}
