@@ -129,8 +129,8 @@
         }else if(btn=="pay"){
             document.getElementById("sendForm").action = "/payment";
         }else if(btn=="shopCart"){
-            document.getElementById("sendForm").action = "/cart?bookId=${receivedValue.bid}";
             showPopup();
+            document.getElementById("sendForm").action = "/cart?bookId=${receivedValue.bid}";
         }
         document.getElementById("sendForm").submit();
     }
