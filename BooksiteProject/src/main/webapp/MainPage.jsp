@@ -25,7 +25,7 @@
         box-shadow: 5px 5px 15px 0px #aaaaaa;
     }
     .imgBox1{
-        border-radius: 15px;
+        border-radius: 10px;
         border: 1px lightgray solid;
     }
 </style>
@@ -95,6 +95,13 @@
     #searchBtn:hover{
         transform: scale( 1.15 );
     }
+    
+    #popList{
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 2vh;
+        align-items: end;
+    }
 
 </style>
 </head>
@@ -103,66 +110,14 @@
 <div id="wrap">
 	<%@include file="./Header.jsp" %>
     <div id="contents">
-        <!-- 공간 띄우기 -->
-        <div style="height: 100px;"></div>
-    
         <!-- 전송폼(히든) -->
         <form action="/detail" name="mainPageForm" id="BIDform" method="get">
             <input type="hidden" name="BID" value="">
         </form>
+        
+        <!-- 공간 띄우기 -->
+        <div style="height: 25px;"></div>
     
-        <!-- 슬라이드 광고 -->
-
-        <!-- <div>
-            <table id="slideTable">
-                <tr>
-                    <th rowspan="2" style="width: 5%;">
-                        <input type="button" value="앞으로" onclick="clickBefore()">
-                    </th>
-                    <th class="bookTh">
-                        <img src= ${ slideList[0].image } class="bookImageStyle" id="index0" alt="" onclick="clickSlide(0)">
-                    </th>
-                    <th class="bookTh">
-                        <img src= ${ slideList[1].image } class="bookImageStyle" id="index1" alt="" onclick="clickSlide(1)">
-                    </th>
-                    <th class="bookTh">
-                        <img src= ${ slideList[2].image } class="bookImageStyle" id="index2" alt="" onclick="clickSlide(2)">
-                    </th>
-                    <th style="width: 15%;" class="bookTh">
-                        <img src= ${ slideList[3].image } class="bookImageStyle" id="index3" alt="" onclick="goToDetailPage(${ slideList[3].bid })">
-                    </th>
-                    <th class="bookTh">
-                        <img src= ${ slideList[4].image } class="bookImageStyle" id="index4" alt="" onclick="clickSlide(4)">
-                    </th>
-                    <th class="bookTh">
-                        <img src= ${ slideList[5].image } class="bookImageStyle" id="index5" alt="" onclick="clickSlide(5)">
-                    </th>
-                    <th class="bookTh">
-                        <img src= ${ slideList[6].image } class="bookImageStyle" id="index6" alt="" onclick="clickSlide(6)">
-                    </th>
-                    <th rowspan="2" style="width: 5%;">
-                        <input type="button" value="뒤로" onclick="clickNext()">
-                    </th>
-                </tr>
-                <tr>
-                    <td>${ slideList[0].title }</td>
-                    <td>${ slideList[1].title }</td>
-                    <td>${ slideList[2].title }</td>
-                    <td>${ slideList[3].title }</td>
-                    <td>${ slideList[4].title }</td>
-                    <td>${ slideList[5].title }</td>
-                    <td>${ slideList[6].title }</td>
-                </tr>
-            </table>
-            <div style="
-            	text-align: center;
-                font-size: 24px;
-                margin-top: 10px;
-            	" id="ad">
-                ${ slideList[3].ad }
-            </div>
-        </div> -->
-
         <!-- 검색창 -->
         <form action="/list">
             <div id="searchBar">
@@ -174,6 +129,15 @@
                 <input id="searchBtn" type="submit" alt="search" value=" ">
             </div>
         </form>
+    
+        <!-- 공간 띄우기 -->
+        <div style="height: 25px;"></div>
+
+        <!-- 슬라이드 광고 -->
+        <div style="text-align: center;">
+            <img src="./source/MainPage/슬라이드 예시 이미지.png" alt="" style="width: 80%; border-radius: 20px;">
+        </div>
+
         
     	<!-- 임시 스크립트 파일 -->
 		<script type="text/javascript">
@@ -189,45 +153,33 @@
 			}
 		</script>
     
+        <!-- 공간 띄우기 -->
+        <div style="height: 100px;"></div>
+        
         <!-- 주제별 선정 -->
         <!-- 타입 1 -->
+        
         <div style="
-            display: '';
-            /* background-color:khaki; */
+            height: 75px;
+            font-size: 32px;
+            font-weight: 600;
+            color: gray;
         ">
-            <div style="
-                height: 75px;
-                font-size: 32px;
-                font-weight: 600;
-                color: gray;
-            ">
-                인기 도서
-            </div>
-            <div style="
-                text-align: center;
-            ">
-                <table>
-                    <tr>
-                    	<c:forEach var="book" items="${popularList}">
-	                        <td class="bookImageTd" style="width: 200px;">
-	                            <img class="animation_1 imgBox1" id="popularityBookImage_0" alt="" src=${ book.image }  style="width: 100%;"
-	                            	onclick="goToDetailPage(${ book.bid })">
-	                        </td>
-                    	</c:forEach>
-                    </tr>
-                    <tr>
-                    	<c:forEach var="book" items="${popularList}">
-	                        <td>${ book.title }</td>
-                    	</c:forEach>
-                    </tr>
-                    <tr>
-                    	<c:forEach var="book" items="${popularList}">
-	                        <td>${ book.author }</td>
-                    	</c:forEach>
-                    </tr>
-                </table>
-            </div>
-    
+            인기 도서
+        </div>
+        <div id="popList">
+            <c:forEach var="book" items="${popularList}">
+            	<div style="width: 100%;">
+                    <div class="bookImage">
+                        <img class="animation_1 imgBox1" id="popularityBookImage" alt="" src="${ book.image }"  style="width: 100%;" onclick="goToDetailPage(${ book.bid })">
+                    </div>
+                    <div style="height:100px; text-align:center;">
+                    	${ book.title }
+                    	<br>
+                    	${ book.author }
+                    </div>
+            	</div>
+            </c:forEach>
         </div>
     </div>
     <%@include file="./Footer.jsp" %>
