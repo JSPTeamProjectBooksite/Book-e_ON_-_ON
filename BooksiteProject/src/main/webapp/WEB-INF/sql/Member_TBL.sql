@@ -7,7 +7,7 @@ CREATE TABLE member_TBL (
 	email 			nvarchar2(320) 	NOT NULL, 
 	password 		varchar2(30)	NOT NULL, 
 	birth 			DATE 				NULL, 
-	gender_id 		number(1) 			NULL, 
+	gender_id		NUMBER(1) 			NULL, 
 	phone_num		CHAR(11) 			NULL,
 	address 		nvarchar2(100) 		NULL,
 	point 			number(8) 		DEFAULT 0,
@@ -17,7 +17,6 @@ CREATE TABLE member_TBL (
 
 ALTER TABLE member_TBL ADD CONSTRAINT member_member_state_id_FK FOREIGN KEY(member_state_id) REFERENCES member_state_TBL(id);
 ALTER TABLE member_TBL ADD CONSTRAINT member_gender_id_FK FOREIGN KEY(gender_id) REFERENCES gender_TBL(id);
-
 
 COMMENT ON COLUMN member_TBL.id IS '유저의 고유번호';
 COMMENT ON COLUMN member_TBL.name IS '이름(=별명)';
