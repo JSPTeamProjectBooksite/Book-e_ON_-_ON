@@ -79,7 +79,7 @@
             <div style="text-align: center;
             	margin-bottom: 30px;
             ">
-                " <%= request.getParameter("search") %> "의 검색 결과 입니다.
+                " <%= request.getParameter("searchWord") %> "의 검색 결과 입니다.
             </div>
     
             <div id="searchListDiv">
