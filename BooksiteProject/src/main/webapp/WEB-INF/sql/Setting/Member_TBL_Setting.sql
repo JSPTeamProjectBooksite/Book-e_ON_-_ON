@@ -1,56 +1,10 @@
-INSERT INTO member_TBL (id, name, password, birth, gender, email, phone_number, point, register_date, address)
-	VALUES (
-		member_SEQ.nextval,
-		'홍길동',
-		'123123',
-		'1997-10-14',
-		'M',
-		'lhw123@gmail.com',
-		'01012345678',
-		35000,
-		'2022-09-23',
-		'경기도 어딘가 무슨곳 좋은동'
-	);
-	
-INSERT INTO member_TBL (id, name, password, birth, gender, email, phone_number, point, register_date, address)
-	VALUES (
-		member_SEQ.nextval,
-		'홍길동2',
-		'123123',
-		'2000-01-01',
-		'M',
-		'iammaster@gmail.com',
-		'01012345678',
-		35000,
-		'2022-09-23',
-		'경기도 어딘가 무슨곳 좋은동'
-	);
-	
-INSERT INTO member_TBL (id, name, password, birth, gender, email, phone_number, point, register_date, address)
-	VALUES (
-		member_SEQ.nextval,
-		'홍길동3',
-		'123123',
-		'1998-01-01',
-		'F',
-		'khy123@gmail.com',
-		'01034345645',
-		90000,
-		'2022-09-23',
-		'경기도...사시겠지?'
-	);
+INSERT INTO MEMBER_TBL (id, name, email, password, birth, gender_id, phone_num, address) VALUES (member_SEQ.nextval, 'user01', 'user01@gmail.com', 'user01', '2022-10-01', 1, '0100010001', '경기도 어딘가 무슨곳 좋은동');
+INSERT INTO MEMBER_TBL (id, name, email, password, birth, gender_id, phone_num, address) VALUES (member_SEQ.nextval, 'user02', 'user02@gmail.com', 'user02', '2022-10-01', 1, '0100010002', '경기도 어딘가 무슨곳 좋은동');
+INSERT INTO MEMBER_TBL (id, name, email, password, birth, gender_id, phone_num, address) VALUES (member_SEQ.nextval, 'user03', 'user03@gmail.com', 'user03', '2022-10-01', 1, '0100010003', '경기도 어딘가 무슨곳 좋은동');
+INSERT INTO MEMBER_TBL (id, name, email, password, birth, gender_id, phone_num, address) VALUES (member_SEQ.nextval, 'user04', 'user04@gmail.com', 'user04', '2022-10-01', 1, '0100010004', '경기도 어딘가 무슨곳 좋은동');
+INSERT INTO MEMBER_TBL (id, name, email, password, birth, gender_id, phone_num, address) VALUES (member_SEQ.nextval, 'user05', 'user05@gmail.com', 'user05', '2022-10-01', 1, '0100010005', '경기도 어딘가 무슨곳 좋은동');
 
 
-INSERT INTO member_TBL (id, name, password, birth, gender, email, phone_number, point, register_date, address)
-	VALUES (
-		member_SEQ.nextval,
-		'홍길동4',
-		'123123',
-		'2003-01-01',
-		'M',
-		'ash123@gmail.com',
-		'01021215645',
-		34200,
-		'2022-09-23',
-		'경기도 기흥 구청 어딘가'
-	);
+
+
+
