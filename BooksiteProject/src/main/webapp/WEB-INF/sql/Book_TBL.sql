@@ -13,7 +13,7 @@ CREATE TABLE book_TBL (
 	total_pages				number(5)		NOT NULL,
 	weight 					number(10)			NULL,
 	ISBN 					number(13)			NULL,
-	book_category_id 		number(2)		NOT NULL,
+	book_category_id 		number(3)		NOT NULL,
 	introduce 				nvarchar2(1000)		NULL,
 	introduce_img 			varchar2(350)		NULL,
 	publisher 				nvarchar2(50)		NULL,

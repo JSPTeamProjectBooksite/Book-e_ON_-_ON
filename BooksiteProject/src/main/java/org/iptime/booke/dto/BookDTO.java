@@ -1,31 +1,31 @@
 package org.iptime.booke.dto;
 
+import java.util.Date;
+
 public class BookDTO {
-	Long bid;
-	String image;
-	String title;
-	String author;
-	String translator;
-	Long price;
-	Long deliveryFee;
-	String estimatedDeliveryDate;
-	Long totalPages;
-	Long weight;
-	Long isbn;
-	String bookCategoryId;
-	String introduce;
-	String introduceImage;
-	String publisher;
-	String publisherReview;
-	String contents;
-	Long visit;
-	String publicationDate;
-	String registDate;
-	String updateDate;
-	String ad;
-	
-	//선택수량
-	int select; //DB에 없으나, DTO의 인스턴스로 존재
+	private Long id;
+	private String coverImg;
+	private String title;
+	private String authorId;
+	private String translator;
+	private Integer price;
+	private Integer deliveryFee;
+	private Integer estimatedDeliveryDate;
+	private Integer totalPages;
+	private Integer weight;
+	private Long isbn;
+	private Integer bookCategoryId;
+	private String introduce;
+	private String introduceImg;
+	private String publisher;
+	private String publisherReview;
+	private String contents;
+	private Integer visit;
+	private Integer quantity;
+	private String catchphrase;
+	private Date publicationDate;
+	private Date registDate;
+	private Date updateDate;
 	
 	/* dto 값 받을때 쓰는거 (복사해서 쓰세요.)
 	
@@ -57,25 +57,14 @@ public class BookDTO {
 	return dto;
 	
 	*/
-	
-	public int getSelect() {
-		return select;
-	}
-
-	public void setSelect(int select) {
-		this.select = select;
-	}
-
-	// 장바구니 수량 22
-	Integer count;
 
 	public BookDTO() {}
 	
 	public void DTOPrintOut() {
-		System.out.println(bid);
-		System.out.println(image);
+		System.out.println(id);
+		System.out.println(coverImg);
 		System.out.println(title);
-		System.out.println(author);
+		System.out.println(authorId);
 		System.out.println(translator);
 		System.out.println(price);
 		System.out.println(deliveryFee);
@@ -85,81 +74,81 @@ public class BookDTO {
 		System.out.println(isbn);
 		System.out.println(bookCategoryId);
 		System.out.println(introduce);
-		System.out.println(introduceImage);
+		System.out.println(introduceImg);
 		System.out.println(publisher);
 		System.out.println(publisherReview);
 		System.out.println(contents);
 		System.out.println(visit);
+		System.out.println(quantity);
+		System.out.println(catchphrase);
 		System.out.println(publicationDate);
 		System.out.println(registDate);
 		System.out.println(updateDate);
-		System.out.println(ad);
 	}
 	
 	//결제페이지 사용
 	public void DTOPrintOut2() {
-		System.out.println(bid);
-		System.out.println(image);
+		System.out.println(id);
+		System.out.println(coverImg);
 		System.out.println(title);
 		System.out.println(price);
 		System.out.println(bookCategoryId);
-		System.out.println(select);
+		System.out.println(quantity);
 	}
 	
 	
 	
 	//리스트 페이지
-	public BookDTO(Long bid, String title, String image, String author, String publisher, Long price, String ad,
+	public BookDTO(Long id, String title, String coverImg, String authorId, String publisher, Integer price, String catchphrase,
 			String introduce) {
-		this.bid = bid;
+		this.id = id;
 		this.title = title;
-		this.image = image;
-		this.author = author;
+		this.coverImg = coverImg;
+		this.authorId = authorId;
 		this.publisher = publisher;
 		this.price = price;
-		this.ad = ad;
+		this.catchphrase = catchphrase;
 		this.introduce = introduce;
 	}
 	
 	//리스트페이지 (슬라이드목록)
-	public BookDTO(Long bid, String title, String image, String author, String ad) {
-		this.bid = bid;
+	public BookDTO(Long id, String title, String coverImg, String authorId, String catchphrase) {
+		this.id = id;
 		this.title = title;
-		this.image = image;
-		this.author = author;
-		this.ad = ad;
+		this.coverImg = coverImg;
+		this.authorId = authorId;
+		this.catchphrase = catchphrase;
 	}
 
 	// 장바구니페이지
-	public BookDTO(String image, String title, Long price, String estimatedDeliveryDate) {
-		super();
-		this.image = image;
+	public BookDTO(String coverImg, String title, Integer price, Integer estimatedDeliveryDate) {
+		this.coverImg = coverImg;
 		this.title = title;
 		this.price = price;
 		this.estimatedDeliveryDate = estimatedDeliveryDate;
 	}
 
-	public BookDTO(String image, String title, Long price) {
-		this.image = image;
+	public BookDTO(String coverImg, String title, Integer price) {
+		this.coverImg = coverImg;
 		this.title = title;
 		this.price = price;
 	
 	}
 
-	public Long getBid() {
-		return bid;
+	public Long getId() {
+		return id;
 	}
 
-	public void setBid(Long bid) {
-		this.bid = bid;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public String getImage() {
-		return image;
+	public String getCoverImg() {
+		return coverImg;
 	}
 
-	public void setImage(String image) {
-		this.image = image;
+	public void setCoverImg(String coverImg) {
+		this.coverImg = coverImg;
 	}
 
 	public String getTitle() {
@@ -170,12 +159,12 @@ public class BookDTO {
 		this.title = title;
 	}
 
-	public String getAuthor() {
-		return author;
+	public String getAuthorId() {
+		return authorId;
 	}
 
-	public void setAuthor(String author) {
-		this.author = author;
+	public void setAuthorId(String authorId) {
+		this.authorId = authorId;
 	}
 
 	public String getTranslator() {
@@ -186,43 +175,43 @@ public class BookDTO {
 		this.translator = translator;
 	}
 
-	public Long getPrice() {
+	public Integer getPrice() {
 		return price;
 	}
 
-	public void setPrice(Long price) {
+	public void setPrice(Integer price) {
 		this.price = price;
 	}
 
-	public Long getDeliveryFee() {
+	public Integer getDeliveryFee() {
 		return deliveryFee;
 	}
 
-	public void setDeliveryFee(Long deliveryFee) {
+	public void setDeliveryFee(Integer deliveryFee) {
 		this.deliveryFee = deliveryFee;
 	}
 
-	public String getEstimatedDeliveryDate() {
+	public Integer getEstimatedDeliveryDate() {
 		return estimatedDeliveryDate;
 	}
 
-	public void setEstimatedDeliveryDate(String estimatedDeliveryDate) {
+	public void setEstimatedDeliveryDate(Integer estimatedDeliveryDate) {
 		this.estimatedDeliveryDate = estimatedDeliveryDate;
 	}
 
-	public Long getTotal_pages() {
+	public Integer getTotalPages() {
 		return totalPages;
 	}
 
-	public void setTotal_pages(Long totalPages) {
+	public void setTotalPages(Integer totalPages) {
 		this.totalPages = totalPages;
 	}
 
-	public Long getWeight() {
+	public Integer getWeight() {
 		return weight;
 	}
 
-	public void setWeight(Long weight) {
+	public void setWeight(Integer weight) {
 		this.weight = weight;
 	}
 
@@ -234,11 +223,11 @@ public class BookDTO {
 		this.isbn = isbn;
 	}
 
-	public String getBookCategoryId() {
+	public Integer getBookCategoryId() {
 		return bookCategoryId;
 	}
 
-	public void setBookCategoryId(String bookCategoryId) {
+	public void setBookCategoryId(Integer bookCategoryId) {
 		this.bookCategoryId = bookCategoryId;
 	}
 
@@ -250,12 +239,12 @@ public class BookDTO {
 		this.introduce = introduce;
 	}
 
-	public String getIntroduceImage() {
-		return introduceImage;
+	public String getIntroduceImg() {
+		return introduceImg;
 	}
 
-	public void setIntroduceImage(String introduceImage) {
-		this.introduceImage = introduceImage;
+	public void setIntroduceImg(String introduceImg) {
+		this.introduceImg = introduceImg;
 	}
 
 	public String getPublisher() {
@@ -282,54 +271,51 @@ public class BookDTO {
 		this.contents = contents;
 	}
 
-	public Long getVisit() {
+	public Integer getVisit() {
 		return visit;
 	}
 
-	public void setVisit(Long visit) {
+	public void setVisit(Integer visit) {
 		this.visit = visit;
 	}
 
-	public String getPublicationDate() {
+	public Integer getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
+
+	public String getCatchphrase() {
+		return catchphrase;
+	}
+
+	public void setCatchphrase(String catchphrase) {
+		this.catchphrase = catchphrase;
+	}
+
+	public Date getPublicationDate() {
 		return publicationDate;
 	}
 
-	public void setPublicationDate(String publicationDate) {
+	public void setPublicationDate(Date publicationDate) {
 		this.publicationDate = publicationDate;
 	}
 
-	public String getRegistDate() {
+	public Date getRegistDate() {
 		return registDate;
 	}
 
-	public void setRegistDate(String registDate) {
+	public void setRegistDate(Date registDate) {
 		this.registDate = registDate;
 	}
 
-	public String getUpdateDate() {
+	public Date getUpdateDate() {
 		return updateDate;
 	}
 
-	public void setUpdateDate(String updateDate) {
+	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
 	}
-
-	public String getAd() {
-		return ad;
-	}
-
-	public void setAd(String ad) {
-		this.ad = ad;
-	}
-
-	public Integer getCount() {
-		return count;
-	}
-
-	public void setCount(Integer count) {
-		this.count = count;
-	}
-	
-	
-	
 }
