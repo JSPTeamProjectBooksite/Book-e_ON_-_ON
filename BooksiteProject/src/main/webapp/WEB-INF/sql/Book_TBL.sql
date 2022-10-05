@@ -21,10 +21,10 @@ CREATE TABLE book_TBL (
 	contents				nvarchar2(2000)	NOT NULL,
 	visit 					number(7)			NULL,
 	quantity				number(4)		DEFAULT 0,
+	catchphrase 			varchar2(500)		NULL,
 	publication_date 		DATE			NOT NULL,
 	register_date 			DATE			DEFAULT sysdate,
-	update_date				DATE			DEFAULT sysdate,
-	catchphrase 			nvarchar2(300)		NULL
+	update_date				DATE			DEFAULT sysdate
 );
 
 ALTER TABLE book_TBL ADD CONSTRAINT book_author_id_FK FOREIGN KEY(author_id) REFERENCES author_TBL(member_id);
@@ -49,10 +49,11 @@ COMMENT ON COLUMN book_TBL.PUBLISHER_REVIEW  IS '출판사 리뷰';
 COMMENT ON COLUMN book_TBL.CONTENTS  IS '목차';
 COMMENT ON COLUMN book_TBL.VISIT  IS '조회수';
 COMMENT ON COLUMN book_TBL.QUANTITY  IS '수량';
+COMMENT ON COLUMN book_TBL.CATCHPHRASE  IS '흥미를 끌만한 글이 들어갈 곳';
 COMMENT ON COLUMN book_TBL.PUBLICATION_DATE  IS '출시일';
 COMMENT ON COLUMN book_TBL.REGISTER_DATE  IS '작성일';
 COMMENT ON COLUMN book_TBL.UPDATE_DATE  IS '수정일자';
-COMMENT ON COLUMN book_TBL.CATCHPHRASE  IS '흥미를 끌만한 글이 들어갈 곳';
+
 
 CREATE SEQUENCE book_SEQ
 	INCREMENT BY 1
