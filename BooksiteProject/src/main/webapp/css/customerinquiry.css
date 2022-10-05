@@ -1,0 +1,12 @@
+@charset "utf-8";
+
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+.wrap { max-width: 1200px; min-width:800px; margin: 0 auto; }
+.wrap h3 { font-size: 28px; padding: 0 0 15px;}
+.wrap h3 > img { width: 20; height: 30px; text-align: center;}
+
