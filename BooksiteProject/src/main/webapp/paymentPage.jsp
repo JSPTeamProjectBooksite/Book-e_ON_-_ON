@@ -52,7 +52,7 @@
 					</tr>
 					<tr>
 						<th>상세 정보</th>
-						<td>${ delinfo.name } / ${ delinfo.address } <br>배송메세지 |
+						<td>${ delinfo.name }/${ delinfo.address } <br>배송메세지 |
 							없음
 							<button type="button" name="주소수정버튼" style="text-align: center">수정하기</button>
 						</td>
@@ -76,31 +76,31 @@
 					<table>
 						<c:forEach var="prod" items="${ prodinfo }">
 							<tr>
-								<td class="imgBox"><img src="${ prod.image }">
-								</td>
+								<td class="imgBox"><img src="${ prod.image }"></td>
 								<td>[국내도서] ${ prod.title }
-									<p style="color: rgb(252, 69, 69);">상품 금액 : ${ prod.price }원 | 수량 : ${ prod.select}개</p>
+									<p style="color: rgb(252, 69, 69);">상품 금액 : ${ prod.price }원
+										| 수량 : ${ prod.select}개</p>
 								</td>
 							</tr>
-							
-						</c:forEach>
-					</table>
-			
 
-				<!-- 스티키 존 -->
+						</c:forEach>
+					</table> <!-- 스티키 존 -->
 				<td rowspan="4" class="stickyBar">
 					<table class="stickyTable">
-					
+
 						<tr>
 							<th>주문금액</th>
 							<td>원</td>
 						</tr>
-						<tr>
-							<th><small> ㄴ상품금액</small></th>
-							<c:forEach var="n" items="prodinfo">
-							<td><small> ${ prod.price*1}원</small></td>
-							</c:forEach>
-						</tr>
+						<c:set var="total" value="0" />
+						<c:forEach var="prod" items="${ prodinfo }" varStatus="status">
+							<tr>
+								<th><small> ㄴ상품금액</small></th>
+								<td><small> ${prod.price * prod.select}원</small></td>
+							</tr>
+							<c:set var="total" value="${total + (prod.price * prod.select) }" />
+						</c:forEach>
+
 						<tr>
 							<th><small> ㄴ할인금액</small></th>
 							<td><small> -0 원</small></td>
@@ -118,12 +118,20 @@
 							<td>0원</td>
 						</tr>
 						<tr>
-							<th>적립금 사용</th>
-							<td>0원</td>
+							<th>최종결제금액</th>
+							<td style="font-size: x-large; color: red;"><c:out
+									value="${total}"></c:out>원</td>
 						</tr>
 						<tr>
-							<th>최종결제금액</th>
-							<td>${paymentDTO.price}원</td>
+							<td>
+							<a href="/orderConfirm.jsp">
+									<button type="button"
+										style="width: 100%; height: 40px; font-size: 20px; font-weight: 500; color: #fff; background-color: rgb(255, 153, 153); border: 1px solid rgb(252, 140, 140); border-radius: 2px;"
+										type="button" name="final">
+										<c:out value="${total}"></c:out>원 결제하기
+									</button>
+							</a>
+							<td>
 						</tr>
 					</table>
 				</td>
@@ -143,8 +151,8 @@
 							<th>적립금 적용</th>
 							<td><input type="number" name="적립금" value="0" readonly
 								disabled>
-								<button type="button" name="사용버튼" style="text-align: center">모두사용</button> <br> <small>사용가능
-									적립금 0원</small></td>
+								<button type="button" name="사용버튼" style="text-align: center">모두사용</button>
+								<br> <small>사용가능 적립금 0원</small></td>
 						</tr>
 					</table>
 				</td>
@@ -185,10 +193,12 @@
 		</table>
 
 		<!-- 버튼부 -->
-		<div>
-			<a href="/orderConfirm.jsp"><button type="button"
-				style="width: 100%; height: 40px; font-size: 18px; font-weight: 560; color: #fff; background-color: rgb(255, 153, 153); border: 1px solid rgb(252, 140, 140); border-radius: 2px;"
-				type="button" name="final">14,000원 결제하기</button></a>
+		<div class="fianlpayBnt">
+			<a href="/orderConfirm.jsp">
+				<button type="button" type="button" name="final">
+					<b><c:out value="${total}"></c:out></b> 원 결제하기
+				</button>
+			</a>
 		</div>
 		<%@ include file="Footer.jsp"%>
 	</div>
