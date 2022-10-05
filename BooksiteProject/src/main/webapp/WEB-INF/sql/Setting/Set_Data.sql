@@ -1,6 +1,5 @@
 -- 모든 테이블 삭제
--- 만약 삭제가 안된다면 부모까지 삭제해주는 삭제 옵션 추가 -> CASCADE CONSTRAINTS
-TRUNCATE TABLE BOOK_CATEGORY_TBL CASCADE CONSTRAINTS;
+TRUNCATE TABLE BOOK_CATEGORY_TBL;
 TRUNCATE TABLE BOOK_REVIEW_TBL;
 TRUNCATE TABLE LOCKER_TBL;
 TRUNCATE TABLE NOTICE_TBL;
@@ -17,14 +16,17 @@ DROP SEQUENCE book_category_SEQ;
 DROP SEQUENCE BOOK_REVIEW_SEQ;
 DROP SEQUENCE BOOK_SEQ;
 DROP SEQUENCE MEMBER_SEQ;
+DROP SEQUENCE notice_SEQ;
+DROP SEQUENCE inquiry_SEQ;
 
--- 모든 테이블 생성 가이드
--- 1. book_categroy, member_state
--- 2. member
--- 3. author, inquiry, notice, admin
--- 4. book
--- 5. book_review, payment, locker
+CREATE SEQUENCE book_category_SEQ INCREMENT BY 1 START WITH 1 MINVALUE 1 nomaxvalue nocycle nocache;
+CREATE SEQUENCE BOOK_REVIEW_SEQ INCREMENT BY 1 START WITH 1 MINVALUE 1 nomaxvalue nocycle nocache;
+CREATE SEQUENCE BOOK_SEQ INCREMENT BY 1 START WITH 1 MINVALUE 1 nomaxvalue nocycle nocache;
+CREATE SEQUENCE MEMBER_SEQ INCREMENT BY 1 START WITH 1 MINVALUE 1 nomaxvalue nocycle nocache;
+CREATE SEQUENCE notice_SEQ INCREMENT BY 1 START WITH 1 MINVALUE 1 nomaxvalue nocycle nocache;
+CREATE SEQUENCE inquiry_SEQ INCREMENT BY 1 START WITH 1 MINVALUE 1 nomaxvalue nocycle nocache;
 
+-- 모든 테이블 생성
 -- ============================================================
 -- 성별
 -- ============================================================
@@ -83,6 +85,7 @@ INSERT INTO NOTICE_TBL(ID, MEMBER_ID, TITLE, CATEGORY, CONTENT) VALUES(notice_SE
 -- ============================================================
 -- 관리자
 -- ============================================================
+INSERT INTO ADMIN_TBL(MEMBER_ID, JOB_POSITION) VALUES(1, '최고위직');
 
 
 -- ============================================================
