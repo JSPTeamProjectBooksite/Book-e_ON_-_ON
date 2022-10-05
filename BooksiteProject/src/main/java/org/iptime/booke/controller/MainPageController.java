@@ -26,6 +26,7 @@ public class MainPageController extends HttpServlet {
 		List<BookDTO> popularList = dao.selectPopularList(poplist);
 		request.setAttribute("popularList", popularList);
 		
+		dao.close();
 		
 		request.getRequestDispatcher("/MainPage.jsp").forward(request, response);
 	}
