@@ -1,6 +1,6 @@
 package org.iptime.booke.dto;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class MemberDTO {
 	private Long id;

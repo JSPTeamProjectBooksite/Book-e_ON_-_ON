@@ -7,7 +7,7 @@ import org.iptime.booke.dto.BookDTO;
 public class BookDAO extends DBConnPool{
 	
 	public Long nextNumber() {
-		String query = "SELECT seq_board_num.nextval FROM DUAL";
+		String query = "SELECT board_SEQ.nextval FROM DUAL";
 		
 		try {
 			psmt = con.prepareStatement(query);
@@ -18,15 +18,15 @@ public class BookDAO extends DBConnPool{
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			return 1L;
+			return null;
 		}
 	}
 	
 	public BookDTO readBook(Long bId) {
 		BookDTO dto = new BookDTO();
-		String query = "SELECT BID, IMAGE, TITLE, AUTHOR, TRANSLATOR, PRICE, DELIVERY_FEE, ESTIMATED_DELIVERY_DATE "
-				+ "FROM book_table "
-				+ "WHERE BID = ? ";
+		String query = "SELECT ID, COVER_IMG, TITLE, AUTHOR_ID, TRANSLATOR, PRICE, DELIVERY_FEE, ESTIMATED_DELIVERY_DATE "
+				+ "FROM book_TBL "
+				+ "WHERE ID = ? ";
 		
 		try {
 			psmt = con.prepareStatement(query);
@@ -36,14 +36,14 @@ public class BookDAO extends DBConnPool{
 			rs = psmt.executeQuery();
 
 			if (rs.next()) {
-				dto.setBid(rs.getLong("BID"));
-				dto.setImage(rs.getString("IMAGE"));
+				dto.setId(rs.getLong("ID"));
+				dto.setCoverImg(rs.getString("COVER_IMG"));
 				dto.setTitle(rs.getString("TITLE"));
-				dto.setAuthor(rs.getString("AUTHOR"));
+				dto.setAuthorId(rs.getLong("AUTHOR_ID"));
 				dto.setTranslator(rs.getString("TRANSLATOR"));
-				dto.setPrice(rs.getLong("PRICE"));
-				dto.setDeliveryFee(rs.getLong("DELIVERY_FEE"));
-				dto.setEstimatedDeliveryDate(rs.getString("ESTIMATED_DELIVERY_DATE"));
+				dto.setPrice(rs.getInt("PRICE"));
+				dto.setDeliveryFee(rs.getInt("DELIVERY_FEE"));
+				dto.setEstimatedDeliveryDate(rs.getInt("ESTIMATED_DELIVERY_DATE"));
 			}
 			
 			return dto;
