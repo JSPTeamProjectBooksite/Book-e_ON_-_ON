@@ -27,18 +27,16 @@ public class MemberDTO {
 		
 	}
 	
-	public MemberDTO(Long id, String name, Short genderId, String password, String phoneNum, String address,
-			String email, Date birth, Date registerDate) {
+	public MemberDTO(String name, String gender, String password, String phoneNum, String address, String email,
+			Date birth) {
 		super();
-		this.id = id;
 		this.name = name;
-		this.genderId = genderId;
+		this.gender = gender;
 		this.password = password;
 		this.phoneNum = phoneNum;
 		this.address = address;
 		this.email = email;
 		this.birth = birth;
-		this.registerDate = registerDate;
 	}
 
 	public MemberDTO(String name, Long id) {
