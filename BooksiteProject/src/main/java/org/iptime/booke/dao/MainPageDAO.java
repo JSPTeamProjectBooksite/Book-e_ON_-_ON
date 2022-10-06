@@ -25,7 +25,7 @@ public class MainPageDAO extends DBConnPool {
 				if(rs.next()) {
 					BookDTO dto = new BookDTO();
 					
-					dto.setBid(rs.getLong(1));
+					dto.setId(rs.getLong(1));
 					dto.setImage(rs.getString(2));
 					dto.setTitle(rs.getString(3));
 					dto.setAuthor(rs.getString(4));
