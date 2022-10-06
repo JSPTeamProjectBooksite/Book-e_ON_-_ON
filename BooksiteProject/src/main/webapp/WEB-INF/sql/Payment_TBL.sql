@@ -7,6 +7,10 @@ CREATE TABLE payment_TBL(
 	price			number(7)	NOT NULL,
 	quantity		number(4)	DEFAULT 0,
 	register_date 	DATE		DEFAULT sysdate
+	-- 사용한 쿠폰 
+	-- 결제 수단
+	-- 배송 상태
+	-- 기타 등등
 );
 
 ALTER TABLE payment_TBL ADD CONSTRAINT payment_member_id_FK FOREIGN KEY(member_id) REFERENCES member_TBL(id);

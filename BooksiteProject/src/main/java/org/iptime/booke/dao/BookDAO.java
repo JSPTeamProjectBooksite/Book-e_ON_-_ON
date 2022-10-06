@@ -23,7 +23,7 @@ public class BookDAO extends DBConnPool{
 	}
 	
 	public BookDTO readBook(Long bId) {
-		BookDTO dto = new BookDTO();
+		BookDTO dto = null;
 		String query = "SELECT ID, COVER_IMG, TITLE, AUTHOR_ID, TRANSLATOR, PRICE, DELIVERY_FEE, ESTIMATED_DELIVERY_DATE "
 				+ "FROM book_TBL "
 				+ "WHERE ID = ? ";
@@ -36,21 +36,23 @@ public class BookDAO extends DBConnPool{
 			rs = psmt.executeQuery();
 
 			if (rs.next()) {
-				dto.setId(rs.getLong("ID"));
-				dto.setCoverImg(rs.getString("COVER_IMG"));
-				dto.setTitle(rs.getString("TITLE"));
-				dto.setAuthorId(rs.getLong("AUTHOR_ID"));
-				dto.setTranslator(rs.getString("TRANSLATOR"));
-				dto.setPrice(rs.getInt("PRICE"));
-				dto.setDeliveryFee(rs.getInt("DELIVERY_FEE"));
-				dto.setEstimatedDeliveryDate(rs.getInt("ESTIMATED_DELIVERY_DATE"));
+				dto = new BookDTO();
+				dto.setId(rs.getLong(1));
+				dto.setCoverImg(rs.getString(2));
+				dto.setTitle(rs.getString(3));
+				dto.setAuthorId(rs.getLong(4));
+				dto.setTranslator(rs.getString(5));
+				dto.setPrice(rs.getInt(6));
+				dto.setDeliveryFee(rs.getInt(7));
+				dto.setEstimatedDeliveryDate(rs.getInt(8));
 			}
 			
 			return dto;
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			return null;
 		}
+		
+		return dto;
 	}
 }
