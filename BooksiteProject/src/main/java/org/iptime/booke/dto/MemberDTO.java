@@ -18,14 +18,13 @@ public class MemberDTO {
 	public MemberDTO() {}
 	
 	//결제페이지
-	
-	public MemberDTO(String name, Long id, String phoneNum, String address) {
-		this.name = name;
-		this.id = id;
-		this.phoneNum = phoneNum;
-		this.address = address;
-		
-	}
+
+		public MemberDTO(String name, String email, String phoneNum, String address) {
+			this.name = name;
+			this.email = email;
+			this.phoneNum = phoneNum;
+			this.address = address;
+		}
 	
 	public MemberDTO(String name, String gender, String password, String phoneNum, String address, String email,
 			Date birth) {

@@ -34,11 +34,11 @@
 					<tr>
 
 						<th>받는분</th>
-						<td>${ delinfo.name }(${ delinfo.id })</td>
+						<td>${ delinfo.name }(${ delinfo.email })</td>
 					</tr>
 					<tr>
 						<th>휴대폰</th>
-						<td>${ delinfo.phoneNumber }</td>
+						<td>${ delinfo.phone_num }</td>
 					</tr>
 				</table>
 			</div>
@@ -76,10 +76,10 @@
 					<table>
 						<c:forEach var="prod" items="${ prodinfo }">
 							<tr>
-								<td class="imgBox"><img src="${ prod.image }"></td>
+								<td class="imgBox"><img src="${ prod.coverImg }"></td>
 								<td>[국내도서] ${ prod.title }
 									<p style="color: rgb(252, 69, 69);">상품 금액 : ${ prod.price }원
-										| 수량 : ${ prod.select}개</p>
+										| 수량 : ${ prod.quantity}개</p>
 								</td>
 							</tr>
 
@@ -96,9 +96,9 @@
 						<c:forEach var="prod" items="${ prodinfo }" varStatus="status">
 							<tr>
 								<th><small> ㄴ상품금액</small></th>
-								<td><small> ${prod.price * prod.select}원</small></td>
+								<td><small> ${prod.price * prod.quantity}원</small></td>
 							</tr>
-							<c:set var="total" value="${total + (prod.price * prod.select) }" />
+							<c:set var="total" value="${total + (prod.price * prod.quantity) }" />
 						</c:forEach>
 
 						<tr>
@@ -145,7 +145,8 @@
 						<tr>
 							<th>쿠폰적용</th>
 							<td><select>
-									<option>적용 가능한 쿠폰 없음</option>
+									<option>[오픈기념]3,000원 할인(기간만료)</option>
+									<option>가입 첫달 무료배송(기간만료)</option>
 							</select></td>
 						</tr>
 						<tr>

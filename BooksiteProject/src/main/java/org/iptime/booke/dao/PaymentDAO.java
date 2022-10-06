@@ -10,14 +10,14 @@ import org.iptime.booke.dto.MemberDTO;
 
 public class PaymentDAO extends JDBConnect {
 	// 사용자 받아오는 메소드
-	public MemberDTO delinfo(String id) {
+	public MemberDTO delinfo(String email) {
 		MemberDTO dto = new MemberDTO();
 		try {
 			
-			String sql = "SELECT NAME, ID, PHONENUMBER, ADDRESS " + "FROM TBL_USER " + "WHERE ID = ? ";
+			String sql = "SELECT NAME, EMAIL, PHONE_NUM, ADDRESS " + "FROM MEMBER_TBL " + "WHERE EMAIL = ? ";
 			
 			psmt = con.prepareStatement(sql);
-			psmt.setString(1, id);
+			psmt.setString(1, email);
 			rs = psmt.executeQuery();
 
 			if (rs.next()) {
@@ -33,19 +33,19 @@ public class PaymentDAO extends JDBConnect {
 
 	}
 	//책 반환
-	public List<BookDTO> prodinfo(String[] bid, String[] select) {
+	public List<BookDTO> prodinfo(String[] id) {
 		List<BookDTO> booklist = new ArrayList<BookDTO>();
 		
-		String sql = "SELECT * " + "FROM BOOK_TABLE " + "WHERE BID = ? ";
+		String sql = "SELECT * " + "FROM BOOK_TBL " + "WHERE ID = ? ";
 		
-		for(int i = 0; i < bid.length; i++) { //{"1","2","3","4"};
+		for(int i = 0; i < id.length; i++) { //{"1","2","3","4"};
 			
-			Long bidNum = Long.parseLong(bid[i]); //1L
+			Long idNum = Long.parseLong(id[i]); //1L
 			
 			
 			try {
 				psmt = con.prepareStatement(sql);
-				psmt.setLong(1, bidNum);
+				psmt.setLong(1, idNum);
 				rs = psmt.executeQuery();
 				
 				BookDTO dto = new BookDTO();
@@ -54,13 +54,14 @@ public class PaymentDAO extends JDBConnect {
 					
 					System.out.println("rs값 있음");
 					
-					dto.setBid(rs.getLong(1));
-					dto.setImage(rs.getString(2));
+					dto.setId(rs.getLong(1));
+					dto.setCoverImg(rs.getString(2));
 					dto.setTitle(rs.getString(3));
-					dto.setPrice(rs.getLong(6));
-					dto.setBookCategoryId(rs.getString(12));
+					dto.setPrice(rs.getInt(6));
+					dto.setBookCategoryId(rs.getInt(13));
+					dto.setQuantity(rs.getInt(20));
 					
-					dto.setSelect(Integer.parseInt(select[i]));//{"1","1","4","5"} (select)
+//					dto.setSelect(Integer.parseInt(select[i]));//{"1","1","4","5"} (select)
 					
 				}
 
