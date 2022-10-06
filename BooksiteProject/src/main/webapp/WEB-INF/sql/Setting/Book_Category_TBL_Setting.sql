@@ -1,6 +1,6 @@
--- YES24 사이트 카테고리 참고했습니다 (YES24 카테고리 보기 : http://www.yes24.com/Main/default.aspx)
+-- 교보문고eBook 사이트 카테고리 참고했습니다 (교보문고eBook 카테고리 보기 : http://digital.kyobobook.co.kr/digital/ebook/ebookMain.ink?orderClick=c14)
 --SELECT book_category_SEQ.nextval from DUAL;
-SELECT id FROM BOOK_CATEGORY_TBL WHERE name = '소설';
+SELECT id FROM BOOK_CATEGORY_TBL WHERE name = '교양심리';
 
 TRUNCATE TABLE BOOK_CATEGORY_TBL;
 DROP SEQUENCE book_category_SEQ;
