@@ -205,12 +205,12 @@
                     <td>
                         <form action="" method="get" id="sendForm">
                         	<!-- 선택한 책과 갯수를 다음 폼에 전송 -->
-                            <input type="hidden" name="BID" value="${ receivedValue.bid }">
+                            <input type="hidden" name="selectedBooks" value="${ receivedValue.bid }">
                             선택 수량: <input type="number" style="
                             width: 60px; 
                             height: 38px; 
                             font-size: 24px;
-                            " name="select" value="1" min="1"> 권<br>
+                            " name="bookCount" value="1" min="1"> 권<br>
                         </form>
                     </td>
                 </tr>

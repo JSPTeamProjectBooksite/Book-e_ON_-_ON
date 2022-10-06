@@ -92,7 +92,7 @@
                     </ul>
                 </td>
                 <td class="footerMenu">
-                    <img src="./source/ico/git.png" alt="" style="height: 80px; width:80px; margin: 20px; border-radius: 40px;">
+                    <img src="/source/ico/git.png" alt="" style="height: 80px; width:80px; margin: 20px; border-radius: 40px;">
                 </td>
             </tr>
         </table>

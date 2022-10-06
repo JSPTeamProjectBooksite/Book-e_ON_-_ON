@@ -23,6 +23,7 @@ public class DetailPageController extends HttpServlet {
 		DetailPageDAO dao = new DetailPageDAO();
 		
 		BookDTO sendValue = dao.bidSearch(BID);
+		dao.close();
 		
 		// 가격은 표시할때 정수형이 아닌 문자형으로 표시할 예정이다. 따로 저장할 변수를 만든다.
 		// 18000 -> 18,000

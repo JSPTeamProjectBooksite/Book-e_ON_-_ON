@@ -12,8 +12,9 @@ CREATE TABLE book_TBL (
 	estimated_delivery_date number(3)			NULL,
 	total_pages				number(5)		NOT NULL,
 	weight 					number(10)			NULL,
-	ISBN 					number(13)			NULL,
-	book_category_id 		number(2)		NOT NULL,
+	ISBN10 					number(13)			NULL,
+	ISBN13 					number(10)			NULL,
+	book_category_id 		number(3)		NOT NULL,
 	introduce 				nvarchar2(1000)		NULL,
 	introduce_img 			varchar2(350)		NULL,
 	publisher 				nvarchar2(50)		NULL,
@@ -21,10 +22,10 @@ CREATE TABLE book_TBL (
 	contents				nvarchar2(2000)	NOT NULL,
 	visit 					number(7)			NULL,
 	quantity				number(4)		DEFAULT 0,
+	catchphrase 			varchar2(500)		NULL,
 	publication_date 		DATE			NOT NULL,
 	register_date 			DATE			DEFAULT sysdate,
-	update_date				DATE			DEFAULT sysdate,
-	catchphrase 			nvarchar2(300)		NULL
+	update_date				DATE			DEFAULT sysdate
 );
 
 ALTER TABLE book_TBL ADD CONSTRAINT book_author_id_FK FOREIGN KEY(author_id) REFERENCES author_TBL(member_id);
@@ -40,7 +41,8 @@ COMMENT ON COLUMN book_TBL.DELIVERY_FEE  IS '배송비';
 COMMENT ON COLUMN book_TBL.ESTIMATED_DELIVERY_DATE  IS '예상 배송일';
 COMMENT ON COLUMN book_TBL.TOTAL_PAGES  IS '페이지 장수';
 COMMENT ON COLUMN book_TBL.WEIGHT  IS '무게';
-COMMENT ON COLUMN book_TBL.ISBN  IS 'ISBN 번호';
+COMMENT ON COLUMN book_TBL.ISBN10  IS 'ISBN10 번호';
+COMMENT ON COLUMN book_TBL.ISBN13  IS 'ISBN13 번호';
 COMMENT ON COLUMN book_TBL.BOOK_CATEGORY_ID  IS '카테고리';
 COMMENT ON COLUMN book_TBL.INTRODUCE  IS '소개글';
 COMMENT ON COLUMN book_TBL.INTRODUCE_IMG  IS '소개 이미지 링크';
@@ -49,10 +51,11 @@ COMMENT ON COLUMN book_TBL.PUBLISHER_REVIEW  IS '출판사 리뷰';
 COMMENT ON COLUMN book_TBL.CONTENTS  IS '목차';
 COMMENT ON COLUMN book_TBL.VISIT  IS '조회수';
 COMMENT ON COLUMN book_TBL.QUANTITY  IS '수량';
+COMMENT ON COLUMN book_TBL.CATCHPHRASE  IS '흥미를 끌만한 글이 들어갈 곳';
 COMMENT ON COLUMN book_TBL.PUBLICATION_DATE  IS '출시일';
 COMMENT ON COLUMN book_TBL.REGISTER_DATE  IS '작성일';
 COMMENT ON COLUMN book_TBL.UPDATE_DATE  IS '수정일자';
-COMMENT ON COLUMN book_TBL.CATCHPHRASE  IS '흥미를 끌만한 글이 들어갈 곳';
+
 
 CREATE SEQUENCE book_SEQ
 	INCREMENT BY 1
@@ -61,12 +64,4 @@ CREATE SEQUENCE book_SEQ
 	nomaxvalue
 	nocycle
 	nocache;
-
-
-
-
-
-
-
-
 

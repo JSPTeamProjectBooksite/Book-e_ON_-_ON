@@ -1,0 +1,20 @@
+@charset "utf-8";
+
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+.wrap { max-width: 1200px; min-width:800px; margin: 0 auto; }
+.wrap h4 { font-size: 28px; padding: 15px 0px 15px 0px;}
+.wrap h4 > img { width: 20; height: 30px; text-align: center;}
+
+.CustomerInquiry td > textarea{ width: 100%; height: 550px;}
+.CustomerInquiry input[type=text]{ width:100%; height: 25px;}
+
+.CustomerInquiry th{ width: 25%; padding: 20px;}
+
+table{
+	margin: auto;
+}
