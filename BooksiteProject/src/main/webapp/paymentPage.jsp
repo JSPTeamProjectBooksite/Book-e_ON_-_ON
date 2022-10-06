@@ -122,7 +122,7 @@
 							<td style="font-size: x-large; color: red;"><c:out
 									value="${total}"></c:out>원</td>
 						</tr>
-						<tr>
+						<!-- <tr>
 							<td>
 							<a href="/orderConfirm.jsp">
 									<button type="button"
@@ -133,6 +133,7 @@
 							</a>
 							<td>
 						</tr>
+						-->
 					</table>
 				</td>
 			</tr>
@@ -164,13 +165,13 @@
 						<tr>
 							<th>결제수단 선택</th>
 							<td class="paybnt"><a href="#a" class="bnt1"> <img
-									src="/source/ico/kakaopay_icon.JPG">
+									src="/source/ico/Visa_ci.png">
 							</a>
 
 								<div class="blockbnt"></div> <a href="#a" class="bnt2"> <img
-									src="/source/ico/toss_icon.JPG">
+									src="/source/ico/Kakaopay_ci.png">
 							</a> <a href="#a" class="bnt3"> <img
-									src="/source/ico/visa_icon.JPG">
+									src="/source/ico/Toss_ci.png">
 							</a></td>
 						</tr>
 					</table>

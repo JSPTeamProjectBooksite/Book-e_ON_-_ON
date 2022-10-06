@@ -50,7 +50,7 @@
 .paymethod h3{  font-size: 16.5px; border-bottom: 1.5px solid rgba(177, 175, 175, 0.329); padding: 40px 0px 10px;}
 .paymethod th {height: 140px; font-size: 14px; color:#444; text-align: left; width:35%;}
 .blockbnt{ height: 7px;}
-.paymethod td.paybnt > a{ display: inline-block; height: 35px; text-align: center; font-size: 16px; line-height: 30px; margin: auto;}
+.paymethod td.paybnt > a{ vertical-align: middle; display: inline-block; height: 35px; text-align: center; font-size: 16px; line-height: 30px; margin: auto;}
 .paymethod td.paybnt > a.bnt1{ width: 310px; background: #ffffff; border: 1px solid rgb(168, 167, 167)}
 .paymethod td.paybnt > a.bnt2{ width: 150px; background: #ffffff; border: 1px solid rgb(168, 167, 167)}
 .paymethod td.paybnt > a.bnt3{ width: 150px; background: #ffffff; border: 1px solid rgb(168, 167, 167)}
@@ -60,7 +60,7 @@
 
 .stickyBar { width: 35%; vertical-align: top;}
 .stickyTable{position: sticky; top: 0; background:rgb(185 245 245 / 42%); width: 100%; box-shadow: 0px 0px 0px 1px #d1fdfd; border-radius: 2px; padding: 10px;}
-.stickyTable th{ text-align: left; width: 180px; }
+.stickyTable th{ text-align: left; width: 180px; padding: 5px;}
 .stickyTable td{ text-align: right; width: 100px; }
 
 .fianlpayBnt button {

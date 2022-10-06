@@ -41,6 +41,11 @@ public class MemberDTO {
 //		this.address = address;
 //	}
 	
+	public MemberDTO(String name,String id) {
+		this.name = name;
+		this.id = id;
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -104,4 +109,7 @@ public class MemberDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+
+	
 }
