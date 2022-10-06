@@ -6,7 +6,6 @@
 
 <head>
 <meta charset="UTF-8">
-<!-- <link rel="stylesheet" href="css/public.css"> -->
 <script src="js/includeHTML.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="chrome">
@@ -77,7 +76,7 @@
 						<c:forEach var="prod" items="${ prodinfo }">
 							<tr>
 								<td class="imgBox"><img src="${ prod.coverImg }"></td>
-								<td>[국내도서] ${ prod.title }
+								<td>[${ prod.bookCategoryId }] ${ prod.title }
 									<p style="color: rgb(252, 69, 69);">상품 금액 : ${ prod.price }원
 										| 수량 : ${ prod.quantity}개</p>
 								</td>

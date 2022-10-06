@@ -11,8 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.iptime.booke.dao.PaymentDAO;
-import org.iptime.booke.dto.BookDTO;
-import org.iptime.booke.dto.MemberDTO;
+import org.iptime.booke.dto.PaymentDTO;
 
 @WebServlet("/payment")
 public class PaymentController extends HttpServlet {
@@ -26,17 +25,17 @@ public class PaymentController extends HttpServlet {
 		
 		PaymentDAO dao = new PaymentDAO();
 		//유저
-		MemberDTO delinfo = dao.delinfo((String)session.getAttribute("user_id"));
+		PaymentDTO delinfo = dao.delinfo((String)session.getAttribute("user_id"));
 //		String id = req.getParameter("id");
 //		System.out.println(id);
 //		MemberDTO dto = dao.payment(id);
 		System.out.println(delinfo);
 		
 		//책
-		String[] bid = req.getParameterValues("selectedBooks"); //{"1","2","3","4"} (bid)
+		String[] id = req.getParameterValues("selectedBooks"); //{"1","2","3","4"} (bid)
 		String[] select = req.getParameterValues("bookCount"); //{"1","1","4","5"} (select)
 		
-		List<BookDTO> prodinfo = dao.prodinfo(bid, select);
+		List<PaymentDTO> prodinfo = dao.prodinfo(id, select);
 		dao.close();
 		
 		
@@ -47,16 +46,6 @@ public class PaymentController extends HttpServlet {
 		
 		req.getRequestDispatcher("paymentPage.jsp").forward(req, resp);
 
-		
-//		String[] bid = req.getParameterValues("selectedBooks"); //{"1","2","3","4"} (bid)
-//		for (String i : bid) {
-//			System.out.println(i);
-//		}
-//		String[] select = req.getParameterValues("bookCount"); //{"1","1","4","5"} (select)
-//		for (String i : select) {
-//			System.out.println(i);
-//		}
-		
 		
 
 	}
