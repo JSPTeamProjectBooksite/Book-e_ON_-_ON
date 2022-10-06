@@ -12,7 +12,8 @@ CREATE TABLE book_TBL (
 	estimated_delivery_date number(3)			NULL,
 	total_pages				number(5)		NOT NULL,
 	weight 					number(10)			NULL,
-	ISBN 					number(13)			NULL,
+	ISBN10 					number(13)			NULL,
+	ISBN13 					number(10)			NULL,
 	book_category_id 		number(3)		NOT NULL,
 	introduce 				nvarchar2(1000)		NULL,
 	introduce_img 			varchar2(350)		NULL,
@@ -40,7 +41,8 @@ COMMENT ON COLUMN book_TBL.DELIVERY_FEE  IS '배송비';
 COMMENT ON COLUMN book_TBL.ESTIMATED_DELIVERY_DATE  IS '예상 배송일';
 COMMENT ON COLUMN book_TBL.TOTAL_PAGES  IS '페이지 장수';
 COMMENT ON COLUMN book_TBL.WEIGHT  IS '무게';
-COMMENT ON COLUMN book_TBL.ISBN  IS 'ISBN 번호';
+COMMENT ON COLUMN book_TBL.ISBN10  IS 'ISBN10 번호';
+COMMENT ON COLUMN book_TBL.ISBN13  IS 'ISBN13 번호';
 COMMENT ON COLUMN book_TBL.BOOK_CATEGORY_ID  IS '카테고리';
 COMMENT ON COLUMN book_TBL.INTRODUCE  IS '소개글';
 COMMENT ON COLUMN book_TBL.INTRODUCE_IMG  IS '소개 이미지 링크';
@@ -62,12 +64,4 @@ CREATE SEQUENCE book_SEQ
 	nomaxvalue
 	nocycle
 	nocache;
-
-
-
-
-
-
-
-
 

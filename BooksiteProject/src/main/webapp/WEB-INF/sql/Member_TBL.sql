@@ -7,7 +7,7 @@ CREATE TABLE member_TBL (
 	email 			nvarchar2(320) 	NOT NULL, 
 	password 		varchar2(30)	NOT NULL, 
 	birth 			DATE 				NULL, 
-	gender_id		NUMBER(1) 			NULL, 
+	gender			nchar(2) 			NULL, 
 	phone_num		CHAR(11) 			NULL,
 	address 		nvarchar2(100) 		NULL,
 	point 			number(8) 		DEFAULT 0,
@@ -16,14 +16,13 @@ CREATE TABLE member_TBL (
 );
 
 ALTER TABLE member_TBL ADD CONSTRAINT member_member_state_id_FK FOREIGN KEY(member_state_id) REFERENCES member_state_TBL(id);
-ALTER TABLE member_TBL ADD CONSTRAINT member_gender_id_FK FOREIGN KEY(gender_id) REFERENCES gender_TBL(id);
 
 COMMENT ON COLUMN member_TBL.id IS '유저의 고유번호';
 COMMENT ON COLUMN member_TBL.name IS '이름(=별명)';
 COMMENT ON COLUMN member_TBL.email IS '이메일';
 COMMENT ON COLUMN member_TBL.PASSWORD IS '비밀번호';
 COMMENT ON COLUMN member_TBL.birth IS '출생연월 (YYYYMMdd)';
-COMMENT ON COLUMN member_TBL.gender_id IS '성별 (M:남자, W:여자)';
+COMMENT ON COLUMN member_TBL.gender IS '성별 (남자, 여자, 기타)';
 COMMENT ON COLUMN member_TBL.phone_num IS '연락처 (010-1234-5678)';
 COMMENT ON COLUMN member_TBL.address IS '주소';
 COMMENT ON COLUMN member_TBL.point IS '포인트';
