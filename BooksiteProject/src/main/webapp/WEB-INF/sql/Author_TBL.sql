@@ -6,7 +6,7 @@ CREATE TABLE author_TBL (
 	name 				varchar2(30)	NOT NULL,
 	nationality			nvarchar2(20)		NULL,
 	profile_contents	nvarchar2(1000)		NULL,
-	registe_date		DATE			DEFAULT sysdate,
+	register_date		DATE			DEFAULT sysdate,
 	update_date			DATE			DEFAULT sysdate
 );
 

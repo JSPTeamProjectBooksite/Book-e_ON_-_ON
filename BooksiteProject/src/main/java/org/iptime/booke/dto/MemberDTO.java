@@ -5,7 +5,7 @@ import java.sql.Date;
 public class MemberDTO {
 	private Long id;
 	private String name;
-	private Short genderId;
+	private String gender;
 	private String password;
 	private String phoneNum;
 	private String address;
@@ -62,12 +62,12 @@ public class MemberDTO {
 		this.name = name;
 	}
 
-	public Short getGenderId() {
-		return genderId;
+	public String getGender() {
+		return gender;
 	}
 
-	public void setGenderId(Short genderId) {
-		this.genderId = genderId;
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 
 	public String getPassword() {
