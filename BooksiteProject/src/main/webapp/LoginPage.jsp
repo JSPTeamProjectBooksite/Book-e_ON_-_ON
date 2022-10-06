@@ -20,10 +20,10 @@
 		<h1>로그인</h1>
 		<form action="login" method="get" name="login">
 			<div>
-				<input class="init" type="text" placeholder="ID" name="user_id">
+				<input class="init" type="text" placeholder="Email" name="email">
 			</div>
 			<div>
-				<input class="init" type="password" placeholder="PW" name="user_pw">
+				<input class="init" type="password" placeholder="PW" name="password">
 			</div>
 			<div class="group">
 				<a href="./findID">아이디 찾기</a> <a href="./findPassword">비밀번호 찾기</a>

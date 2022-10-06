@@ -16,18 +16,18 @@
 <body>
     <div class="container">
         <h1> 회원가입 </h1>
-        <form>
+        <form action="" method="get">
             <div>
-                <input class="inputGroup" type="text" placeholder="Your name" required>
+                <input class="inputGroup" type="text" placeholder="Your name" id="name" required>
             </div>
             <div>
-                <input class="inputGroup" type="text" placeholder="Email" required>
+                <input class="inputGroup" type="text" placeholder="Email" id="email" required>
             </div>
             <div>
-                <input class="inputGroup" type="password" placeholder="Password" required>
+                <input class="inputGroup" type="password" placeholder="Password" id="password" required>
             </div>
             <div>
-                <input class="inputGroup" type="text" placeholder="Birthday" required>
+                <input class="inputGroup" type="date" placeholder="Birthday" id="birthday" required>
             </div>
             <div>
                 <select class="selectGroup" name="gender" id="gender">
@@ -37,10 +37,10 @@
                 </select>
             </div>
             <div>
-                <input class="inputGroup" type="tel" placeholder="Phone number" required>
+                <input class="inputGroup" type="tel" id="phone_num" placeholder="Phone number" required>
             </div>
             <div>
-                <input class="inputGroup" type="address" placeholder="Address" required>
+                <input class="inputGroup" type="text" id="address" placeholder="Address" required>
             </div>
             <div>
                 <input class="checkboxGroup" type="checkbox" required>

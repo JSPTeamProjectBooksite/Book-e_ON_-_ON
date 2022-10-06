@@ -20,12 +20,12 @@ public class LoginController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		String uri = request.getRequestURI();
 		System.out.println(uri + "에서 로그인 요청");
-		
-		String userId = request.getParameter("user_id");
-		String userPwd = request.getParameter("user_pw");
+
+		String userEmail = request.getParameter("email");
+		String userPwd = request.getParameter("password");
 
 //		String oracleDriver = application.getInitParameter("OracleDriver");
 //		String oracleURL = application.getInitParameter("OracleURL");
@@ -34,18 +34,18 @@ public class LoginController extends HttpServlet {
 
 //		MemberDAO dao = new MemberDAO(oracleDriver, oracleURL, oracleId, oraclePwd);
 		MemberDAO dao = new MemberDAO();
-		MemberDTO memberDTO = dao.getMemberDTO(userId, userPwd);
+		MemberDTO memberDTO = dao.getMemberDTO(userEmail, userPwd);
 		dao.close();
 
-		if (memberDTO.getId() != null) {
+		if (memberDTO.getEmail() != null) {
 			String recentURI = request.getParameter("from");
 //			System.out.println(recentURI+"에서 로그인을 요청하였습니다.");
 			HttpSession session = request.getSession();
-			session.setAttribute("user_id", memberDTO.getId());
-			System.out.println(session.getAttribute("user_id"));
+			session.setAttribute("email", memberDTO.getEmail());
+			System.out.println(session.getAttribute("email"));
 //			session.setAttribute("user_name", memberDTO.getName());
 			System.out.println("로그인 성공");
-			System.out.println(memberDTO.getId() + "님!");
+			System.out.println(memberDTO.getEmail() + "님!");
 			PrintWriter out = response.getWriter();
 			response.sendRedirect("/main");
 			System.out.println("이전 페이지로 이동합니다.");
@@ -55,7 +55,7 @@ public class LoginController extends HttpServlet {
 			dispatcher.forward(request, response);
 			System.out.println("로그인이 되어있지 않습니다. 로그인 페이지로 이동합니다.");
 		}
-		
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

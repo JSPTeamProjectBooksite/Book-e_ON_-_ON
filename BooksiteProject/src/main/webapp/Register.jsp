@@ -14,47 +14,48 @@
 <body>
 	<div class="container">
         <h1> 회원가입 </h1>
-        <form>
+        <form action="register" method="get">
             <div>
-                <input class="inputGroup" type="text" placeholder="Your name" id="name" required>
+                <input class="inputGroup" type="text" placeholder="Your name" name="name">
             </div>
             <div>
-                <input class="inputGroup" type="text" placeholder="Email" id="email" required>
+                <input class="inputGroup" type="text" placeholder="Email" name="email">
             </div>
             <div>
-                <input class="inputGroup" type="password" placeholder="Password" id="password" required>
+                <input class="inputGroup" type="password" placeholder="Password" name="password">
             </div>
             <div>
-                <input class="inputGroup" type="text" placeholder="Birthday" id="birthday" required>
+                <input class="inputGroup" type="date" placeholder="Birthday" name="birthday">
             </div>
             <div>
                 <select class="selectGroup" name="gender" id="gender">
                     <option value="Select"> Gender </option>
-                    <option value="Man"> Man </option>
-                    <option value="Woman"> Woman </option>
+                    <option value="M"> Man </option>
+                    <option value="W"> Woman </option>
+                    <option value="E"> Etc </option>
                 </select>
             </div>
             <div>
-                <input class="inputGroup" type="tel" id="phoneNum" placeholder="Phone number" required>
+                <input class="inputGroup" type="tel" name="phoneNum" placeholder="Phone number">
             </div>
             <div>
-                <input class="inputGroup" type="text" id="address" placeholder="Address" required>
+                <input class="inputGroup" type="text" name="address" placeholder="Address">
             </div>
             <div>
-                <input class="checkboxGroup" type="checkbox" required>
+                <input class="checkboxGroup" type="checkbox">
                 <span class="allTerms"> 모든 약관에 동의합니다. </span>
             </div>
             <div class="terms">
                 <div>
-                    <input type="checkbox" required>
+                    <input type="checkbox">
                     <span> Book-e On & On 이용약관 (필수) </span>
                 </div>
                 <div>
-                    <input type="checkbox" required>
+                    <input type="checkbox">
                     <span> Book-e On & On 커뮤니티 이용약관 (필수) </span>
                 </div>
                 <div>
-                    <input type="checkbox" required>
+                    <input type="checkbox">
                     <span> 개인 정보 수집 및 이용 (필수) </span>
                 </div>
             </div>
