@@ -40,3 +40,4 @@ CREATE SEQUENCE member_SEQ
 	
 
 SELECT * FROM member_TBL
+
