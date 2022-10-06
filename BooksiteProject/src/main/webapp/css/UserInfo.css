@@ -5,6 +5,7 @@
 }
 
 body {
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -23,8 +24,8 @@ h1 {
     height: 500px;
     padding: 50px;
     text-align: center;
-    margin-top: 150px;
     border: 1px solid;
+    border-radius: 25px;
 }
 
 table {
@@ -40,7 +41,6 @@ th, td {
 }
 
 th {
-    /* color: gray; */
     background-color: #eef1f8;
 }
 
@@ -48,9 +48,14 @@ th:first-child, td:first-child {
     border-left: none;
 }
 
-div .Resign {
+.Resign {
     margin-top: 10px;
     text-align: right;
+}
+
+.update {
+    margin-top: 10px;
+    text-align: left;
 }
 
 .button {
