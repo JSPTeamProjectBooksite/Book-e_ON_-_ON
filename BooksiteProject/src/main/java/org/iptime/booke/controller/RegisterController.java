@@ -21,22 +21,22 @@ public class RegisterController extends HttpServlet {
 			throws ServletException, IOException {
 		
 		// 폼값 받기
-		String userName = request.getParameter("user_name");
-		String userGender = request.getParameter("gender");
-		String userId = request.getParameter("user_id");
-		String userPwd = request.getParameter("user_pw");
-		String userEmail = request.getParameter("user_email");
-		String userPhoneNumber = request.getParameter("user_phoneNumber");
-		String userAddress = request.getParameter("user_address");
+		String userName = request.getParameter("name");
+		String userEmail = request.getParameter("email");
+		String userPwd = request.getParameter("password");
+		String userBirth = request.getParameter("birthday");
+		Short userGender = request.getParameter("gender");
+		String userPhoneNumber = request.getParameter("phoneNum");
+		String userAddress = request.getParameter("address");
 
 		// 폼값을 DTO 객체에 저장
 		MemberDTO memberDTO = new MemberDTO();
 		memberDTO.setName(userName);
-		memberDTO.setGender(userGender);
-		memberDTO.setId(userId);
-		memberDTO.setPassword(userPwd);
 		memberDTO.setPassword(userEmail);
-		memberDTO.setPhoneNumber(userPhoneNumber);
+		memberDTO.setPassword(userPwd);
+		memberDTO.setPassword(userBirth);
+		memberDTO.setGenderId(userGender);
+		memberDTO.setPhoneNum(userPhoneNumber);
 		memberDTO.setAddress(userAddress);
 
 		MemberDAO dao = new MemberDAO();

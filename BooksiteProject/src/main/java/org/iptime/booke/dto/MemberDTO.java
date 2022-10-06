@@ -27,24 +27,20 @@ public class MemberDTO {
 		
 	}
 	
-	public MemberDTO(String name, Long id, String password, String phoneNum, String address) {
-		this.name = name;
+	public MemberDTO(Long id, String name, Short genderId, String password, String phoneNum, String address,
+			String email, Date birth, Date registerDate) {
+		super();
 		this.id = id;
+		this.name = name;
+		this.genderId = genderId;
 		this.password = password;
 		this.phoneNum = phoneNum;
 		this.address = address;
+		this.email = email;
+		this.birth = birth;
+		this.registerDate = registerDate;
 	}
 
-//	public MemberDTO(String name, int gender, String id, String password, int phoneNumber, String address) {
-//		super();
-//		this.name = name;
-//		this.gender = gender;
-//		this.id = id;
-//		this.password = password;
-//		this.phoneNumber = phoneNumber;
-//		this.address = address;
-//	}
-	
 	public MemberDTO(String name, Long id) {
 		this.name = name;
 		this.id = id;

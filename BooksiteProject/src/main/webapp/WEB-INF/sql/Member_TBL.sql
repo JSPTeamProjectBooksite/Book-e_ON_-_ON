@@ -38,3 +38,5 @@ CREATE SEQUENCE member_SEQ
 	nocycle
 	nocache;
 	
+
+SELECT * FROM member_TBL
