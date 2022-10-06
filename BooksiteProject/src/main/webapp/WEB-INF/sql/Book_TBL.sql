@@ -20,8 +20,7 @@ CREATE TABLE book_TBL (
 	publisher 				nvarchar2(50)		NULL,
 	publisher_review 		nvarchar2(1000)		NULL,
 	contents				nvarchar2(2000)	NOT NULL,
-	visit 					number(7)			NULL,
-	quantity				number(4)		DEFAULT 0,
+	visit 					number(7)		DEFAULT 0,
 	catchphrase 			varchar2(500)		NULL,
 	publication_date 		DATE			NOT NULL,
 	register_date 			DATE			DEFAULT sysdate,
@@ -50,7 +49,6 @@ COMMENT ON COLUMN book_TBL.PUBLISHER  IS '출판사';
 COMMENT ON COLUMN book_TBL.PUBLISHER_REVIEW  IS '출판사 리뷰';
 COMMENT ON COLUMN book_TBL.CONTENTS  IS '목차';
 COMMENT ON COLUMN book_TBL.VISIT  IS '조회수';
-COMMENT ON COLUMN book_TBL.QUANTITY  IS '수량';
 COMMENT ON COLUMN book_TBL.CATCHPHRASE  IS '흥미를 끌만한 글이 들어갈 곳';
 COMMENT ON COLUMN book_TBL.PUBLICATION_DATE  IS '출시일';
 COMMENT ON COLUMN book_TBL.REGISTER_DATE  IS '작성일';

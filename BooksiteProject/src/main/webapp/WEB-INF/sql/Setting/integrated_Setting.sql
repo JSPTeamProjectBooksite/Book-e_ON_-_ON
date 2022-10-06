@@ -169,7 +169,7 @@ COMMENT ON COLUMN author_TBL.profile_Img IS '프로필 이미지 경로';
 COMMENT ON COLUMN author_TBL.NAME  IS '저자 이름';
 COMMENT ON COLUMN author_TBL.NATIONALITY  IS '국적';
 COMMENT ON COLUMN author_TBL.profile_contents  IS '저자 소개 글';
-COMMENT ON COLUMN author_TBL.REGISTE_DATE  IS '생성 일자';
+COMMENT ON COLUMN author_TBL.REGISTER_DATE  IS '생성 일자';
 COMMENT ON COLUMN author_TBL.UPDATE_DATE IS '마지막 수정 일자';
 
 -- ============================================================
@@ -742,9 +742,9 @@ INSERT INTO book_category_TBL VALUES(book_category_SEQ.nextval, '기타', 8);
 -- ============================================================
 -- 멤버
 -- ============================================================
-INSERT INTO MEMBER_TBL(id, name, email, password, birth, gender, phone_num, address) VALUES(member_SEQ.nextval, 'user01', 'user01@gmail.com', 'user01', '2022-10-01', '남자', '0100010001', '경기도 어딘가 무슨곳 좋은동');
-INSERT INTO MEMBER_TBL(id, name, email, password, birth, gender, phone_num, address) VALUES(member_SEQ.nextval, 'user02', 'user02@gmail.com', 'user02', '2022-10-01', '여자', '0100010002', '경기도 어딘가 무슨곳 좋은동');
-INSERT INTO MEMBER_TBL(id, name, email, password, birth, gender, phone_num, address) VALUES(member_SEQ.nextval, 'user03', 'user03@gmail.com', 'user03', '2022-10-01', '기타', '0100010003', '경기도 어딘가 무슨곳 좋은동');
+INSERT INTO MEMBER_TBL(id, name, email, password, birth, gender, phone_num, address) VALUES(member_SEQ.nextval, 'user01', 'user01@gmail.com', 'user01', '2022-10-01', 'M', '0100010001', '경기도 어딘가 무슨곳 좋은동');
+INSERT INTO MEMBER_TBL(id, name, email, password, birth, gender, phone_num, address) VALUES(member_SEQ.nextval, 'user02', 'user02@gmail.com', 'user02', '2022-10-01', 'W', '0100010002', '경기도 어딘가 무슨곳 좋은동');
+INSERT INTO MEMBER_TBL(id, name, email, password, birth, gender, phone_num, address) VALUES(member_SEQ.nextval, 'user03', 'user03@gmail.com', 'user03', '2022-10-01', 'E', '0100010003', '경기도 어딘가 무슨곳 좋은동');
 INSERT INTO MEMBER_TBL(id, name, email, password, birth, gender, phone_num, address) VALUES(member_SEQ.nextval, 'user04', 'user04@gmail.com', 'user04', '2022-10-01', NULL, '0100010004', '경기도 어딘가 무슨곳 좋은동');
 --DECLARE
 --	user_name varchar2(6) := 'user_';
