@@ -94,15 +94,15 @@
             인기 도서
         </div>
         <div id="popList">
-            <c:forEach var="book" items="${popularList}">
+            <c:forEach var="info" items="${popularList}">
             	<div style="width: 100%;">
                     <div class="bookImage">
-                        <img class="animation_1 imgBox1" id="popularityBookImage" alt="" src="${ book.coverImg }"  style="width: 100%;" onclick="goToDetailPage(${ book.id })">
+                        <img class="animation_1 imgBox1" id="popularityBookImage" alt="" src="${ info.book.coverImg }"  style="width: 100%;" onclick="goToDetailPage(${ info.book.id })">
                     </div>
                     <div style="height:100px; text-align:center;">
-                    	${ book.title }
+                    	${ info.book.title }
                     	<br>
-                    	${ book.authorId }
+                    	${ info.author.name }
                     </div>
             	</div>
             </c:forEach>
