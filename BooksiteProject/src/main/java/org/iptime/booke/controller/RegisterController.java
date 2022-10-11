@@ -40,7 +40,7 @@ public class RegisterController extends HttpServlet {
 		}
 
 		// 폼값을 DTO 객체에 저장
-		MemberDTO memberDTO = new MemberDTO();	
+		MemberDTO memberDTO = new MemberDTO();
 		memberDTO.setName(userName);
 		memberDTO.setEmail(userEmail);
 		memberDTO.setPassword(userPwd);
@@ -58,6 +58,8 @@ public class RegisterController extends HttpServlet {
 			System.out.println("회원가입 성공");
 			response.sendRedirect("./login");
 			return;
+		} else if (iResult == 2) {
+			System.out.println("중복된 아이디가 있습니다.");
 		} else {
 			System.out.println("회원가입 실패");
 		}

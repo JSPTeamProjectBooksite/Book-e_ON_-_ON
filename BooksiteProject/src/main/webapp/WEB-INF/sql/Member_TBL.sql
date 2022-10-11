@@ -37,7 +37,5 @@ CREATE SEQUENCE member_SEQ
 	nomaxvalue
 	nocycle
 	nocache;
-	
 
-SELECT * FROM member_TBL
-
+SELECT * FROM MEMBER_TBL mt 

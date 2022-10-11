@@ -18,7 +18,9 @@ public class MemberDTO {
 	public MemberDTO() {
 	}
 
-	public MemberDTO(String name, String email, String password, java.sql.Date birth, String gender, String phoneNum, String address, int point) {
+	// 관리자 페이지 유저 정보
+	public MemberDTO(Long id, String name, String email, String password, java.sql.Date birth, String gender, String phoneNum, String address, int point, java.sql.Date registerDate) {
+		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.password = password;
@@ -27,8 +29,7 @@ public class MemberDTO {
 		this.phoneNum = phoneNum;
 		this.address = address;
 		this.point = point;
-		
-		
+		this.registerDate = registerDate;
 	}
 
 	// 결제페이지
