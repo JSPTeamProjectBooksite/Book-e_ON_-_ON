@@ -15,7 +15,7 @@ public class ListPageDAO extends DBConnPool{
 	public int selectCount(Map<String, Object> map) {
 		int totalCount = 0;
 		
-		String query = "SELECT COUNT(*) FROM book_table";
+		String query = "SELECT COUNT(*) FROM BOOK_TBL";
 		
 		if(map.get("searchWord") != null) {
 			query += " WHERE " + map.get("searchField") + " "
@@ -42,13 +42,13 @@ public class ListPageDAO extends DBConnPool{
 		String query = " "
 				+ "SELECT * FROM ( "
 				+ "	SELECT Tb.*, ROWNUM rNum FROM ( "
-				+ "		SELECT * FROM book_table ";
+				+ "		SELECT * FROM BOOK_TBL ";
 		if(map.get("searchWord") != null) {
 			query += " WHERE " + map.get("searchFeild")
 					+ " LIKE '" + map.get("searchWord") + "%'";
 		}
 		
-		query += "		ORDER BY bid DESC "
+		query += "		ORDER BY ID DESC "
 				+ "	) Tb "
 				+ " ) "
 				+ " WHERE rNum BETWEEN ? AND ?";
@@ -62,14 +62,10 @@ public class ListPageDAO extends DBConnPool{
 			while(rs.next()) {
 				BookDTO dto = new BookDTO();
 				
-				dto.setBid(rs.getLong(1));
-				dto.setImage(rs.getString(2));
+				dto.setId(rs.getLong(1));
+				dto.setCoverImg(rs.getString(2));
 				dto.setTitle(rs.getString(3));
-				dto.setAuthor(rs.getString(4));
-				dto.setPrice(rs.getLong(6));
-				dto.setIntroduce(rs.getString(13));
-				dto.setPublisher(rs.getString(15));
-				dto.setAd(rs.getString(22));
+				dto.setAuthorId(rs.getLong(4));
 				
 				board.add(dto);
 				

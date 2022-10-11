@@ -44,25 +44,17 @@
 <body>
     <div id="wrap">
 		<%@include file="./Header.jsp" %>
-        <!-- 검색창 -->
-        <form action="/list">
-            <div style="height: 100px;">
-                <div style="height:70px; width: 700px; background:turquoise; margin: auto; padding: 10px; text-align: center; border-radius: 35px;">
-                    <select name="searchFeild" id="">
-                        <option value="title">제목</option>
-                        <option value="author">작가</option>
-                    </select>
-                    <input type="text" name="search" style="width: 400px; height: 50px; font-size: 32px; border: none;">
-                    <input type="submit" value="검색" style="width: 100px; height: 50px;">
-                </div>
-            </div>
-        </form>
         
         <!-- 전송폼 -->
         <form action="/detail" name="mainPageForm" id="BIDform" method="get">
             <input type="hidden" name="BID" value="">
         </form>
 
+		<!-- 공간 띄우기 -->
+        <div style="height: 25px;"></div>
+
+        <!-- 검색창 -->
+        <%@ include file="./SearchBar.jsp" %>
         
         <!-- 검색결과 (평소에는 보이지 않으나, 검색창 검색값이 있을 경우 해당 div에 출력) -->
         <div id="searchDiv">
@@ -92,15 +84,15 @@
             		<c:otherwise>
             			<c:forEach var="book" items="${searchList}">
 		                    <div>
-		                        <img src= ${ book.image } alt="${ book.title } 이미지" style="width: 100%;"
-		                            onclick="goToDetailPage( ${ book.bid } )">
+		                        <img src= ${ book.coverImg } alt="${ book.title } 이미지" style="width: 100%;"
+		                            onclick="goToDetailPage( ${ book.id } )">
 		                        <div id="searchListText">
 		                        	<div style="font-size:14px">${ book.title }</div>
 		                        	<div style="height: 3px"></div>
 		                        	<div style="
                                     font-size:12px;
                                     color:dimgray;
-                                    ">${ book.author }</div>
+                                    ">${ book.authorId }</div>
 		                        </div>
 		                    </div>
 		            	</c:forEach>
