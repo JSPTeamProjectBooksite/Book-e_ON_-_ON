@@ -14,7 +14,7 @@ public class MainPageDAO extends DBConnPool {
 	public List<BookDTO> selectPopularList(long[] popbid){
 		List<BookDTO> booklist = new ArrayList<>();
 		
-		String query = "SELECT BID, IMAGE, TITLE, AUTHOR " + "FROM BOOK_TABLE " + "WHERE BID = ? ";
+		String query = "SELECT ID, COVER_IMG, TITLE, AUTHOR_ID " + "FROM BOOK_TBL " + "WHERE ID = ? ";
 		
 		for(long l : popbid) {
 			try {
@@ -25,17 +25,17 @@ public class MainPageDAO extends DBConnPool {
 				if(rs.next()) {
 					BookDTO dto = new BookDTO();
 					
-					dto.setBid(rs.getLong(1));
-					dto.setImage(rs.getString(2));
+					dto.setId(rs.getLong(1));
+					dto.setCoverImg(rs.getString(2));
 					dto.setTitle(rs.getString(3));
-					dto.setAuthor(rs.getString(4));
+					dto.setAuthorId(rs.getLong(4));
 					
 					booklist.add(dto);
 				}
 				
 			} catch (Exception e) {
 				// TODO: handle exception
-				System.out.println("메인 인기항목 부럴오는 중 오류발생");
+				System.out.println("메인 인기항목 불러오는 중 오류발생");
 				e.printStackTrace();
 			}
 		}

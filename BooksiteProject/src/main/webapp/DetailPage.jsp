@@ -154,12 +154,12 @@
                 font-weight: 700;
                 font-family: 고딕;
                 color: grey;
-            " id="ad">${ receivedValue.ad }
+            " id="ad">${ receivedValue.catchphrase }
             </div>
             <div style="height:5px"></div>
             <div style="
                 width: 200px;
-            " id="author">${ receivedValue.author }</div>
+            " id="author">${ receivedValue.authorId }</div>
 	        <hr>
         </div>
     
@@ -174,7 +174,7 @@
                     font-size: 24px;
                 ">
                     <td rowspan="5" style="width: 10%;">
-                        <img class="animation_2 box2" src="${ receivedValue.image }" style="
+                        <img class="animation_2 box2" src="${ receivedValue.coverImg }" style="
                             max-height: 500px;
                         " id="image">
                     </td>
@@ -205,7 +205,7 @@
                     <td>
                         <form action="" method="get" id="sendForm">
                         	<!-- 선택한 책과 갯수를 다음 폼에 전송 -->
-                            <input type="hidden" name="selectedBooks" value="${ receivedValue.bid }">
+                            <input type="hidden" name="selectedBooks" value="${ receivedValue.id }">
                             선택 수량: <input type="number" style="
                             width: 60px; 
                             height: 38px; 

@@ -15,17 +15,45 @@ public class MemberDTO {
 	private Short memberStateId;
 	private Date registerDate;
 	
-	public MemberDTO() {}
-	
-	//결제페이지
+	public MemberDTO() {
+	}
 
-		public MemberDTO(String name, String email, String phoneNum, String address) {
-			this.name = name;
-			this.email = email;
-			this.phoneNum = phoneNum;
-			this.address = address;
-		}
+	public MemberDTO(String name, String email, String password, java.sql.Date birth, String gender, String phoneNum, String address, int point) {
+		this.name = name;
+		this.email = email;
+		this.password = password;
+		this.birth = birth;
+		this.gender = gender;
+		this.phoneNum = phoneNum;
+		this.address = address;
+		this.point = point;
+		
+		
+	}
+
+	// 결제페이지
+	public MemberDTO(String name, String email, String phoneNum, String address) {
+		this.name = name;
+		this.email = email;
+		this.phoneNum = phoneNum;
+		this.address = address;
+	}
+
 	
+
+//	public MemberDTO(String name, String email, String password, Date birth, String gender, String phoneNum,
+//			String address, Integer point) {
+//		super();
+//		this.name = name;
+//		this.email = email;
+//		this.password = password;
+//		this.birth = birth;
+//		this.gender = gender;
+//		this.phoneNum = phoneNum;
+//		this.address = address;
+//		this.point = point;
+//	}
+
 	public MemberDTO(String name, String gender, String password, String phoneNum, String address, String email,
 			Date birth) {
 		super();
@@ -130,5 +158,5 @@ public class MemberDTO {
 	public void setRegisterDate(Date registerDate) {
 		this.registerDate = registerDate;
 	}
-	
+
 }

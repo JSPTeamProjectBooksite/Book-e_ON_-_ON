@@ -782,9 +782,9 @@ INSERT INTO book_category_TBL VALUES(book_category_SEQ.nextval, '기타', 8);
 -- ============================================================
 -- 멤버
 -- ============================================================
-INSERT INTO MEMBER_TBL(id, name, email, password, birth, gender, phone_num, address) VALUES(member_SEQ.nextval, 'user01', 'user01@gmail.com', 'user01', '2022-10-01', '남자', '0100010001', '경기도 어딘가 무슨곳 좋은동');
-INSERT INTO MEMBER_TBL(id, name, email, password, birth, gender, phone_num, address) VALUES(member_SEQ.nextval, 'user02', 'user02@gmail.com', 'user02', '2022-10-01', '여자', '0100010002', '경기도 어딘가 무슨곳 좋은동');
-INSERT INTO MEMBER_TBL(id, name, email, password, birth, gender, phone_num, address) VALUES(member_SEQ.nextval, 'user03', 'user03@gmail.com', 'user03', '2022-10-01', '기타', '0100010003', '경기도 어딘가 무슨곳 좋은동');
+INSERT INTO MEMBER_TBL(id, name, email, password, birth, gender, phone_num, address) VALUES(member_SEQ.nextval, 'user01', 'user01@gmail.com', 'user01', '2022-10-01', 'M', '0100010001', '경기도 어딘가 무슨곳 좋은동');
+INSERT INTO MEMBER_TBL(id, name, email, password, birth, gender, phone_num, address) VALUES(member_SEQ.nextval, 'user02', 'user02@gmail.com', 'user02', '2022-10-01', 'W', '0100010002', '경기도 어딘가 무슨곳 좋은동');
+INSERT INTO MEMBER_TBL(id, name, email, password, birth, gender, phone_num, address) VALUES(member_SEQ.nextval, 'user03', 'user03@gmail.com', 'user03', '2022-10-01', 'E', '0100010003', '경기도 어딘가 무슨곳 좋은동');
 INSERT INTO MEMBER_TBL(id, name, email, password, birth, gender, phone_num, address) VALUES(member_SEQ.nextval, 'user04', 'user04@gmail.com', 'user04', '2022-10-01', NULL, '0100010004', '경기도 어딘가 무슨곳 좋은동');
 --DECLARE
 --	user_name varchar2(6) := 'user_';

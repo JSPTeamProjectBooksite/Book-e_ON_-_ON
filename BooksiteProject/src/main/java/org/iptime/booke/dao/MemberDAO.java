@@ -1,9 +1,7 @@
 package org.iptime.booke.dao;
 
 import java.sql.Date;
-import java.sql.SQLIntegrityConstraintViolationException;
-
-import javax.servlet.ServletContext;
+import java.util.ArrayList;
 
 import org.iptime.booke.common.JDBConnect;
 import org.iptime.booke.dto.MemberDTO;
@@ -100,7 +98,7 @@ public class MemberDAO extends JDBConnect {
 //		}
 //		return mpass;
 //	}
-//
+
 //	public MemberDTO userInfo(String id) {
 //		try {
 //
@@ -110,13 +108,17 @@ public class MemberDAO extends JDBConnect {
 //			rs = psmt.executeQuery();
 //
 //			if (rs.next()) {
-//				MemberDTO dto = new MemberDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
-//						rs.getString(5));
-//				System.out.println("이름 : " + rs.getString(1));
-//				System.out.println("아이디 : " + rs.getString(2));
-//				System.out.println("비밀번호 : " + rs.getString(3));
-//				System.out.println("핸드폰번호 : " + rs.getString(4));
-//				System.out.println("주소 : " + rs.getString(5));
+//				MemberDTO dto = new MemberDTO(rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+//						rs.getString(6), rs.getString(7), rs.getDate(8), rs.getInt(9));
+//				
+//				System.out.println("이름 : " + rs.getString(2));
+//				System.out.println("성별 : " + rs.getString(3));
+//				System.out.println("비밀번호 : " + rs.getString(4));
+//				System.out.println("핸드폰번호 : " + rs.getString(5));
+//				System.out.println("주소 : " + rs.getString(6));
+//				System.out.println("이메일 : " + rs.getString(7));
+//				System.out.println("생년월일 : " + rs.getDate(8));
+//				System.out.println("포인트 : " + rs.getInt(9));
 //				return dto;
 //			}
 //
@@ -126,7 +128,47 @@ public class MemberDAO extends JDBConnect {
 //
 //		return null;
 //	}
-//
+	
+	public ArrayList<MemberDTO> ManagerUserInfo(String list) {
+	ArrayList<MemberDTO> values = new ArrayList<MemberDTO>();
+	try {
+
+		String query = "SELECT * FROM member_TBL";
+		psmt = con.prepareStatement(query);
+		rs = psmt.executeQuery(query);
+
+		while (rs.next()) {
+			MemberDTO dto = new MemberDTO(rs.getString(2), rs.getString(3), rs.getString(4), rs.getDate(5),
+					rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9));
+			
+			values.add(dto);
+//			values.add(rs.getString(3));
+//			values.add(rs.getString(4));
+//			values.add(rs.getString(5));
+//			values.add(rs.getString(6));
+//			values.add(rs.getString(7));
+//			values.add(rs.getString(8));
+//			values.add(rs.getString(9));
+			
+//			System.out.println("이름 : " + rs.getString(2));
+//			System.out.println("성별 : " + rs.getString(3));
+//			System.out.println("비밀번호 : " + rs.getString(4));
+//			System.out.println("핸드폰번호 : " + rs.getString(5));
+//			System.out.println("주소 : " + rs.getString(6));
+//			System.out.println("이메일 : " + rs.getString(7));
+//			System.out.println("생년월일 : " + rs.getString(8));
+//			System.out.println("포인트 : " + rs.getString(9));
+//			System.out.println();
+//			return dto;
+		}
+
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+
+	return values;
+}
+
 //	public int updateUserEdit(MemberDTO dto) {
 //		int result = 0;
 //
@@ -162,7 +204,7 @@ public class MemberDAO extends JDBConnect {
 
 //	public static void main(String[] args) {
 //		MemberDAO dao = new MemberDAO();
-//		dao.userInfo("green");
+//		dao.ManagerUserInfo("");
 //	}
 
 }

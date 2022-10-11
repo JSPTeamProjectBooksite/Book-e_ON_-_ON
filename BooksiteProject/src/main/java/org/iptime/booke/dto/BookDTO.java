@@ -4,27 +4,27 @@ import java.util.Date;
 
 public class BookDTO {
 	private Long id;
-	private String coverImg;
-	private String title;
-	private Long authorId;
-	private String translator;
-	private Integer price;
-	private Integer deliveryFee;
+	private String coverImg;//
+	private String title;//
+	private Long authorId;//
+	private String translator;//
+	private Integer price;//
+	private Integer deliveryFee;//
 	private Integer estimatedDeliveryDate;
-	private Integer totalPages;
-	private Integer weight;
-	private Long isbn13;
-	private Long isbn10;
-	private Integer bookCategoryId;
-	private String introduce;
-	private String introduceImg;
-	private String publisher;
-	private String publisherReview;
-	private String contents;
+	private Integer totalPages;//
+	private Integer weight;//
+	private Long isbn13;//
+	private Long isbn10;//
+	private Integer bookCategoryId;//
+	private String introduce;//
+	private String introduceImg;//
+	private String publisher;//
+	private String publisherReview;//
+	private String contents;//
 	private Integer visit;
 	private Integer quantity;
-	private String catchphrase;
-	private Date publicationDate;
+	private String catchphrase;//
+	private Date publicationDate;//
 	private Date registDate;
 	private Date updateDate;
 	

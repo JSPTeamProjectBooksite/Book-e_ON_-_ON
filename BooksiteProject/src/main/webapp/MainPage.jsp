@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>도서목록</title>
+<title>메인 페이지</title>
 <link rel="stylesheet" href="./css/MainPage.css">
 <!-- <script src="./js/ListPage.js"></script> -->
 <script type="text/javascript">
@@ -97,12 +97,12 @@
             <c:forEach var="book" items="${popularList}">
             	<div style="width: 100%;">
                     <div class="bookImage">
-                        <img class="animation_1 imgBox1" id="popularityBookImage" alt="" src="${ book.image }"  style="width: 100%;" onclick="goToDetailPage(${ book.bid })">
+                        <img class="animation_1 imgBox1" id="popularityBookImage" alt="" src="${ book.coverImg }"  style="width: 100%;" onclick="goToDetailPage(${ book.id })">
                     </div>
                     <div style="height:100px; text-align:center;">
                     	${ book.title }
                     	<br>
-                    	${ book.author }
+                    	${ book.authorId }
                     </div>
             	</div>
             </c:forEach>

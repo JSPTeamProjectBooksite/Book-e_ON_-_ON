@@ -5,17 +5,6 @@ function getContextPath() {
   return sessionStorage.getItem("contextpath");
 }
 
-function fromUpdate(from, action, method){
-	from.attr('action', action);
-	from.find("input[name=_method]").val(method);
-}
-
-var setCookie = function(name, value, exp) {
-	var date = new Date();
-	date.setTime(date.getTime() + exp*24*60*60*1000);
-	document.cookie = name + '=' + value + ';expires=' + date.toUTCString() + ';path=/';
-};
-
 $(function (){   
     // 장바구니에 있는 책을 누르면 버튼처럼 작동됨
     $('.bookItem').mousedown( function(event){
@@ -40,24 +29,5 @@ $(function (){
     // 마우스가 밖으로 벗어났거나, 버튼을 땠을 때 클릭 효과를 제거함 
     $('.bookItem').mouseup(function() { $(this).removeClass('bookItemClick') }); 
     $('.bookItem').mouseout(function() { $(this).removeClass('bookItemClick') });
-    
-    
-    $('.bookDeleteBtn').click(function(){
-    	let p = $(this).closest('.bookItem');
-    	setCookie(p.find('.bookCheckBox').val(), "null", 0);
-		location.reload();
-	});
-    // submit 버튼들 
-    let fromTag = $('#cartForm');
-    $('.selectBookDeleteBtn').click(function(){
-		$('input:checkbox[name=selectedBooks]').each(function () {
-			if($(this).is(":checked")){
-		    	setCookie($(this).val(), "null", 0);
-		    	location.reload();
-		    }
-		});
-	});
-    $('.selectBookPaymentBtn').click(function(){ fromUpdate(fromTag, '/payment', 'post'); });
-    $('.selectBookSaveBtn').click(function(){ fromUpdate(fromTag, '#', 'post'); });
 });
 

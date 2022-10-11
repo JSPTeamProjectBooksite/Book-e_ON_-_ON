@@ -43,7 +43,7 @@ public class ShopCartController extends HttpServlet {
 					Long idL = Long.valueOf(id);
 					
 					BookDTO dto = bookDAO.readBook(idL);
-					dto.setCount(count);
+					dto.setQuantity(count);
 					
 					bookList.add(dto);
 				} catch (Exception e) {
