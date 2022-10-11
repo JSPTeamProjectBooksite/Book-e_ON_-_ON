@@ -8,47 +8,49 @@ public class DetailPageDAO extends JDBConnect {
 	public BookDTO bidSearch(Long bid) {
 		BookDTO dto = new BookDTO();
 		
-		String query = "SELECT * FROM book_table";
+		String query = "SELECT ID, COVER_IMG, TITLE, AUTHOR_ID, TRANSLATOR, PRICE, DELIVERY_FEE, ESTIMATED_DELIVERY_DATE, TOTAL_PAGES, WEIGHT, ISBN13, ISBN10, BOOK_CATEGORY_ID, 	INTRODUCE, INTRODUCE_IMG, PUBLISHER, PUBLISHER_REVIEW, CONTENTS, QUANTITY, CATCHPHRASE, PUBLICATION_DATE FROM BOOK_TBL";
 		if(bid != null) {
-			query += " WHERE bid = " + bid + " ";
+			query += " WHERE ID = " + bid + " ";
 		}
-		query += " ORDER BY bid DESC ";
+		query += " ORDER BY ID DESC ";
 		
-//		System.out.println("작성완료된 쿼리문: " + query);
+		System.out.println("작성완료된 쿼리문: \n" + query);
 		
 		try {
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(query);
 			
 			if(rs.next()) {
-				dto.setBid(rs.getLong(1));
-				dto.setImage(rs.getString(2));
+				dto.setId(rs.getLong(1));
+				dto.setCoverImg(rs.getString(2));
 				dto.setTitle(rs.getString(3));
-				dto.setAuthor(rs.getString(4));
+				dto.setAuthorId(rs.getLong(4));
 				dto.setTranslator(rs.getString(5));
-				dto.setPrice(rs.getLong(6));
-				dto.setDeliveryFee(rs.getLong(7));
-				dto.setEstimatedDeliveryDate(rs.getString(8));
-				dto.setTotal_pages(rs.getLong(9));
-				dto.setWeight(rs.getLong(10));
-				dto.setIsbn(rs.getLong(11));
-				dto.setBookCategoryId(rs.getString(12));
-				dto.setIntroduce(rs.getString(13));
-				dto.setIntroduceImage(rs.getString(14));
-				dto.setPublisher(rs.getString(15));
-				dto.setPublisherReview(rs.getString(16));
-				dto.setContents(rs.getString(17));
-				dto.setVisit(rs.getLong(18));
-				dto.setPublicationDate(rs.getString(19));
-				dto.setRegistDate(rs.getString(20));
-				dto.setUpdateDate(rs.getString(21));
-				dto.setAd(rs.getString(22));
+				dto.setPrice(rs.getInt(6));
+				dto.setDeliveryFee(rs.getInt(7));
+				dto.setEstimatedDeliveryDate(rs.getInt(8));
+				dto.setTotalPages(rs.getInt(9));
+				dto.setWeight(rs.getInt(10));
+				dto.setIsbn13(rs.getLong(11));
+				dto.setIsbn10(rs.getLong(12));
+				dto.setBookCategoryId(rs.getInt(13));
+				dto.setIntroduce(rs.getString(14));
+				dto.setIntroduceImg(rs.getString(15));
+				dto.setPublisher(rs.getString(16));
+				dto.setPublisherReview(rs.getString(17));
+				dto.setContents(rs.getString(18));
+				dto.setQuantity(rs.getInt(19));
+				dto.setCatchphrase(rs.getString(20));
+				dto.setPublicationDate(rs.getDate(21));
 			}
 			
 			
 		}catch (Exception e) {
 			// TODO: handle exception
 			System.out.println("bid 조회중 예외발생");
+			System.out.println("dto 저장내용");
+			dto.DTOPrintOut();
+			
 			e.printStackTrace();
 		}
 		
