@@ -130,7 +130,7 @@
             document.getElementById("sendForm").action = "/payment";
         }else if(btn=="shopCart"){
             showPopup();
-            document.getElementById("sendForm").action = "/cart?bookId=${bookInfo.id}";
+            document.getElementById("sendForm").action = "/cart";
         }
         document.getElementById("sendForm").submit();
     }

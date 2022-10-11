@@ -20,6 +20,7 @@
             </div>
             <div>
                 <input class="inputGroup" type="text" placeholder="Email" name="email">
+                <button type="button" href="/IDCheck">중복체크</button>
             </div>
             <div>
                 <input class="inputGroup" type="password" placeholder="Password" name="password">

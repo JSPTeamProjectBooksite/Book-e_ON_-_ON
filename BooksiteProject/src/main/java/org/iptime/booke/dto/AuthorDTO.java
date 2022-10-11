@@ -3,20 +3,22 @@ package org.iptime.booke.dto;
 import java.util.Date;
 
 public class AuthorDTO {
-	private Long memberId;
+	private Long id;
 	private String profileImg;
 	private String name;
 	private String nationality;
 	private String profileContents;
 	private Date registerDate;
 	private Date updateDate;
+	private Date birth;
+	private Date death;
 	
 	//기본생성자
 	public AuthorDTO() {}
 	
-	public AuthorDTO(Long memberId, String profileImg, String name, String nationality, String profileContents,
+	public AuthorDTO(Long id, String profileImg, String name, String nationality, String profileContents,
 			Date registerDate, Date updateDate) {
-		this.memberId = memberId;
+		this.id = id;
 		this.profileImg = profileImg;
 		this.name = name;
 		this.nationality = nationality;
@@ -29,7 +31,7 @@ public class AuthorDTO {
 	//dto 객체에 저장된 값을 모두 출력하는 메소드(dto 확인용)
 	public void printOut() {
 		System.out.println("[ 작가 DTO 저장 내용 ]");
-		System.out.println("memberId \t: " + memberId);
+		System.out.println("memberId \t: " + id);
 		System.out.println("profileImg \t: " + profileImg);
 		System.out.println("name \t\t: " + name);
 		System.out.println("nationality \t: " + nationality);
@@ -39,11 +41,27 @@ public class AuthorDTO {
 	}
 	
 	//캡슐화
-	public Long getMemberId() {
-		return memberId;
+	public Long getId() {
+		return id;
 	}
-	public void setMemberId(Long memberId) {
-		this.memberId = memberId;
+	public Date getBirth() {
+		return birth;
+	}
+
+	public void setBirth(Date birth) {
+		this.birth = birth;
+	}
+
+	public Date getDeath() {
+		return death;
+	}
+
+	public void setDeath(Date death) {
+		this.death = death;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 	public String getProfileImg() {
 		return profileImg;

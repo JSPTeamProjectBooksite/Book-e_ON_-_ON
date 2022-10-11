@@ -27,35 +27,43 @@ public class Cart extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// DetailPage 기준
-		String bookId = request.getParameter("BID");
-		String count = request.getParameter("select");
+		String bookId = request.getParameter("selectedBooks");
+		String count = request.getParameter("bookCount");
+		
+		
 		
 		String bookCookie = bookId +"/"+ count;
 		
-		if(bookId != null)
+		if(bookId != null && count != null) {
 			cartCookie(response, bookId, bookCookie, 7 * (24*60*60));
-		
-		System.out.printf("[쿠키 생성] %s : %s \n", bookId, bookCookie);
+			System.out.printf("[쿠키 생성][성공] %s : %s \n", bookId, bookCookie);
+		} else {
+			System.out.printf("[쿠키 생성][실패] bookId=%s, count=%s \n", bookId, count);
+		}
 		response.getWriter().println("<script>history.back();</script>");
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String method = request.getParameter("_method");
-		if("DELETE".equalsIgnoreCase(method)) doDelete(request, response);
 		
-		doGet(request, response);
+		if("DELETE".equalsIgnoreCase(method)) 
+			doDelete(request, response);
+		else
+			doGet(request, response);
 	}
 
 	@Override
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String bookId = (String) request.getParameter("Books");
+		String[] bookIdList = request.getParameterValues("selectedBooks");
 		
-		if(bookId != null) {
-			cartCookie(response, bookId, bookId, 0); 
+		if(bookIdList != null) {
+			for(String bookId : bookIdList) {
+				System.out.println("[쿠키 제거] "+ bookId);
+				cartCookie(response, bookId, bookId, 0); 
+			}
 		}
 		
-		System.out.println("[쿠키 제거] "+ bookId);
 		response.getWriter().println("<script>history.back();</script>");
 	}
 }

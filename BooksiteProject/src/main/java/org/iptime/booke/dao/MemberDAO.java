@@ -1,6 +1,7 @@
 package org.iptime.booke.dao;
 
 import java.sql.Date;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 
 import org.iptime.booke.common.JDBConnect;
@@ -19,7 +20,7 @@ public class MemberDAO extends JDBConnect {
 			rs = psmt.executeQuery();
 
 			if (rs.next()) {
-				dto.setEmail(rs.getString("email"));;
+				dto.setEmail(rs.getString("email"));
 				dto.setPassword(rs.getString("password"));
 				System.out.println(uid);
 				System.out.println(upass);
@@ -45,17 +46,34 @@ public class MemberDAO extends JDBConnect {
 			psmt.setString(5, dto.getGender());
 			psmt.setString(6, dto.getPhoneNum());
 			psmt.setString(7, dto.getAddress());
-
 			result = psmt.executeUpdate();
-
-//		} catch (SQLIntegrityConstraintViolationException e) {
-//			System.out.println("중복된 아이디가 있는 경우 오류 발생");
-//			result = 2;
+		} catch (SQLIntegrityConstraintViolationException e) {
+			System.out.println("중복된 아이디가 있는 경우 오류 발생");
+			result = 2;
 		} catch (Exception e) {
 			System.out.println("회원가입 도중에 예외 발생");
 			e.printStackTrace();
 		}
 		return result;
+	}
+	
+	public boolean IDCheck(String id) {
+		try {
+			String query = "SELECT * FROM login WHERE id='" + id + "'";
+			rs = stmt.executeQuery(query);
+			rs.last();
+
+			if (rs.getRow() == 0) {
+				System.out.println("0 row selected...");
+			} else {
+				return true;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return false;
 	}
 
 //	public String findId(String member_name, String member_address) {
@@ -128,20 +146,20 @@ public class MemberDAO extends JDBConnect {
 //
 //		return null;
 //	}
-	
+
 	public ArrayList<MemberDTO> ManagerUserInfo(String list) {
-	ArrayList<MemberDTO> values = new ArrayList<MemberDTO>();
-	try {
+		ArrayList<MemberDTO> values = new ArrayList<MemberDTO>();
+		try {
 
-		String query = "SELECT * FROM member_TBL";
-		psmt = con.prepareStatement(query);
-		rs = psmt.executeQuery(query);
+			String query = "SELECT * FROM member_TBL";
+			psmt = con.prepareStatement(query);
+			rs = psmt.executeQuery(query);
 
-		while (rs.next()) {
-			MemberDTO dto = new MemberDTO(rs.getString(2), rs.getString(3), rs.getString(4), rs.getDate(5),
-					rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9));
-			
-			values.add(dto);
+			while (rs.next()) {
+				MemberDTO dto = new MemberDTO(rs.getLong(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getDate(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getDate(11));
+
+				values.add(dto);
 //			values.add(rs.getString(3));
 //			values.add(rs.getString(4));
 //			values.add(rs.getString(5));
@@ -149,7 +167,7 @@ public class MemberDAO extends JDBConnect {
 //			values.add(rs.getString(7));
 //			values.add(rs.getString(8));
 //			values.add(rs.getString(9));
-			
+
 //			System.out.println("이름 : " + rs.getString(2));
 //			System.out.println("성별 : " + rs.getString(3));
 //			System.out.println("비밀번호 : " + rs.getString(4));
@@ -160,14 +178,14 @@ public class MemberDAO extends JDBConnect {
 //			System.out.println("포인트 : " + rs.getString(9));
 //			System.out.println();
 //			return dto;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 
-	} catch (Exception e) {
-		e.printStackTrace();
+		return values;
 	}
-
-	return values;
-}
 
 //	public int updateUserEdit(MemberDTO dto) {
 //		int result = 0;

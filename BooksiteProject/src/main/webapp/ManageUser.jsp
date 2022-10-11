@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +15,7 @@
 
 #wrap {
 	margin: auto;
-	max-width: 800px;
+	max-width: 1200px;
 	min-width: 400px;
 }
 
@@ -58,36 +59,23 @@
 				<th>계정 상태</th>
 				<th>가입일</th>
 			</tr>
+			<c:forEach var="n" items="${userInfo}">
 			<tr>
 				<td class="radioBox"><input type="radio" name="chooseUser"
 					value="1"></td>
-				<td><a href="">1</a></td>
-				<td>${ userInfo[0].name }</td>
-				<td>${ userInfo[0].email }</td>
-				<td>${ userInfo[0].password }</td>
-				<td>${ userInfo[0].birth }</td>
-				<td style="text-align: center;">${ userInfo[0].gender }</td>
-				<td>${ userInfo[0].phoneNum }</td>
-				<td>${ userInfo[0].address }</td>
-				<td>${ userInfo[0].point }</td>
+				<td><a href="">${ n.id }</a></td>
+				<td>${ n.name }</td>
+				<td>${ n.email }</td>
+				<td>${ n.password }</td>
+				<td>${ n.birth }</td>
+				<td style="text-align: center;">${ n.gender }</td>
+				<td>${ n.phoneNum }</td>
+				<td>${ n.address }</td>
+				<td>${ n.point }</td>
 				<td>???</td>
-				<td>???</td>
+				<td>${ n.registerDate }</td>
 			</tr>
-			<tr>
-				<td class="radioBox"><input type="radio" name="chooseUser"
-					value="1"></td>
-				<td><a href="">2</a></td>
-				<td>최진영</td>
-				<td>cjy1234</td>
-				<td>pw123</td>
-				<td>1996-01-01</td>
-				<td style="text-align: center;">M</td>
-				<td>010-1234-5678</td>
-				<td>경기도 성남시 분당구</td>
-				<td>10,000</td>
-				<td>0</td>
-				<td>2022-10-06</td>
-			</tr>
+			</c:forEach>
 			<tr>
 				<td colspan="12" style="text-align: right;">
 					<button>수정</button>
