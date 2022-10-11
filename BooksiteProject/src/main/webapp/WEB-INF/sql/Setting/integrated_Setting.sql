@@ -22,6 +22,7 @@ DROP TABLE INQUIRY_TBL;
 DROP TABLE MEMBER_TBL;
 DROP TABLE MEMBER_STATE_TBL;
 DROP TABLE GENDER_TBL;
+DROP TABLE ORDER_TBL;
 
 DROP SEQUENCE book_category_SEQ;
 DROP SEQUENCE BOOK_REVIEW_SEQ;
@@ -29,6 +30,7 @@ DROP SEQUENCE BOOK_SEQ;
 DROP SEQUENCE MEMBER_SEQ;
 DROP SEQUENCE notice_SEQ;
 DROP SEQUENCE inquiry_SEQ;
+DROP SEQUENCE order_SEQ;
 
 -- 모든 테이블 생성 가이드
 -- 1. book_categroy, member_state
@@ -334,12 +336,16 @@ COMMENT ON COLUMN locker_TBL.BOOK_ID IS '북마크 당한 책 id';
 -- 결제
 -- ============================================================
 CREATE TABLE payment_TBL(
-	id 				varchar(10) NOT NULL	PRIMARY KEY,
+	id 				nchar(30) NOT NULL	PRIMARY KEY,
 	member_id		NUMBER		NOT NULL,
 	book_id			NUMBER		NOT NULL,
 	price			number(7)	NOT NULL,
 	quantity		number(4)	DEFAULT 0,
 	register_date 	DATE		DEFAULT sysdate
+	-- 사용한 쿠폰 
+	-- 결제 수단
+	-- 배송 상태
+	-- 기타 등등
 );
 
 ALTER TABLE payment_TBL ADD CONSTRAINT payment_member_id_FK FOREIGN KEY(member_id) REFERENCES member_TBL(id);
@@ -351,6 +357,36 @@ COMMENT ON COLUMN payment_TBL.BOOK_ID  IS '주문한 상품 id';
 COMMENT ON COLUMN payment_TBL.PRICE  IS '주문 금액';
 COMMENT ON COLUMN payment_TBL.QUANTITY  IS '주문 수량';
 COMMENT ON COLUMN payment_TBL.REGISTER_DATE  IS '주문한 날짜';
+
+-- ============================================================
+-- 결제
+-- ============================================================
+CREATE TABLE order_TBL (
+	id				NUMBER			NOT NULL	PRIMARY KEY,
+	payment_id		nchar(30)		NOT NULL,
+	book_id			NUMBER 			NOT NULL,
+	quantity		NUMBER(4)		DEFAULT 1,
+--	discount_id		varchar2(20)		NULL,
+	register_date 	DATE			DEFAULT sysdate
+);
+
+ALTER TABLE order_TBL ADD CONSTRAINT order_payment_id_FK FOREIGN KEY(payment_id) REFERENCES payment_TBL(id);
+ALTER TABLE order_TBL ADD CONSTRAINT order_book_id_FK FOREIGN KEY(book_id) REFERENCES book_TBL(id);
+
+COMMENT ON COLUMN order_TBL.ID  IS '주문 번호';
+COMMENT ON COLUMN order_TBL.PAYMENT_ID  IS '주문 번호';
+COMMENT ON COLUMN order_TBL.BOOK_ID  IS '주문한 책 ID';
+COMMENT ON COLUMN order_TBL.QUANTITY  IS '주문 수량';
+--COMMENT ON COLUMN order_TBL.DISCOUNT_ID  IS '적용한 할인 코드';
+COMMENT ON COLUMN order_TBL.REGISTER_DATE  IS '생성 일자';
+
+CREATE SEQUENCE order_SEQ
+	INCREMENT BY 1
+	START WITH 1
+	MINVALUE 1
+	nomaxvalue
+	nocycle
+	nocache;
 
 -- ==================================================================================================================================
 -- ==================================================================================================================================

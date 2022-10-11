@@ -1,7 +1,7 @@
---DROP TABLE PAYMENT_TBL;
+DROP TABLE PAYMENT_TBL;
 
 CREATE TABLE payment_TBL(
-	id 				varchar(10) NOT NULL	PRIMARY KEY,
+	id 				nchar(30) NOT NULL	PRIMARY KEY,
 	member_id		NUMBER		NOT NULL,
 	book_id			NUMBER		NOT NULL,
 	price			number(7)	NOT NULL,
