@@ -1,12 +1,11 @@
-DROP TABLE order_TBL;
-DROP SEQUENCE order_SEQ;
+--DROP TABLE order_TBL;
+--DROP SEQUENCE order_SEQ;
 
 CREATE TABLE order_TBL (
 	id				NUMBER			NOT NULL	PRIMARY KEY,
 	payment_id		nchar(30)		NOT NULL,
 	book_id			NUMBER 			NOT NULL,
 	quantity		NUMBER(4)		DEFAULT 1,
---	discount_id		varchar2(20)		NULL,
 	register_date 	DATE			DEFAULT sysdate
 );
 
@@ -17,7 +16,6 @@ COMMENT ON COLUMN order_TBL.ID  IS '주문 번호';
 COMMENT ON COLUMN order_TBL.PAYMENT_ID  IS '주문 번호';
 COMMENT ON COLUMN order_TBL.BOOK_ID  IS '주문한 책 ID';
 COMMENT ON COLUMN order_TBL.QUANTITY  IS '주문 수량';
---COMMENT ON COLUMN order_TBL.DISCOUNT_ID  IS '적용한 할인 코드';
 COMMENT ON COLUMN order_TBL.REGISTER_DATE  IS '생성 일자';
 
 CREATE SEQUENCE order_SEQ
