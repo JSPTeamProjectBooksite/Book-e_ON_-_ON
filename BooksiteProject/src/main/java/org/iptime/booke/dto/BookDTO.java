@@ -9,8 +9,6 @@ public class BookDTO {
 	private Long authorId;//
 	private String translator;//
 	private Integer price;//
-	private Integer deliveryFee;//
-	private Integer estimatedDeliveryDate;
 	private Integer totalPages;//
 	private Integer weight;//
 	private Long isbn13;//
@@ -27,6 +25,10 @@ public class BookDTO {
 	private Date publicationDate;//
 	private Date registDate;
 	private Date updateDate;
+	
+	// 삭제 해야됨
+	private Integer deliveryFee;//
+	private Integer estimatedDeliveryDate;
 	
 	/* dto 값 받을때 쓰는거 (복사해서 쓰세요.)
 	

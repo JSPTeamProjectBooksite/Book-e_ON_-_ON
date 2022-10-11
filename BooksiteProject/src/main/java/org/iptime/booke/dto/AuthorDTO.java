@@ -3,7 +3,7 @@ package org.iptime.booke.dto;
 import java.util.Date;
 
 public class AuthorDTO {
-	private Long memberId;
+	private Long id;
 	private String profileImg;
 	private String name;
 	private String nationality;
@@ -11,10 +11,12 @@ public class AuthorDTO {
 	private Date registerDate;
 	private Date updateDate;
 	
+	private Date birth;
+	private Date death;
 	
-	public AuthorDTO(Long memberId, String profileImg, String name, String nationality, String profileContents,
+	public AuthorDTO(Long id, String profileImg, String name, String nationality, String profileContents,
 			Date registerDate, Date updateDate) {
-		this.memberId = memberId;
+		this.id = id;
 		this.profileImg = profileImg;
 		this.name = name;
 		this.nationality = nationality;
@@ -23,11 +25,11 @@ public class AuthorDTO {
 		this.updateDate = updateDate;
 	}
 	
-	public Long getMemberId() {
-		return memberId;
+	public Long getId() {
+		return id;
 	}
-	public void setMemberId(Long memberId) {
-		this.memberId = memberId;
+	public void setId(Long id) {
+		this.id = id;
 	}
 	public String getProfileImg() {
 		return profileImg;

@@ -15,6 +15,9 @@ public class PaymentDTO {
 	String title;
 	Long price;
 	int orderQuantity;
+	
+	private Integer deliveryFee;//
+	private Integer estimatedDeliveryDate;
 
 	public PaymentDTO() {
 	}
