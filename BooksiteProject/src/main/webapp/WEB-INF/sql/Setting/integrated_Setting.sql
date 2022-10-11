@@ -14,6 +14,7 @@ DROP TABLE BOOK_CATEGORY_TBL CASCADE CONSTRAINTS;
 DROP TABLE BOOK_REVIEW_TBL;
 DROP TABLE LOCKER_TBL;
 DROP TABLE NOTICE_TBL;
+DROP TABLE ORDER_TBL;
 DROP TABLE PAYMENT_TBL;
 DROP TABLE BOOK_TBL;
 DROP TABLE AUTHOR_TBL;
@@ -22,7 +23,6 @@ DROP TABLE INQUIRY_TBL;
 DROP TABLE MEMBER_TBL;
 DROP TABLE MEMBER_STATE_TBL;
 DROP TABLE GENDER_TBL;
-DROP TABLE ORDER_TBL;
 
 DROP SEQUENCE book_category_SEQ;
 DROP SEQUENCE BOOK_REVIEW_SEQ;
@@ -31,6 +31,7 @@ DROP SEQUENCE MEMBER_SEQ;
 DROP SEQUENCE notice_SEQ;
 DROP SEQUENCE inquiry_SEQ;
 DROP SEQUENCE order_SEQ;
+DROP SEQUENCE author_SEQ;
 
 -- 모든 테이블 생성 가이드
 -- 1. book_categroy, member_state
@@ -155,24 +156,34 @@ CREATE SEQUENCE inquiry_SEQ
 -- 작가
 -- ============================================================
 CREATE TABLE author_TBL (
-	member_id 			NUMBER 			NOT NULL	PRIMARY KEY,
+	id 					NUMBER 			NOT NULL	PRIMARY KEY,
 	profile_Img			varchar2(300)		NULL,
 	name 				varchar2(30)	NOT NULL,
+	birth 				DATE 				NULL, 
+	death 				DATE 				NULL, 
 	nationality			nvarchar2(20)		NULL,
 	profile_contents	nvarchar2(1000)		NULL,
 	register_date		DATE			DEFAULT sysdate,
 	update_date			DATE			DEFAULT sysdate
 );
 
-ALTER TABLE author_TBL ADD CONSTRAINT author_member_id_FK FOREIGN KEY(member_id) REFERENCES member_TBL(id);
-
-COMMENT ON COLUMN author_TBL.member_id IS '사용자 id';
-COMMENT ON COLUMN author_TBL.profile_Img IS '프로필 이미지 경로';
+COMMENT ON COLUMN author_TBL.id IS '저자 식별 id';
+COMMENT ON COLUMN author_TBL.PROFILE_IMG  IS '프로필 이미지 경로';
 COMMENT ON COLUMN author_TBL.NAME  IS '저자 이름';
+COMMENT ON COLUMN author_TBL.birth IS '출생일 (YYYYMMdd)';
+COMMENT ON COLUMN author_TBL.death IS '사망일 (YYYYMMdd)';
 COMMENT ON COLUMN author_TBL.NATIONALITY  IS '국적';
-COMMENT ON COLUMN author_TBL.profile_contents  IS '저자 소개 글';
+COMMENT ON COLUMN author_TBL.PROFILE_CONTENTS  IS '저자 소개 글';
 COMMENT ON COLUMN author_TBL.REGISTER_DATE  IS '생성 일자';
 COMMENT ON COLUMN author_TBL.UPDATE_DATE IS '마지막 수정 일자';
+
+CREATE SEQUENCE author_SEQ
+	INCREMENT BY 1
+	START WITH 1
+	MINVALUE 1
+	nomaxvalue
+	nocycle
+	nocache;
 
 -- ============================================================
 -- 알림
@@ -228,27 +239,25 @@ CREATE TABLE book_TBL (
 	author_id 				NUMBER			NOT NULL,
 	translator 				nvarchar2(1000)		NULL,
 	price 					number(7)		NOT NULL,
-	delivery_fee 			number(5)		DEFAULT 0,
-	estimated_delivery_date number(3)			NULL,
 	total_pages				number(5)		NOT NULL,
 	weight 					number(10)			NULL,
 	ISBN13 					number(13)			NULL,
 	ISBN10 					number(10)			NULL,
 	book_category_id 		number(3)		NOT NULL,
-	introduce 				varchar(4000)		NULL,
+	introduce 				varchar2(4000)		NULL,
 	introduce_img 			varchar2(350)		NULL,
-	publisher 				varchar2(300)		NULL,
+	publisher 				varchar2(200)		NULL,
 	publisher_review 		varchar2(4000)		NULL,
-	contents				varchar2(4000)		NULL,
-	visit 					number(7)			NULL,
-	quantity				number(4)		DEFAULT 0,
+	contents				varchar2(4000)	NOT NULL,
+	visit 					number(7)		DEFAULT 0,
+	QUANTITY				NUMBER(7)		DEFAULT 1,
 	catchphrase 			varchar2(500)		NULL,
 	publication_date 		DATE			NOT NULL,
 	register_date 			DATE			DEFAULT sysdate,
 	update_date				DATE			DEFAULT sysdate
 );
 
-ALTER TABLE book_TBL ADD CONSTRAINT book_author_id_FK FOREIGN KEY(author_id) REFERENCES author_TBL(member_id);
+ALTER TABLE book_TBL ADD CONSTRAINT book_author_id_FK FOREIGN KEY(author_id) REFERENCES author_TBL(id);
 ALTER TABLE book_TBL ADD CONSTRAINT book_book_category_id_FK FOREIGN KEY(book_category_id) REFERENCES book_category_TBL(id);
 
 COMMENT ON COLUMN book_TBL.ID  IS '책 고유 ID';
@@ -257,12 +266,10 @@ COMMENT ON COLUMN book_TBL.TITLE  IS '제목';
 COMMENT ON COLUMN book_TBL.AUTHOR_ID  IS '작가';
 COMMENT ON COLUMN book_TBL.TRANSLATOR  IS '옮긴이';
 COMMENT ON COLUMN book_TBL.PRICE  IS '가격';
-COMMENT ON COLUMN book_TBL.DELIVERY_FEE  IS '배송비';
-COMMENT ON COLUMN book_TBL.ESTIMATED_DELIVERY_DATE  IS '예상 배송일';
 COMMENT ON COLUMN book_TBL.TOTAL_PAGES  IS '페이지 장수';
 COMMENT ON COLUMN book_TBL.WEIGHT  IS '무게';
-COMMENT ON COLUMN book_TBL.ISBN13  IS 'ISBN13 번호';
 COMMENT ON COLUMN book_TBL.ISBN10  IS 'ISBN10 번호';
+COMMENT ON COLUMN book_TBL.ISBN13  IS 'ISBN13 번호';
 COMMENT ON COLUMN book_TBL.BOOK_CATEGORY_ID  IS '카테고리';
 COMMENT ON COLUMN book_TBL.INTRODUCE  IS '소개글';
 COMMENT ON COLUMN book_TBL.INTRODUCE_IMG  IS '소개 이미지 링크';
@@ -270,7 +277,7 @@ COMMENT ON COLUMN book_TBL.PUBLISHER  IS '출판사';
 COMMENT ON COLUMN book_TBL.PUBLISHER_REVIEW  IS '출판사 리뷰';
 COMMENT ON COLUMN book_TBL.CONTENTS  IS '목차';
 COMMENT ON COLUMN book_TBL.VISIT  IS '조회수';
-COMMENT ON COLUMN book_TBL.QUANTITY  IS '수량';
+COMMENT ON COLUMN book_TBL.QUANTITY  IS '재고 수량';
 COMMENT ON COLUMN book_TBL.CATCHPHRASE  IS '흥미를 끌만한 글이 들어갈 곳';
 COMMENT ON COLUMN book_TBL.PUBLICATION_DATE  IS '출시일';
 COMMENT ON COLUMN book_TBL.REGISTER_DATE  IS '작성일';
@@ -284,6 +291,7 @@ CREATE SEQUENCE book_SEQ
 	nomaxvalue
 	nocycle
 	nocache;
+
 
 -- ============================================================
 -- 리뷰
@@ -336,37 +344,34 @@ COMMENT ON COLUMN locker_TBL.BOOK_ID IS '북마크 당한 책 id';
 -- 결제
 -- ============================================================
 CREATE TABLE payment_TBL(
-	id 				nchar(30) NOT NULL	PRIMARY KEY,
-	member_id		NUMBER		NOT NULL,
-	book_id			NUMBER		NOT NULL,
-	price			number(7)	NOT NULL,
-	quantity		number(4)	DEFAULT 0,
-	register_date 	DATE		DEFAULT sysdate
-	-- 사용한 쿠폰 
-	-- 결제 수단
-	-- 배송 상태
-	-- 기타 등등
+	id 						nchar(30) 	NOT NULL	PRIMARY KEY,
+	member_id				NUMBER		NOT NULL,
+	book_id					NUMBER		NOT NULL,
+	price					number(7)	NOT NULL,
+	delivery_fee 			number(5)	DEFAULT 2500,
+	estimated_delivery_date number(3)		NULL,
+	register_date 			DATE		DEFAULT sysdate
 );
 
 ALTER TABLE payment_TBL ADD CONSTRAINT payment_member_id_FK FOREIGN KEY(member_id) REFERENCES member_TBL(id);
 ALTER TABLE payment_TBL ADD CONSTRAINT payment_book_id_FK FOREIGN KEY(book_id) REFERENCES book_TBL(id);
 
-COMMENT ON COLUMN payment_TBL.ID IS '주문 번호';
-COMMENT ON COLUMN payment_TBL.MEMBER_ID  IS '주문한 회원 id';
-COMMENT ON COLUMN payment_TBL.BOOK_ID  IS '주문한 상품 id';
-COMMENT ON COLUMN payment_TBL.PRICE  IS '주문 금액';
-COMMENT ON COLUMN payment_TBL.QUANTITY  IS '주문 수량';
-COMMENT ON COLUMN payment_TBL.REGISTER_DATE  IS '주문한 날짜';
+COMMENT ON COLUMN payment_TBL.ID IS '결제 식별 번호';
+COMMENT ON COLUMN payment_TBL.MEMBER_ID  IS '결제한 회원 id';
+COMMENT ON COLUMN payment_TBL.BOOK_ID  IS '결제한 상품 id';
+COMMENT ON COLUMN payment_TBL.PRICE  IS '결제 금액';
+COMMENT ON COLUMN payment_TBL.DELIVERY_FEE  IS '배송비';
+COMMENT ON COLUMN payment_TBL.ESTIMATED_DELIVERY_DATE  IS '예상 배송일';
+COMMENT ON COLUMN payment_TBL.REGISTER_DATE  IS '결제한 날짜';
 
 -- ============================================================
--- 결제
+-- 주문
 -- ============================================================
 CREATE TABLE order_TBL (
 	id				NUMBER			NOT NULL	PRIMARY KEY,
 	payment_id		nchar(30)		NOT NULL,
 	book_id			NUMBER 			NOT NULL,
 	quantity		NUMBER(4)		DEFAULT 1,
---	discount_id		varchar2(20)		NULL,
 	register_date 	DATE			DEFAULT sysdate
 );
 
@@ -377,7 +382,6 @@ COMMENT ON COLUMN order_TBL.ID  IS '주문 번호';
 COMMENT ON COLUMN order_TBL.PAYMENT_ID  IS '주문 번호';
 COMMENT ON COLUMN order_TBL.BOOK_ID  IS '주문한 책 ID';
 COMMENT ON COLUMN order_TBL.QUANTITY  IS '주문 수량';
---COMMENT ON COLUMN order_TBL.DISCOUNT_ID  IS '적용한 할인 코드';
 COMMENT ON COLUMN order_TBL.REGISTER_DATE  IS '생성 일자';
 
 CREATE SEQUENCE order_SEQ
@@ -803,9 +807,9 @@ INSERT INTO INQUIRY_TBL(ID, MEMBER_ID, CONTENT, CATEGROY) VALUES(INQUIRY_SEQ.nex
 -- ============================================================
 -- 저자
 -- ============================================================
-INSERT INTO author_TBL (member_id, profile_Img, name, nationality, PROFILE_CONTENTS) VALUES(1, NULL, '나겨울', '국내작가', '글이 사람들에게 선한 영향력을 미치는 수단이라고 믿는다.');
-INSERT INTO author_TBL (member_id, profile_Img, name, nationality, PROFILE_CONTENTS) VALUES(2, NULL, '김욱동', '국내작가', '한국외국어대학교 영문과 및 동 대학원을 졸업한 뒤 미국 미시시피대학교에서 영문학 문학석사 학위를, 뉴욕주립대학교에서 영문학 문학박사를 받았다.');
-INSERT INTO author_TBL (member_id, profile_Img, name, nationality, PROFILE_CONTENTS) VALUES(3, NULL, '손원평', '국내작가', '서울에서 태어났다. 서강대학교에서 사회학과 철학을 공부했고 한국영화아카데미 영화과에서 영화 연출을 전공했다.');
+INSERT INTO author_TBL (id, profile_Img, name, nationality, PROFILE_CONTENTS) VALUES(1, NULL, '나겨울', '국내작가', '글이 사람들에게 선한 영향력을 미치는 수단이라고 믿는다.');
+INSERT INTO author_TBL (id, profile_Img, name, nationality, PROFILE_CONTENTS) VALUES(2, NULL, '김욱동', '국내작가', '한국외국어대학교 영문과 및 동 대학원을 졸업한 뒤 미국 미시시피대학교에서 영문학 문학석사 학위를, 뉴욕주립대학교에서 영문학 문학박사를 받았다.');
+INSERT INTO author_TBL (id, profile_Img, name, nationality, PROFILE_CONTENTS) VALUES(3, NULL, '손원평', '국내작가', '서울에서 태어났다. 서강대학교에서 사회학과 철학을 공부했고 한국영화아카데미 영화과에서 영화 연출을 전공했다.');
 
 -- ============================================================
 -- 알림
@@ -826,18 +830,17 @@ INSERT INTO ADMIN_TBL(MEMBER_ID, JOB_POSITION) VALUES(1, '최고위직');
 INSERT INTO BOOK_TBL(
 	ID, 
 	COVER_IMG, TITLE, 
-	AUTHOR_ID, TRANSLATOR, PRICE, DELIVERY_FEE, ESTIMATED_DELIVERY_DATE, 
+	AUTHOR_ID, TRANSLATOR, PRICE, 
 	TOTAL_PAGES, WEIGHT, ISBN13, ISBN10, BOOK_CATEGORY_ID, 
 	INTRODUCE, INTRODUCE_IMG, 
 	PUBLISHER, PUBLISHER_REVIEW, 
 	CONTENTS, QUANTITY, 
 	CATCHPHRASE, 
 	PUBLICATION_DATE
-)
-VALUES(
+) VALUES(
 	BOOK_SEQ.nextval, 
 	'source/book/기분이_태도가_되지_않으려면.png', '기분이 태도가 되지 않으려면', 
-	1, null, 13500, 5000, 3, 
+	1, null, 13500, 
 	224, 306, 9791197080845, 1197080848, 80, 
 	'<p><h3>‘남들 챙기느라 정작 나를 사랑하는 법을<br>잊어버린 당신에게 바치는 따뜻한 감정 수업’</h3></p><br>우리는 지금까지 나 자신보다 상대방의 감정을 더 배려하고 존중해왔다. 상대방에게 불편한 사람, 싫은 사람이 되고 싶지 않았기 때문. 하지만 정작 상대방의 감정을 배려하느라 내가 느끼고 있는 솔직한 감정들을 마주 볼 시간 없이 몸만 큰 ‘어른아이’가 됐다.<br>문자로 진행되는 ‘텍스트테라피’를 통해 1만 건이 넘는 상담을 했고, 글쓰기를 통해 마음을 치유하는 ‘상담&치유 글쓰기 수업’도 진행하고 있는 나겨울 작가는 남들을 챙기느라 정작 자신의 감정을 챙기지 못하고 살아가는 ‘어른아이’들에게 이렇게 말한다. ‘치유의 기본은 자신을 알아가는 것이고, 자신을 알아가기 위해선 스스로의 감정을 정확하게 파악해야 한다.’그녀는 이번 책을 통해 우리가 일상에서 익숙하게 느끼는 감정들을 정확히 파악하는 법과, 그 감정들을 바람직하게 받아들이는 구체적인 방법을 제시한다.', null, 
 	'떠오름(RISE)', '나겨울 작가는 1만건이상의 상담을 진행하며, 자신에게 고민을 털어놓는 사람들의 대부분의 문제는 ‘내’가 아니라 ‘남’에게 있다는 것을 알게 되었다. 이들은 겉으로는 아무렇지 않은 듯 보이고, 굉장히 건강해보이지만 실제로는 언제 무너질지 모르는, 위태한 상황에 좌절하고 있었다. 이들에게 부정적으로 느껴지는 감정의 원인은 대부분 ‘남’에게 있었고, 정작 자신의 감정을 돌보는데는 한 없이 어색하며, 내가 어떤 상황인지를 정확히 인지할 생각조차 하지 못하고 있었던 것이다.', 
