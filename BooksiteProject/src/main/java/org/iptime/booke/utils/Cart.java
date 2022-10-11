@@ -19,7 +19,7 @@ public class Cart extends HttpServlet {
 	private void cartCookie(HttpServletResponse response, String cName,
             String cValue, int cTime) {
 		Cookie cookie = new Cookie(cName, cValue); 
-//        cookie.setPath("/shopcart/");       
+        cookie.setPath("/cart/");       
         cookie.setMaxAge(cTime);     
         response.addCookie(cookie); 
 	}
