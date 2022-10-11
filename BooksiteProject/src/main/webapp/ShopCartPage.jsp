@@ -50,14 +50,17 @@
 	                    
 	                    <c:forEach var="book" items="${bookList}">
 	                    <tr class="bookItem ">
-	                        <td class="bookCheck"><img src="${pageContext.request.contextPath}/source/ico/check_box_false.svg" alt="체크박스"><input class="bookCheckBox" name="selectedBooks" type="checkbox" value="${ book.bid }"></td>
-	                        <td class="bookImg"><img src="${pageContext.request.contextPath}/${book.image}" alt="상품 이미지"></td>
+	                        <td class="bookCheck">
+		                        <img src="${pageContext.request.contextPath}/source/ico/check_box_false.svg" alt="체크박스">
+		                        <input class="bookCheckBox" name="selectedBooks" type="checkbox" value="${ book.id }">
+	                        </td>
+	                        <td class="bookImg"><img src="${pageContext.request.contextPath}/${book.coverImg}" alt="상품 이미지"></td>
 	                        <td class="bookTitle">${ book.title }</td>
 	                        <td class="bookPrice">${ book.price }</td>
-	                        <td class="bookCount"><input type="number" min="1" max="999" name="bookCount" value="${ book.count }"></td>
+	                        <td class="bookCount"><input type="number" min="1" max="999" name="bookCount" value="${ book.quantity }"></td>
 	                        <td class="bookPriceSum">14,000원</td>
 	                        <td class="bookDeliveryDate">평균 ${ book.estimatedDeliveryDate }일 소요</td>
-	                        <td class="bookDelete"><button type="button" class="bookDeleteBtn">X</button></td>
+	                        <td class="bookDelete"><button type="button" class="bookDeleteBtn" value="${ book.id }">X</button></td>
 	                    </tr>
 	                    </c:forEach>
 	                </table>
@@ -78,7 +81,7 @@
                 </table>
 
                 <div class="submitBtns">
-                    <button type="button" class="selectBookDeleteBtn" >선택한 상품 삭제</button>
+                    <button type="submit" form="cartForm" class="selectBookDeleteBtn" >선택한 상품 삭제</button>
                     <button type="submit" form="cartForm" class="selectBookPaymentBtn" >선택한 상품 구매</button>
                     <button type="submit" form="cartForm" class="selectBookSaveBtn" >보관함 저장</button>
                 </div>
@@ -90,5 +93,30 @@
 
 
 
+    <script>
+    function setCookie(name, value, exp) {
+    	var date = new Date();
+    	date.setTime(date.getTime() + exp*24*60*60*1000);
+    	document.cookie = name + '=' + value + ';expires=' + date.toUTCString() + ';path=/cart/';
+    };
+    
+    function fromUpdate(from, action, method){
+    	from.attr('action', action);
+    	from.find("input[name=_method]").val(method);
+    	from.submit();
+    }
+    
+    $('.bookDeleteBtn').click(function(){
+		console.log($(this).val());
+    	setCookie($(this).val(), "null", 0);
+		location.reload();
+	});
+    
+   
+    let fromTag = $('#cartForm');
+    $('.selectBookPaymentBtn').click(function(){	fromUpdate(fromTag, '/payment', 'post');});
+    $('.selectBookSaveBtn').click(function(){		fromUpdate(fromTag, '#', 'post');});
+    $('.selectBookDeleteBtn').click(function(){		fromUpdate(fromTag, '/cart', 'DELETE');});
+    </script>
 </body>
 </html>
