@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.wrap { max-width: 1200px; min-width:800px; margin: 0 auto; }
+
+h2{ padding: 10px 0px 20px 0px;}
+
+table { width: 100%;}
+table th.num{width: 60px;}

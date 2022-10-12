@@ -33,7 +33,8 @@ public class PaymentController extends HttpServlet {
 		PaymentDAO dao = new PaymentDAO();
 //<<<<<<< Updated upstream
 		//유저
-		PaymentDTO delinfo = dao.delinfo((String)session.getAttribute("user_id"));
+		PaymentDTO delinfo = dao.delinfo((String)session.getAttribute("email"));
+		System.out.println("로그인 아이디 : " + (String)session.getAttribute("email"));
 //		String id = req.getParameter("id");
 //		System.out.println(id);
 //		MemberDTO dto = dao.payment(id);

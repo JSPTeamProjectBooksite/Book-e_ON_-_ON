@@ -18,7 +18,7 @@ SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일");
 	<div class="wrap">
 		<%@ include file="Header.jsp"%>
 
-		<h2>1:1 고객문의</h2>
+		<h2>▶1:1 고객문의</h2>
 
 		<table class="CustomerInquiry" border="1">
 
@@ -40,7 +40,7 @@ SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일");
 			</tr>
 			<tr>
 				<td class="title">질문유형</td>
-				<td colspan="3"><select style="height: 63px">
+				<td colspan="3"><select style="height: 63px; width: 100%;">
 						<option>회원정보/서비스</option>
 						<option>도서/상품정보</option>
 						<option>주문결제</option>
@@ -48,7 +48,7 @@ SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일");
 						<option>반품교환</option>
 						<option>웹사이트 이용관련</option>
 						<option>검색기능 관련</option>
-						<option>eBook상품.오류신고</option>
+						<option>eBook상품 오류신고</option>
 						<option>시스템 불편사항</option>
 						<option>개인정보침해신고</option>
 						<option>고객제안/불편신고</option>
@@ -83,7 +83,9 @@ SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일");
 			<tr>
 				<td class="title" rowspan="2">내용</td>
 				<td colspan="3"><textarea
-						style="border: none; font-size: 16px;"></textarea></td>
+						style="border: none; font-size: 12px;"
+						placeholder="&#13;&#10;문의유형을 선택 후 자세하게 작성해주세요.
+						&#13;&#10;자세한 내용과 함께 보내주시면 더욱 신속하게 답변 드리겠습니다!"></textarea></td>
 			</tr>
 			<tr>
 				<td colspan="3" ;class="notice"><small> *문의내용 답변 안내*
@@ -95,16 +97,11 @@ SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일");
 				</small></td>
 			</tr>
 		</table>
-		<div class="Bnt">
-			<table class="submitbnt">
-				<tr>
-					<td><input type="submit" name="문의접수"></td>
-					<td><input type="submit" name="문의접수"><input type="button" value="창닫기" onClick='self.close()'></td>
-				</tr>
-			</table>
+		<div class="bnt">
+			<input type="submit" value="문의접수" id="submit">
 		</div>
-
 		<%@ include file="Footer.jsp"%>
 	</div>
+
 </body>
 </html>
