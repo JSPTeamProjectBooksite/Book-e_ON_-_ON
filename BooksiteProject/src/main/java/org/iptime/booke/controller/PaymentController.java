@@ -27,17 +27,12 @@ public class PaymentController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
 		
-		String UserId = (String) session.getAttribute("user_id");
-		session.setAttribute("user_id", UserId);
+		String UserId = (String) session.getAttribute("email");
+		session.setAttribute("email", UserId);
 		
 		PaymentDAO dao = new PaymentDAO();
-//<<<<<<< Updated upstream
 		//유저
 		PaymentDTO delinfo = dao.delinfo((String)session.getAttribute("email"));
-		System.out.println("로그인 아이디 : " + (String)session.getAttribute("email"));
-//		String id = req.getParameter("id");
-//		System.out.println(id);
-//		MemberDTO dto = dao.payment(id);
 		System.out.println(delinfo);
 		
 		//책
@@ -54,26 +49,6 @@ public class PaymentController extends HttpServlet {
 		
 		
 		req.getRequestDispatcher("paymentPage.jsp").forward(req, resp);
-
-//=======
-//		
-//		MemberDTO delinfo = dao.delinfo((String)session.getAttribute("user_id"));
-////		String id = req.getParameter("id");
-////		System.out.println(id);
-////		MemberDTO dto = dao.payment(id);
-//		System.out.println(delinfo);
-//		dao.close();
-//
-//		req.setAttribute("delinfo", delinfo);
-//		req.getRequestDispatcher("paymentPage.jsp").forward(req, resp);
-//
-//>>>>>>> Stashed changes
-		
-//		String[] bid = req.getParameterValues("selectedBooks");
-//		for (String i : bid) {
-//			System.out.println(i);
-//		}
-
 	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

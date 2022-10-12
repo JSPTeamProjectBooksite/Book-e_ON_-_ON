@@ -14,14 +14,14 @@ public class PaymentDAO extends JDBConnect {
 		PaymentDTO dto = new PaymentDTO();
 		try {
 			
-			String sql = "SELECT NAME, EMAIL, PHONE_NUM, ADDRESS " + "FROM member_TBL " + "WHERE EMAIL = ? ";
+			String sql = "SELECT * " + "FROM member_TBL " + "WHERE EMAIL = ? ";
 			
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1, email);
 			rs = psmt.executeQuery();
 
 			if (rs.next()) {
-				PaymentDTO delinfo = new PaymentDTO(rs.getString(1), rs.getString(2),
+				PaymentDTO delinfo = new PaymentDTO(rs.getString(1), rs.getString(2),rs.getString(3), rs.getString(4));
 //=======
 //import org.iptime.booke.common.JDBConnect;
 //import org.iptime.booke.dto.MemberDTO;
@@ -41,7 +41,7 @@ public class PaymentDAO extends JDBConnect {
 //			if (rs.next()) {
 //				MemberDTO delinfo = new MemberDTO(rs.getString(1), rs.getString(2),
 //>>>>>>> Stashed changes
-						rs.getString(3), rs.getString(4));
+						
 				return delinfo;
 			}
 		} catch (Exception e) {
