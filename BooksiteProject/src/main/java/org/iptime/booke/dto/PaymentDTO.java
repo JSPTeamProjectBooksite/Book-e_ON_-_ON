@@ -116,6 +116,20 @@ public class PaymentDTO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	
-	
+
+	public Integer getDeliveryFee() {
+		return deliveryFee;
+	}
+
+	public void setDeliveryFee(Integer deliveryFee) {
+		this.deliveryFee = deliveryFee;
+	}
+
+	public Integer getEstimatedDeliveryDate() {
+		return estimatedDeliveryDate;
+	}
+
+	public void setEstimatedDeliveryDate(Integer estimatedDeliveryDate) {
+		this.estimatedDeliveryDate = estimatedDeliveryDate;
+	}
 }
