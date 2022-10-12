@@ -18,7 +18,7 @@
 <body>
 	<div class="container">
 		<h1>로그인</h1>
-		<form action="login" method="get" name="login">
+		<form action="/login" method="get" name="login">
 			<div>
 				<input class="init" type="text" placeholder="Email" name="email">
 			</div>

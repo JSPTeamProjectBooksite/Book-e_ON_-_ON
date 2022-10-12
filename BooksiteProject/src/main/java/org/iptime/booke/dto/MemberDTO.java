@@ -6,15 +6,17 @@ import java.time.LocalDateTime;
 public class MemberDTO {
 	private Long id;
 	private String name;
-	private String gender;
+	private String email;
 	private String password;
+	private LocalDate birth;
+	private String gender;
 	private String phoneNum;
 	private String address;
-	private String email;
 	private Integer point;
 	private Short memberStateId;
-	private LocalDate birth;
 	private LocalDateTime registerDate;
+	
+	
 	
 
 	public MemberDTO() {

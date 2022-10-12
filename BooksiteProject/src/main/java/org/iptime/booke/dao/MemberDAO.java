@@ -1,23 +1,23 @@
 package org.iptime.booke.dao;
 
-import java.security.Timestamp;
 import java.sql.Date;
 import java.sql.SQLIntegrityConstraintViolationException;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.iptime.booke.common.JDBConnect;
 import org.iptime.booke.dto.MemberDTO;
-import org.iptime.booke.utils.LocalDateABC;
 
 public class MemberDAO extends JDBConnect {
 
 	public MemberDTO getMemberDTO(String uid, String upass) {
-		MemberDTO dto = new MemberDTO();
-		String query = "SELECT * FROM member_TBL WHERE email=? and password=?";
+		MemberDTO dto = null;
+		String query = "SELECT ID, NAME, EMAIL, PASSWORD FROM member_TBL WHERE email=? and password=? AND  MEMBER_STATE_ID=0";
 
+		System.out.println("로그인시도 아이디 : " + uid);
+		System.out.println("로그인시도 비밀번호 : " + upass);
 		try {
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, uid);
@@ -25,13 +25,20 @@ public class MemberDAO extends JDBConnect {
 			rs = psmt.executeQuery();
 
 			if (rs.next()) {
-				dto.setEmail(rs.getString("email"));
-				dto.setPassword(rs.getString("password"));
-				System.out.println(uid);
-				System.out.println(upass);
+				dto = new MemberDTO();
+				
+				dto.setId(rs.getLong(1));
+				dto.setName(rs.getString(2));
+				dto.setEmail(rs.getString(3));
+				dto.setPassword(rs.getString(4));
+				
+				System.out.println("로그인 성공 : '" + dto.getName() + "'님이 로그인 하셨습니다.");
+			}else {
+				System.out.println("아이디 못찾음");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("로그인 시도중 오류발생");
 		}
 
 		return dto;
@@ -122,35 +129,43 @@ public class MemberDAO extends JDBConnect {
 //		return mpass;
 //	}
 
-//	public MemberDTO userInfo(String id) {
-//		try {
-//
-//			String sql = "SELECT * FROM TBL_USER WHERE id = ?";
-//			psmt = con.prepareStatement(sql);
-//			psmt.setString(1, id);
-//			rs = psmt.executeQuery();
-//
-//			if (rs.next()) {
-//				MemberDTO dto = new MemberDTO(rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-//						rs.getString(6), rs.getString(7), rs.getDate(8), rs.getInt(9));
-//				
-//				System.out.println("이름 : " + rs.getString(2));
-//				System.out.println("성별 : " + rs.getString(3));
-//				System.out.println("비밀번호 : " + rs.getString(4));
-//				System.out.println("핸드폰번호 : " + rs.getString(5));
-//				System.out.println("주소 : " + rs.getString(6));
-//				System.out.println("이메일 : " + rs.getString(7));
-//				System.out.println("생년월일 : " + rs.getDate(8));
-//				System.out.println("포인트 : " + rs.getInt(9));
-//				return dto;
-//			}
-//
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//
-//		return null;
-//	}
+	public MemberDTO userInfo(Long id) {
+		MemberDTO dto = null;
+		
+		
+		try {
+
+			String sql = "SELECT * FROM member_TBL WHERE ID = ?";
+			psmt = con.prepareStatement(sql);
+			psmt.setLong(1, id);
+			rs = psmt.executeQuery();
+			
+
+			if (rs.next()) {
+				dto = new MemberDTO();
+				
+				dto.setId(rs.getLong(1));
+				dto.setName(rs.getString(2));
+				dto.setEmail(rs.getString(3));
+				dto.setPassword(rs.getString(4));
+				dto.setBirth(rs.getDate(5).toLocalDate());
+				dto.setGender(rs.getString(6));
+				dto.setPhoneNum(rs.getString(7));
+				dto.setAddress(rs.getString(8));
+				dto.setPoint(rs.getInt(9));
+				dto.setMemberStateId(rs.getShort(10));
+				dto.setRegisterDate(new Timestamp(rs.getDate(11).getTime()).toLocalDateTime());
+				
+				System.out.println("유저정보 성공적 조회");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("유저정보 조회중 오류발생");
+		}
+
+		return dto;
+	}
 
 	public ArrayList<Map<String, Object>> ManagerUserInfo(String list) {
 		ArrayList<Map<String, Object>> values = new ArrayList<Map<String, Object>>();

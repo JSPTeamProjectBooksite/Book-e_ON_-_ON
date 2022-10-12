@@ -5,7 +5,7 @@
 <head>
 <link rel="stylesheet" href="css/UserInfo.css">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원 정보 조회</title>
 </head>
 <body>
 	<div class="container">
@@ -18,7 +18,7 @@
 				</tr>
 				<tr>
 					<th>아이디</th>
-					<td>${ userInfo.id }</td>
+					<td>${ userInfo.email }</td>
 				</tr>
 				<tr>
 					<th>비밀번호</th>
@@ -26,7 +26,7 @@
 				</tr>
 				<tr>
 					<th>전화번호</th>
-					<td>${ userInfo.phoneNumber }</td>
+					<td>${ userInfo.phoneNum }</td>
 				</tr>
 				<tr>
 					<th>주소</th>

@@ -1,9 +1,6 @@
 package org.iptime.booke.controller;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,15 +20,14 @@ public class UserInfoController extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 
-		String UserId = (String) session.getAttribute("user_id");
+		Long UserId = (Long) session.getAttribute("LoginID");
 		System.out.println(UserId);
 
 		session.setAttribute("user_id", UserId);
 
 		MemberDAO dao = new MemberDAO();
 
-		MemberDTO userInfo = dao.userInfo((String)session.getAttribute("user_id"));
-		System.out.println(userInfo);
+		MemberDTO userInfo = dao.userInfo(UserId);
 		dao.close();
 
 		request.setAttribute("userInfo", userInfo);

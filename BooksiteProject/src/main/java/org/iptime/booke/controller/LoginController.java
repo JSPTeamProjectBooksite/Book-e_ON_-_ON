@@ -1,7 +1,6 @@
 package org.iptime.booke.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,9 +20,6 @@ public class LoginController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String uri = request.getRequestURI();
-		System.out.println(uri + "에서 로그인 요청");
-
 		String userEmail = request.getParameter("email");
 		String userPwd = request.getParameter("password");
 
@@ -37,16 +33,17 @@ public class LoginController extends HttpServlet {
 		MemberDTO memberDTO = dao.getMemberDTO(userEmail, userPwd);
 		dao.close();
 
-		if (memberDTO.getEmail() != null) {
+		if (memberDTO != null) {
 			String recentURI = request.getParameter("from");
-//			System.out.println(recentURI+"에서 로그인을 요청하였습니다.");
+			System.out.println(recentURI+"에서 로그인을 요청하였습니다.");
+			
 			HttpSession session = request.getSession();
-			session.setAttribute("email", memberDTO.getEmail());
-			System.out.println(session.getAttribute("email"));
-//			session.setAttribute("user_name", memberDTO.getName());
-			System.out.println("로그인 성공");
-			System.out.println(memberDTO.getEmail() + "님!");
-			PrintWriter out = response.getWriter();
+			
+			session.setAttribute("LoginID", memberDTO.getId());
+			session.setAttribute("LoginName", memberDTO.getName());
+			System.out.println("LoginID : " + session.getAttribute("LoginID"));
+			System.out.println("LoginName : " + session.getAttribute("LoginName"));
+			
 			response.sendRedirect("/main");
 			System.out.println("이전 페이지로 이동합니다.");
 			return;
