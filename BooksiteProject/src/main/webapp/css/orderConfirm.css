@@ -1,9 +1,10 @@
 .wrap {
     width: 1280px;
     margin: 0 auto;
+    min-height: 100vh;
 }
 
-table {
+.order {
     margin: 25px;
     width: 1280px;
     border-spacing: 0;
@@ -13,7 +14,7 @@ table {
 }
 
 
-tr,td {
+.order tr,td {
     border-left: none;
     border-right: none;
     border-bottom: 1px solid #cccccc;
@@ -23,7 +24,7 @@ tr,td {
     font-size: 18px;
 }
 
-caption {
+.order caption {
     text-align: left;
     font-size: 24px;
     font-weight: bold;

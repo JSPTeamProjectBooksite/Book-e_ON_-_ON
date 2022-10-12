@@ -1,7 +1,10 @@
 package org.iptime.booke.controller;
 
 import java.io.IOException;
+//<<<<<<< Updated upstream
 import java.util.List;
+//=======
+//>>>>>>> Stashed changes
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,8 +14,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.iptime.booke.dao.PaymentDAO;
-import org.iptime.booke.dto.BookDTO;
-import org.iptime.booke.dto.MemberDTO;
+//<<<<<<< Updated upstream
+import org.iptime.booke.dto.PaymentDTO;
+//=======
+//import org.iptime.booke.dto.MemberDTO;
+//>>>>>>> Stashed changes
 
 @WebServlet("/payment")
 public class PaymentController extends HttpServlet {
@@ -25,18 +31,19 @@ public class PaymentController extends HttpServlet {
 		session.setAttribute("user_id", UserId);
 		
 		PaymentDAO dao = new PaymentDAO();
+//<<<<<<< Updated upstream
 		//유저
-		MemberDTO delinfo = dao.delinfo((String)session.getAttribute("user_id"));
+		PaymentDTO delinfo = dao.delinfo((String)session.getAttribute("user_id"));
 //		String id = req.getParameter("id");
 //		System.out.println(id);
 //		MemberDTO dto = dao.payment(id);
 		System.out.println(delinfo);
 		
 		//책
-		String[] bid = req.getParameterValues("selectedBooks"); //{"1","2","3","4"} (bid)
+		String[] id = req.getParameterValues("selectedBooks"); //{"1","2","3","4"} (bid)
 		String[] select = req.getParameterValues("bookCount"); //{"1","1","4","5"} (select)
 		
-		List<BookDTO> prodinfo = dao.prodinfo(bid, select);
+		List<PaymentDTO> prodinfo = dao.prodinfo(id, select);
 		dao.close();
 		
 		
@@ -47,23 +54,28 @@ public class PaymentController extends HttpServlet {
 		
 		req.getRequestDispatcher("paymentPage.jsp").forward(req, resp);
 
+//=======
+//		
+//		MemberDTO delinfo = dao.delinfo((String)session.getAttribute("user_id"));
+////		String id = req.getParameter("id");
+////		System.out.println(id);
+////		MemberDTO dto = dao.payment(id);
+//		System.out.println(delinfo);
+//		dao.close();
+//
+//		req.setAttribute("delinfo", delinfo);
+//		req.getRequestDispatcher("paymentPage.jsp").forward(req, resp);
+//
+//>>>>>>> Stashed changes
 		
-//		String[] bid = req.getParameterValues("selectedBooks"); //{"1","2","3","4"} (bid)
+//		String[] bid = req.getParameterValues("selectedBooks");
 //		for (String i : bid) {
 //			System.out.println(i);
 //		}
-//		String[] select = req.getParameterValues("bookCount"); //{"1","1","4","5"} (select)
-//		for (String i : select) {
-//			System.out.println(i);
-//		}
-		
-		
 
 	}
 
-	
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doGet(req, resp);
 	}
 }
