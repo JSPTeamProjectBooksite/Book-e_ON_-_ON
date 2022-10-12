@@ -1,0 +1,132 @@
+.wrap {
+    width: 1280px;
+    margin: 0 auto;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 30px 0px;
+
+}
+
+.search {
+    width: 1280px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin: 30px 30px 30px 30px;
+
+}
+
+.container {
+    display: grid;
+    width: 1280px;
+    grid-template-columns: repeat(4, 160px);
+    grid-template-rows: repeat(3, 140px);
+    gap: 12px;
+    border: 1px;
+    justify-content: center;
+
+}
+
+.rect {
+    /* transition-timing-function:  3s; */
+    transition: all ease 0.3s 0s;
+    border: 1px solid #b3b2b0;
+    border-radius: 8px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.rect:hover {
+    box-shadow: 0px 0px 3px #b3b2b0, 0px 2.5px 5px #d1d0cf;
+    width: 102%;
+
+}
+
+.search>input[type=text] {
+    border: 0.5;
+    width: 670px;
+    height: 45px;
+
+
+}
+
+
+img {
+    width: 70px;
+    height: 70px;
+
+}
+
+.block {
+    height: 55px;
+}
+
+.block2 {
+    height: 15px;
+}
+
+input[id*="answer"] {
+    display: none;
+
+
+}
+
+input[id*="answer"]+label {
+    width: 670px;
+    margin: 0 auto;
+    display: block;
+    padding: 25px;
+    border: 1px solid #bdbdc5;
+    border-bottom: 0;
+    color: rgb(150, 138, 138);
+    font-weight: 900;
+    background: #ffffff;
+    cursor: pointer;
+    position: relative;
+    border-radius: 5px;
+}
+
+input[id*="answer"]+label em {
+    position: absolute;
+    top: 35px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    margin-top: -15px;
+    display: inline-block;
+    background: url(/source/ico/servicePage_downicon.png) 0 0 no-repeat;
+}
+
+input[id*="answer"]+label+div {
+    max-height: 0;
+    transition: all, 0.5s;
+    overflow: hidden;
+    background: #f7f7f7;
+    font-size: 11px;
+}
+
+input[id*="answer"]+label+div p {
+    display: inline-block;
+    padding: 20px;
+}
+
+input[id*="answer"]:checked+label+div {
+    max-height: 100px;
+}
+
+input[id*="answer"]:checked+label em {
+    background-position: 0 -30px;
+}
+
+.block3 {
+    height: 50px;
+}

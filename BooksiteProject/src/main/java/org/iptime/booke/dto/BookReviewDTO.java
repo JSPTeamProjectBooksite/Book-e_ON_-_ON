@@ -1,6 +1,6 @@
 package org.iptime.booke.dto;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class BookReviewDTO {
 	private Long id;
@@ -9,10 +9,10 @@ public class BookReviewDTO {
 	private Short score;
 	private String content;
 	private Integer likeCount;
-	private Date registerDate;
+	private LocalDateTime registerDate;
 	
 	public BookReviewDTO(Long id, Long memberId, Long bookId, Short score, String content, Integer likeCount,
-			Date registerDate) {
+			LocalDateTime registerDate) {
 		this.id = id;
 		this.memberId = memberId;
 		this.bookId = bookId;
@@ -70,11 +70,11 @@ public class BookReviewDTO {
 		this.likeCount = likeCount;
 	}
 
-	public Date getRegisterDate() {
+	public LocalDateTime getRegisterDate() {
 		return registerDate;
 	}
 
-	public void setRegisterDate(Date registerDate) {
+	public void setRegisterDate(LocalDateTime registerDate) {
 		this.registerDate = registerDate;
 	}
 	

@@ -5,7 +5,7 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="./css/HomePage.css">
-        <title>메인 페이지</title>
+        <title>Book-e On&On</title>
     </head>
 
     <body>

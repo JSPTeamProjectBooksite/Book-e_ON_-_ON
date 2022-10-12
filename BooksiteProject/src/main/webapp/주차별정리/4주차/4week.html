@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4주차</title>
+    <style type="text/css">
+    	*{
+    		margin: 0;
+    		padding: 0;
+    		box-sizing: border-box;
+    	}
+    	#wrap{
+    		margin: auto;
+    		max-width: 1200px;
+    	}
+		td, th{
+			padding: 20px;
+		}
+		li{
+			margin-bottom: 10px;
+		}
+    </style>
+</head>
+<body>
+<div id="wrap">
+	<div style="height: 10vh;">
+	</div>
+	<h1>4주차</h1>
+	<div style="height: 5vh;">
+	</div>
+	<table border="1" style="width: 100%;">
+		<th style="width: 180px;">만든페이지</th>
+		<th>개발 과정</th>
+		<tr>
+			<td style="vertical-align:top;">
+				<ul style="list-style:none;">
+					<li>
+						<a href="/HomePage.jsp">홈 페이지<br>(애니메이션)</a>
+					</li>
+					<li>
+						<a href="/MainPage.jsp">메인 페이지</a>
+					</li>
+					<li>
+						<a href="/ListPage.jsp?searchFeild=title&searchWord=아몬드">검색 페이지</a>
+					</li>
+					<li>
+						<a href="/DetailPage.jsp?BID=1">상세 페이지</a>
+					</li>
+					<li>
+						<a href="/paymentPage.jsp?selectedBooks=1&bookCount=1">결제 페이지</a>
+					</li>
+					<li>
+						<a href="/LoginPage.jsp?from=/MainPage.jsp">로그인 페이지</a>
+					</li>
+					<li>
+						<a href="./Register.jsp">회원가입 페이지</a>
+					</li>
+					<li>
+						<a href="./ServicePage.html">서비스 페이지</a>
+					</li>
+					<li>
+						<a href="/ShopCartPage.jsp">장바구니 페이지</a>
+					</li>
+					<li>
+						<a href="./Locker.jsp">보관함 페이지</a>
+					</li>
+					<li>
+						<a href="./Header.jsp">헤더</a>
+					</li>
+					<li>
+						<a href="./Footer.jsp">풋더</a>
+					</li>
+				</ul>
+			</td>
+			<td style="vertical-align:top;">
+				<h2>
+					해당 페이지는 이번 주차에 한 작업을 조원들에게 공지하고 정리해둔 페이지 입니다.<br>
+					전 주와 다음주차를 비교하며 어떻게 달라졌는지 확인합시다.<br>
+					<br>
+					이 주차는 마감되었습니다.<br>
+				</h2>
+				<br><br>
+				
+				<!-- 화요일 공지사항 -->
+				<h3>
+					<span style="cursor: hand;" onclick="if(tuesday.style.display=='none'){tuesday.style.display='';} else{tuesday.style.display = 'none';}">[10-04 화 개발작업]</span>
+				</h3>
+				<div id="tuesday" style="display: none">
+					<br>
+					<hr>
+						<br>
+						연휴간 잘쉬셨나요?<br>
+						이번주는 여태 동안했던 페이지를 마감하고, 다른 페이지를 들어가볼겁니다.<br>
+						<br>
+						관리자 페이지를 만들겁니다. 관리자페이지에선 DB 값(유저나 책등,)을 추가, 수정, 삭제 할 수 있는 페이지이며, 여태했던 작업과는 조금 다른 작업을 하게 될 예정입니다.<br>
+						<br>
+						관리자 페이지에서 책을 추가, 할인 이벤트 추가/삭제, 책이미지 변경 등의 기능을 해야하며, 파일전송을 통해 책 이미지 추가 시 자동으로 프로젝트 파일 경로내에 파일명 규칙을 따라, 만들어지도록 해서 책 추가 역시 편하게 할 예정입니다.<br>
+						<br>
+						오전중으로 여태한 페이지를 마감하고, 관리자 페이지 작업 배분 후 바로 들어갈 예정입니다.<br>
+						<br>
+					<hr>
+				</div>
+				<br>
+				<!-- 수요일 공지사항 -->
+				<h3>
+					<span style="cursor: hand;" onclick="if(wednesday.style.display=='none'){wednesday.style.display='';} else{wednesday.style.display = 'none';}">[10-05 수 개발작업]</span>
+				</h3>
+				<div id="wednesday" style="display: none">
+					<br>
+					<hr>
+						<br>
+						실로 오랫만이지만, 내일 발표를 할 예정입니다.<br>
+						<br>
+						발표를 할 예정인데, DB가 정의서 대로 완성이 되었습니다. 이젠 이 DB에 맞춰 작업을 할 겁니다.<br>
+						<br>
+						관리자 페이지를 들어가기 전에 내일발표를 할예정이니까, DTO 수정과 수정으로 생기는 본인페이지의 사사한 오류는 오늘 <b>무.조.건.</b>해결한 후에 갑니다. 이것만큼은 절대 은근슬쩍 넘어갈 수 없어요.(지옥참마냥 나옵니다.)<br>
+						<br>
+						내일 발표를 저희 조 혼자하게 될 수 도 있는데, 저희가 한게 부족하더라도, 다른 조들에게 보여주고, 평가받는 시간이 필요하다고 생각했습니다.<br>
+						내일발표후에 다음주 할 작업의 방향을 수정해보겠습니다.<br>
+						<br>
+						이번주는 3일만 학원을 나오기 때문에 프로젝트 여분 기간이 갑자기 짧아진 느낌이 듭니다. 그래서 저는 좀 불안한데요. 여러분도 이 부족한 조장을 잘따라와줬으면 합니다.<br>
+						<br>
+					<hr>
+				</div>
+				<br>
+				<!-- 목요일 공지사항 -->
+				<h3>
+					<span style="cursor: hand;" onclick="if(thursday.style.display=='none'){thursday.style.display='';} else{thursday.style.display = 'none';}">[10-06 목 개발작업]</span>
+				</h3>
+				<div id="thursday" style="display: none">
+					<br>
+					<hr>
+						<br>
+						일단 발표하고 봅시다 <a href="./4weekPT.html" target="_blank">( ´△｀)</a> { 발표하기 싫다.~~ )<br>
+						<br>
+						<b>오늘의 지시 사안은 아래의 '한주의 정리' 부분과 함께 작성 하겠습니다.</b><br>
+						귀찮아서 그러는게 아니에요^^ <del> 문맥이 깔끔해져서 그럼. 아무튼 그런줄 아세요-- </del><br>
+						<br>
+					<hr>
+				</div>
+				<br>
+			</td>
+		</tr>
+		<!-- 정리 -->
+		<tr>
+			<td colspan="2" style="text-align: left;">
+				<br>
+				[ 발표 후 ]<br>
+				<br>
+				네... 성공적으로 발표를 마쳤습니다.<br>
+				<br>
+				... 사실 성공적이진 않습니다ㅎㅎ. 저기 위에 목요일 개발작업에 있는 발표하고 싶어(?)하는 표정 클릭하면 미리 작성해둔 대본 나오는데, 대본은 보지도 않고 생각 나는 대로 말했어요.<br>
+				<br>
+				그건 그렇고 결국 저희조만 발표하는 꼴이 됐네요. 다른조는 저희조 보다 못해서 발표를 안한거라고 생각하면 편하겠지만, 그렇진 않겠죠. 저희조가 젤 진도가 느릴태니까...<br>
+				<br>
+				발표를 하면서 저희조의 위치?를 확인 해보고 싶었는데, 사실 앞에서 발표를 하면 모니터에 가려져서 여러분들이 어떤 표정을 하고 있는지 확인 할 수 가 없더라고요. 그래서 지금은 다른조들에 비해 우리조가 잘하고 있는지, 못하고 있는지조차 잘 모르겠습니다.<br>
+				하지만, 제가 발표를 그럼에도 하길 잘했다고 생각하는 이유중 하나는 저희 조의 프로젝트를 다른조에 보여줘서, 만약 다음주(5주차)에도 비슷하거나 나은 점이 보이지 않다면, 그건 확실히 저희가 잘 못하고 있는거라고 생각합니다.<br>
+				<br>
+				제가 말한것 중 잘못된건 없다고 생각합니다. <br>
+				이젠 프로젝트 마감기한이 2주정도 남았고 저희는 남은 기한안에 프로젝트를 완성 해야합니다.<br>
+				취직이 중요한 것? 물론 맞지만, 그렇다고 프로젝트를 등한시 할 순 없습니다.<br>
+				저는 여러분의 프로젝트를 맡은 조장이고, 그에 맞는 책임감을 갖고 프로젝트를 완성해 나가겠습니다.<br>
+				<br>
+				이번주는 3일? 정도 학원에 왔습니다만, 뭔갈 해보기엔 적고 그냥 보내기엔 허무한 시간이 었다고 생각합니다.<br>
+				요즘 학원분위기를 못읽겠어요. 모두가 으샤으샤하는 분위기라면 거기에 휩쓸려서 정열적으로 하겠지만, 사실 학원에 와서 '오늘 뭐하지'라는 생각에 잠길때도 있습니다.<br>
+				<br>
+				제가 프로젝트를 잘 이끌어야 좋은 결과를 내는데, 아직은 학습이 많이 부족하다는 것만 느낍니다.<br>
+				아마 BD 정의서를 완벽히 만들고 작업했다면 저번주(3주차)에 이미 상당히 완성된 프로젝트를 진행했을 수도있습니다.<br>
+				<br>
+				이번주에 DB가 완성되었으니, 오늘부터는 완성된 DB를 통해 각자의 사이트에 나타난 오류를 잡고, 다 끝나면 DB를 조회,수정 할 수 있는 페이지인 '관리자 페이지'를 만들도록합시다<del>이 얘기 몇일전부터 하고 있는거 같음</del><br>
+				<br>
+				일단 연휴 동안 의미있게 보내시고, 다음주에 더더욱 열심히 해서 많은 것을 보여줍시다. 그린컴퓨터 305호 학생들 모두를 놀라게 해주는거예요!!!<br>
+				<br>
+			</td>
+		</tr>
+	</table>
+	<div style="height: 10vh;"></div>
+</div>
+    
+</body>
+</html>

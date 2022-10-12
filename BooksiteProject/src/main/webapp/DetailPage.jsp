@@ -113,7 +113,7 @@
 </style>
 <script type="text/javascript">
 	//타이틀 변경
-	document.title = "${ receivedValue.title }";
+	document.title = "${ bookInfo.title }";
     
     function showPopup(){
         document.getElementById("popup").style.display = 'block';
@@ -130,7 +130,7 @@
             document.getElementById("sendForm").action = "/payment";
         }else if(btn=="shopCart"){
             showPopup();
-            document.getElementById("sendForm").action = "/cart?bookId=${receivedValue.bid}";
+            document.getElementById("sendForm").action = "/cart";
         }
         document.getElementById("sendForm").submit();
     }
@@ -147,19 +147,19 @@
                 font-size: 38px;
                 font-weight: 700;
                 font-family: 고딕;
-            " >${ receivedValue.title }
+            " >${ bookInfo.title }
             </div>
             <div style="
                 font-size: 15px;
                 font-weight: 700;
                 font-family: 고딕;
                 color: grey;
-            " id="ad">${ receivedValue.ad }
+            " id="ad">${ bookInfo.catchphrase }
             </div>
             <div style="height:5px"></div>
             <div style="
                 width: 200px;
-            " id="author">${ receivedValue.author }</div>
+            " id="author">${ author.name }</div>
 	        <hr>
         </div>
     
@@ -174,14 +174,14 @@
                     font-size: 24px;
                 ">
                     <td rowspan="5" style="width: 10%;">
-                        <img class="animation_2 box2" src="${ receivedValue.image }" style="
+                        <img class="animation_2 box2" src="${ bookInfo.coverImg }" style="
                             max-height: 500px;
                         " id="image">
                     </td>
                     <td>
                         <div class="tableMenu">
                             <div>판매가</div>
-                            <div>${ bookPrice } 원</div>
+                            <div>${ price } 원</div>
                         </div>
                     </td>
                 </tr>
@@ -205,7 +205,7 @@
                     <td>
                         <form action="" method="get" id="sendForm">
                         	<!-- 선택한 책과 갯수를 다음 폼에 전송 -->
-                            <input type="hidden" name="selectedBooks" value="${ receivedValue.bid }">
+                            <input type="hidden" name="selectedBooks" value="${ bookInfo.id }">
                             선택 수량: <input type="number" style="
                             width: 60px; 
                             height: 38px; 
@@ -248,7 +248,7 @@
                         책 소개
                     </td>
                     <td>
-                        ${ receivedValue.introduce }
+                        ${ bookInfo.introduce }
                     </td>
                 </tr>
                 <!-- 기본 정보 -->

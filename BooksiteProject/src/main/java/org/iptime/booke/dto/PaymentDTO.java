@@ -2,6 +2,7 @@ package org.iptime.booke.dto;
 
 public class PaymentDTO {
 
+
 	private Long id; //BID
 	private String coverImg;
 	private String title;
@@ -17,6 +18,7 @@ public class PaymentDTO {
 	private Integer point;
 	//여기까지 주문자(delinfo)정보
 	
+
 	public PaymentDTO() {
 	}
 	
@@ -141,9 +143,5 @@ public class PaymentDTO {
 
 	public void setPoint(Integer point) {
 		this.point = point;
-	}
-	
-	
-
-	
-	}
+	}	
+}

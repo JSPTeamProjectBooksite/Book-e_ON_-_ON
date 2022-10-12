@@ -2,9 +2,9 @@
 --DROP SEQUENCE member_SEQ;
 
 CREATE TABLE member_TBL (
-	id 				number 			NOT NULL		PRIMARY KEY,
+	id 				number 			NOT NULL	PRIMARY KEY,
 	name 			nvarchar2(30)	NOT NULL, 
-	email 			nvarchar2(320) 	NOT NULL, 
+	email 			nvarchar2(320) 	NOT NULL	UNIQUE, 
 	password 		varchar2(30)	NOT NULL, 
 	birth 			DATE 				NULL, 
 	gender			nchar(1) 			NULL, 
@@ -37,6 +37,5 @@ CREATE SEQUENCE member_SEQ
 	nomaxvalue
 	nocycle
 	nocache;
-	
 
-SELECT * FROM member_TBL
+SELECT * FROM MEMBER_TBL mt 
