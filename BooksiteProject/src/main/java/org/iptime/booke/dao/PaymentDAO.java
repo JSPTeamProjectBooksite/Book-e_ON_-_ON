@@ -1,5 +1,6 @@
 package org.iptime.booke.dao;
 
+//<<<<<<< Updated upstream
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +22,25 @@ public class PaymentDAO extends JDBConnect {
 
 			if (rs.next()) {
 				PaymentDTO delinfo = new PaymentDTO(rs.getString(1), rs.getString(2),
+//=======
+//import org.iptime.booke.common.JDBConnect;
+//import org.iptime.booke.dto.MemberDTO;
+//
+//public class PaymentDAO extends JDBConnect {
+//
+//	public MemberDTO delinfo(String id) {
+//		MemberDTO dto = new MemberDTO();
+//		try {
+//			
+//			String sql = "SELECT NAME, ID, PHONENUMBER, ADDRESS " + "FROM TBL_USER " + "WHERE ID = ? ";
+//			
+//			psmt = con.prepareStatement(sql);
+//			psmt.setString(1, id);
+//			rs = psmt.executeQuery();
+//
+//			if (rs.next()) {
+//				MemberDTO delinfo = new MemberDTO(rs.getString(1), rs.getString(2),
+//>>>>>>> Stashed changes
 						rs.getString(3), rs.getString(4));
 				return delinfo;
 			}

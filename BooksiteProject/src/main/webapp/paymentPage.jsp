@@ -23,7 +23,7 @@
 			<img src="/source/ico/checked_icon.png"> 상품 주문서
 		</h2>
 
-		<!-- 사용자 정보 -->
+		<!-- 사용자 정보(★살리는 부분 -->
 		<div>
 			<div class="block"></div>
 
@@ -51,15 +51,13 @@
 					</tr>
 					<tr>
 						<th>상세 정보</th>
-						<td>${ delinfo.name }/${ delinfo.address } <br>배송메세지 |
-							없음
+						<td>${ delinfo.name }/${ delinfo.address }<br>배송메세지 | 없음
 							<button type="button" name="주소수정버튼" style="text-align: center">수정하기</button>
 						</td>
 					</tr>
 				</table>
 			</div>
 		</div>
-
 		<!-- 제품정보 -->
 		<table style="width: 100%;">
 			<!-- 1번째 블럭 -->
@@ -83,7 +81,10 @@
 							</tr>
 
 						</c:forEach>
-					</table> <!-- 스티키 존 -->
+					</table>
+				</td>
+
+				<!-- 스티키 존 -->
 				<td rowspan="4" class="stickyBar">
 					<table class="stickyTable">
 
@@ -97,7 +98,8 @@
 								<th><small> ㄴ상품금액</small></th>
 								<td><small> ${prod.price * prod.quantity}원</small></td>
 							</tr>
-							<c:set var="total" value="${total + (prod.price * prod.quantity) }" />
+							<c:set var="total"
+								value="${total + (prod.price * prod.quantity) }" />
 						</c:forEach>
 
 						<tr>
@@ -135,7 +137,10 @@
 						-->
 					</table>
 				</td>
+
 			</tr>
+
+
 			<!-- 3번째 블럭 -->
 			<tr>
 				<td class="point">
@@ -158,6 +163,8 @@
 					</table>
 				</td>
 			</tr>
+
+
 			<tr>
 				<td class="paymethod">
 					<h3>결제 수단</h3>
@@ -177,6 +184,7 @@
 					</table>
 				</td>
 			</tr>
+
 			<tr>
 				<td class="policy">
 					<table>

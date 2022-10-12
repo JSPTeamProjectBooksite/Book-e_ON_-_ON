@@ -18,6 +18,7 @@ public class MemberDTO {
 	public MemberDTO() {}
 	
 	//결제페이지
+//<<<<<<< Updated upstream
 
 		public MemberDTO(String name, String email, String phoneNum, String address) {
 			this.name = name;
@@ -36,6 +37,15 @@ public class MemberDTO {
 		this.address = address;
 		this.email = email;
 		this.birth = birth;
+//=======
+//	
+//	public MemberDTO(String name, String id, String phoneNumber, String address) {
+//		this.name = name;
+//		this.id = id;
+//		this.phoneNumber = phoneNumber;
+//		this.address = address;
+//		
+//>>>>>>> Stashed changes
 	}
 
 	public MemberDTO(String name, Long id) {
