@@ -21,8 +21,9 @@ CREATE TABLE book_TBL (
 	estimated_delivery_date number(3)			NULL,
 	contents				nvarchar2(2000)	NOT NULL,
 	visit 					number(7)		DEFAULT 0,
+	quantity				number(4)			NULL,
 	catchphrase 			varchar2(500)		NULL,
-	publication_date 		DATE			NOT NULL,
+	publication_date 		DATE				NULL,
 	register_date 			DATE			DEFAULT sysdate,
 	update_date				DATE			DEFAULT sysdate
 );
