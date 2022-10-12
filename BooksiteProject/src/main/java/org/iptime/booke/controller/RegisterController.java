@@ -3,6 +3,8 @@ package org.iptime.booke.controller;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
@@ -14,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.iptime.booke.dao.MemberDAO;
 import org.iptime.booke.dto.MemberDTO;
+import org.iptime.booke.utils.LocalDateABC;
 
 @WebServlet("/register")
 public class RegisterController extends HttpServlet {
@@ -30,14 +33,9 @@ public class RegisterController extends HttpServlet {
 		String userGender = request.getParameter("gender");
 		String userPhoneNumber = request.getParameter("phoneNum");
 		String userAddress = request.getParameter("address");
-
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-		Date date = null;
-		try {
-			date = format.parse(userBirth);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+		
+		LocalDate date = null;
+		date = LocalDateABC.stringToLocalDate(userBirth);
 
 		// 폼값을 DTO 객체에 저장
 		MemberDTO memberDTO = new MemberDTO();

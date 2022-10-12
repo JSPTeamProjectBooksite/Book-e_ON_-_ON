@@ -10,6 +10,7 @@ import java.util.Map;
 import org.iptime.booke.common.DBConnPool;
 import org.iptime.booke.dto.AuthorDTO;
 import org.iptime.booke.dto.BookDTO;
+import org.iptime.booke.dto.MemberDTO;
 
 public class BookDAO extends DBConnPool{
 	
@@ -256,5 +257,40 @@ public class BookDAO extends DBConnPool{
 		}
 		
 		return reselt;
+	}
+	
+	public ArrayList<Map<String, Object>> ManagerBookInfo(String list) {
+		ArrayList<Map<String, Object>> values = new ArrayList<Map<String, Object>>();		
+		try {
+
+			String query = "SELECT * FROM BOOK_TBL bt, AUTHOR_TBL at2 WHERE bt.AUTHOR_ID = at2.MEMBER_ID";
+			psmt = con.prepareStatement(query);
+			rs = psmt.executeQuery(query);
+
+			while (rs.next()) {
+				Map<String, Object> map = new HashMap<String, Object>();
+	
+				BookDTO bookDto = new BookDTO(rs.getLong(1), rs.getString(2), rs.getString(3), rs.getLong(4) ,rs.getString(5), rs.getInt(6), rs.getInt(7), rs.getInt(8), rs.getLong(9), rs.getLong(10), rs.getInt(11), rs.getString(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getInt(16), rs.getInt(17), rs.getString(18), rs.getInt(19), rs.getInt(20), rs.getString(21), rs.getTimestamp(22).toLocalDateTime(), rs.getTimestamp(23).toLocalDateTime(), rs.getTimestamp(24).toLocalDateTime());
+				
+//				String memberState = rs.getString(13);
+
+				map.put("memberDto", bookDto);
+//				map.put("memberState", memberState);
+				
+				values.add(map);
+				
+				System.out.println(rs.getLong(1));
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return values;
+	}
+	
+	public static void main(String[] args) {
+		BookDAO dao = new BookDAO();
+		dao.ManagerBookInfo("");
 	}
 }

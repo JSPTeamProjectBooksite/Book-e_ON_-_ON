@@ -1,11 +1,16 @@
 package org.iptime.booke.dao;
 
+import java.security.Timestamp;
 import java.sql.Date;
 import java.sql.SQLIntegrityConstraintViolationException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.iptime.booke.common.JDBConnect;
 import org.iptime.booke.dto.MemberDTO;
+import org.iptime.booke.utils.LocalDateABC;
 
 public class MemberDAO extends JDBConnect {
 
@@ -42,7 +47,7 @@ public class MemberDAO extends JDBConnect {
 			psmt.setString(1, dto.getName());
 			psmt.setString(2, dto.getEmail());
 			psmt.setString(3, dto.getPassword());
-			psmt.setDate(4, new Date(dto.getBirth().getTime()));
+			psmt.setDate(4, Date.valueOf(dto.getBirth()));
 			psmt.setString(5, dto.getGender());
 			psmt.setString(6, dto.getPhoneNum());
 			psmt.setString(7, dto.getAddress());
@@ -56,7 +61,7 @@ public class MemberDAO extends JDBConnect {
 		}
 		return result;
 	}
-	
+
 	public boolean IDCheck(String id) {
 		try {
 			String query = "SELECT * FROM login WHERE id='" + id + "'";
@@ -147,37 +152,28 @@ public class MemberDAO extends JDBConnect {
 //		return null;
 //	}
 
-	public ArrayList<MemberDTO> ManagerUserInfo(String list) {
-		ArrayList<MemberDTO> values = new ArrayList<MemberDTO>();
+	public ArrayList<Map<String, Object>> ManagerUserInfo(String list) {
+		ArrayList<Map<String, Object>> values = new ArrayList<Map<String, Object>>();
+		
+		
 		try {
 
-			String query = "SELECT * FROM member_TBL";
+			String query = "SELECT * FROM MEMBER_TBL mt, MEMBER_STATE_TBL mst WHERE mt.MEMBER_STATE_ID = mst.ID";
 			psmt = con.prepareStatement(query);
 			rs = psmt.executeQuery(query);
 
 			while (rs.next()) {
-				MemberDTO dto = new MemberDTO(rs.getLong(1), rs.getString(2), rs.getString(3), rs.getString(4),
-						rs.getDate(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getDate(11));
+				Map<String, Object> map = new HashMap<String, Object>();
+	
+				MemberDTO memberDto = new MemberDTO(rs.getLong(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getDate(5).toLocalDate(), rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getTimestamp(11).toLocalDateTime());
+				
+				String memberState = rs.getString(13);
 
-				values.add(dto);
-//			values.add(rs.getString(3));
-//			values.add(rs.getString(4));
-//			values.add(rs.getString(5));
-//			values.add(rs.getString(6));
-//			values.add(rs.getString(7));
-//			values.add(rs.getString(8));
-//			values.add(rs.getString(9));
-
-//			System.out.println("이름 : " + rs.getString(2));
-//			System.out.println("성별 : " + rs.getString(3));
-//			System.out.println("비밀번호 : " + rs.getString(4));
-//			System.out.println("핸드폰번호 : " + rs.getString(5));
-//			System.out.println("주소 : " + rs.getString(6));
-//			System.out.println("이메일 : " + rs.getString(7));
-//			System.out.println("생년월일 : " + rs.getString(8));
-//			System.out.println("포인트 : " + rs.getString(9));
-//			System.out.println();
-//			return dto;
+				map.put("memberDto", memberDto);
+				map.put("memberState", memberState);
+				
+				values.add(map);
 			}
 
 		} catch (Exception e) {

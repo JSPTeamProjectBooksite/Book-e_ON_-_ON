@@ -126,12 +126,46 @@ public class BookDTO {
 		this.price = price;
 		this.estimatedDeliveryDate = estimatedDeliveryDate;
 	}
-
+	
+	//매니저 책 정보
+	public BookDTO(Long id, String coverImg, String title, Long authorId, String translator, Integer price,
+			Integer totalPages, Integer weight, Long isbn13, Long isbn10, Integer bookCategoryId, String introduce,
+			String introduceImg, String publisher, String publisherReview, Integer deliveryFee,
+			Integer estimatedDeliveryDate, String contents, Integer visit, Integer quantity, String catchphrase,
+			LocalDateTime publicationDate, LocalDateTime registDate, LocalDateTime updateDate) {
+		super();
+		this.id = id;
+		this.coverImg = coverImg;
+		this.title = title;
+		this.authorId = authorId;
+		this.translator = translator;
+		this.price = price;
+		this.totalPages = totalPages;
+		this.weight = weight;
+		this.isbn13 = isbn13;
+		this.isbn10 = isbn10;
+		this.bookCategoryId = bookCategoryId;
+		this.introduce = introduce;
+		this.introduceImg = introduceImg;
+		this.publisher = publisher;
+		this.publisherReview = publisherReview;
+		this.deliveryFee = deliveryFee;
+		this.estimatedDeliveryDate = estimatedDeliveryDate;
+		this.contents = contents;
+		this.visit = visit;
+		this.quantity = quantity;
+		this.catchphrase = catchphrase;
+		this.publicationDate = publicationDate;
+		this.registDate = registDate;
+		this.updateDate = updateDate;
+	}
+	
 	public BookDTO(String coverImg, String title, Integer price) {
 		this.coverImg = coverImg;
 		this.title = title;
 		this.price = price;
 	}
+
 
 	public Long getId() {
 		return id;

@@ -59,21 +59,21 @@
 				<th>계정 상태</th>
 				<th>가입일</th>
 			</tr>
-			<c:forEach var="n" items="${userInfo}">
+			<c:forEach var="n" items="${memberList}">
 			<tr>
 				<td class="radioBox"><input type="radio" name="chooseUser"
 					value="1"></td>
-				<td><a href="">${ n.id }</a></td>
-				<td>${ n.name }</td>
-				<td>${ n.email }</td>
-				<td>${ n.password }</td>
-				<td>${ n.birth }</td>
-				<td style="text-align: center;">${ n.gender }</td>
-				<td>${ n.phoneNum }</td>
-				<td>${ n.address }</td>
-				<td>${ n.point }</td>
-				<td>???</td>
-				<td>${ n.registerDate }</td>
+				<td><a href="">${ n.memberDto.id }</a></td>
+				<td>${ n.memberDto.name }</td>
+				<td>${ n.memberDto.email }</td>
+				<td>${ n.memberDto.password }</td>
+				<td>${ n.memberDto.birth }</td>
+				<td style="text-align: center;">${ n.memberDto.gender }</td>
+				<td>${ n.memberDto.phoneNum }</td>
+				<td>${ n.memberDto.address }</td>
+				<td>${ n.memberDto.point }</td>
+				<td>${ n.memberState }</td>
+				<td>${ n.memberDto.registerDate }</td>
 			</tr>
 			</c:forEach>
 			<tr>
