@@ -20,7 +20,7 @@
 
 		<div class="block"></div>
 
-		<table class="Order">
+		<table class="order">
 			<caption>결제완료</caption>
 			<tr>
 				<td class="top">주문일자</td>
@@ -34,12 +34,12 @@
 				<!-- 주문일자 -->
 				<td>2022-09-19</td>
 				<!-- 임의의 주문번호 만들어 카운트 -->
-				<td>ON220919-1</td>
+				<td><a href="">ON220919-1</td>
 				<td>42,000원</td>
 				<!-- 클릭 시, 상품 상세 페이지로 이동  -->
 				<td><a href="detail.jsp">기분이 태도가 되지 않으려면</a></td>
 				<td>1</td>
-				<td></td>
+				<td><a href="">상세보기</td>
 			</tr>
 		</table>
 		<div class="block2">

@@ -64,6 +64,6 @@ public class Cart extends HttpServlet {
 			}
 		}
 		
-		response.getWriter().println("<script>history.back();</script>");
+		response.getWriter().println("<script>location.reload(true); history.back();</script>");
 	}
 }

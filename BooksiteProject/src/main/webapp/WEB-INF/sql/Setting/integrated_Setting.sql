@@ -131,6 +131,7 @@ CREATE SEQUENCE member_SEQ
 CREATE TABLE inquiry_TBL(
 	id 				NUMBER 			NOT NULL	PRIMARY KEY,
 	member_id 		NUMBER 			NOT NULL,
+	title			varchar(500)	NOT NULL,
 	content 		varchar2(4000) 	NOT NULL,
 	categroy 		varchar2(100) 	NOT NULL,
 	rigister_DATE 	DATE 			DEFAULT sysdate 
@@ -140,16 +141,17 @@ ALTER TABLE INQUIRY_TBL ADD CONSTRAINT inquiry_member_id_FK FOREIGN KEY(member_i
 
 COMMENT ON COLUMN inquiry_TBL.ID IS '식별 id';
 COMMENT ON COLUMN inquiry_TBL.MEMBER_ID  IS '문의를 쓴 멤버 id';
+COMMENT ON COLUMN inquiry_TBL.TITLE  IS '문의 제목';
 COMMENT ON COLUMN inquiry_TBL.CONTENT  IS '문의 내용';
 COMMENT ON COLUMN inquiry_TBL.CATEGROY  IS '문의 카테고리 (버그, UI, 질문 등등)';
 COMMENT ON COLUMN inquiry_TBL.RIGISTER_DATE  IS '문의를 생성한 날짜';
 
 CREATE SEQUENCE inquiry_SEQ
-	INCREMENT BY 1 
-	START WITH 1 
-	MINVALUE 1 
-	nomaxvalue 
-	nocycle 
+	INCREMENT BY 1
+	START WITH 1
+	MINVALUE 1
+	nomaxvalue
+	nocycle
 	nocache;
 
 -- ============================================================
@@ -347,12 +349,17 @@ COMMENT ON COLUMN locker_TBL.BOOK_ID IS '북마크 당한 책 id';
 -- ============================================================
 -- 결제
 -- ============================================================
-CREATE TABLE payment_TBL(
-	id 						nchar(30) 	NOT NULL	PRIMARY KEY,
-	member_id				NUMBER		NOT NULL,
-	book_id					NUMBER		NOT NULL,
-	price					number(7)	NOT NULL,
-	register_date 			DATE		DEFAULT sysdate
+CREATE TABLE payment_TBL(	
+	id 					nchar(10) 		NOT NULL	PRIMARY KEY,
+	member_id			NUMBER			NOT NULL,
+	book_id				NUMBER			NOT NULL,
+	total_amount		number(7)		NOT NULL,
+	point_amount		NUMBER(7)		DEFAULT 0,		
+	actual_amount		NUMBER(7)		NOT NULL,	
+	shipping_state		nvarchar2(3)	DEFAULT '배송중',
+	payment_method		varchar2(100)	NOT NULL,
+	shipping_message	nvarchar2(2000) 	NULL,	
+	register_date 		DATE			DEFAULT sysdate
 );
 
 ALTER TABLE payment_TBL ADD CONSTRAINT payment_member_id_FK FOREIGN KEY(member_id) REFERENCES member_TBL(id);
@@ -361,7 +368,12 @@ ALTER TABLE payment_TBL ADD CONSTRAINT payment_book_id_FK FOREIGN KEY(book_id) R
 COMMENT ON COLUMN payment_TBL.ID IS '결제 식별 번호';
 COMMENT ON COLUMN payment_TBL.MEMBER_ID  IS '결제한 회원 id';
 COMMENT ON COLUMN payment_TBL.BOOK_ID  IS '결제한 상품 id';
-COMMENT ON COLUMN payment_TBL.PRICE  IS '결제 금액';
+COMMENT ON COLUMN payment_TBL.TOTAL_AMOUNT  IS '총 결제 금액';
+COMMENT ON COLUMN payment_TBL.ACTUAL_AMOUNT  IS '실제 결제 금액';
+COMMENT ON COLUMN payment_TBL.POINT_AMOUNT  IS '적립금 결제 금액';
+COMMENT ON COLUMN payment_TBL.PAYMENT_METHOD  IS '결제 방법';
+COMMENT ON COLUMN payment_TBL.SHIPPING_STATE  IS '배송 상태는 배송중으로 고정';
+COMMENT ON COLUMN payment_TBL.SHIPPING_MESSAGE  IS '배송 메시지';
 COMMENT ON COLUMN payment_TBL.REGISTER_DATE  IS '결제한 날짜';
 
 -- ============================================================
@@ -369,7 +381,7 @@ COMMENT ON COLUMN payment_TBL.REGISTER_DATE  IS '결제한 날짜';
 -- ============================================================
 CREATE TABLE order_TBL (
 	id				NUMBER			NOT NULL	PRIMARY KEY,
-	payment_id		nchar(30)		NOT NULL,
+	payment_id		nchar(10)		NOT NULL,
 	book_id			NUMBER 			NOT NULL,
 	quantity		NUMBER(4)		DEFAULT 1,
 	register_date 	DATE			DEFAULT sysdate
@@ -796,12 +808,13 @@ INSERT INTO MEMBER_TBL(id, name, email, password, birth, gender, phone_num, addr
 --	   	VALUES(member_SEQ.nextval, user_name || I, user_name || I || '@gmail.com', user_name || I, '2002-02-02', '기타', '01012345678', '경기도 어딘가 무슨곳 좋은동');
 --    END LOOP;
 --END;
+
 -- ============================================================
 -- 문의
 -- ============================================================
-INSERT INTO INQUIRY_TBL(ID, MEMBER_ID, CONTENT, CATEGROY) VALUES(INQUIRY_SEQ.nextval, 1, '404에러나요', '404에러나요');
-INSERT INTO INQUIRY_TBL(ID, MEMBER_ID, CONTENT, CATEGROY) VALUES(INQUIRY_SEQ.nextval, 1, '405에러나요', '405에러나요');
-INSERT INTO INQUIRY_TBL(ID, MEMBER_ID, CONTENT, CATEGROY) VALUES(INQUIRY_SEQ.nextval, 1, '500에러나요', '500에러나요');
+INSERT INTO INQUIRY_TBL(ID, MEMBER_ID, TITLE, CONTENT, CATEGROY) VALUES(INQUIRY_SEQ.nextval, 1, '404에러나요', '404에러나요', '에러');
+INSERT INTO INQUIRY_TBL(ID, MEMBER_ID, TITLE, CONTENT, CATEGROY) VALUES(INQUIRY_SEQ.nextval, 1, '405에러나요', '405에러나요', '에러');
+INSERT INTO INQUIRY_TBL(ID, MEMBER_ID, TITLE, CONTENT, CATEGROY) VALUES(INQUIRY_SEQ.nextval, 1, '500에러나요', '500에러나요', '에러');
 
 
 -- ============================================================

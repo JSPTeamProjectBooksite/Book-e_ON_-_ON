@@ -1,27 +1,46 @@
 package org.iptime.booke.dao;
 
+//<<<<<<< Updated upstream
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.iptime.booke.common.JDBConnect;
-import org.iptime.booke.dto.BookDTO;
-import org.iptime.booke.dto.MemberDTO;
+import org.iptime.booke.dto.PaymentDTO;
+
 
 public class PaymentDAO extends JDBConnect {
 	// 사용자 받아오는 메소드
-	public MemberDTO delinfo(String email) {
-		MemberDTO dto = new MemberDTO();
+	public PaymentDTO delinfo(String email) {
+		PaymentDTO dto = new PaymentDTO();
 		try {
 			
-			String sql = "SELECT NAME, EMAIL, PHONE_NUM, ADDRESS " + "FROM MEMBER_TBL " + "WHERE EMAIL = ? ";
+			String sql = "SELECT NAME, EMAIL, PHONE_NUM, ADDRESS " + "FROM member_TBL " + "WHERE EMAIL = ? ";
 			
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1, email);
 			rs = psmt.executeQuery();
 
 			if (rs.next()) {
-				MemberDTO delinfo = new MemberDTO(rs.getString(1), rs.getString(2),
+				PaymentDTO delinfo = new PaymentDTO(rs.getString(1), rs.getString(2),
+//=======
+//import org.iptime.booke.common.JDBConnect;
+//import org.iptime.booke.dto.MemberDTO;
+//
+//public class PaymentDAO extends JDBConnect {
+//
+//	public MemberDTO delinfo(String id) {
+//		MemberDTO dto = new MemberDTO();
+//		try {
+//			
+//			String sql = "SELECT NAME, ID, PHONENUMBER, ADDRESS " + "FROM TBL_USER " + "WHERE ID = ? ";
+//			
+//			psmt = con.prepareStatement(sql);
+//			psmt.setString(1, id);
+//			rs = psmt.executeQuery();
+//
+//			if (rs.next()) {
+//				MemberDTO delinfo = new MemberDTO(rs.getString(1), rs.getString(2),
+//>>>>>>> Stashed changes
 						rs.getString(3), rs.getString(4));
 				return delinfo;
 			}
@@ -33,10 +52,10 @@ public class PaymentDAO extends JDBConnect {
 
 	}
 	//책 반환
-	public List<BookDTO> prodinfo(String[] id) {
-		List<BookDTO> booklist = new ArrayList<BookDTO>();
+	public List<PaymentDTO> prodinfo(String[] id, String[] select) {
+		List<PaymentDTO> booklist = new ArrayList<PaymentDTO>();
 		
-		String sql = "SELECT * " + "FROM BOOK_TBL " + "WHERE ID = ? ";
+		String sql = "SELECT * " + "FROM book_TBL " + "WHERE ID = ? ";
 		
 		for(int i = 0; i < id.length; i++) { //{"1","2","3","4"};
 			
@@ -48,7 +67,7 @@ public class PaymentDAO extends JDBConnect {
 				psmt.setLong(1, idNum);
 				rs = psmt.executeQuery();
 				
-				BookDTO dto = new BookDTO();
+				PaymentDTO dto = new PaymentDTO();
 				
 				if(rs.next()) {
 					
@@ -59,14 +78,13 @@ public class PaymentDAO extends JDBConnect {
 					dto.setTitle(rs.getString(3));
 					dto.setPrice(rs.getInt(6));
 					dto.setBookCategoryId(rs.getInt(13));
-					dto.setQuantity(rs.getInt(20));
 					
-//					dto.setSelect(Integer.parseInt(select[i]));//{"1","1","4","5"} (select)
+					dto.setQuantity((Integer.parseInt(select[i])));//{"1","1","4","5"} (select)));
 					
 				}
 
 				
-				dto.DTOPrintOut2();
+//				dto.DTOPrintOut2();
 				booklist.add(dto);
 				
 			} catch (Exception e) {

@@ -1,113 +1,37 @@
 package org.iptime.booke.dto;
 
+import java.time.LocalDateTime;
+
 public class PaymentDTO {
-
-	/**
-	 * 
-	 */
-	String id;
-	String name;
-	String phoneNumber;
-	String email;
-	String address;
-	String kind;
-	String image;
-	String title;
-	Long price;
-	int orderQuantity;
+	private String id;
+	private Long memberId;
+	private Long bookId;
+	private Integer totalAmount;
+	private Integer pointAmount;
+	private Integer actualAmount;
+	private String shippingState;
+	private String paymentMethod;
+	private String shippingMessage;
+	private LocalDateTime registerDate;
 	
-	private Integer deliveryFee;//
-	private Integer estimatedDeliveryDate;
-
-	public PaymentDTO() {
-	}
-
-	public PaymentDTO(String id, String name, String phoneNumber, String email, String address, String image, String kind,
-			String title, Long price, int orderQuantity) {
-
+	
+	public PaymentDTO() {}
+	
+	public PaymentDTO(String id, Long memberId, Long bookId, Integer totalAmount, Integer pointAmount,
+			Integer actualAmount, String shippingState, String paymentMethod, String shippingMessage,
+			LocalDateTime registerDate) {
 		this.id = id;
-		this.name = name;
-		this.phoneNumber = phoneNumber;
-		this.email = email;
-		this.address = address;
-		this.kind = kind;
-		this.image = image;
-		this.title = title;
-		this.price = price;
-		this.orderQuantity = orderQuantity;
+		this.memberId = memberId;
+		this.bookId = bookId;
+		this.totalAmount = totalAmount;
+		this.pointAmount = pointAmount;
+		this.actualAmount = actualAmount;
+		this.shippingState = shippingState;
+		this.paymentMethod = paymentMethod;
+		this.shippingMessage = shippingMessage;
+		this.registerDate = registerDate;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
-
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public String getKind() {
-		return kind;
-	}
-
-	public void setKind(String kind) {
-		this.kind = kind;
-	}
-
-	public String getImage() {
-		return image;
-	}
-
-	public void setImage(String image) {
-		this.image = image;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public Long getPrice() {
-		return price;
-	}
-
-	public void setPrice(Long price) {
-		this.price = price;
-	}
-
-	public int getOrderQuantity() {
-		return orderQuantity;
-	}
-
-	public void setOrderQuantity(int orderQuantity) {
-		this.orderQuantity = orderQuantity;
-	}
 
 	public String getId() {
 		return id;
@@ -117,19 +41,75 @@ public class PaymentDTO {
 		this.id = id;
 	}
 
-	public Integer getDeliveryFee() {
-		return deliveryFee;
+	public Long getMemberId() {
+		return memberId;
 	}
 
-	public void setDeliveryFee(Integer deliveryFee) {
-		this.deliveryFee = deliveryFee;
+	public void setMemberId(Long memberId) {
+		this.memberId = memberId;
 	}
 
-	public Integer getEstimatedDeliveryDate() {
-		return estimatedDeliveryDate;
+	public Long getBookId() {
+		return bookId;
 	}
 
-	public void setEstimatedDeliveryDate(Integer estimatedDeliveryDate) {
-		this.estimatedDeliveryDate = estimatedDeliveryDate;
+	public void setBookId(Long bookId) {
+		this.bookId = bookId;
+	}
+
+	public Integer getTotalAmount() {
+		return totalAmount;
+	}
+
+	public void setTotalAmount(Integer totalAmount) {
+		this.totalAmount = totalAmount;
+	}
+
+	public Integer getPointAmount() {
+		return pointAmount;
+	}
+
+	public void setPointAmount(Integer pointAmount) {
+		this.pointAmount = pointAmount;
+	}
+
+	public Integer getActualAmount() {
+		return actualAmount;
+	}
+
+	public void setActualAmount(Integer actualAmount) {
+		this.actualAmount = actualAmount;
+	}
+
+	public String getShippingState() {
+		return shippingState;
+	}
+
+	public void setShippingState(String shippingState) {
+		this.shippingState = shippingState;
+	}
+
+	public String getPaymentMethod() {
+		return paymentMethod;
+	}
+
+	public void setPaymentMethod(String paymentMethod) {
+		this.paymentMethod = paymentMethod;
+	}
+
+	public String getShippingMessage() {
+		return shippingMessage;
+	}
+
+	public void setShippingMessage(String shippingMessage) {
+		this.shippingMessage = shippingMessage;
+	}
+
+	public LocalDateTime getRegisterDate() {
+		return registerDate;
+	}
+
+	public void setRegisterDate(LocalDateTime registerDate) {
+		this.registerDate = registerDate;
 	}
 }
