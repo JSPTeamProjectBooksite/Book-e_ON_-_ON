@@ -9,7 +9,7 @@ public class AuthorDAO extends DBConnPool {
 	public AuthorDTO findAuthor(Long AuthorId) {
 		AuthorDTO DTO = null;
 		
-		String query = "SELECT * FROM AUTHOR_TBL WHERE MEMBER_ID = ?";
+		String query = "SELECT ID, PROFILE_IMG, NAME, NATIONALITY, PROFILE_CONTENTS FROM AUTHOR_TBL WHERE ID = ?";
 		
 		if(AuthorId > 0) {
 			try {
@@ -20,14 +20,12 @@ public class AuthorDAO extends DBConnPool {
 				if(rs.next()) {
 					DTO = new AuthorDTO();
 					
-					DTO.setMemberId(rs.getLong(1));
+					DTO.setId(rs.getLong(1));
 					DTO.setProfileImg(rs.getString(2));
 					DTO.setName(rs.getString(3));
 					DTO.setNationality(rs.getString(4));
 					DTO.setProfileContents(rs.getString(5));
-					DTO.setRegisterDate(rs.getDate(6));
-					DTO.setUpdateDate(rs.getDate(7));
-					
+						
 					DTO.printOut();
 				}
 				

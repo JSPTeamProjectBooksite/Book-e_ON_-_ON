@@ -1,0 +1,217 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#wrap{
+    margin: auto;
+    max-width: 1200px;
+    min-width: 800px;
+}
+#contents{
+    width: 90%;
+    min-width: 800px;
+    margin: auto;
+}
+#contents hr{
+    height: 2px;
+    border: 0;
+    background: gray;
+}
+
+#book_contents{
+    max-width: 100%;
+}
+
+#book_contents td{
+    padding: 10px;
+}
+
+.btnStyle{
+    text-align: center;
+    display: inline-block;
+    width: 100%; 
+    height: 60px;
+    border-radius: 10px;
+    padding: 14px;
+}
+
+.headFont{
+    font-size: 24px;
+    padding: 50px 0px 30px 0px;
+}
+.subFont{
+    font-size: 20px;
+}
+.contentsFont{
+    font-size: 18px;
+    color: #222222;
+}
+
+.tableMenu{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    /* align-items: start; */
+    gap: 5px;
+}
+
+/* 임시 애니메이션 효과  */
+.box2{
+    border-radius: 10px;
+    border: 1px lightgray solid;
+}
+.animation_2{
+    transition: all 0.2s linear;
+}
+.animation_2:hover{
+    transform: scale( 1.1 ) skewY( -5deg );
+    box-shadow: -20px -5px 10px 10px #91b5ea;
+}
+.animation_3{
+    transition: all 0.1s linear;
+}
+.animation_3:hover{
+    box-shadow: 0px 0px 10px 5px lightgrey inset;
+    transform: scale( 1.03 );
+}
+
+#popup{
+    display: none;
+    width:100%;
+    height:100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 999;
+}
+#popupBox{
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    width: 300px;
+    height: 200px;
+    background: #91b5ea;
+    z-index: 1000;
+
+    color: white;
+}
+
+#introduceImgBox{
+    text-align: center;
+}
+#introduceImgBox img{
+    width: 100%;
+    border-radius: 25px;
+}
+
+#introduceBox .headBox{
+    font-size: 24px;
+}
+
+#authorInfo{
+    background: #cfdef3;
+    border-radius: 30px;
+    padding: 1.5%;
+}
+#authorInfoTable{
+    width:100%;
+    min-height: 200px;
+}
+#authorInfoTable .headBox{
+    font-size: 24px;
+}
+#authorInfoTable .subBox{
+    font-size: 20px;
+    color: grey;
+}
+#authorInfoTable .contentsBox{
+    vertical-align: top;
+    font-size: 18px;
+}
+#authorInfoTable tr, td, th{
+    padding: 10px;
+}
+#authorInfoTable .imgBox{
+    padding: 5px;
+    max-width: 300px;
+    max-height: 300px;
+    vertical-align: top;
+}
+
+
+
+#basicInfoTable{
+    width: 100%;
+}
+#basicInfoTable th{
+    padding: 20px 20px 20px 5px;
+    width: 20%;
+    text-align: left;
+}
+#basicInfoTable tr, th, td{
+    padding: 20px;
+    text-align: left;
+}
+
+
+
+
+
+
+
+
+
+
+
+#reveiw{
+    /* background: lightgrey; */
+}
+#reveiw .name{
+    
+}
+#reveiw .email{
+    color: gray;
+}
+#reveiw .date{
+    
+}
+#reveiw .comment{
+    padding: 10px 0px 10px 0px;
+}
+#reveiw .score{
+    float: right;
+}
+#reveiw .btnSpace{
+    height: 30px;
+}
+#reveiw .likeBtn{
+    float: right;
+    height: 100%;
+}
+
+.reveiwDiv{
+    padding: 15px;
+}
+
+#exchange .indexFont{
+    font-size: 18px;
+    font-weight: 600;
+    margin: 25px 0px 15px 0px;
+}
+#exchange .textFont{
+    font-size: 15px;
+    margin: 15px 0px 25px 0px;
+}
+#exchange .exchangeLast{
+    border-radius: 10px;
+    text-align: center;
+    padding: 15px;
+    background: lightgray;
+    margin: 35px auto 35px auto;
+    width: 90%;
+}
+

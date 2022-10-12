@@ -1,7 +1,7 @@
 package org.iptime.booke.dao;
 
 
-import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -144,7 +144,7 @@ public class BookDAO extends DBConnPool{
 				dto.setContents(rs.getString(18));
 				dto.setQuantity(rs.getInt(19));
 				dto.setCatchphrase(rs.getString(20));
-				dto.setPublicationDate(rs.getDate(21));
+				dto.setPublicationDate(new Timestamp(rs.getDate(21).getTime()).toLocalDateTime());
 			}
 			
 			
@@ -239,7 +239,7 @@ public class BookDAO extends DBConnPool{
 			psmt.setString(17, dto.getContents());
 			psmt.setInt(18, 0);
 			psmt.setString(19, dto.getCatchphrase());
-			psmt.setDate(20, new Date(dto.getPublicationDate().getTime()));
+			psmt.setTimestamp(20, java.sql.Timestamp.valueOf(dto.getPublicationDate()));
 			
 //			System.out.println("만들어진 쿼리문 :");
 //			System.out.println(psmt.toString());

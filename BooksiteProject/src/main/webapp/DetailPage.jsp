@@ -4,113 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<style>
-	*{
-	    margin: 0;
-	    padding: 0;
-	    box-sizing: border-box;
-	}
-	
-    #wrap{
-        margin: auto;
-        max-width: 1200px;
-        min-width: 800px;
-    }
-    #contents{
-        width: 90%;
-        min-width: 800px;
-        margin: auto;
-    }
-	
-	#book_contents{
-        max-width: 100%;
-	}
-    #book_contents td{
-        padding: 10px;
-
-    }
-    .btnStyle{
-        text-align: center;
-        display: inline-block;
-        width: 100%; 
-        height: 60px;
-        border-radius: 10px;
-        padding: 14px;
-    }
-
-	#footer{
-	    height: 200px;
-	    background-color: darkslategrey;
-	}
-	
-	#introduceTable tr,td{
-		font-family:'Franklin Gothic Medium';
-	}
-	#introduceTable td{
-		padding: 10px;
-	}
-
-	#introduceTable .headLine{
-        vertical-align: top;
-        font-size: 32px;
-		width: 25%;
-	}
-	#introduceTable .introduceContents{
-        font-size: 24px;
-	}
-
-    .tableMenu{
-        display: grid;
-        grid-template-columns: 1fr 2fr;
-        /* align-items: start; */
-        gap: 5px;
-    }
-
-    /* 임시 애니메이션 효과  */
-    .box2{
-        border-radius: 10px;
-        border: 1px lightgray solid;
-    }
-    .animation_2{
-        transition: all 0.2s linear;
-    }
-    .animation_2:hover{
-        transform: scale( 1.1 ) skewY( -5deg );
-        box-shadow: -20px -5px 10px 10px #91b5ea;
-    }
-    .animation_3{
-        transition: all 0.1s linear;
-    }
-    .animation_3:hover{
-        box-shadow: 0px 0px 10px 5px lightgrey inset;
-        transform: scale( 1.03 );
-    }
-
-    #popup{
-        display: none;
-        width:100%;
-        height:100%;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        background: rgba(0,0,0,0.6);
-        z-index: 999;
-    }
-    #popupBox{
-        position: absolute;
-        top: 50%;
-        left:50%;
-        transform: translate(-50%,-50%);
-        width: 300px;
-        height: 200px;
-        background: #91b5ea;
-        z-index: 1000;
-
-        color: white;
-    }
-
-</style>
+<link rel="stylesheet" href="./css/Detail.css">
 <script type="text/javascript">
 	//타이틀 변경
 	document.title = "${ bookInfo.title }";
@@ -154,7 +48,8 @@
                 font-weight: 700;
                 font-family: 고딕;
                 color: grey;
-            " id="ad">${ bookInfo.catchphrase }
+            " id="ad">
+            ${ bookInfo.catchphrase }
             </div>
             <div style="height:5px"></div>
             <div style="
@@ -241,36 +136,213 @@
         <!-- 거리조절 -->
         <div style="height: 30px;"></div>
         
-        <div style="padding:10px">
-        	<table id="introduceTable" style="width: 100%;">
-                <tr>
-                    <td class="headLine">
-                        책 소개
-                    </td>
-                    <td>
-                        ${ bookInfo.introduce }
-                    </td>
-                </tr>
-                <!-- 기본 정보 -->
-                <tr>
-                    <td rowspan="2" class="headLine">
-                        기본정보
-                    </td>
-                    <td class="introduceContents">
-                        (예시)준비중<br>
-                        양장본 96쪽 226*266mm 685g ISBN:9791190779593
-                    </td>
-                </tr>
-                <tr>
-                    <td class="introduceContents">
-                        주제 분류<br>
-                        국내도서 > 어린이 > 과학/수학/컴퓨터>초등 수학<br>
-                        국내도서 > 어린이 > 초등5~6학년 > 과학/수학/사회
-                    </td>
-                </tr>
-            </table>
-            <hr style="margin-top: 10px;">
+        <!-- 상품 정보 -->
+        <div>
+            <!-- 소개 이미지 -->
+            <div id="introduceImgBox">
+                <img src="${ bookInfo.introduceImg }" alt="">
+            </div>
+
+            <!-- 책 소개 -->
+            <div id="introduceBox">
+                <div class="headFont">
+                    책 소개
+                </div>
+                <div class="contentsFont">
+                    ${ bookInfo.introduce }
+                </div>
+            </div>
+
+            <!-- 작가 정보 -->
+            <div class="headFont">
+                작가 소개
+            </div>
+            <div id="authorInfo">
+                <table id="authorInfoTable">
+                	<tr style="height: 30px;">
+                		<td rowspan="2" class="imgBox" style="width: 200px;">
+                			<img alt="" src="${ author.profileImg }" style="width: 100%;">
+                		</td>
+                		<td>
+                			<span class="headBox">${ author.name }</span>
+                			<span class="subBox">${ author.nationality }</span>
+                		</td>
+                	</tr>
+                	<tr>
+                		<td class="contentsBox contentsFont">
+                			${ author.profileContents }
+                		</td>
+                	</tr>
+                </table>
+            </div>
+            <!-- 목차 -->
+            <div>
+                <div class="headFont">
+                    목차
+                </div>
+                <div class="contentsFont">
+                    ${ bookInfo.contents }
+                </div>
+            </div>
+            <!-- 출판사 리뷰 -->
+            <div>
+                <div class="headFont">
+                    출판사 리뷰
+                </div>
+                <div class="contentsFont">
+                    ${ bookInfo.publisherReview }
+                </div>
+            </div>
+            <!-- 기본 정보 -->
+            <div id="basicInfo">
+                <div class="headFont">
+                    기본정보
+                </div>
+
+                <hr>
+                <table id="basicInfoTable">
+                    <tr>
+                        <th>ISBN</th>
+                        <td>${ bookInfo.isbn13 } ( ${ bookInfo.isbn10 } )</td>
+                    </tr>
+                    <tr>
+                        <th>쪽수</th>
+                        <td>${ bookInfo.totalPages } p</td>
+                    </tr>
+                    <tr>
+                        <th>제원</th>
+                        <td>무개 : ${ bookInfo.weight } g</td>
+                    </tr>
+                </table>
+                <hr style="background-color: lightgray;">
+            </div>
+
         </div>
+        
+        <!-- 리뷰 -->
+        <div id="reveiw">
+            <div class="headFont">
+                리뷰
+            </div>
+            <hr style="background-color: gray;">
+            <div class="reveiwDiv">
+                <!-- 작성자 정보 + 별점 -->
+                <div>
+                    <span class="name">
+                        작성자 
+                    </span>
+                    <span class="email">
+                        이메일*******
+                    </span>
+                    <span class="date">
+                        작성일
+                    </span>
+                    <span class="score">
+                        별점
+                    </span>
+                </div>
+                <!-- 리뷰 -->
+                <div class="comment">
+                    리뷰내용
+                </div>
+                <!-- 버튼류 -->
+                <div class="btnSpace">
+                    <button type="button" class="likeBtn">좋아요</button>
+                </div>
+            </div>
+            <hr style="background-color: lightgray;">
+        </div>
+
+        <!-- 환불 -->
+        <div>
+
+
+            <div id="exchange">
+                <div class="headFont">
+                    교환/반품/품절 안내<small><del>안돼</del></small>
+                </div>
+                <hr>
+
+                <div class="exchangeInfo">
+                    <div class="indexFont">
+                        반품/교환방법
+                    </div>
+                    <div class="textFont">
+                        마이룸 > 주문관리 > 주문/배송내역 > 주문조회 > 반품/교환 신청, [1:1 상담 > 반품/교환/환불] 또는 고객센터 (1234-0000)<br>
+                        * 오픈마켓, 해외배송 주문, 기프트 주문시 [1:1 상담>반품/교환/환불] 또는 고객센터 (1234-0000)
+                    </div>
+                </div>
+                <hr style="background-color: lightgray;">
+
+                <div class="exchangeInfo">
+                    <div class="indexFont">
+                        반품/교환가능 기간
+                    </div>
+                    <div class="textFont">
+                        변심반품의 경우 수령 후 7일 이내,<br>
+                        상품의 결함 및 계약내용과 다를 경우 문제점 발견 후 30일 이내
+                    </div>
+                </div>
+                <hr style="background-color: lightgray;">
+
+                <div class="exchangeInfo">
+                    <div class="indexFont">
+                        반품/교환비용
+                    </div>
+                    <div class="textFont">
+                        변심 혹은 구매착오로 인한 반품/교환은 반송료 고객 부담
+                    </div>
+                </div>
+                <hr style="background-color: lightgray;">
+
+                <div class="exchangeInfo">
+                    <div class="indexFont">
+                        반품/교환 불가 사유
+                    </div>
+                    <div class="textFont">
+                        1) 소비자의 책임 있는 사유로 상품 등이 손실 또는 훼손된 경우<br>
+                        (단지 확인을 위한 포장 훼손은 제외)<br>
+                        2) 소비자의 사용, 포장 개봉에 의해 상품 등의 가치가 현저히 감소한 경우<br>
+                        예) 화장품, 식품, 가전제품(악세서리 포함) 등<br>
+                        3) 복제가 가능한 상품 등의 포장을 훼손한 경우<br>
+                        예) 음반/DVD/비디오, 소프트웨어, 만화책, 잡지, 영상 화보집<br>
+                        4) 소비자의 요청에 따라 개별적으로 주문 제작되는 상품의 경우 ((1)해외주문도서)<br>
+                        5) 디지털 컨텐츠인 eBook, 오디오북 등을 1회 이상 다운로드를 받았을 경우<br>
+                        6) 시간의 경과에 의해 재판매가 곤란한 정도로 가치가 현저히 감소한 경우<br>
+                        7) 전자상거래 등에서의 소비자보호에 관한 법률이 정하는 소비자 청약철회 제한 내용에 해당되는 경우
+                    </div>
+                </div>
+                <hr style="background-color: lightgray;">
+
+                <div class="exchangeInfo">
+                    <div class="indexFont">
+                        상품 품절
+                    </div>
+                    <div class="textFont">
+                        공급사(출판사) 재고 사정에 의해 품절/지연될 수 있으며, 품절 시 관련 사항에 대해서는 이메일과 문자로 안내드리겠습니다.
+                    </div>
+                </div>
+                <hr style="background-color: lightgray;">
+
+                <div class="exchangeInfo">
+                    <div class="indexFont">
+                        소비자 피해보상 환불 지연에 따른 배상
+                    </div>
+                    <div class="textFont">
+                        1) 상품의 불량에 의한 교환, A/S, 환불, 품질보증 및 피해보상 등에 관한 사항은 소비자분쟁 해결 기준 (공정거래위원회 고시)에 준하여 처리됨<br>
+                        2) 대금 환불 및 환불지연에 따른 배상금 지급 조건, 절차 등은 전자상거래 등에서의 소비자 보호에 관한 법률에 따라 처리함
+                    </div>
+                </div>
+                
+                <div class="exchangeLast">
+                    상품 설명에 반품/교환 관련한 안내가 있는 경우 그 내용을 우선으로 합니다. (업체 사정에 따라 달라질 수 있습니다.)
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 띄우기 -->
+        <div style="height:100px"></div>
     </div> <!-- contents end -->
     <%@include file="./Footer.jsp" %>
 </div>

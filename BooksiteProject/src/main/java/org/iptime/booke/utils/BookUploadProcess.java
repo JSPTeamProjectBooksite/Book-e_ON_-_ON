@@ -2,7 +2,8 @@ package org.iptime.booke.utils;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -81,9 +82,7 @@ public class BookUploadProcess extends HttpServlet {
 			dto.setContents(contents);
 			dto.setCatchphrase(catchphrase);
 			
-			SimpleDateFormat fm = new SimpleDateFormat("yyyy-MM-dd");
-			
-			dto.setPublicationDate(fm.parse(publicationDate));
+			dto.setPublicationDate(LocalDateTime.parse(publicationDate , DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm:ss")));
 			
 			BookDAO dao = new BookDAO();
 			dao.insertBook(dto);
