@@ -17,6 +17,8 @@ CREATE TABLE book_TBL (
 	introduce_img 			varchar2(350)		NULL,
 	publisher 				nvarchar2(50)		NULL,
 	publisher_review 		nvarchar2(1000)		NULL,
+	delivery_fee 			number(5)		DEFAULT 2500,
+	estimated_delivery_date number(3)			NULL,
 	contents				nvarchar2(2000)	NOT NULL,
 	visit 					number(7)		DEFAULT 0,
 	catchphrase 			varchar2(500)		NULL,
@@ -43,6 +45,8 @@ COMMENT ON COLUMN book_TBL.INTRODUCE  IS '소개글';
 COMMENT ON COLUMN book_TBL.INTRODUCE_IMG  IS '소개 이미지 링크';
 COMMENT ON COLUMN book_TBL.PUBLISHER  IS '출판사';
 COMMENT ON COLUMN book_TBL.PUBLISHER_REVIEW  IS '출판사 리뷰';
+COMMENT ON COLUMN book_TBL.DELIVERY_FEE  IS '배송비';
+COMMENT ON COLUMN book_TBL.ESTIMATED_DELIVERY_DATE  IS '예상 배송일';
 COMMENT ON COLUMN book_TBL.CONTENTS  IS '목차';
 COMMENT ON COLUMN book_TBL.VISIT  IS '조회수';
 COMMENT ON COLUMN book_TBL.QUANTITY  IS '재고 수량';
