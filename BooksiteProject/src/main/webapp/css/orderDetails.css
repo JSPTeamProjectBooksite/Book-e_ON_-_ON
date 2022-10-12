@@ -1,0 +1,18 @@
+@charset "utf-8";
+
+*{
+    margin: 0;
+    padding: 0;
+    border-collapse: collapse;
+}
+.wrap { max-width: 1200px; min-width:800px; margin: 0 auto; }
+
+h4{ padding: 20px 0px 10px 0px; }
+
+.delinfo{ padding-bottom: 10px;}
+
+table { width: 100%;}
+
+table th.col{ width: 150px;}
+
+.closebtn{ text-align: center; display: inline-block;}

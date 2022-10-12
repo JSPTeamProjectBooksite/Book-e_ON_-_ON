@@ -6,7 +6,6 @@
 
 <head>
 <meta charset="UTF-8">
-<!-- <link rel="stylesheet" href="css/public.css"> -->
 <script src="js/includeHTML.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="chrome">
@@ -24,7 +23,7 @@
 			<img src="/source/ico/checked_icon.png"> 상품 주문서
 		</h2>
 
-		<!-- 사용자 정보 -->
+		<!-- 사용자 정보(★살리는 부분 -->
 		<div>
 			<div class="block"></div>
 
@@ -52,15 +51,13 @@
 					</tr>
 					<tr>
 						<th>상세 정보</th>
-						<td>${ delinfo.name }/${ delinfo.address } <br>배송메세지 |
-							없음
+						<td>${ delinfo.name }/${ delinfo.address }<br>배송메세지 | 없음
 							<button type="button" name="주소수정버튼" style="text-align: center">수정하기</button>
 						</td>
 					</tr>
 				</table>
 			</div>
 		</div>
-
 		<!-- 제품정보 -->
 		<table style="width: 100%;">
 			<!-- 1번째 블럭 -->
@@ -77,14 +74,17 @@
 						<c:forEach var="prod" items="${ prodinfo }">
 							<tr>
 								<td class="imgBox"><img src="${ prod.coverImg }"></td>
-								<td>[국내도서] ${ prod.title }
+								<td>[${ prod.bookCategoryId }] ${ prod.title }
 									<p style="color: rgb(252, 69, 69);">상품 금액 : ${ prod.price }원
 										| 수량 : ${ prod.quantity}개</p>
 								</td>
 							</tr>
 
 						</c:forEach>
-					</table> <!-- 스티키 존 -->
+					</table>
+				</td>
+
+				<!-- 스티키 존 -->
 				<td rowspan="4" class="stickyBar">
 					<table class="stickyTable">
 
@@ -98,7 +98,8 @@
 								<th><small> ㄴ상품금액</small></th>
 								<td><small> ${prod.price * prod.quantity}원</small></td>
 							</tr>
-							<c:set var="total" value="${total + (prod.price * prod.quantity) }" />
+							<c:set var="total"
+								value="${total + (prod.price * prod.quantity) }" />
 						</c:forEach>
 
 						<tr>
@@ -136,7 +137,10 @@
 						-->
 					</table>
 				</td>
+
 			</tr>
+
+
 			<!-- 3번째 블럭 -->
 			<tr>
 				<td class="point">
@@ -159,6 +163,8 @@
 					</table>
 				</td>
 			</tr>
+
+
 			<tr>
 				<td class="paymethod">
 					<h3>결제 수단</h3>
@@ -178,6 +184,7 @@
 					</table>
 				</td>
 			</tr>
+
 			<tr>
 				<td class="policy">
 					<table>

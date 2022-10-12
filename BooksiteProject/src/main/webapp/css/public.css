@@ -10,4 +10,5 @@ body{
 
 #wrap{
     width: 1280px;
+    min-height: 100vh;
 }

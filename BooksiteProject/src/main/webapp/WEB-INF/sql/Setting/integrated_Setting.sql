@@ -131,6 +131,7 @@ CREATE SEQUENCE member_SEQ
 CREATE TABLE inquiry_TBL(
 	id 				NUMBER 			NOT NULL	PRIMARY KEY,
 	member_id 		NUMBER 			NOT NULL,
+	title			varchar(500)	NOT NULL,
 	content 		varchar2(4000) 	NOT NULL,
 	categroy 		varchar2(100) 	NOT NULL,
 	rigister_DATE 	DATE 			DEFAULT sysdate 
@@ -140,16 +141,17 @@ ALTER TABLE INQUIRY_TBL ADD CONSTRAINT inquiry_member_id_FK FOREIGN KEY(member_i
 
 COMMENT ON COLUMN inquiry_TBL.ID IS '식별 id';
 COMMENT ON COLUMN inquiry_TBL.MEMBER_ID  IS '문의를 쓴 멤버 id';
+COMMENT ON COLUMN inquiry_TBL.TITLE  IS '문의 제목';
 COMMENT ON COLUMN inquiry_TBL.CONTENT  IS '문의 내용';
 COMMENT ON COLUMN inquiry_TBL.CATEGROY  IS '문의 카테고리 (버그, UI, 질문 등등)';
 COMMENT ON COLUMN inquiry_TBL.RIGISTER_DATE  IS '문의를 생성한 날짜';
 
 CREATE SEQUENCE inquiry_SEQ
-	INCREMENT BY 1 
-	START WITH 1 
-	MINVALUE 1 
-	nomaxvalue 
-	nocycle 
+	INCREMENT BY 1
+	START WITH 1
+	MINVALUE 1
+	nomaxvalue
+	nocycle
 	nocache;
 
 -- ============================================================
@@ -347,12 +349,17 @@ COMMENT ON COLUMN locker_TBL.BOOK_ID IS '북마크 당한 책 id';
 -- ============================================================
 -- 결제
 -- ============================================================
-CREATE TABLE payment_TBL(
-	id 						nchar(30) 	NOT NULL	PRIMARY KEY,
-	member_id				NUMBER		NOT NULL,
-	book_id					NUMBER		NOT NULL,
-	price					number(7)	NOT NULL,
-	register_date 			DATE		DEFAULT sysdate
+CREATE TABLE payment_TBL(	
+	id 					nchar(10) 		NOT NULL	PRIMARY KEY,
+	member_id			NUMBER			NOT NULL,
+	book_id				NUMBER			NOT NULL,
+	total_amount		number(7)		NOT NULL,
+	point_amount		NUMBER(7)		DEFAULT 0,		
+	actual_amount		NUMBER(7)		NOT NULL,	
+	shipping_state		nvarchar2(3)	DEFAULT '배송중',
+	payment_method		varchar2(100)	NOT NULL,
+	shipping_message	nvarchar2(2000) 	NULL,	
+	register_date 		DATE			DEFAULT sysdate
 );
 
 ALTER TABLE payment_TBL ADD CONSTRAINT payment_member_id_FK FOREIGN KEY(member_id) REFERENCES member_TBL(id);
@@ -361,7 +368,12 @@ ALTER TABLE payment_TBL ADD CONSTRAINT payment_book_id_FK FOREIGN KEY(book_id) R
 COMMENT ON COLUMN payment_TBL.ID IS '결제 식별 번호';
 COMMENT ON COLUMN payment_TBL.MEMBER_ID  IS '결제한 회원 id';
 COMMENT ON COLUMN payment_TBL.BOOK_ID  IS '결제한 상품 id';
-COMMENT ON COLUMN payment_TBL.PRICE  IS '결제 금액';
+COMMENT ON COLUMN payment_TBL.TOTAL_AMOUNT  IS '총 결제 금액';
+COMMENT ON COLUMN payment_TBL.ACTUAL_AMOUNT  IS '실제 결제 금액';
+COMMENT ON COLUMN payment_TBL.POINT_AMOUNT  IS '적립금 결제 금액';
+COMMENT ON COLUMN payment_TBL.PAYMENT_METHOD  IS '결제 방법';
+COMMENT ON COLUMN payment_TBL.SHIPPING_STATE  IS '배송 상태는 배송중으로 고정';
+COMMENT ON COLUMN payment_TBL.SHIPPING_MESSAGE  IS '배송 메시지';
 COMMENT ON COLUMN payment_TBL.REGISTER_DATE  IS '결제한 날짜';
 
 -- ============================================================
@@ -369,7 +381,7 @@ COMMENT ON COLUMN payment_TBL.REGISTER_DATE  IS '결제한 날짜';
 -- ============================================================
 CREATE TABLE order_TBL (
 	id				NUMBER			NOT NULL	PRIMARY KEY,
-	payment_id		nchar(30)		NOT NULL,
+	payment_id		nchar(10)		NOT NULL,
 	book_id			NUMBER 			NOT NULL,
 	quantity		NUMBER(4)		DEFAULT 1,
 	register_date 	DATE			DEFAULT sysdate
@@ -796,18 +808,19 @@ INSERT INTO MEMBER_TBL(id, name, email, password, birth, gender, phone_num, addr
 --	   	VALUES(member_SEQ.nextval, user_name || I, user_name || I || '@gmail.com', user_name || I, '2002-02-02', '기타', '01012345678', '경기도 어딘가 무슨곳 좋은동');
 --    END LOOP;
 --END;
+
 -- ============================================================
 -- 문의
 -- ============================================================
-INSERT INTO INQUIRY_TBL(ID, MEMBER_ID, CONTENT, CATEGROY) VALUES(INQUIRY_SEQ.nextval, 1, '404에러나요', '404에러나요');
-INSERT INTO INQUIRY_TBL(ID, MEMBER_ID, CONTENT, CATEGROY) VALUES(INQUIRY_SEQ.nextval, 1, '405에러나요', '405에러나요');
-INSERT INTO INQUIRY_TBL(ID, MEMBER_ID, CONTENT, CATEGROY) VALUES(INQUIRY_SEQ.nextval, 1, '500에러나요', '500에러나요');
+INSERT INTO INQUIRY_TBL(ID, MEMBER_ID, TITLE, CONTENT, CATEGROY) VALUES(INQUIRY_SEQ.nextval, 1, '404에러나요', '404에러나요', '에러');
+INSERT INTO INQUIRY_TBL(ID, MEMBER_ID, TITLE, CONTENT, CATEGROY) VALUES(INQUIRY_SEQ.nextval, 1, '405에러나요', '405에러나요', '에러');
+INSERT INTO INQUIRY_TBL(ID, MEMBER_ID, TITLE, CONTENT, CATEGROY) VALUES(INQUIRY_SEQ.nextval, 1, '500에러나요', '500에러나요', '에러');
 
 
 -- ============================================================
 -- 저자
 -- ============================================================
-INSERT INTO author_TBL (id, profile_Img, name, nationality, PROFILE_CONTENTS) VALUES(1, NULL, '나겨울', '국내작가', '글이 사람들에게 선한 영향력을 미치는 수단이라고 믿는다.');
+INSERT INTO author_TBL (id, profile_Img, name, nationality, PROFILE_CONTENTS) VALUES(1, './source/author/나겨울_소개이미지.png', '나겨울', '국내작가', '글이 사람들에게 선한 영향력을 미치는 수단이라고 믿는다.');
 INSERT INTO author_TBL (id, profile_Img, name, nationality, PROFILE_CONTENTS) VALUES(2, NULL, '김욱동', '국내작가', '한국외국어대학교 영문과 및 동 대학원을 졸업한 뒤 미국 미시시피대학교에서 영문학 문학석사 학위를, 뉴욕주립대학교에서 영문학 문학박사를 받았다.');
 INSERT INTO author_TBL (id, profile_Img, name, nationality, PROFILE_CONTENTS) VALUES(3, NULL, '손원평', '국내작가', '서울에서 태어났다. 서강대학교에서 사회학과 철학을 공부했고 한국영화아카데미 영화과에서 영화 연출을 전공했다.');
 
@@ -842,10 +855,10 @@ INSERT INTO BOOK_TBL(
 	'source/book/기분이_태도가_되지_않으려면.png', '기분이 태도가 되지 않으려면', 
 	1, null, 13500, 
 	224, 306, 9791197080845, 1197080848, 80, 
-	'<p><h3>‘남들 챙기느라 정작 나를 사랑하는 법을<br>잊어버린 당신에게 바치는 따뜻한 감정 수업’</h3></p><br>우리는 지금까지 나 자신보다 상대방의 감정을 더 배려하고 존중해왔다. 상대방에게 불편한 사람, 싫은 사람이 되고 싶지 않았기 때문. 하지만 정작 상대방의 감정을 배려하느라 내가 느끼고 있는 솔직한 감정들을 마주 볼 시간 없이 몸만 큰 ‘어른아이’가 됐다.<br>문자로 진행되는 ‘텍스트테라피’를 통해 1만 건이 넘는 상담을 했고, 글쓰기를 통해 마음을 치유하는 ‘상담&치유 글쓰기 수업’도 진행하고 있는 나겨울 작가는 남들을 챙기느라 정작 자신의 감정을 챙기지 못하고 살아가는 ‘어른아이’들에게 이렇게 말한다. ‘치유의 기본은 자신을 알아가는 것이고, 자신을 알아가기 위해선 스스로의 감정을 정확하게 파악해야 한다.’그녀는 이번 책을 통해 우리가 일상에서 익숙하게 느끼는 감정들을 정확히 파악하는 법과, 그 감정들을 바람직하게 받아들이는 구체적인 방법을 제시한다.', null, 
+	'<p><b>‘남들 챙기느라 정작 나를 사랑하는 법을<br>잊어버린 당신에게 바치는 따뜻한 감정 수업’</b></p><br>우리는 지금까지 나 자신보다 상대방의 감정을 더 배려하고 존중해왔다. 상대방에게 불편한 사람, 싫은 사람이 되고 싶지 않았기 때문. 하지만 정작 상대방의 감정을 배려하느라 내가 느끼고 있는 솔직한 감정들을 마주 볼 시간 없이 몸만 큰 ‘어른아이’가 됐다.<br>문자로 진행되는 ‘텍스트테라피’를 통해 1만 건이 넘는 상담을 했고, 글쓰기를 통해 마음을 치유하는 ‘상담&치유 글쓰기 수업’도 진행하고 있는 나겨울 작가는 남들을 챙기느라 정작 자신의 감정을 챙기지 못하고 살아가는 ‘어른아이’들에게 이렇게 말한다. ‘치유의 기본은 자신을 알아가는 것이고, 자신을 알아가기 위해선 스스로의 감정을 정확하게 파악해야 한다.’그녀는 이번 책을 통해 우리가 일상에서 익숙하게 느끼는 감정들을 정확히 파악하는 법과, 그 감정들을 바람직하게 받아들이는 구체적인 방법을 제시한다.', './source/book/기분이_태도가_되지_않으려면_소개이미지.png', 
 	'떠오름(RISE)', '나겨울 작가는 1만건이상의 상담을 진행하며, 자신에게 고민을 털어놓는 사람들의 대부분의 문제는 ‘내’가 아니라 ‘남’에게 있다는 것을 알게 되었다. 이들은 겉으로는 아무렇지 않은 듯 보이고, 굉장히 건강해보이지만 실제로는 언제 무너질지 모르는, 위태한 상황에 좌절하고 있었다. 이들에게 부정적으로 느껴지는 감정의 원인은 대부분 ‘남’에게 있었고, 정작 자신의 감정을 돌보는데는 한 없이 어색하며, 내가 어떤 상황인지를 정확히 인지할 생각조차 하지 못하고 있었던 것이다.', 
 	'자존감이 낮아서 고민이에요------------------ 015', 1, 
-	'<br><b>감정 기복이 심한 당신에게 필요한 기분 수업<b>', 
+	'<br><b>감정 기복이 심한 당신에게 필요한 기분 수업</b>', 
 	'2021-08-30'
 );
 

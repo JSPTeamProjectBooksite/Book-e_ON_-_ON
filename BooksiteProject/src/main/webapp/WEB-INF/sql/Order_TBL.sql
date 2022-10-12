@@ -3,7 +3,7 @@
 
 CREATE TABLE order_TBL (
 	id				NUMBER			NOT NULL	PRIMARY KEY,
-	payment_id		nchar(30)		NOT NULL,
+	payment_id		nchar(10)		NOT NULL,
 	book_id			NUMBER 			NOT NULL,
 	quantity		NUMBER(4)		DEFAULT 1,
 	register_date 	DATE			DEFAULT sysdate
