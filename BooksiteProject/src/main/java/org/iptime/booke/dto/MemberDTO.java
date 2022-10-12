@@ -1,6 +1,7 @@
 package org.iptime.booke.dto;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class MemberDTO {
 	private Long id;
@@ -10,16 +11,16 @@ public class MemberDTO {
 	private String phoneNum;
 	private String address;
 	private String email;
-	private Date birth;
 	private Integer point;
 	private Short memberStateId;
-	private Date registerDate;
+	private LocalDate birth;
+	private LocalDateTime registerDate;
 	
 	public MemberDTO() {
 	}
 
 	// 관리자 페이지 유저 정보
-	public MemberDTO(Long id, String name, String email, String password, java.sql.Date birth, String gender, String phoneNum, String address, int point, java.sql.Date registerDate) {
+	public MemberDTO(Long id, String name, String email, String password, LocalDate birth, String gender, String phoneNum, String address, int point, LocalDateTime registerDate) {
 		this.id = id;
 		this.name = name;
 		this.email = email;
@@ -56,7 +57,7 @@ public class MemberDTO {
 //	}
 
 	public MemberDTO(String name, String gender, String password, String phoneNum, String address, String email,
-			Date birth) {
+			LocalDate birth) {
 		super();
 		this.name = name;
 		this.gender = gender;
@@ -128,11 +129,11 @@ public class MemberDTO {
 		this.email = email;
 	}
 
-	public Date getBirth() {
+	public LocalDate getBirth() {
 		return birth;
 	}
 
-	public void setBirth(Date birth) {
+	public void setBirth(LocalDate birth) {
 		this.birth = birth;
 	}
 
@@ -152,11 +153,11 @@ public class MemberDTO {
 		this.memberStateId = memberStateId;
 	}
 
-	public Date getRegisterDate() {
+	public LocalDateTime getRegisterDate() {
 		return registerDate;
 	}
 
-	public void setRegisterDate(Date registerDate) {
+	public void setRegisterDate(LocalDateTime registerDate) {
 		this.registerDate = registerDate;
 	}
 

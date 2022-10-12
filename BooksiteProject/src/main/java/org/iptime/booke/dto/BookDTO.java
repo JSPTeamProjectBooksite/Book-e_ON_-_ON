@@ -1,6 +1,6 @@
 package org.iptime.booke.dto;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class BookDTO {
 	private Long id;
@@ -18,17 +18,15 @@ public class BookDTO {
 	private String introduceImg;//
 	private String publisher;//
 	private String publisherReview;//
+	private Integer deliveryFee;//
+	private Integer estimatedDeliveryDate;
 	private String contents;//
 	private Integer visit;
 	private Integer quantity;
 	private String catchphrase;//
-	private Date publicationDate;//
-	private Date registDate;
-	private Date updateDate;
-	
-	// 삭제 해야됨
-	private Integer deliveryFee;//
-	private Integer estimatedDeliveryDate;
+	private LocalDateTime publicationDate;//
+	private LocalDateTime registDate;
+	private LocalDateTime updateDate;
 	
 	/* dto 값 받을때 쓰는거 (복사해서 쓰세요.)
 	
@@ -303,27 +301,27 @@ public class BookDTO {
 		this.catchphrase = catchphrase;
 	}
 
-	public Date getPublicationDate() {
+	public LocalDateTime getPublicationDate() {
 		return publicationDate;
 	}
 
-	public void setPublicationDate(Date publicationDate) {
+	public void setPublicationDate(LocalDateTime publicationDate) {
 		this.publicationDate = publicationDate;
 	}
 
-	public Date getRegistDate() {
+	public LocalDateTime getRegistDate() {
 		return registDate;
 	}
 
-	public void setRegistDate(Date registDate) {
+	public void setRegistDate(LocalDateTime registDate) {
 		this.registDate = registDate;
 	}
 
-	public Date getUpdateDate() {
+	public LocalDateTime getUpdateDate() {
 		return updateDate;
 	}
 
-	public void setUpdateDate(Date updateDate) {
+	public void setUpdateDate(LocalDateTime updateDate) {
 		this.updateDate = updateDate;
 	}
 }

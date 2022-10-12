@@ -1,6 +1,7 @@
 package org.iptime.booke.dto;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class AuthorDTO {
 	private Long id;
@@ -8,16 +9,16 @@ public class AuthorDTO {
 	private String name;
 	private String nationality;
 	private String profileContents;
-	private Date registerDate;
-	private Date updateDate;
-	private Date birth;
-	private Date death;
+	private LocalDateTime registerDate;
+	private LocalDateTime updateDate;
+	private LocalDate birth;
+	private LocalDate death;
 	
 	//기본생성자
 	public AuthorDTO() {}
 	
 	public AuthorDTO(Long id, String profileImg, String name, String nationality, String profileContents,
-			Date registerDate, Date updateDate) {
+			LocalDateTime registerDate, LocalDateTime updateDate) {
 		this.id = id;
 		this.profileImg = profileImg;
 		this.name = name;
@@ -44,19 +45,19 @@ public class AuthorDTO {
 	public Long getId() {
 		return id;
 	}
-	public Date getBirth() {
+	public LocalDate getBirth() {
 		return birth;
 	}
 
-	public void setBirth(Date birth) {
+	public void setBirth(LocalDate birth) {
 		this.birth = birth;
 	}
 
-	public Date getDeath() {
+	public LocalDate getDeath() {
 		return death;
 	}
 
-	public void setDeath(Date death) {
+	public void setDeath(LocalDate death) {
 		this.death = death;
 	}
 
@@ -87,16 +88,16 @@ public class AuthorDTO {
 	public void setProfileContents(String profileContents) {
 		this.profileContents = profileContents;
 	}
-	public Date getRegisterDate() {
+	public LocalDateTime getRegisterDate() {
 		return registerDate;
 	}
-	public void setRegisterDate(Date registerDate) {
+	public void setRegisterDate(LocalDateTime registerDate) {
 		this.registerDate = registerDate;
 	}
-	public Date getUpdateDate() {
+	public LocalDateTime getUpdateDate() {
 		return updateDate;
 	}
-	public void setUpdateDate(Date updateDate) {
+	public void setUpdateDate(LocalDateTime updateDate) {
 		this.updateDate = updateDate;
 	}
 	

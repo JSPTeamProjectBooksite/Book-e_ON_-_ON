@@ -1,6 +1,6 @@
 package org.iptime.booke.dto;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class NoticeDTO {
 	private Long id;
@@ -8,10 +8,10 @@ public class NoticeDTO {
 	private String title;
 	private String category;
 	private String Content;
-	private Date registerDate;
+	private LocalDateTime registerDate;
 	
 	
-	public NoticeDTO(Long id, Long memberId, String title, String category, String content, Date registerDate) {
+	public NoticeDTO(Long id, Long memberId, String title, String category, String content, LocalDateTime registerDate) {
 		this.id = id;
 		this.memberId = memberId;
 		this.title = title;
@@ -62,11 +62,11 @@ public class NoticeDTO {
 		Content = content;
 	}
 
-	public Date getRegisterDate() {
+	public LocalDateTime getRegisterDate() {
 		return registerDate;
 	}
 
-	public void setRegisterDate(Date registerDate) {
+	public void setRegisterDate(LocalDateTime registerDate) {
 		this.registerDate = registerDate;
 	}
 }
