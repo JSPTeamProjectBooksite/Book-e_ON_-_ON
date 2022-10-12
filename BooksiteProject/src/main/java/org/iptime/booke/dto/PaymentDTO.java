@@ -1,147 +1,115 @@
 package org.iptime.booke.dto;
 
+import java.time.LocalDateTime;
+
 public class PaymentDTO {
-
-
-	private Long id; //BID
-	private String coverImg;
-	private String title;
-	private Integer price;
-	private Integer bookCategoryId;
-	private Integer quantity;
-	//여기까지 책(prodinfo)정보
+	private String id;
+	private Long memberId;
+	private Long bookId;
+	private Integer totalAmount;
+	private Integer pointAmount;
+	private Integer actualAmount;
+	private String shippingState;
+	private String paymentMethod;
+	private String shippingMessage;
+	private LocalDateTime registerDate;
 	
-	private String name;
-	private String phoneNum;
-	private String address; //로그인ID
-	private String email;
-	private Integer point;
-	//여기까지 주문자(delinfo)정보
 	
-
-	public PaymentDTO() {
-	}
+	public PaymentDTO() {}
 	
-	//결제페이지_배송정보
-	public PaymentDTO(String name, String phoneNum, String address, String email) {
-		this.name = name;
-		this.phoneNum = phoneNum;
-		this.address = address;
-		this.email = email;
-	}
-	
-	public PaymentDTO(Long id, String coverImg, String title, Integer price, Integer bookCategoryId, Integer quantity) {
+	public PaymentDTO(String id, Long memberId, Long bookId, Integer totalAmount, Integer pointAmount,
+			Integer actualAmount, String shippingState, String paymentMethod, String shippingMessage,
+			LocalDateTime registerDate) {
 		this.id = id;
-		this.coverImg = coverImg;
-		this.title = title;
-		this.price = price;
-		this.bookCategoryId = bookCategoryId;
-		this.quantity = quantity;
-	}
-	
-	
-
-	public PaymentDTO(Long id, String coverImg, String title, Integer price, Integer bookCategoryId, Integer quantity,
-			String name, String phoneNum, String address, String email, Integer point) {
-		super();
-		this.id = id;
-		this.coverImg = coverImg;
-		this.title = title;
-		this.price = price;
-		this.bookCategoryId = bookCategoryId;
-		this.quantity = quantity;
-		this.name = name;
-		this.phoneNum = phoneNum;
-		this.address = address;
-		this.email = email;
-		this.point = point;
+		this.memberId = memberId;
+		this.bookId = bookId;
+		this.totalAmount = totalAmount;
+		this.pointAmount = pointAmount;
+		this.actualAmount = actualAmount;
+		this.shippingState = shippingState;
+		this.paymentMethod = paymentMethod;
+		this.shippingMessage = shippingMessage;
+		this.registerDate = registerDate;
 	}
 
-	public Long getId() {
+
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
-	public String getCoverImg() {
-		return coverImg;
+	public Long getMemberId() {
+		return memberId;
 	}
 
-	public void setCoverImg(String coverImg) {
-		this.coverImg = coverImg;
+	public void setMemberId(Long memberId) {
+		this.memberId = memberId;
 	}
 
-	public String getTitle() {
-		return title;
+	public Long getBookId() {
+		return bookId;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setBookId(Long bookId) {
+		this.bookId = bookId;
 	}
 
-	public Integer getPrice() {
-		return price;
+	public Integer getTotalAmount() {
+		return totalAmount;
 	}
 
-	public void setPrice(Integer price) {
-		this.price = price;
+	public void setTotalAmount(Integer totalAmount) {
+		this.totalAmount = totalAmount;
 	}
 
-	public Integer getBookCategoryId() {
-		return bookCategoryId;
+	public Integer getPointAmount() {
+		return pointAmount;
 	}
 
-	public void setBookCategoryId(Integer bookCategoryId) {
-		this.bookCategoryId = bookCategoryId;
+	public void setPointAmount(Integer pointAmount) {
+		this.pointAmount = pointAmount;
 	}
 
-	public Integer getQuantity() {
-		return quantity;
+	public Integer getActualAmount() {
+		return actualAmount;
 	}
 
-	public void setQuantity(Integer quantity) {
-		this.quantity = quantity;
+	public void setActualAmount(Integer actualAmount) {
+		this.actualAmount = actualAmount;
 	}
 
-	public String getName() {
-		return name;
+	public String getShippingState() {
+		return shippingState;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setShippingState(String shippingState) {
+		this.shippingState = shippingState;
 	}
 
-	public String getPhoneNum() {
-		return phoneNum;
+	public String getPaymentMethod() {
+		return paymentMethod;
 	}
 
-	public void setPhoneNum(String phoneNum) {
-		this.phoneNum = phoneNum;
+	public void setPaymentMethod(String paymentMethod) {
+		this.paymentMethod = paymentMethod;
 	}
 
-	public String getAddress() {
-		return address;
+	public String getShippingMessage() {
+		return shippingMessage;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setShippingMessage(String shippingMessage) {
+		this.shippingMessage = shippingMessage;
 	}
 
-	public String getEmail() {
-		return email;
+	public LocalDateTime getRegisterDate() {
+		return registerDate;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setRegisterDate(LocalDateTime registerDate) {
+		this.registerDate = registerDate;
 	}
-
-	public Integer getPoint() {
-		return point;
-	}
-
-	public void setPoint(Integer point) {
-		this.point = point;
-	}	
 }
