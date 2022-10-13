@@ -199,7 +199,7 @@
 		<div class="fianlpayBnt">
 			<a href="/orderConfirm.jsp">
 				<button type="button" type="button" name="final">
-					<b><c:out value="${total}"></c:out></b> 원 결제하기
+					<b><c:out value="${total + priceInfo.deliveryFee}"></c:out></b> 원 결제하기
 				</button>
 			</a>
 		</div>
@@ -218,7 +218,7 @@
 
 		document.getElementById("availablePoint").innerHTML = 0;
 
-		alert(point.value + "점의 포인트를 사용합니다.");
+		alert("적립금 "+point.value + "원을 모두 사용합니다!");
 	}
 </script>
 </html>
