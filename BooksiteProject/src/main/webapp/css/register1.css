@@ -78,6 +78,16 @@ form{
 	align-items: center;
 }
 
+.input-div.two {
+    position: absolute;
+	left: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+	color: #999;
+	font-size: 18px;
+	transition: .3s;
+}
+
 .i i{
 	transition: .3s;
 }
