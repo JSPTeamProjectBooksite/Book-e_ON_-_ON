@@ -39,7 +39,7 @@ public class LoginController extends HttpServlet {
 			}
 			
 			System.out.println("로그인이 되어있지 않습니다. 로그인 페이지로 이동합니다.");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("./LoginPage.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/LoginPage.jsp");
 			dispatcher.forward(request, response);
 		}else {
 			
@@ -55,9 +55,16 @@ public class LoginController extends HttpServlet {
 				System.out.println("LoginID : " + session.getAttribute("LoginID"));
 				System.out.println("LoginName : " + session.getAttribute("LoginName"));
 				
-				response.sendRedirect((String)session.getAttribute("Referer"));
-				System.out.println("이전 페이지로 이동합니다. 이동주소 : " + (String)session.getAttribute("Referer"));
-				return;
+				Referer = (String)session.getAttribute("Referer");
+				
+				if(Referer == null) {
+					response.sendRedirect("/main");
+					System.out.println("북이온앤온에서의 이동기록이 없습니다. 메인페이지로 이동합니다.");
+				}else {
+					response.sendRedirect(Referer);
+					System.out.println("이전 페이지로 이동합니다. 이동주소 : " + (String)session.getAttribute("Referer"));
+					session.removeAttribute("Referer");
+				}
 			}
 		}
 	}
