@@ -17,12 +17,15 @@ public class LogoutController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		
+		String referer = request.getHeader("Referer").substring(23);
+		System.out.println("로그아웃을 요청한 페이지 : " + referer);
 		System.out.println("'" + session.getAttribute("LoginName") + "'님("+session.getAttribute("LoginID")+")이 로그아웃합니다.");
+		
 		session.removeAttribute("LoginID");
 		session.removeAttribute("LoginName");
 
-		PrintWriter out = response.getWriter();
-		out.println("<script> history.back(); location.reload();</script>");
+		response.sendRedirect(referer);
 
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

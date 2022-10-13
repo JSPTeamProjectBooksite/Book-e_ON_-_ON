@@ -221,36 +221,49 @@
         
         <!-- 리뷰 -->
         <div id="reveiw">
-            <div class="headFont">
-                리뷰
+            <div id="reveiwRead">
+                <div class="headFont">
+                    리뷰
+                </div>
+                <hr style="background-color: gray;">
+                <div class="reveiwDiv">
+                    <!-- 작성자 정보 + 별점 -->
+                    <div>
+                        <span class="name">
+                            작성자 
+                        </span>
+                        <span class="email">
+                            이메일*******
+                        </span>
+                        <span class="date">
+                            작성일
+                        </span>
+                        <span class="score">
+                            별점
+                        </span>
+                    </div>
+                    <!-- 리뷰 -->
+                    <div class="comment">
+                        리뷰내용
+                    </div>
+                    <!-- 버튼류 -->
+                    <div class="btnSpace">
+                        <button type="button" class="likeBtn">좋아요</button>
+                    </div>
+                </div>
+                <hr style="background-color: lightgray;">
             </div>
-            <hr style="background-color: gray;">
-            <div class="reveiwDiv">
-                <!-- 작성자 정보 + 별점 -->
-                <div>
-                    <span class="name">
-                        작성자 
-                    </span>
-                    <span class="email">
-                        이메일*******
-                    </span>
-                    <span class="date">
-                        작성일
-                    </span>
-                    <span class="score">
-                        별점
-                    </span>
+
+            <form action="#" method="post" id="reveiwWriteForm" onsubmit="return reveiwBtnAction(this);">
+                <div id="reveiwWrite">
+                    <div>
+                        <textarea name="reveiwBox" id="reveiwBox" placeholder="리뷰를 입력해 주세요."></textarea>
+                    </div>
+                    <div>
+                        <button type="submit" id="reveiwBtn">리뷰<br>작성</button>
+                    </div>
                 </div>
-                <!-- 리뷰 -->
-                <div class="comment">
-                    리뷰내용
-                </div>
-                <!-- 버튼류 -->
-                <div class="btnSpace">
-                    <button type="button" class="likeBtn">좋아요</button>
-                </div>
-            </div>
-            <hr style="background-color: lightgray;">
+            </form>
         </div>
 
         <!-- 환불 -->
@@ -259,7 +272,7 @@
 
             <div id="exchange">
                 <div class="headFont">
-                    교환/반품/품절 안내<small><del>안돼</del></small>
+                    교환/반품/품절 안내 <span style="font-size: 15px; color:lightgray">안돼</span>
                 </div>
                 <hr>
 
@@ -357,4 +370,22 @@
     </div>
 </div>
 </body>
+<script>
+    function reveiwBtnAction(form){
+
+        var userId = "<%= session.getAttribute("LoginID") %>";
+
+        
+        if(userId == "null"){
+            alert("리뷰작성은 로그인 후에 가능합니다.");
+            return false;
+        }
+
+        if(form.reveiwBox.value.trim() == ""){
+            alert("내용을 입력해주세요.");
+            form.reveiwBox.focus();
+            return false;
+        }
+    }
+</script>
 </html>

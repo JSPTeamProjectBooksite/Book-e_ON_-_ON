@@ -26,7 +26,7 @@ public class AuthorDAO extends DBConnPool {
 					DTO.setNationality(rs.getString(4));
 					DTO.setProfileContents(rs.getString(5));
 						
-					DTO.printOut();
+					//DTO.printOut();
 				}
 				
 				return DTO;

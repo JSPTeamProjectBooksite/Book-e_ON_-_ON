@@ -5,9 +5,6 @@ Long userID = (Long)session.getAttribute("LoginID"); // 세션에서 아이디�
 String userName = (String)session.getAttribute("LoginName");
 boolean login = (userID == null) ? false : true; //로그인 되었는지 안되었는지 여부를 login에 불린으로 저장합니다.
 
-
-String recentURI = request.getRequestURI();
-System.out.println(recentURI+"해더");
 %>
 <!DOCTYPE html>
 <html>
@@ -68,15 +65,15 @@ System.out.println(recentURI+"해더");
 				%>
 				<th class="button">
 					<a href="/logout">
-						<img alt="" src="./source/ico/iconmonstr-door-6.svg">
+						<img alt="" src="/source/ico/iconmonstr-door-6.svg">
 					</a>
 				</th>
 				<%
 				} else {
 				%>
 				<th class="button">
-					<a href="/login?from=<%=recentURI%>">
-						<img src="./source/ico/iconmonstr-door-5.svg" alt="">
+					<a href="/login?bntclick=1">
+						<img src="/source/ico/iconmonstr-door-5.svg" alt="">
 					</a>
 				</th>
 				<%

@@ -20,39 +20,46 @@ public class LoginController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		HttpSession session = request.getSession();
+		
+		String Referer;
+		
 		String userEmail = request.getParameter("email");
 		String userPwd = request.getParameter("password");
-
-//		String oracleDriver = application.getInitParameter("OracleDriver");
-//		String oracleURL = application.getInitParameter("OracleURL");
-//		String oracleId = application.getInitParameter("OracleId");
-//		String oraclePwd = application.getInitParameter("OraclePwd");
-
-//		MemberDAO dao = new MemberDAO(oracleDriver, oracleURL, oracleId, oraclePwd);
-		MemberDAO dao = new MemberDAO();
-		MemberDTO memberDTO = dao.getMemberDTO(userEmail, userPwd);
-		dao.close();
-
-		if (memberDTO != null) {
-			String recentURI = request.getParameter("from");
-			System.out.println(recentURI+"에서 로그인을 요청하였습니다.");
+		
+		
+		if(userEmail == null || userPwd == null) {
 			
-			HttpSession session = request.getSession();
+			if (request.getParameter("bntclick") != null) {
+				//헤더의 버튼 클릭으로 로그인이 요청될 시 로그인이 요청된 페이지 저장
+				
+				Referer = request.getHeader("Referer").substring(23); //"http://booke.iptime.org"제거 후 주소 저장
+				session.setAttribute("Referer", Referer);
+				System.out.println("로그인 시도한 주소 : " + (String)session.getAttribute("Referer"));//[확인완료]
+			}
 			
-			session.setAttribute("LoginID", memberDTO.getId());
-			session.setAttribute("LoginName", memberDTO.getName());
-			System.out.println("LoginID : " + session.getAttribute("LoginID"));
-			System.out.println("LoginName : " + session.getAttribute("LoginName"));
-			
-			response.sendRedirect("/main");
-			System.out.println("이전 페이지로 이동합니다.");
-			return;
-		} else {
+			System.out.println("로그인이 되어있지 않습니다. 로그인 페이지로 이동합니다.");
 			RequestDispatcher dispatcher = request.getRequestDispatcher("./LoginPage.jsp");
 			dispatcher.forward(request, response);
-			System.out.println("로그인이 되어있지 않습니다. 로그인 페이지로 이동합니다.");
+		}else {
+			
+			MemberDAO dao = new MemberDAO();
+			MemberDTO memberDTO = dao.getMemberDTO(userEmail, userPwd);
+			dao.close();
+			
+			if (memberDTO != null) {
+				
+				session.setAttribute("LoginID", memberDTO.getId());
+				session.setAttribute("LoginName", memberDTO.getName());
+				
+				System.out.println("LoginID : " + session.getAttribute("LoginID"));
+				System.out.println("LoginName : " + session.getAttribute("LoginName"));
+				
+				response.sendRedirect((String)session.getAttribute("Referer"));
+				System.out.println("이전 페이지로 이동합니다. 이동주소 : " + (String)session.getAttribute("Referer"));
+				return;
+			}
 		}
-
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

@@ -34,7 +34,7 @@ public class MemberDAO extends JDBConnect {
 				
 				System.out.println("로그인 성공 : '" + dto.getName() + "'님이 로그인 하셨습니다.");
 			}else {
-				System.out.println("아이디 못찾음");
+				System.out.println("로그인 하려는 아이디가 없습니다.");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

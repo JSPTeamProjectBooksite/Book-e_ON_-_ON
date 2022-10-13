@@ -119,7 +119,7 @@ public class BookDAO extends DBConnPool{
 		}
 		query += " ORDER BY ID DESC ";
 		
-		System.out.println("작성완료된 쿼리문: \n" + query);
+		//System.out.println("작성완료된 쿼리문: \n" + query);
 		
 		try {
 			stmt = con.createStatement();
