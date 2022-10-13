@@ -4,3 +4,4 @@
 ### Java ###
 # Compiled class file
 *.class
+/.metadata/
