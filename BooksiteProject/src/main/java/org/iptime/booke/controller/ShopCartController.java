@@ -28,11 +28,17 @@ public class ShopCartController extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		
+		List<BookDTO> bookList = setCookieBookList(request.getCookies());
+		
+		request.setAttribute("bookList", bookList);
+		response.setCharacterEncoding("utf-8");
+		request.getRequestDispatcher("/ShopCartPage.jsp").forward(request, response);
+	}
+
+	private List<BookDTO> setCookieBookList(Cookie[] cookies) {
 		List<BookDTO> bookList = new ArrayList<BookDTO>();
 		BookDAO bookDAO = new BookDAO();
-		
-		Cookie[] cookies = request.getCookies();	
-		
+				
 		if(cookies != null) {
 			for(Cookie ck : cookies) {
 				try {
@@ -51,11 +57,9 @@ public class ShopCartController extends HttpServlet {
 				}
 			}
 		}
-		bookDAO.close();
 		
-		request.setAttribute("bookList", bookList);
-		response.setCharacterEncoding("utf-8");
-		request.getRequestDispatcher("/ShopCartPage.jsp").forward(request, response);
+		bookDAO.close();
+		return bookList;
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
