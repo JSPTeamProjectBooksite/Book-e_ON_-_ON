@@ -26,14 +26,14 @@ public class MemberDAO extends JDBConnect {
 
 			if (rs.next()) {
 				dto = new MemberDTO();
-				
+
 				dto.setId(rs.getLong(1));
 				dto.setName(rs.getString(2));
 				dto.setEmail(rs.getString(3));
 				dto.setPassword(rs.getString(4));
-				
+
 				System.out.println("로그인 성공 : '" + dto.getName() + "'님이 로그인 하셨습니다.");
-			}else {
+			} else {
 				System.out.println("로그인 하려는 아이디가 없습니다.");
 			}
 		} catch (Exception e) {
@@ -131,17 +131,17 @@ public class MemberDAO extends JDBConnect {
 
 	public MemberDTO userInfo(Long id) {
 		MemberDTO dto = null;
-		
+
 		try {
 
 			String sql = "SELECT * FROM member_TBL WHERE ID = ?";
 			psmt = con.prepareStatement(sql);
 			psmt.setLong(1, id);
 			rs = psmt.executeQuery();
-			
+
 			if (rs.next()) {
 				dto = new MemberDTO();
-				
+
 				dto.setId(rs.getLong(1));
 				dto.setName(rs.getString(2));
 				dto.setEmail(rs.getString(3));
@@ -153,7 +153,7 @@ public class MemberDAO extends JDBConnect {
 				dto.setPoint(rs.getInt(9));
 				dto.setMemberStateId(rs.getShort(10));
 				dto.setRegisterDate(new Timestamp(rs.getDate(11).getTime()).toLocalDateTime());
-				
+
 				System.out.println("유저정보 성공적 조회");
 			}
 
@@ -167,8 +167,7 @@ public class MemberDAO extends JDBConnect {
 
 	public ArrayList<Map<String, Object>> ManagerUserInfo() {
 		ArrayList<Map<String, Object>> values = new ArrayList<Map<String, Object>>();
-		
-		
+
 		try {
 
 			String query = "SELECT * FROM MEMBER_TBL mt, MEMBER_STATE_TBL mst WHERE mt.MEMBER_STATE_ID = mst.ID";
@@ -177,15 +176,16 @@ public class MemberDAO extends JDBConnect {
 
 			while (rs.next()) {
 				Map<String, Object> map = new HashMap<String, Object>();
-	
+
 				MemberDTO memberDto = new MemberDTO(rs.getLong(1), rs.getString(2), rs.getString(3), rs.getString(4),
-						rs.getDate(5).toLocalDate(), rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getTimestamp(11).toLocalDateTime());
-				
+						rs.getDate(5).toLocalDate(), rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9),
+						rs.getTimestamp(11).toLocalDateTime());
+
 				String memberState = rs.getString(13);
 
 				map.put("memberDto", memberDto);
 				map.put("memberState", memberState);
-				
+
 				values.add(map);
 			}
 
@@ -229,9 +229,24 @@ public class MemberDAO extends JDBConnect {
 //		return result;
 //	}
 
-	public static void main(String[] args) {
-		MemberDAO dao = new MemberDAO();
-		dao.ManagerUserInfo();
+	public int deleteUser(String idx) {
+		int result = 0;
+
+		try {
+			String query = "UPDATE MEMBER_TBL SET MEMBER_STATE_ID = 1 WHERE ID = ?";
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, idx);
+			result = psmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println("회원 삭제 중 예외 발생");
+			e.printStackTrace();
+		}
+		return result;
 	}
+
+//	public static void main(String[] args) {
+//		MemberDAO dao = new MemberDAO();
+//		dao.ManagerUserInfo();
+//	}
 
 }

@@ -15,9 +15,6 @@ public class MemberDTO {
 	private Integer point;
 	private Short memberStateId;
 	private LocalDateTime registerDate;
-	
-	
-	
 
 	public MemberDTO() {
 	}
