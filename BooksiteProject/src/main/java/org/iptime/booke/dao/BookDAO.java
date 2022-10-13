@@ -10,7 +10,6 @@ import java.util.Map;
 import org.iptime.booke.common.DBConnPool;
 import org.iptime.booke.dto.AuthorDTO;
 import org.iptime.booke.dto.BookDTO;
-import org.iptime.booke.dto.MemberDTO;
 
 public class BookDAO extends DBConnPool{
 	
@@ -32,7 +31,7 @@ public class BookDAO extends DBConnPool{
 	
 	public BookDTO readBook(Long bId) {
 		BookDTO dto = null;
-		String query = "SELECT ID, COVER_IMG, TITLE, AUTHOR_ID, TRANSLATOR, PRICE, DELIVERY_FEE, ESTIMATED_DELIVERY_DATE "
+		String query = "SELECT ID, COVER_IMG, TITLE, AUTHOR_ID, TRANSLATOR, PRICE, DELIVERY_FEE, ESTIMATED_DELIVERY_DATE, book_category_id "
 				+ "FROM book_TBL "
 				+ "WHERE ID = ? ";
 		
@@ -45,6 +44,7 @@ public class BookDAO extends DBConnPool{
 
 			if (rs.next()) {
 				dto = new BookDTO();
+				
 				dto.setId(rs.getLong(1));
 				dto.setCoverImg(rs.getString(2));
 				dto.setTitle(rs.getString(3));
@@ -53,6 +53,7 @@ public class BookDAO extends DBConnPool{
 				dto.setPrice(rs.getInt(6));
 				dto.setDeliveryFee(rs.getInt(7));
 				dto.setEstimatedDeliveryDate(rs.getInt(8));
+				dto.setBookCategoryId(rs.getInt(9));
 			}
 			
 			return dto;
