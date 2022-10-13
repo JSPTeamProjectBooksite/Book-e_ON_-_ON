@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#wrap {
+    margin: auto;
+    max-width: 1500px;
+    min-width: 400px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.bookTable {
+    white-space: nowrap;
+    text-align: center;
+}
+
+/* table {
+    width: 100%;
+    table-layout: fixed;
+} */
+
+/* td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+} */
+
+.radioBox {
+    text-align: center;
+}

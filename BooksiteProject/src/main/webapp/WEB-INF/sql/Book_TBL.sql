@@ -65,3 +65,4 @@ CREATE SEQUENCE book_SEQ
 	nocycle
 	nocache;
 
+SELECT * FROM MEMBER_TBL mt 

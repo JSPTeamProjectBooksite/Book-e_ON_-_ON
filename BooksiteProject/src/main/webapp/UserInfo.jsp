@@ -17,12 +17,20 @@
 					<td>${ userInfo.name }</td>
 				</tr>
 				<tr>
-					<th>아이디</th>
+					<th>이메일</th>
 					<td>${ userInfo.email }</td>
 				</tr>
 				<tr>
 					<th>비밀번호</th>
 					<td>${ userInfo.password }</td>
+				</tr>
+				<tr>
+					<th>생년월일</th>
+					<td>${ userInfo.birth }</td>
+				</tr>
+				<tr>
+					<th>성별</th>
+					<td>${ userInfo.gender }</td>
 				</tr>
 				<tr>
 					<th>전화번호</th>
@@ -32,11 +40,15 @@
 					<th>주소</th>
 					<td>${ userInfo.address }</td>
 				</tr>
+				<tr>
+					<th>포인트</th>
+					<td>${ userInfo.point }</td>
+				</tr>
 			</thead>
 		</table>
 		<div class="Resign">
-			<a class="button" href="./UserInfoUpdate.jsp">비밀번호 변경</a> <a
-				class="button" href=""> 회원탈퇴 </a>
+			<a class="button" href="./UserInfoUpdate.jsp">비밀번호 변경</a> 
+			<a class="button" href=""> 회원탈퇴 </a>
 		</div>
 	</div>
 </body>

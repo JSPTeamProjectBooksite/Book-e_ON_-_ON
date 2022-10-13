@@ -879,5 +879,4 @@ INSERT INTO BOOK_REVIEW_TBL(ID, MEMBER_ID, BOOK_ID, SCORE, CONTENT) VALUES(BOOK_
 -- ============================================================
 
 
-	
-	
+		

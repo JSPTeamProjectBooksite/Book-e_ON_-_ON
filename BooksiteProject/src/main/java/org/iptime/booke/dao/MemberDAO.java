@@ -132,7 +132,6 @@ public class MemberDAO extends JDBConnect {
 	public MemberDTO userInfo(Long id) {
 		MemberDTO dto = null;
 		
-		
 		try {
 
 			String sql = "SELECT * FROM member_TBL WHERE ID = ?";
@@ -140,7 +139,6 @@ public class MemberDAO extends JDBConnect {
 			psmt.setLong(1, id);
 			rs = psmt.executeQuery();
 			
-
 			if (rs.next()) {
 				dto = new MemberDTO();
 				
@@ -167,7 +165,7 @@ public class MemberDAO extends JDBConnect {
 		return dto;
 	}
 
-	public ArrayList<Map<String, Object>> ManagerUserInfo(String list) {
+	public ArrayList<Map<String, Object>> ManagerUserInfo() {
 		ArrayList<Map<String, Object>> values = new ArrayList<Map<String, Object>>();
 		
 		
@@ -231,9 +229,9 @@ public class MemberDAO extends JDBConnect {
 //		return result;
 //	}
 
-//	public static void main(String[] args) {
-//		MemberDAO dao = new MemberDAO();
-//		dao.ManagerUserInfo("");
-//	}
+	public static void main(String[] args) {
+		MemberDAO dao = new MemberDAO();
+		dao.ManagerUserInfo();
+	}
 
 }

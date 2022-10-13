@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.iptime.booke.dao.MemberDAO;
-import org.iptime.booke.dto.MemberDTO;
 
 @WebServlet("/MANAGE/USER")
 public class ManageUserController extends HttpServlet {
@@ -22,7 +21,7 @@ public class ManageUserController extends HttpServlet {
 
 		MemberDAO dao = new MemberDAO();
 
-		ArrayList<Map<String, Object>> memberList = dao.ManagerUserInfo("userInfo");
+		ArrayList<Map<String, Object>> memberList = dao.ManagerUserInfo();
 
 		request.setAttribute("memberList", memberList);
 		request.getRequestDispatcher("../ManageUser.jsp").forward(request, response);
