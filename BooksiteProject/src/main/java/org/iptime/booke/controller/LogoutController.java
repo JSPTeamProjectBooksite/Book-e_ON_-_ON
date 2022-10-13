@@ -17,7 +17,10 @@ public class LogoutController extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		
-		String referer = request.getHeader("Referer").substring(23);
+		String referer = request.getHeader("Referer");
+		referer = referer.substring(8);
+		referer = referer.substring(referer.indexOf("/"));
+		
 		System.out.println("로그아웃을 요청한 페이지 : " + referer);
 		System.out.println("'" + session.getAttribute("LoginName") + "'님("+session.getAttribute("LoginID")+")이 로그아웃합니다.");
 		

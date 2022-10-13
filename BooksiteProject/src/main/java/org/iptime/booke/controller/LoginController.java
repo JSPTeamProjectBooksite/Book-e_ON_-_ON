@@ -33,7 +33,8 @@ public class LoginController extends HttpServlet {
 			if (request.getParameter("bntclick") != null) {
 				//헤더의 버튼 클릭으로 로그인이 요청될 시 로그인이 요청된 페이지 저장
 				
-				Referer = request.getHeader("Referer").substring(23); //"http://booke.iptime.org"제거 후 주소 저장
+				Referer = (request.getHeader("Referer").substring(8)); //"http://booke.iptime.org"제거 후 주소 저장
+				Referer = Referer.substring(Referer.indexOf("/"));
 				session.setAttribute("Referer", Referer);
 				System.out.println("로그인 시도한 주소 : " + (String)session.getAttribute("Referer"));//[확인완료]
 			}
