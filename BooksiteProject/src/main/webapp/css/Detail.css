@@ -170,6 +170,29 @@
 #reveiw{
     /* background: lightgrey; */
 }
+
+#reveiwWrite{
+    margin: 15px 0px 15px 0px;
+    display: grid;
+    grid-template-columns: auto 60px;
+    height: 120px;
+}
+
+#reveiwBtn{
+    width: 100%;
+    height: 100%;
+}
+
+#reveiwBox{
+    width: 100%;
+    height: 100%;
+    border: none;
+    resize: none;
+
+    padding: 10px;
+    font-size: 20px;
+}
+
 #reveiw .name{
     
 }
