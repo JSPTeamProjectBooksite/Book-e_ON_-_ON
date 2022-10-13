@@ -249,4 +249,36 @@ public class MemberDAO extends JDBConnect {
 //		dao.ManagerUserInfo();
 //	}
 
+	//리뷰용 멤버정보 조회
+	public MemberDTO readMemberForReview(Long id) {
+		MemberDTO dto = null;
+		
+		try {
+
+			String sql = "SELECT ID, NAME, EMAIL FROM member_TBL WHERE ID = ?";
+			psmt = con.prepareStatement(sql);
+			psmt.setLong(1, id);
+			rs = psmt.executeQuery();
+			
+			if (rs.next()) {
+				dto = new MemberDTO();
+				
+				dto.setId(rs.getLong(1));
+				dto.setName(rs.getString(2));
+				
+				
+				String email = rs.getString(3).substring(0,3);
+				for(int i = 3, n = rs.getString(3).length(); i < n; i++)
+					email += "*";
+				dto.setEmail(email);
+				
+				System.out.println("리뷰용 유저정보 성공적 조회");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("리뷰용 유저정보 조회중 오류발생");
+		}
+
+		return dto;
+	}
 }

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -226,35 +228,42 @@
                     리뷰
                 </div>
                 <hr style="background-color: gray;">
-                <div class="reveiwDiv">
-                    <!-- 작성자 정보 + 별점 -->
-                    <div>
-                        <span class="name">
-                            작성자 
-                        </span>
-                        <span class="email">
-                            이메일*******
-                        </span>
-                        <span class="date">
-                            작성일
-                        </span>
-                        <span class="score">
-                            별점
-                        </span>
-                    </div>
-                    <!-- 리뷰 -->
-                    <div class="comment">
-                        리뷰내용
-                    </div>
-                    <!-- 버튼류 -->
-                    <div class="btnSpace">
-                        <button type="button" class="likeBtn">좋아요</button>
-                    </div>
-                </div>
-                <hr style="background-color: lightgray;">
+				<c:forEach var="review" items="${ reviewList }" varStatus="status">
+					<div class="reveiwDiv">
+					    <!-- 작성자 정보 + 별점 -->
+						<div>
+						    <span class="name">
+						        ${ review.member.name } 
+							</span>
+							<span class="email">
+						        ${ review.member.email } 
+							</span>
+							<span class="date">
+							    ${fn:replace(review.review.registerDate, 'T', ' ')}
+							</span>
+							<span class="score">
+							    ${ review.review.score }
+						    </span>
+						</div>
+						<!-- 리뷰 -->
+						<div class="comment">
+						    ${ review.review.content }
+						</div>
+						<!-- 버튼류 -->
+						<div class="btnSpace">
+                            <!-- 좋아요 버튼 -->
+                            <form action="/like.do?whatReviewLike=" method="post" id="likeForm"></form>
+							<span class="likeBtn">
+								${ review.review.likeCount }
+								<button type="button" onclick="likey(${ review.review.id })">좋아요</button>
+							</span>
+						</div>
+					</div>
+					<hr style="background-color: lightgray;">
+				</c:forEach>
             </div>
-
-            <form action="#" method="post" id="reveiwWriteForm" onsubmit="return reveiwBtnAction(this);">
+			<!-- 리뷰 작성 폼 -->
+            <form action="/reveiw.do?bookID=${ bookInfo.id }" method="post" id="reveiwWriteForm" onsubmit="return reveiwBtnAction(this);">
                 <div id="reveiwWrite">
                     <div>
                         <textarea name="reveiwBox" id="reveiwBox" placeholder="리뷰를 입력해 주세요."></textarea>
@@ -268,8 +277,6 @@
 
         <!-- 환불 -->
         <div>
-
-
             <div id="exchange">
                 <div class="headFont">
                     교환/반품/품절 안내 <span style="font-size: 15px; color:lightgray">안돼</span>
@@ -371,11 +378,9 @@
 </div>
 </body>
 <script>
+    var userId = "<%= session.getAttribute("LoginID") %>";
+    
     function reveiwBtnAction(form){
-
-        var userId = "<%= session.getAttribute("LoginID") %>";
-
-        
         if(userId == "null"){
             alert("리뷰작성은 로그인 후에 가능합니다.");
             return false;
@@ -387,5 +392,22 @@
             return false;
         }
     }
+
+    function likey(reviewID) {
+        if(userId == "null"){
+            alert("좋아요버튼은 로그인 후에 누를 수 있습니다.");
+            return false;
+        }
+        alert("이 뎃글을 좋아합니다.");
+
+        const form = document.getElementById("likeForm");
+
+        form.action += reviewID;
+        form.submit();
+
+        setTimeout(function(){
+            location.reload();
+        },100);
+	}
 </script>
 </html>

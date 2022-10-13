@@ -1,6 +1,8 @@
 package org.iptime.booke.controller;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.iptime.booke.dao.AuthorDAO;
 import org.iptime.booke.dao.BookDAO;
+import org.iptime.booke.dao.BookReviewDAO;
 import org.iptime.booke.dto.AuthorDTO;
 import org.iptime.booke.dto.BookDTO;
 
@@ -51,10 +54,16 @@ public class DetailPageController extends HttpServlet {
 		AuthorDAO authorDao = new AuthorDAO();
 		AuthorDTO author = authorDao.findAuthor(bookInfo.getAuthorId());
 		authorDao.close();
+		
+		//리뷰 정보
+		BookReviewDAO reviewDao = new BookReviewDAO();
+		List<Map<String, Object>> reviewList = reviewDao.detailReview(BID);
+		reviewDao.close();
 
 		request.setAttribute("bookInfo", bookInfo);
 		request.setAttribute("price", bookPrice);
 		request.setAttribute("author", author);
+		request.setAttribute("reviewList", reviewList);
 
 		request.getRequestDispatcher("/DetailPage.jsp").forward(request, response);
 

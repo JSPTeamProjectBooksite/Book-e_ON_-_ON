@@ -10,12 +10,11 @@ import java.util.Map;
 import org.iptime.booke.common.DBConnPool;
 import org.iptime.booke.dto.AuthorDTO;
 import org.iptime.booke.dto.BookDTO;
-import org.iptime.booke.dto.MemberDTO;
 
 public class BookDAO extends DBConnPool{
 	
 	public Long nextNumber() {
-		String query = "SELECT board_SEQ.nextval FROM DUAL";
+		String query = "SELECT * FROM book_review_TBL";
 		
 		try {
 			psmt = con.prepareStatement(query);
@@ -300,5 +299,35 @@ public class BookDAO extends DBConnPool{
 			e.printStackTrace();
 		}
 		return books;
-	}	
+	}
+	
+	//리뷰페이지용 메소드
+	public BookDTO readBookforReview(Long bId) {
+		BookDTO dto = null;
+		
+		String query = "SELECT ID, TITLE FROM book_TBL WHERE ID = ? ";
+		
+		try {
+			psmt = con.prepareStatement(query);
+			
+			psmt.setLong(1, bId);
+			
+			rs = psmt.executeQuery();
+
+			if (rs.next()) {
+				dto = new BookDTO();
+				
+				dto.setId(rs.getLong(1));
+				dto.setTitle(rs.getString(2));
+			}
+			
+			return dto;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("리뷰용 책정보 조회중 오류 발생");
+		}
+		
+		return dto;
+	}
 }
