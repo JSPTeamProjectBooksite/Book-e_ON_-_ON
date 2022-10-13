@@ -28,8 +28,6 @@
 					<th>작가</th>
 					<th>옮긴이</th>
 					<th>가격</th>
-					<th>배송비</th>
-					<th>예상 배송일</th>
 					<th>페이지 수</th>
 					<th>무게</th>
 					<th>ISBN13</th>
@@ -39,6 +37,8 @@
 					<th>소개이미지</th>
 					<th>출판사</th>
 					<th>출판사 리뷰</th>
+					<th>배송비</th>
+					<th>예상 배송일</th>
 					<th>목차</th>
 					<th>조회수</th>
 					<th>재고수량</th>
@@ -47,34 +47,34 @@
 					<th>작성일</th>
 					<th>수정일자</th>
 				</tr>
-				<c:forEach var="m" items="${bookList}" varStatus="state">
+				<c:forEach var="book" items="${bookList}" varStatus="state">
 					<tr>
 						<td class="radioBox"><input type="radio" name="chooseBook"
 							value="1"></td>
-						<td><a href="">${ m.id }</a></td>
-						<td>${ m.coverImg }</td>
-						<td>${ m.title }</td>
+						<td><a href="">${ book.id }</a></td>
+						<td>${ book.coverImg }</td>
+						<td>${ book.title }</td>
 						<td>${ authorList[state.index] }</td>
-						<td>${ m.translator }</td>
-						<td>${ m.price }</td>
-						<td>${ m.totalPages }</td>
-						<td>${ m.weight }</td>
-						<td>${ m.isbn13 }</td>
-						<td>${ m.isbn10 }</td>
-						<td>${ m.bookCategoryId }</td>
-						<td>${ m.introduce }</td>
-						<td>${ m.introduceImg }</td>
-						<td>${ m.publisher }</td>
-						<td>${ m.publisherReview }</td>
-						<td>${ m.deliveryFee }</td>
-						<td>${ m.estimatedDeliveryDate }</td>
-						<td>${ m.contents }</td>
-						<td>${ m.visit }</td>
-						<td>${ m.quantity }</td>
-						<td>${ m.catchphrase }</td>
-						<td>${ m.publicationDate }</td>
-						<td>${ m.registDate }</td>
-						<td>${ m.updateDate }</td>
+						<td>${ book.translator }</td>
+						<td>${ book.price }</td>
+						<td>${ book.totalPages }</td>
+						<td>${ book.weight }</td>
+						<td>${ book.isbn13 }</td>
+						<td>${ book.isbn10 }</td>
+						<td>${ book.bookCategoryId }</td>
+						<td>${ book.introduce }</td>
+						<td>${ book.introduceImg }</td>
+						<td>${ book.publisher }</td>
+						<td>${ book.publisherReview }</td>
+						<td>${ book.deliveryFee }</td>
+						<td>${ book.estimatedDeliveryDate }</td>
+						<td>${ book.contents }</td>
+						<td>${ book.visit }</td>
+						<td>${ book.quantity }</td>
+						<td>${ book.catchphrase }</td>
+						<td>${ book.publicationDate }</td>
+						<td>${ book.registDate }</td>
+						<td>${ book.updateDate }</td>
 					</tr>
 				</c:forEach>
 			</table>

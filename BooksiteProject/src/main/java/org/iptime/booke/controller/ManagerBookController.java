@@ -32,7 +32,6 @@ public class ManagerBookController extends HttpServlet {
 			authorList.add(authorDao.findAuthor(book.getAuthorId()).getName());
 		}
 		
-
 		bookDao.close();
 		authorDao.close();
 		
