@@ -103,6 +103,7 @@
 			<button>수정</button>
 			<button>삭제</button>
 			<button>추가</button>
+			<a href="/MANAGE/BOOKADD" onClick="window.open(this.href, '', 'width=400, height=430'); return false;">도서추가(수정중)</a>
 		</div>
 	</div>
 </body>

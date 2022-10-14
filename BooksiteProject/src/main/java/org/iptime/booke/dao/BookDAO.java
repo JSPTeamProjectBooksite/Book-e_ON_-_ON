@@ -1,6 +1,7 @@
 package org.iptime.booke.dao;
 
 
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -146,7 +147,7 @@ public class BookDAO extends DBConnPool{
 				dto.setContents(rs.getString(18));
 				dto.setQuantity(rs.getInt(19));
 				dto.setCatchphrase(rs.getString(20));
-				dto.setPublicationDate(new Timestamp(rs.getDate(21).getTime()).toLocalDateTime());
+				dto.setPublicationDate(rs.getDate(21).toLocalDate());
 			}
 			
 			
@@ -229,19 +230,24 @@ public class BookDAO extends DBConnPool{
 			//psmt.setInt(7, dto.getEstimatedDeliveryDate());
 			System.out.println("예상 배송일 : " + dto.getEstimatedDeliveryDate());
 			psmt.setInt(7, 2);
-			psmt.setInt(8, dto.getTotalPages());
-			psmt.setInt(9, dto.getWeight());
-			psmt.setLong(10, dto.getIsbn13());
-			psmt.setLong(11, dto.getIsbn10());
-			psmt.setInt(12, dto.getBookCategoryId());
+			
+			psmt.setObject(8, dto.getTotalPages());
+			psmt.setObject(9, dto.getWeight());
+			psmt.setObject(10, dto.getIsbn13());
+			psmt.setObject(11, dto.getIsbn10());
+			psmt.setObject(12, dto.getBookCategoryId());
 			psmt.setString(13, dto.getIntroduce());
 			psmt.setString(14, dto.getIntroduceImg());
 			psmt.setString(15, dto.getPublisher());
 			psmt.setString(16, dto.getPublisherReview());
 			psmt.setString(17, dto.getContents());
-			psmt.setInt(18, 0);
+			psmt.setObject(18, 0);
 			psmt.setString(19, dto.getCatchphrase());
-			psmt.setTimestamp(20, java.sql.Timestamp.valueOf(dto.getPublicationDate()));
+			
+			Date date = null;
+			if(dto.getPublicationDate() != null)
+				date = Date.valueOf(dto.getPublicationDate());
+			psmt.setDate(20, date);
 			
 //			System.out.println("만들어진 쿼리문 :");
 //			System.out.println(psmt.toString());

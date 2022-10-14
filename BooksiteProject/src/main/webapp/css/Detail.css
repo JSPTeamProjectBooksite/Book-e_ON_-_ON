@@ -172,7 +172,6 @@
 }
 
 #reveiwWrite{
-    margin: 15px 0px 15px 0px;
     display: grid;
     grid-template-columns: auto 60px;
     height: 120px;
@@ -193,6 +192,16 @@
     font-size: 20px;
 }
 
+
+
+
+
+
+
+#starScoreDiv{
+    text-align: right;
+    padding: 5px;
+}
 #reveiw .name{
     
 }
@@ -212,9 +221,20 @@
 #reveiw .btnSpace{
     height: 30px;
 }
-#reveiw .likeBtn{
+.btnSpace .likeBtn{
     float: right;
     height: 100%;
+}
+.btnSpace .likeBtn button{
+    border: 0;
+    outline: 0;
+    background: transparent;
+}
+.btnSpace svg{
+    fill: #88ffcd;
+}
+.btnSpace svg:hover{
+    fill: #31fff5;
 }
 
 .reveiwDiv{
