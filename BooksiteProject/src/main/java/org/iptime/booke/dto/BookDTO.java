@@ -63,27 +63,30 @@ public class BookDTO {
 	public BookDTO() {}
 	
 	public void DTOPrintOut() {
-		System.out.println(id);
-		System.out.println(coverImg);
-		System.out.println(title);
-		System.out.println(authorId);
-		System.out.println(translator);
-		System.out.println(price);
-		System.out.println(deliveryFee);
-		System.out.println(isbn13);
-		System.out.println(isbn10);
-		System.out.println(bookCategoryId);
-		System.out.println(introduce);
-		System.out.println(introduceImg);
-		System.out.println(publisher);
-		System.out.println(publisherReview);
-		System.out.println(contents);
-		System.out.println(visit);
-		System.out.println(quantity);
-		System.out.println(catchphrase);
-		System.out.println(publicationDate);
-		System.out.println(registDate);
-		System.out.println(updateDate);
+		System.out.println("id : " + id);
+		System.out.println("coverImg : " + coverImg);
+		System.out.println("title : " + title);
+		System.out.println("authorId : " + authorId);
+		System.out.println("translator : " + translator);
+		System.out.println("price : " + price);
+		System.out.println("totalPages : " + totalPages);
+		System.out.println("weight : " + weight);
+		System.out.println("isbn13 : " + isbn13);
+		System.out.println("isbn10 : " + isbn10);
+		System.out.println("bookCategoryId : " + bookCategoryId);
+		System.out.println("introduce : " + introduce);
+		System.out.println("introduceImg : " + introduceImg);
+		System.out.println("publisher : " + publisher);
+		System.out.println("publisherReview : " + publisherReview);
+		System.out.println("deliveryFee : " + deliveryFee);
+		System.out.println("estimatedDeliveryDate : " + estimatedDeliveryDate);
+		System.out.println("contents : " + contents);
+		System.out.println("visit : " + visit);
+		System.out.println("quantity : " + quantity);
+		System.out.println("catchphrase : " + catchphrase);
+		System.out.println("publicationDate : " + publicationDate);
+		System.out.println("registDate : " + registDate);
+		System.out.println("updateDate : " + updateDate);
 	}
 	
 	//결제페이지 사용
