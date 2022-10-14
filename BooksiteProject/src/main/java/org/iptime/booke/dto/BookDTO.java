@@ -1,5 +1,6 @@
 package org.iptime.booke.dto;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class BookDTO {
@@ -24,7 +25,7 @@ public class BookDTO {
 	private Integer visit;
 	private Integer quantity;
 	private String catchphrase;//
-	private LocalDateTime publicationDate;//
+	private LocalDate publicationDate;//
 	private LocalDateTime registDate;
 	private LocalDateTime updateDate;
 	
@@ -132,7 +133,7 @@ public class BookDTO {
 			Integer totalPages, Integer weight, Long isbn13, Long isbn10, Integer bookCategoryId, String introduce,
 			String introduceImg, String publisher, String publisherReview, Integer deliveryFee,
 			Integer estimatedDeliveryDate, String contents, Integer visit, Integer quantity, String catchphrase,
-			LocalDateTime publicationDate, LocalDateTime registDate, LocalDateTime updateDate) {
+			LocalDate publicationDate, LocalDateTime registDate, LocalDateTime updateDate) {
 		super();
 		this.id = id;
 		this.coverImg = coverImg;
@@ -335,11 +336,11 @@ public class BookDTO {
 		this.catchphrase = catchphrase;
 	}
 
-	public LocalDateTime getPublicationDate() {
+	public LocalDate getPublicationDate() {
 		return publicationDate;
 	}
 
-	public void setPublicationDate(LocalDateTime publicationDate) {
+	public void setPublicationDate(LocalDate publicationDate) {
 		this.publicationDate = publicationDate;
 	}
 

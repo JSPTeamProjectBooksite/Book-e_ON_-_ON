@@ -17,7 +17,7 @@
 		<%@ include file="Header.jsp"%>
 		<h2 style="padding-bottom: 20px">1:1고객문의(답변대기 건수 : 2건)</h2>
 
-		<form method="get">
+		<form method="get" action="/Inqinfo">
 			<table class="search" border="1">
 				<tr>
 					<td align="center"><select name="searchField">
@@ -33,37 +33,23 @@
 			<tr>
 				<th>번호</th>
 				<th>ID(이메일)</th>
-				<th>문의유형</th>
 				<th>제목</th>
+				<th>내용</th>
+				<th>문의유형</th>
 				<th>답변상태</th>
 				<th>등록일</th>
 			</tr>
-			<c:choose>
-				<c:when test="${ empty inquireLists}">
-					<tr>
-						<td colspan="6" align="center">등록된 문의가 없습니다!</td>
-					</tr>
-				</c:when>
-				<c:otherwise>
-					<c:forEach items="${ inquireLists }" var="inq" varStatus="loop">
+					<c:forEach items="${ inquiryList }" var="inq">
 						<tr align="center">
-							<td>${map.totalCount - (((map.pageNum-1) * map.pageSize) + loop.index)}
-							</td>
+						    <td>{ inq.Id }</td>
 							<td>{ inq.memberId }</td>
-							<td align="left"><a href="/view.jsp?id=${ inq.id }">${ inq.title }</a></td>
 							<td>{ inq.title }</td>
+							<td>{ inq.content }</td>
+							<td>{ inq.category }</td>
 							<td>{ inq.state }
 							<td>{ inq.registerDate}</td>
 						</tr>
 					</c:forEach>
-				</c:otherwise>
-			</c:choose>
-		</table>
-
-		<table border="1">
-			<tr>
-				<td>${ map.pagingImg }</td>
-			</tr>
 		</table>
 
 		<%@ include file="Footer.jsp"%>
