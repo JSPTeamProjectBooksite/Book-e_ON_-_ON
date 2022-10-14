@@ -303,6 +303,8 @@ public class MemberDAO extends JDBConnect {
 			psmt.setDate(10, LocalDateABC.dateValueOf(dto.getRegisterDate()));
 			psmt.setLong(11, dto.getId());
 			
+			result = psmt.executeUpdate();
+			
 		} catch(Exception e) {
 			System.out.println("회원 정보 수정 중 오류 발생");
 			e.printStackTrace();
