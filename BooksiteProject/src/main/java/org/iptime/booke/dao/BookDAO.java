@@ -302,6 +302,21 @@ public class BookDAO extends DBConnPool{
 		return books;
 	}
 	
+	public int deleteBook(String idx) {
+		int result = 0;
+		
+		try {
+			String sql = "DELETE FROM BOOK_TBL WHERE ID = ?";
+			psmt = con.prepareStatement(sql);
+			psmt.setNString(1, idx);
+			result = psmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println("책 삭제 중 예외 발생");
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
 	//리뷰페이지용 메소드
 	public BookDTO readBookforReview(Long bId) {
 		BookDTO dto = null;
