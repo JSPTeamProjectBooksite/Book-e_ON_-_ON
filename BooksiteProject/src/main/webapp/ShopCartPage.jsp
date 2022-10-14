@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,9 +56,9 @@
 	                        </td>
 	                        <td class="bookImg"><img src="${pageContext.request.contextPath}/${book.coverImg}" alt="상품 이미지"></td>
 	                        <td class="bookTitle">${ book.title }</td>
-	                        <td class="bookPrice"><fmt:formatNumber type="number" maxFractionDigits="3" value="${book.price}" /></td>
+	                        <td class="bookPrice"><span class="num" data-value="${book.price}"><fmt:formatNumber value="${book.price}"/></span>원</td>
 	                        <td class="bookCount"><input type="number" min="1" max="999" name="bookCount" value="${ book.quantity }" onchange="onChangeFunction(${book.price}, this)"></td>
-	                        <td class="bookPriceSum"><span class="num">0</span>원</td>
+	                        <td class="bookPriceSum"><span class="num" value="${book.price * book.quantity}"><fmt:formatNumber value="${book.price * book.quantity}"/></span>원</td>
 	                        <td class="bookDeliveryDate">평균 ${ book.estimatedDeliveryDate }일 소요</td>
 	                        <td class="bookDelete"><button type="button" class="bookDeleteBtn" value="${ book.id }">X</button></td>
 	                    </tr>
@@ -75,9 +74,9 @@
                         <th>결제금액</th>
                     </tr>
                     <tr>
-                        <td class="bookValue"><span class="num">14,000</span>원</td>
-                        <td class="bookDeliveryValue"><span class="num">0</span>원</td>
-                        <td class="bookLastValue"><span class="num">14,000</span>원</td>
+                        <td class="bookValue"><span class="num">0</span>원</td>
+                        <td class="bookDeliveryValue"><span class="num" data-value="2500">0</span>원</td>
+                        <td class="bookLastValue"><span class="num">0</span>원</td>
                     </tr>
                 </table>
 
@@ -110,7 +109,7 @@
     // 선택된 상품 삭제
     $('.bookDeleteBtn').click(function(){
 		console.log($(this).val());
-    	setCookie($(this).val(), "null", 0);
+    	setCookie($(this).val(), null, 0);
 		location.reload();
 	});
     
@@ -120,39 +119,69 @@
     $('.selectBookSaveBtn').click(function(){		fromUpdate(fromTag, '#', 'post');});
     $('.selectBookDeleteBtn').click(function(){		fromUpdate(fromTag, '/cart', 'DELETE');});
     
-    // 가격 계산
-    function onChangeFunction(price, e){
-    	let count = $(e).val();
-    	let bookPriceSum = 	$(e).parent()
-						    	.siblings('.bookPriceSum')
-						    	.find('.num');
-    	bookPriceSum.html(price * count);
-    	
-    	bottomCalculation();
-    }
-    
+    //Number Formatting Setting
     const bookValue = $('.bookValue .num');
     const bookDeliveryValue = $('.bookDeliveryValue .num');
     const bookLastValue = $('.bookLastValue .num');
     
-    bookDeliveryValue.html('2500'); 
+    bookDeliveryValue.attr('data-value', 2500); 
     
-    function bottomCalculation(){
-    	let totalValue = 0;
+    
+    // 가격 계산
+    function onChangeFunction(price, e){
+    	let count = $(e).val();
+    	let selectedBookId = $(e).parent().siblings('.bookCheck').find('input.bookCheckBox').val();
     	
-    	$('.bookItem .num').each(function(index, item){
-    		let value = parseInt($(item).html());
-    		totalValue += value;
-    		console.log(value);
+    	let value = selectedBookId +"/"+ count;
+    	setCookie(selectedBookId, value, 7);
+    	
+    	let bookPriceSum = 	$(e).parent().siblings('.bookPriceSum').find('.num');
+    	bookPriceSum.attr('data-value', price * count);
+    	
+    	allCalculation();
+    }
+    
+    function allCalculation(){
+    	let totalValue = 0;
+    	let bookDeliveryValue_num = bookDeliveryValue.attr('data-value');
+    	
+    	$('.bookItem').each(function(index, item){
+	    	let bookPriceSum_num = $(item).find('.bookPriceSum .num').attr('data-value');
+	    	
+    		totalValue += bookPriceSum_num;
     	});
     	
-    	bookValue.html(totalValue);
-    	if(totalValue > bookDeliveryValue.html())
-    		bookLastValue.html(totalValue - bookDeliveryValue.html());
+    	bookValue.attr('data-value', totalValue);
+    	
+    	if(totalValue > bookDeliveryValue_num)
+    		bookLastValue.attr('data-value', totalValue - bookDeliveryValue_num);
     	else
-    		bookLastValue.html(totalValue);
+    		bookLastValue.attr('data-value', totalValue);
+    	
+    	allFormatting();
     }
-    bottomCalculation();
+    
+    function allFormatting(){
+    	$('.num').each(function(index, item){
+    		$(item).html($(item).attr('data-value'));
+    		$(item).number(true);
+        })
+    }
+    
+    // 초기값
+    function initNum(){
+    	$('.bookItem').each(function(index, item){
+    		let bookPrice = $(item).find('.bookPrice .num').attr('data-value');
+    		let bookCount = $(item).find('.bookCount input[name=bookCount]').val();
+    		let bookPriceSum = $(item).find('.bookPriceSum .num');
+    		let value = bookPrice * bookCount;
+    		
+    		bookPriceSum.attr('data-value', value);
+    	});
+    }
+    
+    initNum();
+    allCalculation();
     
     </script>
 </body>
