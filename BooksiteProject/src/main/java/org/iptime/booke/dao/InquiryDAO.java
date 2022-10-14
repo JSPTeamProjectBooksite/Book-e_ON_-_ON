@@ -1,13 +1,9 @@
 package org.iptime.booke.dao;
 
-import java.sql.Date;
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+
 import org.iptime.booke.common.JDBConnect;
 import org.iptime.booke.dto.InquiryDTO;
-import org.iptime.booke.dto.MemberDTO;
 
 public class InquiryDAO extends JDBConnect {
 
@@ -28,7 +24,7 @@ public class InquiryDAO extends JDBConnect {
 				dto.setMemberId(rs.getLong(2));
 				dto.setTitle(rs.getString(3));
 				dto.setContent(rs.getString(4));
-				dto.setcategory(rs.getString(5));
+				dto.setCategroy(rs.getString(5));
 				dto.setState(rs.getString(6));
 //			psmt.setString(7, LocalDateABC.toLocalDateTime(dto.getRigisterDate());
 
@@ -71,13 +67,16 @@ public class InquiryDAO extends JDBConnect {
 		int result = 0;
 
 		try {
-			String query = "INSERT INTO INQUIRY_TBL(title, content, category) VALUES(INQUIRY_SEQ.nextval, ?, ?, ?)";
-
+			String query = "INSERT INTO INQUIRY_TBL(ID, MEMBER_ID, TITLE, CONTENT, CATEGROY) VALUES(INQUIRY_SEQ.nextval, ?, ?, ?, ?)";
+			
 			psmt = con.prepareStatement(query);
-			psmt.setString(1, dto.getTitle());
-			psmt.setString(2, dto.getContent());
-			psmt.setString(3, dto.getcategory());
+			psmt.setLong(1, 1);
+			psmt.setString(2, dto.getTitle());
+			psmt.setString(3, dto.getContent());
+			psmt.setString(4, dto.getCategroy());
 			result = psmt.executeUpdate();
+			
+			System.out.println("문의가 성공적으로 접수됨");
 //		} catch (SQLIntegrityConstraintViolationException e) {
 //			System.out.println("중복된 아이디가 있는 경우 오류 발생");
 //			result = 2;
@@ -114,7 +113,7 @@ public class InquiryDAO extends JDBConnect {
 ////				dto.setPhoneNum(rs.getString(3));
 //				dto.setTitle(rs.getString(3));
 //				dto.setContent(rs.getString(4));
-//				dto.setcategory(rs.getNString(5));
+//				dto.setcategroy(rs.getNString(5));
 //				dto.setState(rs.getString(6));
 ////				dto.setRigisterDate(LocalDateABC.toLocalDateTime(rs.getDate(8)));
 //

@@ -20,8 +20,7 @@ SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일");
 		<%@ include file="Header.jsp"%>
 
 		<h2>▶1:1 고객문의</h2>
-		<form name="inquireFrm" method="post" enctype="multipart/form-data"
-			action="/writeInquiry" onsubmit="return notice(this);">
+		<form name="inquireFrm" method="post" action="/inquiryWrite.do" onsubmit="return notice(this);">
 			
 			<table class="CustomerInquiry" border="1">
 
@@ -39,7 +38,8 @@ SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일");
 				</tr>
 				<tr>
 					<td class="title">질문유형</td>
-					<td colspan="3"><select style="height: 63px; width: 100%;" name="category">
+					<td colspan="3">
+						<select style="height: 63px; width: 100%;" name="category">
 							<option>회원정보/서비스</option>
 							<option>도서/상품정보</option>
 							<option>주문결제</option>
@@ -53,14 +53,14 @@ SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일");
 							<option>고객제안/불편신고</option>
 							<option>개인출판/작가</option>
 							<option>기타문의/제안</option>
-					</select></td>
+						</select>
+					</td>
 				</tr>
 
 				<tr>
 					<td class="title">제목</td>
-					<td colspan="3"><input
-						style="border: none; width: 100%; height: 63px; font-size: 16px;"
-						type="text" name="subject" maxlengtd="500" name="title"></td>
+					<td colspan="3">
+					<input style="border: none; width: 100%; height: 63px; font-size: 16px;" type="text" maxlengtd="500" name="title"></td>
 				</tr>
 
 				<tr>
@@ -99,6 +99,8 @@ SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일");
 			alert("내용을 입력해주세요.");
 			form.content.focus();
 			return false;
+		}
+		alert("문의를 전송합니다.");
 	}
 </script>
 </html>
