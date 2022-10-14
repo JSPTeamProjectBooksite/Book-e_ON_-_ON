@@ -38,7 +38,7 @@
                     <ul style="list-style: none;">
                         <li><a href="/MANAGE/USER">유저 정보</a></li>
                         <li><a href="#">책 정보</a></li>
-                        <li><a href="#">게시물 정보</a></li>
+                        <li><a href="/MANAGE/INQUIRY">1:1문의(관리자)</a></li>
                         <li><a href="#">무슨 정보</a></li>
                         <li><a href="#">저런 정보</a></li>
                     </ul>
