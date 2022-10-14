@@ -9,6 +9,7 @@ import java.util.Map;
 
 import org.iptime.booke.common.JDBConnect;
 import org.iptime.booke.dto.MemberDTO;
+import org.iptime.booke.utils.LocalDateABC;
 
 public class MemberDAO extends JDBConnect {
 
@@ -280,5 +281,32 @@ public class MemberDAO extends JDBConnect {
 		}
 
 		return dto;
+	}
+	
+	public int updateUserInfo(MemberDTO dto) {
+		int result = 0;
+		
+		try {
+			
+			String sql = "UPDATE MEMBER_TBL SET name = ?, EMAIL = ?, PASSWORD = ?, BIRTH = ?, GENDER = ?, PHONE_NUM = ?, ADDRESS = ?, POINT = ?, MEMBER_STATE_ID = ?, REGISTER_DATE = ? WHERE id = ?";
+			
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, dto.getName());
+			psmt.setString(2, dto.getEmail());
+			psmt.setString(3, dto.getPassword());
+			psmt.setDate(4, Date.valueOf(dto.getBirth()));
+			psmt.setString(5, dto.getGender());
+			psmt.setString(6, dto.getPhoneNum());
+			psmt.setString(7, dto.getAddress());
+			psmt.setInt(8, dto.getPoint());
+			psmt.setLong(9, dto.getMemberStateId());
+			psmt.setDate(10, LocalDateABC.dateValueOf(dto.getRegisterDate()));
+			psmt.setLong(11, dto.getId());
+			
+		} catch(Exception e) {
+			System.out.println("회원 정보 수정 중 오류 발생");
+			e.printStackTrace();
+		}
+		return result;
 	}
 }

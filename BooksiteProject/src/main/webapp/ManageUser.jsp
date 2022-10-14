@@ -5,6 +5,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script type="text/javascript">
+	function clickBtn(btn) {
+		if (btn == "Delete") {
+			document.getElementById("sendForm").action = "/DeleteUser";
+		} else if (btn == "Edit") {
+			document.getElementById("sendForm").action = "/ManageUserEdit";
+		}
+		document.getElementById("sendForm").submit();
+	}
+</script>
 <title>유저정보 관리</title>
 <style type="text/css">
 * {
@@ -40,7 +50,7 @@
 
 		<div style="height: 10vh"></div>
 
-		<form action="/DeleteUser" method="get">
+		<form action="" method="get" id="sendForm">
 			<table border="1" id="UserTable">
 				<tr>
 					<td colspan="12" style="text-align: center;"><input
@@ -79,9 +89,8 @@
 				</c:forEach>
 				<tr>
 					<td colspan="12" style="text-align: right;">
-						<button>수정</button>
-						<button>삭제</button>
-						<button>추가</button>
+						<button onclick="clickBtn('Edit')">수정</button>
+						<button onclick="clickBtn('Delete')">삭제</button>
 					</td>
 				</tr>
 			</table>

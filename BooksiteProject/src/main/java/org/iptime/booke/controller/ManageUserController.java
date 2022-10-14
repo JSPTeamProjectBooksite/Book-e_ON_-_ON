@@ -22,10 +22,10 @@ public class ManageUserController extends HttpServlet {
 		MemberDAO dao = new MemberDAO();
 
 		ArrayList<Map<String, Object>> memberList = dao.ManagerUserInfo();
+		dao.close();
 
 		request.setAttribute("memberList", memberList);
 		request.getRequestDispatcher("../ManageUser.jsp").forward(request, response);
-		dao.close();
 
 	}
 
