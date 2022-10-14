@@ -39,8 +39,8 @@ public class InquiryDAO extends JDBConnect {
 		return dto;
 	}
 
-	public ArrayList<Map<String, Object>> Manamgeinquiryinfo() {
-		ArrayList<Map<String, Object>> values = new ArrayList<Map<String, Object>>();
+	public ArrayList<InquiryDTO> Manamgeinquiryinfo() {
+		ArrayList<InquiryDTO> values = new ArrayList<InquiryDTO>();
 
 		try {
 			String sql = " SELECT * FROM INQUIRY_TBL ";
@@ -48,14 +48,14 @@ public class InquiryDAO extends JDBConnect {
 			rs = psmt.executeQuery(sql);
 
 			while (rs.next()) {
-				Map<String, Object> map = new HashMap<String, Object>();
+//				Map<String, Object> map = new HashMap<String, Object>();
 
 				InquiryDTO inquiryDTO = new InquiryDTO(rs.getLong(1), rs.getLong(2), rs.getString(3), rs.getString(4),
 						rs.getString(5), rs.getString(6), rs.getTimestamp(7).toLocalDateTime());
 
-				map.put("inquiryDTO", inquiryDTO);
+//				map.put("inquiryDTO", inquiryDTO);
 
-				values.add(map);
+				values.add(inquiryDTO);
 			}
 
 		} catch (Exception e) {

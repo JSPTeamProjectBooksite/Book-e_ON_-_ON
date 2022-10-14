@@ -1,3 +1,5 @@
+<%@page import="org.iptime.booke.utils.LocalDateABC"%>
+<%@page import="java.time.LocalDateTime"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -5,6 +7,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script type="text/javascript">
+	function clickBtn(btn) {
+		if (btn == "Delete") {
+			document.getElementById("sendForm").action = "/DeleteUser";
+		} else if (btn == "Edit") {
+			document.getElementById("sendForm").action = "/ManageUserEdit";
+		}
+		document.getElementById("sendForm").submit();
+	}
+</script>
 <title>유저정보 관리</title>
 <style type="text/css">
 * {
@@ -40,7 +52,7 @@
 
 		<div style="height: 10vh"></div>
 
-		<form action="/DeleteUser" method="get">
+		<form action="" method="get" id="sendForm">
 			<table border="1" id="UserTable">
 				<tr>
 					<td colspan="12" style="text-align: center;"><input
@@ -61,6 +73,11 @@
 					<th>가입일</th>
 				</tr>
 				<c:forEach var="n" items="${memberList}">
+					<c:set var="registerDate" value="${ n.memberDto.registerDate }" ></c:set>
+					<% 
+						LocalDateTime date = (LocalDateTime) pageContext.getAttribute("registerDate");
+						pageContext.setAttribute("registerDate", LocalDateABC.printDate(date));
+					%>
 					<tr>
 						<td class="radioBox"><input type="radio" name="chooseUser"
 							value="${ n.memberDto.id }"></td>
@@ -74,14 +91,13 @@
 						<td>${ n.memberDto.address }</td>
 						<td>${ n.memberDto.point }</td>
 						<td>${ n.memberState }</td>
-						<td>${ n.memberDto.registerDate }</td>
+						<td>${ registerDate }</td>
 					</tr>
 				</c:forEach>
 				<tr>
 					<td colspan="12" style="text-align: right;">
-						<button>수정</button>
-						<button>삭제</button>
-						<button>추가</button>
+						<button onclick="clickBtn('Edit')">수정</button>
+						<button onclick="clickBtn('Delete')">삭제</button>
 					</td>
 				</tr>
 			</table>

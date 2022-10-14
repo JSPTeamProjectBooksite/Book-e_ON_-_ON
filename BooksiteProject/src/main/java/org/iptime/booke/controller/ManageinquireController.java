@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.iptime.booke.dao.InquiryDAO;
+import org.iptime.booke.dao.MemberDAO;
+import org.iptime.booke.dto.InquiryDTO;
 
 @WebServlet("/MANAGE/INQUIRY")
 public class ManageinquireController extends HttpServlet{
@@ -20,11 +22,24 @@ public class ManageinquireController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		InquiryDAO dao = new InquiryDAO();
+		MemberDAO mdao = new MemberDAO();
 
-		ArrayList<Map<String, Object>> inquiryList = dao.Manamgeinquiryinfo();
+		ArrayList<InquiryDTO> inquiryList = dao.Manamgeinquiryinfo();
+		String [] nameList = new String[inquiryList.size()];
+		
+		for(int i=0; i<inquiryList.size();i++) {
+			
+			long memberId = inquiryList.get(i).getMemberId();
+//			mdao.NameSearch(memberId);
+			nameList[i] = mdao.NameSearch(memberId);		
+		}
+//		String name = nameList[0];
+		Long Id =  inquiryList.get(1).getMemberId();
 
 		req.setAttribute("inquiryList", inquiryList);
+		req.setAttribute("nameList", nameList);
 		req.getRequestDispatcher("../Manageinquire.jsp").forward(req, resp);
+		
 	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

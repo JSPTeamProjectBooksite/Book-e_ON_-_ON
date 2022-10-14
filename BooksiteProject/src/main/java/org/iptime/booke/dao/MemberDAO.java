@@ -9,6 +9,7 @@ import java.util.Map;
 
 import org.iptime.booke.common.JDBConnect;
 import org.iptime.booke.dto.MemberDTO;
+import org.iptime.booke.utils.LocalDateABC;
 
 public class MemberDAO extends JDBConnect {
 
@@ -87,6 +88,29 @@ public class MemberDAO extends JDBConnect {
 
 		return false;
 	}
+	
+	public String NameSearch(Long id) {
+		try {
+			String query = " SELECT NAME FROM member_TBL WHERE ID =? ";
+			psmt = con.prepareStatement(query);
+			psmt.setLong(1, id);
+			rs = psmt.executeQuery();
+			rs.next();
+
+			if (rs.getRow() == 0) {
+				System.out.println("0 row selected...");
+			} else {
+				return rs.getString(1);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+	
+	
 
 //	public String findId(String member_name, String member_address) {
 //		String mid = null;
@@ -267,9 +291,12 @@ public class MemberDAO extends JDBConnect {
 				dto.setName(rs.getString(2));
 				
 				
-				String email = rs.getString(3).substring(0,3);
-				for(int i = 3, n = rs.getString(3).length(); i < n; i++)
-					email += "*";
+				String email = rs.getString(3);
+				if(email.length()>3) {
+					email = email.substring(0,3);
+					for(int i = 3, n = rs.getString(3).length(); i < n; i++)
+						email += "*";
+				}
 				dto.setEmail(email);
 				
 				System.out.println("리뷰용 유저정보 성공적 조회");
@@ -281,4 +308,35 @@ public class MemberDAO extends JDBConnect {
 
 		return dto;
 	}
+	
+	public int updateUserInfo(MemberDTO dto) {
+		int result = 0;
+		
+		try {
+			
+			String sql = "UPDATE MEMBER_TBL SET name = ?, EMAIL = ?, PASSWORD = ?, BIRTH = ?, GENDER = ?, PHONE_NUM = ?, ADDRESS = ?, POINT = ?, MEMBER_STATE_ID = ?, REGISTER_DATE = ? WHERE id = ?";
+			
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, dto.getName());
+			psmt.setString(2, dto.getEmail());
+			psmt.setString(3, dto.getPassword());
+			psmt.setDate(4, Date.valueOf(dto.getBirth()));
+			psmt.setString(5, dto.getGender());
+			psmt.setString(6, dto.getPhoneNum());
+			psmt.setString(7, dto.getAddress());
+			psmt.setInt(8, dto.getPoint());
+			psmt.setLong(9, dto.getMemberStateId());
+			psmt.setDate(10, LocalDateABC.dateValueOf(dto.getRegisterDate()));
+			psmt.setLong(11, dto.getId());
+			
+			result = psmt.executeUpdate();
+			
+		} catch(Exception e) {
+			System.out.println("회원 정보 수정 중 오류 발생");
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	
 }

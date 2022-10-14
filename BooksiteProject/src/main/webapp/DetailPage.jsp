@@ -242,7 +242,7 @@
 							    ${fn:replace(review.review.registerDate, 'T', ' ')}
 							</span>
 							<span class="score">
-							    ${ review.review.score }
+                                <img src="./source/Detail/starscore/${ review.review.score }score.png" alt="" style="width:100px">
 						    </span>
 						</div>
 						<!-- 리뷰 -->
@@ -255,7 +255,22 @@
                             <form action="/like.do?whatReviewLike=" method="post" id="likeForm"></form>
 							<span class="likeBtn">
 								${ review.review.likeCount }
-								<button type="button" onclick="likey(${ review.review.id })">좋아요</button>
+								<button type="button" onclick="likey(${ review.review.id })">
+                                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
+                                        <g>
+                                            <g>
+                                                <path d="M14.708,15.847C14.252,14.864,14,13.742,14,12.5s0.252-2.489,0.708-3.659c0.455-1.171,1.114-2.266,1.929-3.205
+                                                    c0.814-0.938,1.784-1.723,2.86-2.271C20.574,2.814,21.758,2.5,23,2.5s2.426,0.252,3.503,0.707c1.077,0.456,2.046,1.115,2.86,1.929
+                                                    c0.813,0.814,1.474,1.784,1.929,2.861C31.749,9.073,32,10.258,32,11.5s-0.252,2.427-0.708,3.503
+                                                    c-0.455,1.077-1.114,2.047-1.929,2.861C28.55,18.678,17.077,29.044,16,29.5l0,0l0,0C14.923,29.044,3.45,18.678,2.636,17.864
+                                                    c-0.814-0.814-1.473-1.784-1.929-2.861C0.252,13.927,0,12.742,0,11.5s0.252-2.427,0.707-3.503C1.163,6.92,1.821,5.95,2.636,5.136
+                                                    C3.45,4.322,4.42,3.663,5.497,3.207C6.573,2.752,7.757,2.5,9,2.5s2.427,0.314,3.503,0.863c1.077,0.55,2.046,1.334,2.861,2.272
+                                                    c0.814,0.939,1.473,2.034,1.929,3.205C17.748,10.011,18,11.258,18,12.5s-0.252,2.364-0.707,3.347
+                                                    c-0.456,0.983-1.113,1.828-1.929,2.518"/>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                </button>
 							</span>
 						</div>
 					</div>
@@ -264,6 +279,13 @@
             </div>
 			<!-- 리뷰 작성 폼 -->
             <form action="/reveiw.do?bookID=${ bookInfo.id }" method="post" id="reveiwWriteForm" onsubmit="return reveiwBtnAction(this);">
+                <div id="starScoreDiv">
+                    <span>
+                        만족도
+                        <input type="range" name="score" min="1" max="10" value="10" oninput="starscore(this.value)">
+                        <img src="./source/Detail/starscore/10score.png" alt="" style="width:100px" id="starScoreImg">
+                    </span>
+                </div>
                 <div id="reveiwWrite">
                     <div>
                         <textarea name="reveiwBox" id="reveiwBox" placeholder="리뷰를 입력해 주세요."></textarea>
@@ -391,6 +413,13 @@
             form.reveiwBox.focus();
             return false;
         }
+        alert("리뷰를 작성했습니다.");
+
+        form.submit();
+        
+        setTimeout(function(){
+            location.reload();
+        },100);
     }
 
     function likey(reviewID) {
@@ -398,7 +427,7 @@
             alert("좋아요버튼은 로그인 후에 누를 수 있습니다.");
             return false;
         }
-        alert("이 뎃글을 좋아합니다.");
+        alert("이 리뷰를 좋아합니다.");
 
         const form = document.getElementById("likeForm");
 
@@ -409,5 +438,9 @@
             location.reload();
         },100);
 	}
+
+    function starscore(val){
+        document.getElementById("starScoreImg").src = "./source/Detail/starscore/"+ val +"score.png"
+    }
 </script>
 </html>
