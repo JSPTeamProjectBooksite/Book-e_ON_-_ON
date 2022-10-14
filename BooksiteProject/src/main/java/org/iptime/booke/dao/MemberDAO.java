@@ -88,6 +88,29 @@ public class MemberDAO extends JDBConnect {
 
 		return false;
 	}
+	
+	public String NameSearch(Long id) {
+		try {
+			String query = " SELECT NAME FROM member_TBL WHERE ID =? ";
+			psmt = con.prepareStatement(query);
+			psmt.setLong(1, id);
+			rs = psmt.executeQuery();
+			rs.next();
+
+			if (rs.getRow() == 0) {
+				System.out.println("0 row selected...");
+			} else {
+				return rs.getString(1);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+	
+	
 
 //	public String findId(String member_name, String member_address) {
 //		String mid = null;
@@ -309,4 +332,6 @@ public class MemberDAO extends JDBConnect {
 		}
 		return result;
 	}
+	
+	
 }
