@@ -6,10 +6,8 @@
 
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>1:1고객문의(관리자)</title>
-<link rel="stylesheet" href="css/ManageInquire.css">
+<link rel="stylesheet" href="/css/ManageInquire.css">
 </head>
 
 <body>
@@ -18,7 +16,7 @@
 		<h2 style="padding-bottom: 20px">1:1고객문의(답변대기 건수 : 2건)</h2>
 
 		<form method="get">
-			<table class="search" border="1" style="width: 1200px;">
+			<table class="search" border="1">
 				<tr>
 					<td align="center"><select name="searchField">
 							<option value="title">제목</option>
@@ -29,10 +27,10 @@
 			</table>
 		</form>
 
-		<table border="1" style="width: 1200px;">
+		<table border="1" class="inqinfo">
 			<tr>
 				<th>번호</th>
-				<th>ID(이메일)</th>
+				<th>ID(계정)</th>
 				<th>제목</th>
 				<th>내용</th>
 				<th>문의유형</th>
@@ -45,7 +43,7 @@
 					<td>${ nameList[status.index] }</td>
 					<td>${ inq.title }</td>
 					<td>${ inq.content }</td>
-					<td>${ inq.categroy }</td>
+					<td>${ inq.category }</td>
 					<td>${ inq.state }
 					<td>${ inq.rigisterDate}</td>
 				</tr>
