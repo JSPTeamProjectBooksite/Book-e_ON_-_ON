@@ -113,7 +113,7 @@ public class InquiryDAO extends JDBConnect {
 ////				dto.setPhoneNum(rs.getString(3));
 //				dto.setTitle(rs.getString(3));
 //				dto.setContent(rs.getString(4));
-//				dto.setcategroy(rs.getNString(5));
+//				dto.setCategroy(rs.getNString(5));
 //				dto.setState(rs.getString(6));
 ////				dto.setRigisterDate(LocalDateABC.toLocalDateTime(rs.getDate(8)));
 //

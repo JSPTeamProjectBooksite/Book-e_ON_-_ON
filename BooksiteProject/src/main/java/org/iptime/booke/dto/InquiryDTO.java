@@ -25,7 +25,6 @@ public class InquiryDTO {
 		this.state = state;
 		this.rigisterDate = rigisterDate;
 	}
-	
 	public Long getId() {
 		return id;
 	}
@@ -81,5 +80,4 @@ public class InquiryDTO {
 	public void setRigisterDate(LocalDateTime rigisterDate) {
 		this.rigisterDate = rigisterDate;
 	}
-	
 }
