@@ -22,6 +22,7 @@ SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일");
 		<h2>▶1:1 고객문의</h2>
 		<form name="inquireFrm" method="post" enctype="multipart/form-data"
 			action="/writeInquiry" onsubmit="return notice(this);">
+			
 			<table class="CustomerInquiry" border="1">
 
 				<tr>
