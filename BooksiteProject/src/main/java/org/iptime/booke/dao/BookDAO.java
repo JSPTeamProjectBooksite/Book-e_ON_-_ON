@@ -274,7 +274,8 @@ public class BookDAO extends DBConnPool{
 			rs = psmt.executeQuery(query);
 
 			while (rs.next()) {
-				BookDTO dto = new BookDTO(rs.getLong(1), 
+				BookDTO dto = new BookDTO(
+						rs.getLong(1), 
 						rs.getString(2), 
 						rs.getString(3), 
 						rs.getLong(4) ,
@@ -295,7 +296,7 @@ public class BookDAO extends DBConnPool{
 						rs.getInt(19), 
 						rs.getInt(20), 
 						rs.getString(21), 
-						rs.getTimestamp(22).toLocalDateTime(), 
+						rs.getDate(22).toLocalDate(), 
 						rs.getTimestamp(23).toLocalDateTime(), 
 						rs.getTimestamp(24).toLocalDateTime());
 				
