@@ -291,9 +291,12 @@ public class MemberDAO extends JDBConnect {
 				dto.setName(rs.getString(2));
 				
 				
-				String email = rs.getString(3).substring(0,3);
-				for(int i = 3, n = rs.getString(3).length(); i < n; i++)
-					email += "*";
+				String email = rs.getString(3);
+				if(email.length()>3) {
+					email = email.substring(0,3);
+					for(int i = 3, n = rs.getString(3).length(); i < n; i++)
+						email += "*";
+				}
 				dto.setEmail(email);
 				
 				System.out.println("리뷰용 유저정보 성공적 조회");
@@ -325,6 +328,8 @@ public class MemberDAO extends JDBConnect {
 			psmt.setLong(9, dto.getMemberStateId());
 			psmt.setDate(10, LocalDateABC.dateValueOf(dto.getRegisterDate()));
 			psmt.setLong(11, dto.getId());
+			
+			result = psmt.executeUpdate();
 			
 		} catch(Exception e) {
 			System.out.println("회원 정보 수정 중 오류 발생");
