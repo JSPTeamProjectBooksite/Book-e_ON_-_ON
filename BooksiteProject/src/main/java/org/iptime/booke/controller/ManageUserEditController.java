@@ -35,26 +35,23 @@ public class ManageUserEditController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		
-		String idx = request.getParameter("id");
-		Long temp = Long.parseLong(idx);
+
+		// 폼 값 받아오기
+		Long idx = Long.parseLong(request.getParameter("id"));
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		String birth = request.getParameter("birth");
-		LocalDate date = null;
-		date = LocalDateABC.stringToLocalDate(birth);
+		LocalDate date = LocalDateABC.stringToLocalDate(request.getParameter("birth"));
 		String gender = request.getParameter("gender");
 		String phoneNum = request.getParameter("phoneNum");
 		String address = request.getParameter("address");
-		String point = request.getParameter("point");
-		int p = Integer.parseInt(point);
-		String memberStateId = request.getParameter("memberStateId");
-		short s = Short.parseShort(memberStateId);
-		String registerDate = request.getParameter("registerDate"); 
+		int point = Integer.parseInt(request.getParameter("point"));
+		short memberStateId = Short.parseShort(request.getParameter("memberStateId"));
+		String registerDate = request.getParameter("registerDate");
 
+		// 받아온 폼 값 dto에 저장
 		MemberDTO dto = new MemberDTO();
-		dto.setId(temp);
+		dto.setId(idx);
 		dto.setName(name);
 		dto.setEmail(email);
 		dto.setPassword(password);
@@ -62,8 +59,8 @@ public class ManageUserEditController extends HttpServlet {
 		dto.setGender(gender);
 		dto.setPhoneNum(phoneNum);
 		dto.setAddress(address);
-		dto.setPoint(p);
-		dto.setMemberStateId(s);
+		dto.setPoint(point);
+		dto.setMemberStateId(memberStateId);
 		dto.setRegisterDate(LocalDateABC.stringToLocalDateTime(registerDate));
 
 		MemberDAO dao = new MemberDAO();

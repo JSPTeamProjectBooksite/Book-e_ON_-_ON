@@ -1,3 +1,5 @@
+<%@page import="org.iptime.booke.utils.LocalDateABC"%>
+<%@page import="java.time.LocalDateTime"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -71,6 +73,11 @@
 					<th>가입일</th>
 				</tr>
 				<c:forEach var="n" items="${memberList}">
+					<c:set var="registerDate" value="${ n.memberDto.registerDate }" ></c:set>
+					<% 
+						LocalDateTime date = (LocalDateTime) pageContext.getAttribute("registerDate");
+						pageContext.setAttribute("registerDate", LocalDateABC.printDate(date));
+					%>
 					<tr>
 						<td class="radioBox"><input type="radio" name="chooseUser"
 							value="${ n.memberDto.id }"></td>
@@ -84,7 +91,7 @@
 						<td>${ n.memberDto.address }</td>
 						<td>${ n.memberDto.point }</td>
 						<td>${ n.memberState }</td>
-						<td>${ n.memberDto.registerDate }</td>
+						<td>${ registerDate }</td>
 					</tr>
 				</c:forEach>
 				<tr>
