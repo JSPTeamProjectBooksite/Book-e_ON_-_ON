@@ -7,21 +7,21 @@ public class InquiryDTO {
 	private Long memberId;
 	private String title;
 	private String content;
-	private String category;
+	private String categroy;
 	private String state;
 	private LocalDateTime rigisterDate;
 
 	
 	public InquiryDTO() {}
 	
-	public InquiryDTO(Long id, Long memberId, String title, String content, String category, String state,
+	public InquiryDTO(Long id, Long memberId, String title, String content, String categroy, String state,
 			LocalDateTime rigisterDate) {
 		super();
 		this.id = id;
 		this.memberId = memberId;
 		this.title = title;
 		this.content = content;
-		this.category = category;
+		this.categroy = categroy;
 		this.state = state;
 		this.rigisterDate = rigisterDate;
 	}
@@ -51,11 +51,11 @@ public class InquiryDTO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getcategory() {
-		return category;
+	public String getCategroy() {
+		return categroy;
 	}
-	public void setcategory(String category) {
-		this.category = category;
+	public void setCategroy(String categroy) {
+		this.categroy = categroy;
 	}
 	public LocalDateTime getRigisterDate() {
 		return rigisterDate;
