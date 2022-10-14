@@ -22,10 +22,7 @@ public class ReveiwControllor extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		
-		String referer = (request.getHeader("Referer").substring(8)); //"http://booke.iptime.org"제거 후 주소 저장
-		referer = referer.substring(referer.indexOf("/"));
-		
-		System.out.println("리뷰를 작성한 도서 주소 : " + referer);//[확인완료]
+		request.setCharacterEncoding("UTF-8"); // 받은 문자를 UTF-8로 변경
 		
 		Long memberID = (Long)session.getAttribute("LoginID");
 		Long bookID = Long.parseLong(request.getParameter("bookID"));
@@ -35,12 +32,14 @@ public class ReveiwControllor extends HttpServlet {
 		}
 		String comment = request.getParameter("reveiwBox");
 		
+		System.out.println("리퀘스크 받은 리뷰 : " + comment);
+		
 		BookReviewDAO dao = new BookReviewDAO();
 		if(dao.writeReview(bookID, memberID, score, comment))
 			System.out.println("리뷰가 성공적으로 작성 됨");
 		dao.close();
 		
-		response.sendRedirect(referer);
+		request.getRequestDispatcher("/HistoryBack.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
