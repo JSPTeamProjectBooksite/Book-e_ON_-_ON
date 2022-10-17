@@ -25,48 +25,59 @@ public class InquiryDTO {
 		this.state = state;
 		this.rigisterDate = rigisterDate;
 	}
-	
-
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public Long getMemberId() {
 		return memberId;
 	}
+
 	public void setMemberId(Long memberId) {
 		this.memberId = memberId;
 	}
+
 	public String getTitle() {
 		return title;
 	}
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
 	public String getContent() {
 		return content;
 	}
+
 	public void setContent(String content) {
 		this.content = content;
 	}
+
 	public String getCategroy() {
 		return categroy;
 	}
+
 	public void setCategroy(String categroy) {
 		this.categroy = categroy;
 	}
-	public LocalDateTime getRigisterDate() {
-		return rigisterDate;
-	}
-	public void setRigisterDate(LocalDateTime rigisterDate) {
-		this.rigisterDate = rigisterDate;
-	}
+
 	public String getState() {
 		return state;
 	}
+
 	public void setState(String state) {
 		this.state = state;
+	}
+
+	public LocalDateTime getRigisterDate() {
+		return rigisterDate;
+	}
+
+	public void setRigisterDate(LocalDateTime rigisterDate) {
+		this.rigisterDate = rigisterDate;
 	}
 }

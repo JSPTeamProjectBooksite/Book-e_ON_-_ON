@@ -1,8 +1,7 @@
 package org.iptime.booke.dao;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+
 import org.iptime.booke.common.JDBConnect;
 import org.iptime.booke.dto.InquiryDTO;
 
@@ -62,6 +61,30 @@ public class InquiryDAO extends JDBConnect {
 			e.printStackTrace();
 		}
 		return values;
+	}
+	
+	public int InquireRegister(InquiryDTO dto) {
+		int result = 0;
+
+		try {
+			String query = "INSERT INTO INQUIRY_TBL(ID, MEMBER_ID, TITLE, CONTENT, CATEGROY) VALUES(INQUIRY_SEQ.nextval, ?, ?, ?, ?)";
+			
+			psmt = con.prepareStatement(query);
+			psmt.setLong(1, 1);
+			psmt.setString(2, dto.getTitle());
+			psmt.setString(3, dto.getContent());
+			psmt.setString(4, dto.getCategroy());
+			result = psmt.executeUpdate();
+			
+			System.out.println("문의가 성공적으로 접수됨");
+//		} catch (SQLIntegrityConstraintViolationException e) {
+//			System.out.println("중복된 아이디가 있는 경우 오류 발생");
+//			result = 2;
+		} catch (Exception e) {
+			System.out.println("문의 등록 중 예외 발생");
+			e.printStackTrace();
+		}
+		return result;
 	}
 }
 
