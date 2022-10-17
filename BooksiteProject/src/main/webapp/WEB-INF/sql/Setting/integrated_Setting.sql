@@ -834,9 +834,9 @@ INSERT INTO INQUIRY_TBL(ID, MEMBER_ID, TITLE, CONTENT, CATEGROY) VALUES(INQUIRY_
 -- ============================================================
 -- 저자
 -- ============================================================
-INSERT INTO author_TBL (id, profile_Img, name, nationality, PROFILE_CONTENTS) VALUES(1, './source/author/나겨울_소개이미지.png', '나겨울', '국내작가', '글이 사람들에게 선한 영향력을 미치는 수단이라고 믿는다.');
-INSERT INTO author_TBL (id, profile_Img, name, nationality, PROFILE_CONTENTS) VALUES(2, NULL, '김욱동', '국내작가', '한국외국어대학교 영문과 및 동 대학원을 졸업한 뒤 미국 미시시피대학교에서 영문학 문학석사 학위를, 뉴욕주립대학교에서 영문학 문학박사를 받았다.');
-INSERT INTO author_TBL (id, profile_Img, name, nationality, PROFILE_CONTENTS) VALUES(3, NULL, '손원평', '국내작가', '서울에서 태어났다. 서강대학교에서 사회학과 철학을 공부했고 한국영화아카데미 영화과에서 영화 연출을 전공했다.');
+INSERT INTO author_TBL (id, profile_Img, name, nationality, PROFILE_CONTENTS) VALUES(author_SEQ.nextval, './source/author/나겨울_소개이미지.png', '나겨울', '국내작가', '글이 사람들에게 선한 영향력을 미치는 수단이라고 믿는다.');
+INSERT INTO author_TBL (id, profile_Img, name, nationality, PROFILE_CONTENTS) VALUES(author_SEQ.nextval, NULL, '김욱동', '국내작가', '한국외국어대학교 영문과 및 동 대학원을 졸업한 뒤 미국 미시시피대학교에서 영문학 문학석사 학위를, 뉴욕주립대학교에서 영문학 문학박사를 받았다.');
+INSERT INTO author_TBL (id, profile_Img, name, nationality, PROFILE_CONTENTS) VALUES(author_SEQ.nextval, NULL, '손원평', '국내작가', '서울에서 태어났다. 서강대학교에서 사회학과 철학을 공부했고 한국영화아카데미 영화과에서 영화 연출을 전공했다.');
 
 -- ============================================================
 -- 알림

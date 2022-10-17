@@ -42,48 +42,52 @@
 	<div id="wrap">
 		<div id="contents">
 		    <div style="height: 100px;"></div>
+			<h1 style="text-align: center;">도서 정보</h1>
+			<form action="/webCrawling" method="post" >
+				교보문고 링크 : 
+				<input type="text" name="URL" value="">
+				<input type="submit" value="책 정보 가져오기">
+			</form>
 			<form action="/BookUpload.do" method="post" id="bookAddForm" onsubmit="return checkForm(this);">
-				<h1 style="text-align: center;">도서 정보</h1>
 		        <table border="1" id="bookAddFormTable">
 		            <tr>
 		                <th>*도서명</th>
 		                <td>
-		                    <input type="text" name="title" value="도서 이름">
-		                    <!-- <button type="button" onclick="makeFileName()">이미지 이름 생성</button> -->
+		                    <input type="text" name="title" value="${ book.title }">
 		                </td>
 		            </tr>
 		            <tr>
 		                <th>*이미지 경로</th>
-		                <td><input type="text" name="coverImgUrl"></td>
+		                <td><input type="text" name="coverImgUrl" value="${ book.coverImg }"></td>
 		            </tr>
 		            <tr>
 		                <th>
 							*작가
-							<button type="button">작가 조회</button>
+							<button type="button" onclick="window.open('/authorSearch?do=authorSearchFrom', '', 'width=500, height=650'); return false;">작가 조회</button>
 						</th>
 		                <td>
-		                	<input type="text" name="author" value="1">
+		                	<input type="text" name="author" value="${ authorID }" disabled>
 		                </td>
 		            </tr>
 		            <tr>
 		                <th>번역가</th>
-		                <td><input type="text" name="translator"></td>
+		                <td><input type="text" name="translator" value="${ book.translator }"></td>
 		            </tr>
 		            <tr>
 		                <th>*가격</th>
-		                <td><input type="text" name="price"></td>
+		                <td><input type="text" name="price" value="${ book.price }"></td>
 		            </tr>
 		            <tr>
 		                <th>배송비</th>
-		                <td><input type="text" name="deliveryFee" value="2500"></td>
+		                <td><input type="text" name="deliveryFee" value="${ book.deliveryFee }"></td>
 		            </tr>
 		            <tr>
 		                <th>페이지 장수</th>
-		                <td><input type="text" name="totalPages"></td>
+		                <td><input type="text" name="totalPages" value="${ book.totalPages }"></td>
 		            </tr>
 		            <tr>
 		                <th>무게</th>
-		                <td><input type="text" name="weight"></td>
+		                <td><input type="text" name="weight" value="${ book.weight }"></td>
 		            </tr>
 		            <tr>
 		                <th>ISBN</th>
@@ -92,8 +96,8 @@
 							grid-template-columns: 1fr 1fr;
 							gap: 5px;
 						">
-							<div><input type="text" name="isbn13" placeholder="ISBN13"></div>
-		                	<div><input type="text" name="isbn10" placeholder="ISBN10"></div>
+							<div><input type="text" name="isbn13" placeholder="ISBN13" value="${ book.isbn13 }"></div>
+		                	<div><input type="text" name="isbn10" placeholder="ISBN10" value="${ book.isbn10 }"></div>
 		                </td>
 		            </tr>
 		            <tr>
@@ -107,31 +111,31 @@
 		            </tr>
 		            <tr>
 		                <th>*소개글</th>
-		                <td><textarea name="introduce">&lt;p&gt;&lt;h3&gt;&lt;/h3&gt;&lt;/p&gt;&lt;br&gt;</textarea></td>
+		                <td><textarea name="introduce">${ book.introduce }</textarea></td>
 		            </tr>
 		            <tr>
 		                <th>소개이미지링크</th>
-		                <td><input type="text" name="introduceImageUrl"></td>
+		                <td><input type="text" name="introduceImageUrl" value="${ book.introduceImg }"></td>
 		            </tr>
 		            <tr>
 		                <th>*출판사</th>
-		                <td><input type="text" name="publisher"></td>
+		                <td><input type="text" name="publisher" value="${ book.publisher }"></td>
 		            </tr>
 		            <tr>
 		                <th>출판사 리뷰</th>
-		                <td><textarea name="publisherReview"></textarea></td>
+		                <td><textarea name="publisherReview">${ book.publisherReview }</textarea></td>
 		            </tr>
 		            <tr>
 		                <th>목차</th>
-		                <td><textarea name="contents"></textarea></td>
+		                <td><textarea name="contents">${ book.contents }</textarea></td>
 		            </tr>
 		            <tr>
 		                <th>*출시일</th>
-		                <td><input type="date" name="publicationDate" ></td>
+		                <td><input type="date" name="publicationDate" value="${ book.publicationDate }"></td>
 		            </tr>
 		            <tr>
 		                <th>*캐치프라이즈</th>
-		                <td><input type="text" name="catchphrase"  value="&lt;br&gt;&lt;b&gt;  &lt;/b&gt;"></td>
+		                <td><input type="text" name="catchphrase" value="${ book.catchphrase }"></td>
 		            </tr>
 					<tfoot>
 						<tr>
