@@ -151,26 +151,6 @@
 	</div>
 </body>
 <script type="text/javascript">
-
-	//파일명 자동 완성기능
-    function makeFileName(){
-		var form = document.getElementById("bookAddForm");
-        var name = "" + form.title.value;
-        name = name.trim();
-
-        alert("'" + name + "' 으로 파일명을 생성합니다.");
-
-        if(name.length > 0){
-        	form.title.value = name;
-            name = name.replace(/ /g, '_');
-            form.imageFileName.value = name;
-            name = name + "_소개이미지";
-            form.introduceImage.value = name;
-            form.introduceImageUrl.value = name;
-        }
-    }
-	
-	//
 	function checkForm(form){
 		var title = form.title;
 		var coverImgUrl = form.coverImgUrl;
