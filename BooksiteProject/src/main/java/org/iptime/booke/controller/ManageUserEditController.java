@@ -69,6 +69,8 @@ public class ManageUserEditController extends HttpServlet {
 
 		if (result == 1) {
 			System.out.println("회원 정보 수정 성공!!!");
+			response.sendRedirect("./MANAGE/USER");
+			return;
 		} else {
 			System.out.println("회원 정보 수정 실패!!!");
 		}

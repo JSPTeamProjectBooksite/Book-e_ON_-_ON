@@ -18,7 +18,7 @@
 <body>
 	<div class="container">
 		<h1>로그인</h1>
-		<form action="/login" method="get" name="login">
+		<form action="/login" method="get" name="login" onsubmit="return validateForm(this);">
 			<div>
 				<input class="init" type="text" placeholder="Email" name="email">
 			</div>
@@ -34,5 +34,17 @@
 		</form>
 	</div>
 </body>
+<script type="text/javascript">
+	function validateForm(form) {
+		if(!form.email.value) {
+			alert("아이디를 입력하세요.");
+			return false;
+		}
+		if(!form.password.value) {
+			alert("비밀번호를 입력하세요.");
+			return false;
+		}
+	}
+</script>
 
 </html>

@@ -14,13 +14,13 @@
 <body>
 	<div class="container">
         <h1> 회원가입 </h1>
-        <form action="register" method="get">
+        <form action="register" method="get" onsubmit="return validateForm(this);">
             <div>
                 <input class="inputGroup" type="text" placeholder="Your name" name="name">
             </div>
             <div>
                 <input class="inputGroup" type="text" placeholder="Email" name="email">
-                <button type="button" href="/IDCheck">중복체크</button>
+                <!-- <button type="button" href="/IDCheck">중복체크</button> -->
             </div>
             <div>
                 <input class="inputGroup" type="password" placeholder="Password" name="password">
@@ -64,4 +64,36 @@
         </form>
     </div>
 </body>
+<script type="text/javascript">
+	function validateForm(form) {
+		if(!form.name.value) {
+			alert("이름을 입력하세요.");
+			return false;
+		}
+		if(!form.email.value) {
+			alert("이메일을 입력하세요.");
+			return false;
+		}
+		if(!form.password.value) {
+			alert("비밀번호를 입력하세요.");
+			return false;
+		}
+		if(!form.birthday.value) {
+			alert("생년월일을 설정하세요.");
+			return false;
+		}
+		const select = document.getElementById('gender');
+		if (select.tagName === 'SELECT') {
+			alert("성별을 선택해주세요.");
+		}
+		if(!form.phoneNum.value) {
+			alert("핸드폰번호를 입력하세요.");
+			return false;
+		}
+		if(!form.address.value) {
+			alert("주소를 입력하세요.");
+			return false;
+		}
+	}
+</script>
 </html>
