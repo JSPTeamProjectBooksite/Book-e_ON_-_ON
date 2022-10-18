@@ -9,24 +9,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.iptime.booke.dao.BookDAO;
+import org.iptime.booke.dto.BookDTO;
 
-@WebServlet("/ManageBookDelete")
-public class ManageBookDeleteController extends HttpServlet {
+@WebServlet("/ManageBookRevise")
+public class ManageBookReviseController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String idx = request.getParameter("chooseBook");		
+		String id = request.getParameter("chooseBook");	
+		
+		System.out.println("ID:"+id);
+		
 		BookDAO dao = new BookDAO();
+		BookDTO book = dao.ManagerBookInfo(Long.parseLong(id));
 		
-		int result = dao.deleteBook(idx);
+		System.out.println("작가아이디 : " + book.getAuthorId());
 		
-		if(result == 1) {
-			System.out.println("책 삭제 완료");
-		} else {
-			System.out.println("책 삭제 실패");			
-		}
-		dao.close();
-		response.sendRedirect("/ManagerBook");
+		request.setAttribute("book", book);
+		request.getRequestDispatcher("/BookReviseForm.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

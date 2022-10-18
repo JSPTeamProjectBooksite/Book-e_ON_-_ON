@@ -8,6 +8,32 @@ import org.iptime.booke.common.DBConnPool;
 import org.iptime.booke.dto.AuthorDTO;
 
 public class AuthorDAO extends DBConnPool {
+	
+	// 작가아이디(Long)로 이름만 검색
+		public AuthorDTO findAuthorName(Long AuthorId) {
+			AuthorDTO DTO = null;
+
+			String query = "SELECT ID, NAME FROM AUTHOR_TBL WHERE ID = ?";
+
+			if (AuthorId > 0) {
+				try {
+					psmt = con.prepareStatement(query);
+					psmt.setLong(1, AuthorId);
+					rs = psmt.executeQuery();
+
+					if (rs.next()) {
+						DTO = new AuthorDTO();
+						DTO.setId(rs.getLong(1));
+						DTO.setName(rs.getString(3));
+					}
+				} catch (Exception e) {
+					System.out.println("작가정보 조회 중 예외 발생");
+					e.printStackTrace();
+				}
+			}
+
+			return DTO;
+		}
 
 	// 작가아이디(Long)로 검색
 	public AuthorDTO findAuthor(Long AuthorId) {

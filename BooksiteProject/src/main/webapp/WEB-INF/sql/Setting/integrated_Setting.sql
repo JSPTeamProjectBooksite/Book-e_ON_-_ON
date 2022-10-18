@@ -30,6 +30,7 @@ DROP SEQUENCE BOOK_SEQ;
 DROP SEQUENCE MEMBER_SEQ;
 DROP SEQUENCE notice_SEQ;
 DROP SEQUENCE inquiry_SEQ;
+DROP SEQUENCE payment_SEQ;
 DROP SEQUENCE order_SEQ;
 DROP SEQUENCE author_SEQ;
 
@@ -356,7 +357,6 @@ COMMENT ON COLUMN locker_TBL.BOOK_ID IS '북마크 당한 책 id';
 CREATE TABLE payment_TBL(	
 	id 					nchar(12) 		NOT NULL	PRIMARY KEY,
 	member_id			NUMBER			NOT NULL,
-	book_id				NUMBER			NOT NULL,
 	total_amount		number(7)		NOT NULL,
 	point_amount		NUMBER(7)		DEFAULT 0,		
 	actual_amount		NUMBER(7)		NOT NULL,	
@@ -367,11 +367,10 @@ CREATE TABLE payment_TBL(
 );
 
 ALTER TABLE payment_TBL ADD CONSTRAINT payment_member_id_FK FOREIGN KEY(member_id) REFERENCES member_TBL(id);
-ALTER TABLE payment_TBL ADD CONSTRAINT payment_book_id_FK FOREIGN KEY(book_id) REFERENCES book_TBL(id);
+--ALTER TABLE payment_TBL ADD CONSTRAINT payment_book_id_FK FOREIGN KEY(book_id) REFERENCES book_TBL(id);
 
 COMMENT ON COLUMN payment_TBL.ID IS '결제 식별 번호';
 COMMENT ON COLUMN payment_TBL.MEMBER_ID  IS '결제한 회원 id';
-COMMENT ON COLUMN payment_TBL.BOOK_ID  IS '결제한 상품 id';
 COMMENT ON COLUMN payment_TBL.TOTAL_AMOUNT  IS '총 결제 금액';
 COMMENT ON COLUMN payment_TBL.ACTUAL_AMOUNT  IS '실제 결제 금액';
 COMMENT ON COLUMN payment_TBL.POINT_AMOUNT  IS '적립금 결제 금액';
@@ -379,6 +378,14 @@ COMMENT ON COLUMN payment_TBL.PAYMENT_METHOD  IS '결제 방법';
 COMMENT ON COLUMN payment_TBL.SHIPPING_STATE  IS '배송 상태는 배송중으로 고정';
 COMMENT ON COLUMN payment_TBL.SHIPPING_MESSAGE  IS '배송 메시지';
 COMMENT ON COLUMN payment_TBL.REGISTER_DATE  IS '결제한 날짜';
+
+CREATE SEQUENCE payment_SEQ
+	INCREMENT BY 1
+	START WITH 1
+	MINVALUE 1
+	nomaxvalue
+	nocycle
+	nocache;
 
 -- ============================================================
 -- 주문
@@ -815,12 +822,12 @@ INSERT INTO book_category_TBL VALUES(book_category_SEQ.nextval, '기타', 8);
 --    END LOOP;
 --END;
 
-INSERT INTO MEMBER_TBL(id, name, email, password, birth, gender, phone_num, address) VALUES(member_SEQ.nextval, 'user01', 'user01@gmail.com', 'user01', '2022-10-01', 'M', '0100010001', '경기도 어딘가 무슨곳 좋은동');
-INSERT INTO MEMBER_TBL(id, name, email, password, birth, gender, phone_num, address) VALUES(member_SEQ.nextval, 'user02', 'user02@gmail.com', 'user02', '2022-10-01', 'W', '0100010002', '경기도 어딘가 무슨곳 좋은동');
-INSERT INTO MEMBER_TBL(id, name, email, password, birth, gender, phone_num, address) VALUES(member_SEQ.nextval, 'user03', 'user03@gmail.com', 'user03', '2022-10-01', 'E', '0100010003', '경기도 어딘가 무슨곳 좋은동');
-INSERT INTO MEMBER_TBL(id, name, email, password, birth, gender, phone_num, address) VALUES(member_SEQ.nextval, 'user04', 'user04@gmail.com', 'user04', '2022-10-01', NULL, '0100010004', '경기도 어딘가 무슨곳 좋은동');
+INSERT INTO MEMBER_TBL(id, name, email, password, birth, gender, phone_num, address, point) VALUES(member_SEQ.nextval, 'user01', 'user01@gmail.com', 'user01', '2022-10-01', 'M', '0100010001', '경기도 어딘가 무슨곳 좋은동', 30000);
+INSERT INTO MEMBER_TBL(id, name, email, password, birth, gender, phone_num, address, point) VALUES(member_SEQ.nextval, 'user02', 'user02@gmail.com', 'user02', '2022-10-01', 'W', '0100010002', '경기도 어딘가 무슨곳 좋은동', 30000);
+INSERT INTO MEMBER_TBL(id, name, email, password, birth, gender, phone_num, address, point) VALUES(member_SEQ.nextval, 'user03', 'user03@gmail.com', 'user03', '2022-10-01', 'E', '0100010003', '경기도 어딘가 무슨곳 좋은동', 30000);
+INSERT INTO MEMBER_TBL(id, name, email, password, birth, gender, phone_num, address, point) VALUES(member_SEQ.nextval, 'user04', 'user04@gmail.com', 'user04', '2022-10-01', NULL, '0100010004', '경기도 어딘가 무슨곳 좋은동', 30000);
 
-INSERT INTO MEMBER_TBL(id, name, email, password, birth, gender, phone_num, address) VALUES(member_SEQ.nextval, 'd', 'd', 'd', '2022-10-20', 'M', '0100010005', 'd');
+INSERT INTO MEMBER_TBL(id, name, email, password, birth, gender, phone_num, address, point) VALUES(member_SEQ.nextval, 'd', 'd', 'd', '2022-10-20', 'M', '0100010005', 'd', 10000);
 
 
 

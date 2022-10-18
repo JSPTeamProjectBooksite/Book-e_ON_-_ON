@@ -22,7 +22,7 @@ import org.iptime.booke.dto.BookDTO;
 import org.iptime.booke.dto.MemberDTO;
 
 @WebServlet("/payment")
-public class PaymentController extends HttpServlet {
+public class PaymentPageController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -80,6 +80,7 @@ public class PaymentController extends HttpServlet {
 		Map<String, Integer> priceInfo = new HashMap<>();
 		priceInfo.put("totalPrice", totalPrice);
 		priceInfo.put("deliveryFee", deliveryFee);
+		priceInfo.put("finalPrice", totalPrice + deliveryFee);
 		
 		
 		

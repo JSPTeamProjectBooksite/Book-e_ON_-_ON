@@ -10,33 +10,66 @@
         margin: auto;
         max-width: 1200px;
         min-width: 800px;
+        min-height: 100vh;
+        position: relative;
     }
 	
 	#searchDiv{
 		margin: auto;
 		width: 90%;
 	}
-
+    
     #searchListDiv{
-    	border: 1px solid black;
-    	background: lightgrey;
-        display: grid;
-        grid-template-columns: repeat(6, 1fr);
-        gap: 2vw;
-        align-items: end;
+        /* border: 1px solid black;
+    	background: lightgrey; */
+        width: 720px;
+        margin:auto;
     }
     
     #searchListText{
     	height:80px;
     	text-align:center;
     }
-    
+
+    #listDiv{
+        display: grid;
+        grid-template-columns: 3fr 7fr;
+    }
+
+    #infoTable{
+        width: 100%;
+    }
+
+    #infoTable tr,td,th{
+        padding: 3px;
+    }
+
+    /* 애니메이션 */
+    .animation_1{
+        transition: all 0.05s linear;
+    }
+    .animation_1:hover{
+        transform: scale( 1.05 );
+        box-shadow: 5px 5px 15px 0px #aaaaaa;
+        cursor: pointer;
+    }
+    .imgBox1{
+        border-radius: 10px;
+        border: 1px lightgray solid;
+    }
+    .clickTag{
+        font-size: 20px;
+        color:cadetblue
+    }
+    .clickTag:hover{
+        color:cornflowerblue;
+        cursor: pointer;
+    }
 </style>
 <script type="text/javascript">
 	function goToDetailPage(bid){
         document.mainPageForm.BID.value = bid;
         document.getElementById("BIDform").submit();
-        
 	}
 </script>
 <title>검색 결과</title>
@@ -77,32 +110,43 @@
             <div id="searchListDiv">
             	<c:choose>
             		<c:when test="${ empty searchList }">
-            			<div>
+            			<div style="text-align: center;">
             				검색된 도서가 없습니다.(-_-)
             			</div>
             		</c:when>
             		<c:otherwise>
-            			<c:forEach var="book" items="${searchList}">
-		                    <div>
-		                        <img src= ${ book.coverImg } alt="${ book.title } 이미지" style="width: 100%;"
-		                            onclick="goToDetailPage( ${ book.id } )">
-		                        <div id="searchListText">
-		                        	<div style="font-size:14px">${ book.title }</div>
-		                        	<div style="height: 3px"></div>
-		                        	<div style="
-                                    font-size:12px;
-                                    color:dimgray;
-                                    ">${ book.authorId }</div>
-		                        </div>
-		                    </div>
+            			<c:forEach var="map" items="${searchList}">
+		                    <div id="listDiv">
+                                <div style="text-align: center; padding: 20px;">
+                                    <img src="${ map.book.coverImg }" alt="${ map.book.title } 이미지" style="width: 90%;" onclick="goToDetailPage( ${ map.book.id } )" class="animation_1 imgBox1">
+                                </div>
+                                <div style="padding: 20px;">
+                                    <table id="infoTable">
+                                        <tr>
+                                            <td class="clickTag" onclick="goToDetailPage( ${ map.book.id } )">${ map.book.title }</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-size: 14px;">${ map.book.catchphrase }</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-size: 14px;">${ map.author } | ${ map.book.translator }${ map.book.publisher }</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-size: 20px; color:darkcyan; text-align: right;">${ map.book.price }원</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <hr>
 		            	</c:forEach>
             		</c:otherwise>
             	</c:choose>
             </div>
-           	<div style="text-align:center;">
-           		${ map.pagingImg }
-           	</div>
         </div>
+
+        <!-- 공간 띄우기 -->
+        <div style="height: 100px;"></div>
+
 	    <%@include file="./Footer.jsp" %>
     </div>
 </body>

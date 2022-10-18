@@ -18,6 +18,9 @@ h1 {
     white-space: nowrap;
     text-align: center;
 }
+.bookTable tr,td,th{
+    padding: 2px;
+}
 
 /* table {
     width: 100%;

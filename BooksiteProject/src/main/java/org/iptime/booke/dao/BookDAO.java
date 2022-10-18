@@ -264,11 +264,89 @@ public class BookDAO extends DBConnPool{
 		
 		return reselt;
 	}
+	//책 수정
+	public boolean updateBook(BookDTO dto, Long id) {
+		boolean reselt = false;
+		
+		try {
+			String query = "UPDATE BOOK_TBL SET"
+					+ "	COVER_IMG = ?,"
+					+ " TITLE = ?,"
+					+ "	AUTHOR_ID = ?,"
+					+ " TRANSLATOR = ?,"
+					+ " PRICE = ?,"
+					+ " DELIVERY_FEE = ?,"
+					+ " ESTIMATED_DELIVERY_DATE = ?,"
+					+ "	TOTAL_PAGES = ?,"
+					+ " WEIGHT = ?,"
+					+ " ISBN13 = ?,"
+					+ " ISBN10 = ?,"
+					+ " BOOK_CATEGORY_ID = ?,"
+					+ "	INTRODUCE = ?,"
+					+ " INTRODUCE_IMG = ?,"
+					+ "	PUBLISHER = ?,"
+					+ " PUBLISHER_REVIEW = ?,"
+					+ "	CONTENTS = ?,"
+					+ " VISIT = ?,"
+					+ "	CATCHPHRASE = ?,"
+					+ "	PUBLICATION_DATE = ?"
+					+ " WHERE ID = " + id;
+			
+			System.out.print("쿼리문:");
+			System.out.println(query);
+			
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, dto.getCoverImg());
+			psmt.setString(2, dto.getTitle());
+			psmt.setLong(3, dto.getAuthorId());
+			psmt.setString(4, dto.getTranslator());
+			psmt.setInt(5, dto.getPrice());
+			psmt.setInt(6, dto.getDeliveryFee());
+			//psmt.setInt(7, dto.getEstimatedDeliveryDate());
+			System.out.println("예상 배송일 : " + dto.getEstimatedDeliveryDate());
+			psmt.setInt(7, 2);
+			
+			psmt.setObject(8, dto.getTotalPages());
+			psmt.setObject(9, dto.getWeight());
+			psmt.setObject(10, dto.getIsbn13());
+			psmt.setObject(11, dto.getIsbn10());
+			psmt.setObject(12, dto.getBookCategoryId());
+			psmt.setString(13, dto.getIntroduce());
+			psmt.setString(14, dto.getIntroduceImg());
+			psmt.setString(15, dto.getPublisher());
+			psmt.setString(16, dto.getPublisherReview());
+			psmt.setString(17, dto.getContents());
+			psmt.setObject(18, 0);
+			psmt.setString(19, dto.getCatchphrase());
+			
+			Date date = null;
+			if(dto.getPublicationDate() != null)
+				date = Date.valueOf(dto.getPublicationDate());
+			psmt.setDate(20, date);
+			
+//			System.out.print("만들어진 쿼리문 :");
+//			System.out.println(psmt.toString());
+			
+			int applyResult = psmt.executeUpdate();
+			
+			System.out.println("psmt.executeUpdate() : " + applyResult);
+			
+			reselt = (applyResult == 1)? true: false;
+			
+		} catch (Exception e) {
+			System.out.println("책 UPDATE 중 예외 발생");
+			e.printStackTrace();
+		}
+		
+		return reselt;
+	}
 	
+	
+	//관리자페이지
 	public ArrayList<BookDTO> ManagerBookInfo() {
 		ArrayList<BookDTO> books = new ArrayList<BookDTO>();		
 		try {
-			String query = "SELECT * FROM BOOK_TBL";
+			String query = "SELECT * FROM BOOK_TBL ORDER BY ID";
 			psmt = con.prepareStatement(query);
 			rs = psmt.executeQuery(query);
 
@@ -306,6 +384,83 @@ public class BookDAO extends DBConnPool{
 		}
 		return books;
 	}
+	public BookDTO ManagerBookInfo(Long ID) {
+		BookDTO book = null;		
+		try {
+			String query = "SELECT * FROM BOOK_TBL WHERE ID = " + ID;
+			psmt = con.prepareStatement(query);
+			rs = psmt.executeQuery(query);
+
+			if (rs.next()) {
+				book = new BookDTO(
+						rs.getLong(1), 
+						rs.getString(2), 
+						rs.getString(3), 
+						rs.getLong(4) ,
+						rs.getString(5), 
+						rs.getInt(6), 
+						rs.getInt(7), 
+						rs.getInt(8), 
+						rs.getLong(9), 
+						rs.getLong(10), 
+						rs.getInt(11), 
+						rs.getString(12), 
+						rs.getString(13), 
+						rs.getString(14), 
+						rs.getString(15), 
+						rs.getInt(16), 
+						rs.getInt(17), 
+						rs.getString(18), 
+						rs.getInt(19), 
+						rs.getInt(20), 
+						rs.getString(21), 
+						rs.getDate(22).toLocalDate(), 
+						rs.getTimestamp(23).toLocalDateTime(), 
+						rs.getTimestamp(24).toLocalDateTime());
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return book;
+	}
+	//책 소개 읽어오기
+		public BookDTO bookIntroduce(Long bid) {
+			BookDTO dto = new BookDTO();
+			
+			String query = "SELECT TITLE, INTRODUCE, INTRODUCE_IMG, PUBLISHER_REVIEW, CONTENTS, CATCHPHRASE FROM BOOK_TBL";
+			if(bid != null) {
+				query += " WHERE ID = " + bid + " ";
+			}
+			query += " ORDER BY ID DESC ";
+			
+			//System.out.println("작성완료된 쿼리문: \n" + query);
+			
+			try {
+				stmt = con.createStatement();
+				rs = stmt.executeQuery(query);
+				
+				if(rs.next()) {
+					dto.setTitle(rs.getString(1));
+					dto.setIntroduce(rs.getString(2));
+					dto.setIntroduceImg(rs.getString(3));
+					dto.setPublisherReview(rs.getString(4));
+					dto.setContents(rs.getString(5));
+					dto.setCatchphrase(rs.getString(6));
+				}
+				
+				
+			}catch (Exception e) {
+				// TODO: handle exception
+				System.out.println("bid 조회중 예외발생");
+				System.out.println("dto 저장내용");
+				dto.DTOPrintOut();
+				
+				e.printStackTrace();
+			}
+			
+			return dto;
+		}
 	
 	public int deleteBook(String idx) {
 		int result = 0;

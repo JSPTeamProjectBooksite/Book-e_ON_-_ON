@@ -10,11 +10,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="chrome">
 <title>결제하기</title>
+<link rel="stylesheet" href="css/public.css">
 <link rel="stylesheet" href="css/payment.css">
 </head>
 
 <body>
-	<div class="wrap">
+	<div id="wrap">
 		<%@ include file="Header.jsp"%>
 		<div class="block0"></div>
 
@@ -31,7 +32,6 @@
 				<h3>주문자 정보</h3>
 				<table>
 					<tr>
-
 						<th>받는분</th>
 						<td>${ delinfo.name }(${ delinfo.email })</td>
 					</tr>
@@ -75,8 +75,7 @@
 							<tr>
 								<td class="imgBox"><img src="${ prod.coverImg }"></td>
 								<td>[${ prod.bookCategoryId }] ${ prod.title }
-									<p style="color: rgb(252, 69, 69);">상품 금액 : ${ prod.price }원
-										| 수량 : ${ selectCount[status.index] } 개</p>
+									<p style="color: rgb(252, 69, 69);">상품 금액 : ${ prod.price }원 | 수량 : ${ selectCount[status.index] } 개</p>
 								</td>
 							</tr>
 
@@ -87,11 +86,9 @@
 				<!-- 스티키 존 -->
 				<td rowspan="4" class="stickyBar">
 					<table class="stickyTable">
-						<c:set var="total" value="${priceInfo.totalPrice}"/>
-
 						<tr>
 							<th>주문금액</th>
-							<td>${total} 원</td>
+							<td><span id="totalPrice">0</span> 원</td>
 						</tr>
 						<c:set var="selectCount" value="${ selectCount }" />
 						<c:forEach var="prod" items="${ prodinfo }" varStatus="status">
@@ -107,24 +104,21 @@
 						</tr>
 						<tr>
 							<th>배송비</th>
-							<td>${ priceInfo.deliveryFee }원</td>
+							<td>${ priceInfo.deliveryFee } 원</td>
 						</tr>
 						<tr>
 							<th>쿠폰할인</th>
-							<td>0원</td>
+							<td><span id="usedPoint">0</span> 원</td>
 						</tr>
 						
 						<tr>
 							<th>적립금 사용</th>
-							<td><span id="pointUse">0</span>원</td>
+							<td><span id="point">0</span>원</td>
 						</tr>
 						<tr>
 							<th>최종결제금액</th>
 							<td style="font-size: x-large; color: red;">
-								<span id="finalPrice">
-									<c:out value="${total + priceInfo.deliveryFee}"></c:out>
-								</span>
-								원
+								<span class="finalPrice">0</span> 원
 							</td>
 						</tr>
 					</table>
@@ -149,9 +143,9 @@
 							<th>적립금 적용</th>
 							<td>
 								<input type="number" id="userPoint" name="point" value="0" readonly disabled>
-								<button type="button" name="useBnt" style="text-align: center" onclick="usePoint()">모두사용</button>
+								<button type="button" name="useBnt" style="text-align: center" onclick="return usePoint()">모두사용</button>
 								<br>
-								<small>사용가능 적립금 <span id="availablePoint">5000</span>	원</small>
+								<small>사용가능 적립금 <span id="availablePoint"></span> 원</small>
 							</td>
 						</tr>
 					</table>
@@ -165,14 +159,21 @@
 					<table>
 						<tr>
 							<th>결제수단 선택</th>
-							<td class="paybnt">
-							<a href="#a" class="bnt1"> <img src="/source/ico/Visa_ci.png">
-							</a>
-							<div class="blockbnt"></div> 
-							<a href="#a" class="bnt2"> <img src="/source/ico/Kakaopay_ci.png">
-							</a> 
-							<a href="#a" class="bnt3"> <img src="/source/ico/Toss_ci.png">
-						    </a>
+							<td>
+								<label class="paybnt">
+									<input type="radio" name="paybnt" value="Visa 카드 결제">
+									<span><img src="/source/ico/Visa_ci.png"></span>
+								</label>
+								 
+								<label class="paybnt">
+									<input type="radio" name="paybnt" value="카카오 페이 결제">
+									<span><img src="/source/ico/Kakaopay_ci.png"></span>
+								</label>
+								 
+								<label class="paybnt">
+									<input type="radio" name="paybnt" value="토스 결제">
+									<span><img src="/source/ico/Toss_ci.png"></span>
+								</label>
 							</td>
 						</tr>
 					</table>
@@ -184,11 +185,12 @@
 					<table>
 						<tr>
 							<h3>결제 진행 필수 전체 동의</h3>
-							<td><input type="checkbox" name="전체동의" value="전체동의" /> 결제
-								진행 필수 전체 동의 <br> <input type="checkbox" name="세부동의" />
-								(필수) 개인정보 수집‧이용 및 처리 동의 <br> <input type="checkbox"
-								name="세부동의" /> (필수) 개인정보 제3자 제공동의 <br> <input
-								type="checkbox" name="세부동의" /> (필수) 전자지급 결제대행 서비스 이용약관 동의</td>
+							<td>
+								<input type="checkbox" name="전체동의" id="allCheck" onclick="allCheck(this)"/> 결제	진행 필수 전체 동의<br>
+								<input type="checkbox" name="세부동의" onclick="check(this)"/> (필수) 개인정보 수집‧이용 및 처리 동의<br>
+								<input type="checkbox" name="세부동의" onclick="check(this)"/> (필수) 개인정보 제3자 제공동의<br>
+								<input type="checkbox" name="세부동의" onclick="check(this)"/> (필수) 전자지급 결제대행 서비스 이용약관 동의
+							</td>
 						</tr>
 					</table>
 				</td>
@@ -198,8 +200,8 @@
 		<!-- 버튼부 -->
 		<div class="fianlpayBnt">
 			<a href="/orderConfirm.jsp">
-				<button type="button" type="button" name="final">
-					<b><c:out value="${total + priceInfo.deliveryFee}"></c:out></b> 원 결제하기
+				<button type="button" name="final" onclick="return payBtn()">
+					<b><span class="finalPrice"></span></b> 원 결제하기
 				</button>
 			</a>
 		</div>
@@ -207,19 +209,93 @@
 	</div>
 </body>
 <script>
-	function usePoint(){
-		var availablePoint = document.getElementById("availablePoint").innerHTML * 1; //사용가능금액
-		
-		var point = document.getElementById("userPoint"); //포인트 박스
+	var availablePoint = ${ delinfo.point }*1; //사용가능 포인트
+	var usedPoint = 0; //사용하는 포인트
+	var totalPrice = ${ priceInfo.totalPrice }*1; //전체금액
+	var finalPrice = ${ priceInfo.finalPrice }*1; //최종금액
 
-		document.getElementById("pointUse").innerHTML = availablePoint;
-		point.value = availablePoint;
-		document.getElementById("finalPrice").innerHTML -= availablePoint;
-
-		document.getElementById("availablePoint").innerHTML = 0;
-
-		alert("적립금 "+point.value + "원을 모두 사용합니다!");
+	function setPage(){
+		document.getElementById("availablePoint").innerHTML = availablePoint.toLocaleString('ko-KR');
+		document.getElementById("userPoint").value = usedPoint;
+		document.getElementById("usedPoint").innerHTML = usedPoint.toLocaleString('ko-KR');
+		document.getElementById("totalPrice").innerHTML = totalPrice.toLocaleString('ko-KR');
+	
+		var tem = document.getElementsByClassName("finalPrice");
+	
+		for(var i = 0; i < tem.length; i++){
+			tem[i].innerHTML = finalPrice.toLocaleString('ko-KR');
+		}
 	}
-	};
+
+	function usePoint(){
+
+		if(availablePoint == 0){
+			alert("사용가능한 적립금이 없습니다.");
+			return false;
+		}
+
+		if(finalPrice > availablePoint){
+			usedPoint = availablePoint;
+			finalPrice -= availablePoint;
+			availablePoint = 0;
+		}else{
+			usedPoint = finalPrice;
+			availablePoint -= finalPrice;
+			finalPrice = 0;
+		}
+
+		alert("적립금을 사용합니다!");
+		setPage();
+	}
+
+	function allCheck(btn){
+		var checkboxes = document.getElementsByName("세부동의");
+		checkboxes.forEach((checkbox) => {
+    		checkbox.checked = btn.checked;
+  		})
+	}
+
+	function check(btn){
+		if(!btn.checked){
+			//alert("체크해제")
+			document.getElementById('allCheck').checked = false;
+			return;
+		}
+		var checkboxes = document.getElementsByName("세부동의");
+		var tem = true;
+		
+		checkboxes.forEach((checkbox) => {
+			if(!checkbox.checked){
+				//alert("선택되지 않은게 있음")
+				
+				tem = false;
+			}
+		})
+		
+		if(tem){
+			//alert("모두 선택됨")
+			document.getElementById('allCheck').checked = true;
+		}
+	}
+
+	//결제 버튼 눌림
+	function payBtn(){
+		var checkboxes = document.getElementsByName("세부동의");
+		var agree = true;
+
+		checkboxes.forEach((checkbox) => {
+			if(!checkbox.checked){
+				agree = false;
+			}
+  		})
+
+		if(!agree){
+			alert("약관을 모두 동의해주세요.")
+			document.getElementById('allCheck').focus();
+			return false;
+		}
+	}
+
+	setPage();
 </script>
 </html>

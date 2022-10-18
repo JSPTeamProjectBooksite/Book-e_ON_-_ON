@@ -116,7 +116,7 @@ public class WebCrawlingTest {
 				for(Element e: elem8.select("li")) {
 					if(e.className().equals("book_contents_item")) {
 						//System.out.println(e.text());
-						dto.setContents(e.text());
+						dto.setContents(e.html());
 					}
 				}
 				
@@ -161,7 +161,7 @@ public class WebCrawlingTest {
 				
 				dto.setDeliveryFee(2500);
 				
-				System.out.println("[dto에 저장된 정보 출력]");
+				System.out.println("[교보에서 불러온 BookDTO 정보]");
 				dto.DTOPrintOut();
 				
 			}

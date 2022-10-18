@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>도서 추가</title>
+<title>도서 수정</title>
 <style type="text/css">
 	*{
 		margin:0;
@@ -56,7 +56,7 @@
 		<div id="contents">
 		    <div style="height: 100px;"></div>
 			<%@include file="./bookForm.jsp" %>
-		    <button type="button" onclick="return bookAdd()">책 추가</button>
+		    <button type="button" onclick="return bookRevise()">책 수정</button>
 		    <div style="height: 100px;"></div>
 		</div>
 	</div>
@@ -65,7 +65,7 @@
 	var form = document.getElementById("bookAddForm");
 
 
-	function bookAdd(){
+	function bookRevise(){
 		var title = form.title;
 		var coverImgUrl = form.coverImgUrl;
 		var author = form.author;
@@ -127,7 +127,7 @@
 
         alert("전부 정상적으로 작성되었습니다.");
 
-		form.action="/BookUpload.do";
+		form.action="/BookUpdate.do?chooseBook=" + "${ book.id }";
 		form.submit();
     }
 	
