@@ -134,7 +134,7 @@
 		                <td><input type="date" name="publicationDate" value="${ book.publicationDate }"></td>
 		            </tr>
 		            <tr>
-		                <th>*캐치프라이즈</th>
+		                <th>캐치프라이즈</th>
 		                <td><input type="text" name="catchphrase" value="${ book.catchphrase }"></td>
 		            </tr>
 					<tfoot>
@@ -157,7 +157,6 @@
 		var author = form.author;
 		var price = form.price;
 		var introduce = form.introduce;
-		var catchphrase = form.catchphrase;
 		var publisher = form.publisher;
 		var publicationDate = form.publicationDate;
         
@@ -197,14 +196,6 @@
             return false;
         }
 		introduce.value = introduce.value.trim();
-        
-        if(catchphrase.value.trim() == ""){
-            alert("광고문구를 작성해주세요.");
-            form.catchphrase.focus();
-            return false;
-        }
-		catchphrase.value = catchphrase.value.trim();
-        
 
         if(publisher.value.trim() == ""){
             alert("출판사를 입력해주세요.");

@@ -17,10 +17,11 @@ public class WebCrawlingTest {
 		String[] URL = new String[]{
 				"https://product.kyobobook.co.kr/detail/S000000581727",
 				"https://product.kyobobook.co.kr/detail/S000001983540",
-				"https://product.kyobobook.co.kr/detail/S000001983540"};
+				"https://product.kyobobook.co.kr/detail/S000001983540",
+				"https://product.kyobobook.co.kr/detail/S000001913217"};
 		
 		
-		WebCrawlingTest.webCrawling(URL[0]);
+		WebCrawlingTest.webCrawling(URL[3]);
 		
 		
 		
@@ -41,9 +42,9 @@ public class WebCrawlingTest {
 				Elements elem1 = doc.select("div[class=\"prod_title_area\"]");
 				for(Element e: elem1.select("span")) {
 					if(e.className().equals("prod_title") && dto.getTitle()==null) {
-						dto.setTitle(e.toString().replace("<span class=\"prod_title\">", "").replace("</span>", ""));
+						dto.setTitle(e.html());
 					}else if(e.className().equals("prod_desc") && dto.getCatchphrase()==null) {
-						dto.setCatchphrase(e.toString().replace("<span class=\"prod_desc\">", "").replace("</span>", ""));
+						dto.setCatchphrase(e.html());
 					}
 				}
 				
