@@ -20,7 +20,18 @@ public class InquireController extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WriteInquiry.jsp").forward(request, response);
+		String whatDo = request.getParameter("do");
+		
+		System.out.println("실행할 컨트롤러 : " + whatDo);
+		//1:1문의 작성
+		if(whatDo.equals("writeInquiry")) {
+			System.out.println("1:1문의작성 요청됨");
+			request.getRequestDispatcher("/UserInquiryWrite.jsp").forward(request, response);
+		}
+		else if(whatDo.equals("userInquiryList")) {
+			
+		}
+		
 
 	}
 

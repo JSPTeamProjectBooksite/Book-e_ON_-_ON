@@ -6,7 +6,7 @@
     box-sizing: border-box;
 }
 
-.CustomerInquiry { width: 70%; margin: auto; padding: 0px 70px 0px 70px; border-collapse: collapse; border: solid rgb(166, 166, 166);}
+.CustomerInquiry { width: 100%; margin: auto; padding: 0px 70px 0px 70px; border-collapse: collapse; border: solid rgb(166, 166, 166);}
 .wrap { max-width: 1200px; min-width:800px; margin: 0 auto; }
 .wrap h2 {padding: 30px 0px 5px 175px;}
 .wrap h2 > img { width: 20; height: 30px; vertical-align: center;}

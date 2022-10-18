@@ -50,7 +50,7 @@ public class InquiryDAO extends JDBConnect {
 //				Map<String, Object> map = new HashMap<String, Object>();
 
 				InquiryDTO inquiryDTO = new InquiryDTO(rs.getLong(1), rs.getLong(2), rs.getString(3), rs.getString(4),
-						rs.getString(5), rs.getString(6), rs.getTimestamp(7).toLocalDateTime());
+						rs.getString(5), rs.getString(6), rs.getString(7), rs.getTimestamp(8).toLocalDateTime());
 
 //				map.put("inquiryDTO", inquiryDTO);
 

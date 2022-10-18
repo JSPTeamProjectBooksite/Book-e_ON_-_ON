@@ -17,11 +17,12 @@ SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일");
 </head>
 <body>
 	<div class="wrap">
-		<%@ include file="Header.jsp"%>
+<%-- 		<%@ include file="Header.jsp"%> --%>
 
 		<h2>▶1:1 고객문의</h2>
-		<form name="inquireFrm" method="post" action="/inquiryWrite.do" onsubmit="return notice(this);">
-			
+		<form name="inquireFrm" method="post" action="/inquiryWrite.do"
+			onsubmit="return notice(this);">
+
 			<table class="CustomerInquiry" border="1">
 
 				<tr>
@@ -38,8 +39,8 @@ SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일");
 				</tr>
 				<tr>
 					<td class="title">질문유형</td>
-					<td colspan="3">
-						<select style="height: 63px; width: 100%;" name="category">
+					<td colspan="3"><select style="height: 63px; width: 100%;"
+						name="category">
 							<option>회원정보/서비스</option>
 							<option>도서/상품정보</option>
 							<option>주문결제</option>
@@ -53,22 +54,24 @@ SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일");
 							<option>고객제안/불편신고</option>
 							<option>개인출판/작가</option>
 							<option>기타문의/제안</option>
-						</select>
-					</td>
+					</select></td>
 				</tr>
 
 				<tr>
 					<td class="title">제목</td>
 					<td colspan="3">
-					<input style="border: none; width: 100%; height: 63px; font-size: 16px;" type="text" maxlengtd="500" name="title"></td>
+						<input style="border: none; width: 100%; height: 63px; font-size: 16px;"
+							type="text" maxlength="500" name="title">
+					</td>
 				</tr>
 
-				<tr>
-					<td class="title" rowspan="2">내용</td>
-					<td colspan="3"><textarea
-							style="border: none; font-size: 12px;"
-							placeholder="&#13;&#10;문의유형을 선택 후 자세하게 작성해주세요.
-						&#13;&#10;자세한 내용과 함께 보내주시면 더욱 신속하게 답변 드리겠습니다!"></textarea></td>
+					<tr>
+						<td class="title" rowspan="2">내용</td>
+						<td colspan="3">
+						<textarea style="border: none; font-size: 12px;" name="content"
+								placeholder="&#13;&#10;문의유형을 선택 후 자세하게 작성해주세요.
+							&#13;&#10;자세한 내용과 함께 보내주시면 더욱 신속하게 답변 드리겠습니다!"></textarea>
+					</td>
 				</tr>
 				<tr>
 					<td colspan="3" ;class="notice"><small> *문의내용 답변 안내*
@@ -80,23 +83,23 @@ SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일");
 					</small></td>
 				</tr>
 			</table>
+			<div class="bnt">
+				<input type="submit" value="문의접수" id="submit">
+			</div>
 		</form>
 
-		<div class="bnt">
-			<input type="submit" value="문의접수" id="submit">
-		</div>
-		<%@ include file="Footer.jsp"%>
+<%-- 		<%@ include file="Footer.jsp"%> --%>
 
 	</div>
 </body>
 <script type="text/javascript">
-	function notice(form){
-		if(form.title.value == ""){
+	function notice(form) {
+		if (form.title.value == "") {
 			alert("제목을 입력해주세요.");
 			form.title.focus();
 			return false;
 		}
-		if(form.content.value == ""){
+		if (form.content.value == "") {
 			alert("내용을 입력해주세요.");
 			form.content.focus();
 			return false;
