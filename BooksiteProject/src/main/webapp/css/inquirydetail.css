@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.wrap{
+    margin: auto;
+    max-width: 1200px;
+    min-width: 800px;
+}
+
+table{
+    width: 100%; padding: 20px 0px 30px 0px; height: 100%;
+    border-collapse: collapse;
+    border: 1px;
+    align-items: center;
+}
+
+th{
+	height: 40px;
+}
+
+
+

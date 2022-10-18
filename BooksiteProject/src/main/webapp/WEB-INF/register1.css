@@ -5,7 +5,7 @@
 }
 
 body{
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Jua', sans-serif;
     overflow: hidden;
 }
 
@@ -170,6 +170,10 @@ a:hover{
 	color: #C3DAFC;
 }
 
+.h5{
+	width:300%;
+}
+
 .btn{
 	display: block;
 	width: 100%;
@@ -186,9 +190,85 @@ a:hover{
 	margin: 1rem 0;
 	cursor: pointer;
 	transition: .5s;
+	display: grid;
+	
 }
 .btn:hover{
+	grid-gap: 20px;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 	background-position: right;
+}
+
+form .inputGroup {
+    width: 500px;
+    height: 30px;
+    border-radius: 25px;
+    margin-top: 15px;
+    border: 1px solid;
+    text-align: center;
+    font-family: 'popoins', sans-serif;
+    font-size: 20px;
+}
+
+form .selectGroup {
+    border-radius: 25px;
+    margin-top: 15px;
+    font-size: 20px;
+    width: 500px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid;
+    font-family: 'popoins', sans-serif;
+    appearance: none;
+}
+
+
+form .checkboxGroup {
+    width: 22px;
+    height: 22px;
+    margin-top: 15px;
+}
+
+form .allTerms {
+    font-size: 30px;
+    color: white;
+    margin-top: 15px;
+    font-weight: bold;
+    font-family: 'popoins', sans-serif;
+}
+
+form .terms {
+    /* width: 400px; */
+    padding: 0 100px;
+    /* margin-left: 200px; */
+    margin-top: 2px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: start;
+    color: white;
+    font-family: 'popoins', sans-serif;
+}
+form .inputGroup {
+    width: 500px;
+    height: 30px;
+    border-radius: 25px;
+    margin-top: 15px;
+    border: 1px solid;
+    text-align: center;
+    font-family: 'popoins', sans-serif;
+    font-size: 20px;
+}
+
+form .selectGroup {
+    border-radius: 25px;
+    margin-top: 15px;
+    font-size: 20px;
+    width: 500px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid;
+    font-family: 'popoins', sans-serif;
+    appearance: none;
 }
 
 

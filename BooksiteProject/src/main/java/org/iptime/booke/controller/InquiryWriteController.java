@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.iptime.booke.dao.InquiryDAO;
 import org.iptime.booke.dto.InquiryDTO;
 
-@WebServlet("/inquiryWrite.do")
+@WebServlet("/UserInquiryWrite.do")
+/* inquiryWrite.do */
 public class InquiryWriteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
