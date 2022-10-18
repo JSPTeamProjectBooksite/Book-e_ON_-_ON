@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,33 +10,32 @@
 </head>
 <body>
 	<div class="wrap">
-	<%@ include file="Header.jsp" %>
-	
-	<h2>주문내역조회</h2>
-	
-	<table border="1">
-	<tr>
-	<th>No</th>
-	<td>숫자ID</td>
-	</tr>
-	<tr>
-	<th>주문번호</th>
-	<td>B22101800001</td>
-	</tr>
-	<tr>
-	<th>구매도서</th>
-	<td>도서이름</td>
-	</tr>
-	<tr>
-	<th>수량</th>
-	<td>1</td>
-	</tr>
-	<tr>
-	<th>구매일자</th>
-	<td>2022-10-18</td>
-	</tr>
-	</table>
-	<div class="closebtn">
+		<%@ include file="Header.jsp"%>
+
+		<h2>주문내역조회</h2>
+		<form method="get">
+			<table class="List" border="1">
+				<tr>
+					<th>No</th>
+					<th>주문번호</th>
+					<th>구매도서</th>
+					<th>배송상태</th>
+					<th>구매일자</th>
+					<th>비고</th>
+				</tr>
+				<c:forEach var="order" items="${orderList }" varStatus="status">
+					<tr align="center">
+						<td>${ order.id }</td>
+						<td><a href="/OrderDetails.jsp">${ order.paymentId }</a></td>
+						<td>${ order.bookId }</td>
+						<td>배송준비 중</td>
+						<td>${ order.registerDate }</td>
+						<td></td>
+					</tr>
+				</c:forEach>
+			</table>
+		</form>
+		<div class="closebtn">
 			<button type="button" onclick="./main">닫기</button>
 		</div>
 		<%@ include file="Footer.jsp"%>

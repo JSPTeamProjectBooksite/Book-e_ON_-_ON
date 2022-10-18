@@ -2,19 +2,20 @@
 	pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
 <meta charset="UTF-8">
 <title>주문상세내역조회</title>
 <link rel="stylesheet" href="css/orderDetails.css">
 </head>
-
 <body>
 	<div class="wrap">
 		<%@ include file="Header.jsp"%>
-		<h2>주문/배송 상세조회</h2>
+		
+		<h2>【주문/배송 상세조회】</h2>
+		
 		<div class="block"></div>
+		
 		<table class="confirm" border="1">
 			<h4>▶상세주문내역</h4>
 			<tr>
@@ -25,8 +26,8 @@
 				<th>비고</th>
 			</tr>
 			<tr>
-				<td>2022-10-10</td>
-				<td>ON202210101</td>
+				<td>2022-10-18</td>
+				<td>B22101800001</td>
 				<td>김하영</td>
 				<td>기분이 태도가 되지 않게 외 총2권</td>
 				<td>비고</td>
@@ -38,7 +39,7 @@
 				<h4>▶기본배송정보</h4>
 				<tr>
 					<th>주문번호</th>
-					<td style="width: 372px;">ON202210101</td>
+					<td style="width: 372px;">B22101800001</td>
 					<th style="width: 213px;">배송방법</th>
 					<td style="width: 407px;">택배수령</td>
 				</tr>
@@ -94,19 +95,23 @@
 				<tr>
 					<th>상품명</th>
 					<th>주문수량</th>
-					<th>가격</th>
+					<th>금액</th>
+					<th>적립예정금액</th>
+					<th>비고</th>
 				</tr>
 				<tr>
-					<td>노인과바다</td>
-					<td>1</td>
-					<td>가격 : 12,600원<small><b>[적립예정금액 : 700원(5%)]</b></small>
-					</td>
+					<td><a href=""></a><b>기분이 태도가 되지 않게</b></a></td>
+					<td><b>1</b></td>
+					<td><b>13,500원</b></td>
+					<td><b>적립예정금액 : 700원(5%)</b></td>
+					<td></td>
 				</tr>
 				<tr>
-					<td>기분이 태도가 되지 않게</td>
-					<td>1</td>
-					<td>가격 : 12,600원<small><b>[적립예정금액 : 700원(5%)]</b></small>
-					</td>
+					<td><b>기분이 태도가 되지 않게</b></td>
+					<td><b>1</b></td>
+					<td><b>13,500원</b></td>
+					<td><b>적립예정금액 : 700원(5%)</b></td>
+					<td></td>
 				</tr>
 
 

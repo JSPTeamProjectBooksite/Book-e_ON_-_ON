@@ -6,3 +6,10 @@
     border-collapse: collapse;
 }
 .wrap { max-width: 1200px; min-width:800px; margin: 0 auto; }
+
+h2{ padding: 20px 0px 20px 0px;}
+
+table.List{ width: 100%; font-size: 15px;}
+
+.List th{ background: #f1F3F5; height: 40px;}
+.List td{ height: 40px;}

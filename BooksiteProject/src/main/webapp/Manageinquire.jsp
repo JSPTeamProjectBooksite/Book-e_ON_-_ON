@@ -18,7 +18,7 @@
 		<h2 style="padding-bottom: 20px">1:1고객문의(답변대기 건수 : n건)</h2>
 
 		<form method="get">
-			<table class="search" border="1" style="width: 1200px;">
+			<table class="search" border="1">
 				<tr>
 					<td align="center"><select name="searchField">
 						<option value="title">제목</option>
