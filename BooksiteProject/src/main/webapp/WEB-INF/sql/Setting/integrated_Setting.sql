@@ -354,7 +354,7 @@ COMMENT ON COLUMN locker_TBL.BOOK_ID IS '북마크 당한 책 id';
 -- 결제
 -- ============================================================
 CREATE TABLE payment_TBL(	
-	id 					nchar(10) 		NOT NULL	PRIMARY KEY,
+	id 					nchar(12) 		NOT NULL	PRIMARY KEY,
 	member_id			NUMBER			NOT NULL,
 	book_id				NUMBER			NOT NULL,
 	total_amount		number(7)		NOT NULL,
@@ -385,13 +385,13 @@ COMMENT ON COLUMN payment_TBL.REGISTER_DATE  IS '결제한 날짜';
 -- ============================================================
 CREATE TABLE order_TBL (
 	id				NUMBER			NOT NULL	PRIMARY KEY,
-	payment_id		nchar(10)		NOT NULL,
+	payment_id		nchar(12)		NOT NULL,
 	book_id			NUMBER 			NOT NULL,
 	quantity		NUMBER(4)		DEFAULT 1,
 	register_date 	DATE			DEFAULT sysdate
 );
 
-ALTER TABLE order_TBL ADD CONSTRAINT order_payment_id_FK FOREIGN KEY(payment_id) REFERENCES payment_TBL(id);
+--ALTER TABLE order_TBL ADD CONSTRAINT order_payment_id_FK FOREIGN KEY(payment_id) REFERENCES payment_TBL(id);
 ALTER TABLE order_TBL ADD CONSTRAINT order_book_id_FK FOREIGN KEY(book_id) REFERENCES book_TBL(id);
 
 COMMENT ON COLUMN order_TBL.ID  IS '주문 번호';

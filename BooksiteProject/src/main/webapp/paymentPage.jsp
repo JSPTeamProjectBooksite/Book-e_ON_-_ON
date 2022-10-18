@@ -165,15 +165,15 @@
 					<table>
 						<tr>
 							<th>결제수단 선택</th>
-							<td class="paybnt"><a href="#a" class="bnt1"> <img
-									src="/source/ico/Visa_ci.png">
+							<td class="paybnt">
+							<a href="#a" class="bnt1"> <img src="/source/ico/Visa_ci.png">
 							</a>
-
-								<div class="blockbnt"></div> <a href="#a" class="bnt2"> <img
-									src="/source/ico/Kakaopay_ci.png">
-							</a> <a href="#a" class="bnt3"> <img
-									src="/source/ico/Toss_ci.png">
-							</a></td>
+							<div class="blockbnt"></div> 
+							<a href="#a" class="bnt2"> <img src="/source/ico/Kakaopay_ci.png">
+							</a> 
+							<a href="#a" class="bnt3"> <img src="/source/ico/Toss_ci.png">
+						    </a>
+							</td>
 						</tr>
 					</table>
 				</td>
@@ -220,5 +220,6 @@
 
 		alert("적립금 "+point.value + "원을 모두 사용합니다!");
 	}
+	};
 </script>
 </html>

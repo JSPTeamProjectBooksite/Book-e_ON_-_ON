@@ -1,0 +1,8 @@
+@charset "UTF-8";
+
+*{
+    margin: 0;
+    padding: 0;
+    border-collapse: collapse;
+}
+.wrap { max-width: 1200px; min-width:800px; margin: 0 auto; }
