@@ -1,50 +1,52 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap')
-	;
-</style>
-<link rel="stylesheet" href="css/Login.css">
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
+<title>Login</title>
+<link rel="stylesheet" type="text/css" href="./css/Login.css">
+<link
+	href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap"
+	rel="stylesheet">
+<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-
 <body>
 	<div class="container">
-		<h1>로그인</h1>
-		<form action="/login" method="get" name="login" onsubmit="return validateForm(this);">
-			<div>
-				<input class="init" type="text" placeholder="Email" name="email">
-			</div>
-			<div>
-				<input class="init" type="password" placeholder="PW" name="password">
-			</div>
-			<div class="group">
-				<a href="./findID">아이디 찾기</a> <a href="./findPassword">비밀번호 찾기</a>
-			</div>
-			<input class="submit" type="submit" value="Login"> <input
-				class="button" type="button" value="회원가입"
-				onclick="location.href='./Register.jsp'">
-		</form>
+		<img class="wave" src="./source/Login/wave.png">
+		<div class="img">
+			<img src="./source/Login/reading.png">
+		</div>
+		<div class="login-content">
+			<form action="/login" method="post" name="login"
+				onsubmit="return validateForm(this);">
+				<img src="./source/Login/avatar.png">
+				<h2 class="title">로그인</h2>
+				<div class="input-div one">
+					<div class="i">
+						<i class="fas fa-user"></i>
+					</div>
+					<div class="div">
+						<h5>Email</h5>
+						<input type="Email" class="input" name="email">
+					</div>
+				</div>
+				<div class="input-div pass">
+					<div class="i">
+						<i class="fas fa-lock"></i>
+					</div>
+					<div class="div">
+						<h5>password</h5>
+						<input type="password" class="input" name="password">
+					</div>
+				</div>
+				<a href="./FindID.jsp">Forgot Email?</a> <a href="/findPassword">Forgot
+					Password?</a> <input type="submit" class="btn" value="로그인"> <input
+					type="button" class="btn" value="회원가입"
+					onclick="location.href='./Register.jsp'">
+			</form>
+		</div>
 	</div>
+	<script type="text/javascript" src="./js/Login.js"></script>
 </body>
-<script type="text/javascript">
-	function validateForm(form) {
-		if(!form.email.value) {
-			alert("아이디를 입력하세요.");
-			return false;
-		}
-		if(!form.password.value) {
-			alert("비밀번호를 입력하세요.");
-			return false;
-		}
-	}
-</script>
-
 </html>
