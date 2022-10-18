@@ -25,6 +25,8 @@ public class DeleteUserController extends HttpServlet {
 		
 		if(result == 1) {
 			System.out.println("회원 삭제 완료");
+			response.sendRedirect("./MANAGE/USER");
+			return;
 		} else {
 			System.out.println("회원 삭제 실패");			
 		}
