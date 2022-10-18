@@ -149,7 +149,7 @@ form{
 	padding: 0.5rem 0.7rem;
 	font-size: 1.2rem;
 	color: #555;
-	font-family: 'poppins', sans-serif;
+	font-family: 'noto sans kr', sans-serif;
 }
 
 .input-div.pass{
@@ -182,7 +182,7 @@ form .selectGroup {
     height: 30px;
     text-align: center;
     border: 1px solid;
-    font-family: 'Jua', sans-serif;
+    font-family: 'noto sans kr', sans-serif;
     appearance: none;
 }
 
@@ -190,7 +190,7 @@ h1 {
     margin-top: 15px;
     font-size: 50px;
     color: white;
-    font-family: 'Jua', sans-serif;
+    font-family: 'noto sans kr', sans-serif;
 }
 
 form .checkboxGroup {
@@ -203,7 +203,7 @@ form .allTerms {
     font-size: 25px;
     margin-top: 15px;
     font-weight: bold;
-    font-family: 'Jua', sans-serif;
+    font-family: 'noto sans kr', sans-serif;
 }
 
 form .terms {
@@ -215,7 +215,8 @@ form .terms {
     font-weight: bold;
     text-align: start;
     color: #999;
-    font-family: 'Jua', sans-serif;
+    font-family: 'noto sans kr', sans-serif;
+	accent-color: #6693D8;
 }
 
 .btn{
@@ -230,7 +231,7 @@ form .terms {
 	font-size: 1.2rem;
 	color: #fff;
 	box-shadow: 0px 0px 10px 1px #fff;
-	font-family: 'Poppins', sans-serif;
+	font-family: 'noto sans kr', sans-serif;
 	text-transform: uppercase;
 	margin: 1rem 0;
 	cursor: pointer;
@@ -241,13 +242,6 @@ form .terms {
 .btn:hover{
 	box-shadow: 0px 0px 15px 5px #fff;
 }
-
-
-.box {
-	padding: 1rem 2rem;
-	margin: 1rem 0;
-	border: 1px #9FC5FF;
-  }
 
 
 @media screen and (max-width: 1050px){
