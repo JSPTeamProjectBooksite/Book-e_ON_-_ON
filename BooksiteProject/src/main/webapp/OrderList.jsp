@@ -12,7 +12,7 @@
 	<div class="wrap">
 		<%@ include file="Header.jsp"%>
 
-		<h2>주문내역조회</h2>
+		<h2>【주문내역조회】</h2>
 		<form method="get">
 			<table class="List" border="1">
 				<tr>
@@ -27,7 +27,7 @@
 					<tr align="center">
 						<td>${ order.id }</td>
 						<td><a href="/OrderDetails.jsp">${ order.paymentId }</a></td>
-						<td>${ order.bookId }</td>
+						<td>${ bookList[status.index] }</td>
 						<td>배송준비 중</td>
 						<td>${ order.registerDate }</td>
 						<td></td>

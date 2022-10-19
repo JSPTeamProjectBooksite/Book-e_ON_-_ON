@@ -31,10 +31,12 @@ public class ManageinquireController extends HttpServlet{
 			
 			long memberId = inquiryList.get(i).getMemberId();
 //			mdao.NameSearch(memberId);
-			nameList[i] = mdao.NameSearch(memberId);		
+			nameList[i] = mdao.NameSearch(memberId);
+			System.out.println(nameList[i]);
 		}
 //		String name = nameList[0];
 		Long Id =  inquiryList.get(1).getMemberId();
+		System.out.println(Id);
 
 		req.setAttribute("inquiryList", inquiryList);
 		req.setAttribute("nameList", nameList);

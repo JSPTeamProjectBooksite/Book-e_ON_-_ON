@@ -34,11 +34,11 @@ public class OrderDAO extends JDBConnect {
 		return dto;
 	}
 	
-	public ArrayList<OrderDTO> Orderinfo(){
+	public ArrayList<OrderDTO> Orderinfo(Long id){
 		ArrayList<OrderDTO> values = new ArrayList<OrderDTO>();
 		
 		try {
-			String sql = " SELECT * FROM ORDER_TBL ";
+			String sql = " SELECT * FROM ORDER_TBL WHERE MEMBER_ID =" + id;
 			psmt =con.prepareStatement(sql);
 			rs = psmt.executeQuery(sql);
 			

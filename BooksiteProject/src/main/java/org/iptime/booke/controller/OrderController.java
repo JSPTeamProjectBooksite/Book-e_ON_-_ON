@@ -26,6 +26,8 @@ public class OrderController extends HttpServlet {
 		OrderDAO dao = new OrderDAO();
 		BookDAO bdao = new BookDAO();
 		
+		
+		
 		ArrayList<OrderDTO> orderList = dao.Orderinfo();
 		String[] bookList = new String[orderList.size()];
 		
@@ -34,8 +36,11 @@ public class OrderController extends HttpServlet {
 			Long bookId = orderList.get(i).getBookId();
 			bookList[i] = bdao.readBookforReview(bookId).getTitle();
 			
+			System.out.println(bookList[i]);
+			
 		}
 		Long Id = orderList.get(1).getBookId();
+		System.out.println(Id);
 		
 		request.setAttribute("orderList", orderList);
 		request.setAttribute("bookList", bookList);
