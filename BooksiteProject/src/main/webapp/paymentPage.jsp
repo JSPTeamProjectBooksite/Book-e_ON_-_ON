@@ -28,12 +28,14 @@
 			<!-- 히든으로 결제 정보 전송 -->
 			<input type="hidden" name="memberId" value="${ delinfo.id }">
 
+
 			<!-- 사용자 정보(★살리는 부분 -->
 			<div>
 				<div class="block"></div>
 	
 				<div class="cusinfo">
 					<h3>주문자 정보</h3>
+
 					<table>
 						<tr>
 							<th>받는분</th>

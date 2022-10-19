@@ -23,7 +23,7 @@
 
 		<!-- 제목 -->
 		<h2
-			style="border-bottom: 1px; padding-bottom: 20px; align-items: center">1:1문의</h2>
+			style="border-bottom: 1px; padding-bottom: 20px; align-items: center">1:1문의내역</h2>
 
 		<div class="details">
 <!-- 		<form action="" -->
