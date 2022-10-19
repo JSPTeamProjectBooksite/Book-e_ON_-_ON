@@ -80,9 +80,18 @@
             <option value="title">제목</option>
             <option value="author">작가</option>
         </select>
-        <input class="searchText" type="text" name="searchWord">
-        <input id="searchBtn" type="submit" alt="search" value=" ">
+        <input class="searchText" type="text" name="searchWord" value="${ searchWord }">
+        <input id="searchBtn" type="submit" alt="search" value="">
     </div>
 </form>
+<script>
+    // alert("${ searchFeild }");
+    if("${ searchFeild }"=="title"){
+        document.getElementById("searchOption").options[0].selected = true;
+    }
+    else if("${ searchFeild }"=="author"){
+        document.getElementById("searchOption").options[1].selected = true;
+    }
+</script>
 </body>
 </html>

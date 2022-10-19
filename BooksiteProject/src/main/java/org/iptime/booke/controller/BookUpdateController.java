@@ -13,19 +13,22 @@ import javax.servlet.http.HttpServletResponse;
 import org.iptime.booke.dao.BookDAO;
 import org.iptime.booke.dto.BookDTO;
 
-@WebServlet("/BookUpload.do")
-public class BookUploadController extends HttpServlet {
+@WebServlet("/BookUpdate.do")
+public class BookUpdateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public BookUploadController() {
+	public BookUpdateController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 
+		String chooseBook = request.getParameter("chooseBook");
+		Long id = Long.parseLong(chooseBook);
+		
+		
 		String title = request.getParameter("title");
 		String coverImgUrl = request.getParameter("coverImgUrl");
 //		System.out.println("coverImgUrl : "+coverImgUrl);
@@ -81,7 +84,7 @@ public class BookUploadController extends HttpServlet {
 			dto.setPublicationDate(LocalDate.parse(publicationDate, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
 
 			BookDAO dao = new BookDAO();
-			dao.insertBook(dto);
+			dao.updateBook(dto,id);
 			dao.close();
 
 			request.getRequestDispatcher("/WindowClose.jsp").forward(request, response);

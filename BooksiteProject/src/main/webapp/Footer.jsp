@@ -13,13 +13,15 @@
     }
     
     footer{
+        width: 100%;
         background: linear-gradient(to left, #be92ea, #91eaea);
         margin: auto;
-        margin-top: 25px;
 		min-width: 800px;
         height: 350px;
 		border-radius: 15px 15px 0px 0px;
 		box-shadow: 10px -5px 15px 3px #91b5ea;
+		position: absolute;
+		bottom: 0;
     }
 
     #footerTable{
@@ -55,7 +57,8 @@
 
 </style>
 </head>
-<body>
+	<div style="height: 375px;"></div>
+	
     <footer>
         <table id="footerTable">
             <tr style="height: 45px;"></tr>
@@ -98,5 +101,4 @@
         </table>
 
     </footer>
-</body>
 </html>

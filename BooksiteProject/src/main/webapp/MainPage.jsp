@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>메인 페이지</title>
+<link rel="stylesheet" href="./css/public.css">
 <link rel="stylesheet" href="./css/MainPage.css">
 <!-- <script src="./js/ListPage.js"></script> -->
 <script type="text/javascript">

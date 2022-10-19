@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="./css/public.css">
 <link rel="stylesheet" href="./css/Detail.css">
 <script type="text/javascript">
 	//타이틀 변경
@@ -146,7 +147,7 @@
             </div>
 
             <!-- 책 소개 -->
-            <div id="introduceBox">
+            <div id="introduceBox" style="max-width:800px">
                 <div class="headFont">
                     책 소개
                 </div>
@@ -182,7 +183,7 @@
                 <div class="headFont">
                     목차
                 </div>
-                <div class="contentsFont">
+                <div class="contentsFont" style="max-width:800px">
                     ${ bookInfo.contents }
                 </div>
             </div>
@@ -191,7 +192,7 @@
                 <div class="headFont">
                     출판사 리뷰
                 </div>
-                <div class="contentsFont">
+                <div class="contentsFont" style="max-width:800px">
                     ${ bookInfo.publisherReview }
                 </div>
             </div>
