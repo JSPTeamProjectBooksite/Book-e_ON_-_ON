@@ -64,21 +64,6 @@
         <div style="text-align: center;">
             <img src="./source/MainPage/슬라이드 예시 이미지.png" alt="" style="width: 80%; border-radius: 20px;">
         </div>
-
-        
-    	<!-- 임시 스크립트 파일 -->
-		<script type="text/javascript">
-			var str = "<%= request.getParameter("search") %>";
-			
-			if(str != "null"){
-				if(str.length < 2){
-					alert("2글자 이상만 검색가능합니다.");
-				}
-				else{				
-					document.getElementById('searchDiv').style.display = "";
-				}
-			}
-		</script>
     
         <!-- 공간 띄우기 -->
         <div style="height: 100px;"></div>

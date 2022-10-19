@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 public class PaymentDTO {
 	private String id;
 	private Long memberId;
-	private Long bookId;
 	private Integer totalAmount;
 	private Integer pointAmount;
 	private Integer actualAmount;
@@ -17,12 +16,11 @@ public class PaymentDTO {
 	
 	public PaymentDTO() {}
 	
-	public PaymentDTO(String id, Long memberId, Long bookId, Integer totalAmount, Integer pointAmount,
+	public PaymentDTO(String id, Long memberId, Integer totalAmount, Integer pointAmount,
 			Integer actualAmount, String shippingState, String paymentMethod, String shippingMessage,
 			LocalDateTime registerDate) {
 		this.id = id;
 		this.memberId = memberId;
-		this.bookId = bookId;
 		this.totalAmount = totalAmount;
 		this.pointAmount = pointAmount;
 		this.actualAmount = actualAmount;
@@ -47,14 +45,6 @@ public class PaymentDTO {
 
 	public void setMemberId(Long memberId) {
 		this.memberId = memberId;
-	}
-
-	public Long getBookId() {
-		return bookId;
-	}
-
-	public void setBookId(Long bookId) {
-		this.bookId = bookId;
 	}
 
 	public Integer getTotalAmount() {

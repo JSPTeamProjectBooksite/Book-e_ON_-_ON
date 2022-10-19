@@ -100,7 +100,7 @@ public class BookReviewDAO extends DBConnPool {
 	public List<Map<String, Object>> detailReview(Long bid) {
 		List<Map<String, Object>> reviewList = new ArrayList<Map<String,Object>>();
 		
-		String query = "SELECT * FROM book_review_TBL WHERE BOOK_ID = ?";
+		String query = "SELECT * FROM book_review_TBL WHERE BOOK_ID = ? ORDER BY REGISTER_DATE DESC";
 		
 		try {
 			psmt = con.prepareStatement(query);

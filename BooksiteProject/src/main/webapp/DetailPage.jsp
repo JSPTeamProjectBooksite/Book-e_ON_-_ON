@@ -8,30 +8,6 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="./css/public.css">
 <link rel="stylesheet" href="./css/Detail.css">
-<script type="text/javascript">
-	//타이틀 변경
-	document.title = "${ bookInfo.title }";
-    
-    function showPopup(){
-        document.getElementById("popup").style.display = 'block';
-    }
-    function hidePopup(){
-        document.getElementById("popup").style.display = 'none';
-    }
-
-    function clickBtn(btn){
-
-        if(btn=="locker"){
-            document.getElementById("sendForm").action = "./Locker.jsp";
-        }else if(btn=="pay"){
-            document.getElementById("sendForm").action = "/payment";
-        }else if(btn=="shopCart"){
-            showPopup();
-            document.getElementById("sendForm").action = "/cart";
-        }
-        document.getElementById("sendForm").submit();
-    }
-</script>
 <title>페이지 이동 중...</title>
 </head>
 <body>
@@ -99,10 +75,9 @@
                         </div>
                     </td>
                 </tr>
-                <tr style="height: 150px;">
+                <!-- <tr style="height: 150px;">
                     <td>
                         <form action="" method="get" id="sendForm">
-                        	<!-- 선택한 책과 갯수를 다음 폼에 전송 -->
                             <input type="hidden" name="selectedBooks" value="${ bookInfo.id }">
                             선택 수량: <input type="number" style="
                             width: 60px; 
@@ -111,24 +86,38 @@
                             " name="bookCount" value="1" min="1"> 권<br>
                         </form>
                     </td>
-                </tr>
-                <tr style="height: 90px;">
+                </tr> -->
+                <tr style="height: 250px;">
                     <td>
                         <div style="
                             display: grid;
                             grid-template-columns: 1fr 1fr 1fr;
-                            align-items: end;
+                            align-items: center;
                             gap: 5px;
                         ">
-                            <div class="btnStyle animation_3" style="
+                            <!-- <div class="btnStyle animation_3" style="
                                 background:darkgray;
-                            " onclick="clickBtn('locker')">보관함</div>
+                            " onclick="clickBtn('locker')">보관함</div> -->
+                            <div>
+                                <form action="" method="get" id="sendForm">
+                                    <!-- 선택한 책과 갯수를 다음 폼에 전송 -->
+                                    <input type="hidden" name="selectedBooks" value="${ bookInfo.id }">
+                                    선택 수량:
+                                    <input type="number" style="
+                                        width: 60px;
+                                        height: 38px; 
+                                        font-size: 24px;
+                                        text-align: right;
+                                        " name="bookCount" value="1" min="1">
+                                    권
+                                </form>
+                            </div>
                             <div class="btnStyle animation_3" style="
                                 background:skyblue;
                             " onclick="clickBtn('shopCart')" >장바구니</div>
                             <div class="btnStyle animation_3" style="
                                 background:darksalmon;
-                            " onclick="clickBtn('pay')" >바로 구매</div>
+                            " onclick="clickBtn('pay')" >바로구매</div>
                         </div>
                     </td>
                 </tr>
@@ -282,9 +271,8 @@
             <form action="/reveiw.do?bookID=${ bookInfo.id }" method="post" id="reveiwWriteForm" onsubmit="return reveiwBtnAction(this);">
                 <div id="starScoreDiv">
                     <span>
-                        만족도
-                        <input type="range" name="score" min="1" max="10" value="10" oninput="starscore(this.value)">
-                        <img src="./source/Detail/starscore/10score.png" alt="" style="width:100px" id="starScoreImg">
+                        <img src="./source/Detail/starscore/10score.png" alt="" style="width:150px" id="starScoreImg"><br>
+                        <input type="range" name="score" class="rangeInput" min="1" max="10" value="10" oninput="starscore(this.value)"><br>
                     </span>
                 </div>
                 <div id="reveiwWrite">
@@ -401,7 +389,8 @@
 </div>
 </body>
 <script>
-    var userId = "<%= session.getAttribute("LoginID") %>";
+    var userId = '<%= (Long)session.getAttribute("LoginID") %>';
+    var userName = '<%= (String)session.getAttribute("LoginName") %>';
     
     function reveiwBtnAction(form){
         if(userId == "null"){
@@ -443,5 +432,43 @@
     function starscore(val){
         document.getElementById("starScoreImg").src = "./source/Detail/starscore/"+ val +"score.png"
     }
+
+    //타이틀 변경
+	document.title = "${ bookInfo.title }";
+    
+    function showPopup(){
+        document.getElementById("popup").style.display = 'block';
+    }
+    function hidePopup(){
+        document.getElementById("popup").style.display = 'none';
+    }
+
+    function clickBtn(btn){
+
+        if(btn=="locker"){ // 보관함 기능 삭제
+            document.getElementById("sendForm").action = "./Locker.jsp";
+        }else if(btn=="pay"){
+            //로그인 기록이 없을경우(로그인이 되어있지 않을때)
+            if(userName == "null"){
+                alert("로그인 후 이용할 수 있는 서비스입니다.\n로그인 페이지로 이동합니다.");
+                location.href = "/login?bntclick=1";
+                return;
+            }
+            document.getElementById("sendForm").action = "/payment";
+        }else if(btn=="shopCart"){
+            showPopup();
+            document.getElementById("sendForm").action = "/cart";
+        }
+        document.getElementById("sendForm").submit();
+    }
+
+    document.querySelector('.rangeInput').addEventListener('input',function(event){
+        var gradient_value = 100 / event.target.attributes.max.value;
+        event.target.style.background = 'linear-gradient(to right, #83f7ff 0%, #83f7ff '+gradient_value * event.target.value +'%, rgb(236, 236, 236) ' +gradient_value *  event.target.value + '%, rgb(236, 236, 236) 100%)';
+    });
+
+    //로그인 확인
+    // alert(userId);
+    // alert(userName);
 </script>
 </html>

@@ -5,15 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="./css/public.css">
 <style>
-	#wrap{
-        margin: auto;
-        max-width: 1200px;
-        min-width: 800px;
-        min-height: 100vh;
-        position: relative;
-    }
-	
 	#searchDiv{
 		margin: auto;
 		width: 90%;
@@ -40,7 +33,7 @@
         width: 100%;
     }
 
-    #infoTable tr,td,th{
+    #infoTable tr td th{
         padding: 3px;
     }
 

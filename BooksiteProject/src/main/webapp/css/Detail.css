@@ -121,7 +121,13 @@
     vertical-align: top;
     font-size: 18px;
 }
-#authorInfoTable tr, td, th{
+#authorInfoTable tr{
+    padding: 10px;
+}
+#authorInfoTable td{
+    padding: 10px;
+}
+#authorInfoTable th{
     padding: 10px;
 }
 #authorInfoTable .imgBox{
@@ -141,7 +147,11 @@
     width: 20%;
     text-align: left;
 }
-#basicInfoTable tr, th, td{
+#basicInfoTable tr{
+    padding: 20px;
+    text-align: left;
+}
+#basicInfoTable td{
     padding: 20px;
     text-align: left;
 }
@@ -248,3 +258,12 @@
     width: 90%;
 }
 
+.rangeInput{
+    width: 150px;
+    background: linear-gradient(to right, #83f7ff 0%, #83f7ff 100%, #ececec 100%, #ececec 100%);
+    border-radius: 8px;
+    outline: none;
+    transition: background 450ms ease-in;
+    -webkit-appearance: none;
+    accent-color: #4cccff;
+  }

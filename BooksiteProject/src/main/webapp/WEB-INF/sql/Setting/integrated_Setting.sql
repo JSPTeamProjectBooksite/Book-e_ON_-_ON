@@ -360,7 +360,7 @@ CREATE TABLE payment_TBL(
 	total_amount		number(7)		NOT NULL,
 	point_amount		NUMBER(7)		DEFAULT 0,		
 	actual_amount		NUMBER(7)		NOT NULL,	
-	shipping_state		nvarchar2(3)	DEFAULT '배송중',
+	shipping_state		nvarchar2(10)	DEFAULT '배송준비중',
 	payment_method		varchar2(100)	NOT NULL,
 	shipping_message	nvarchar2(2000) 	NULL,	
 	register_date 		DATE			DEFAULT sysdate

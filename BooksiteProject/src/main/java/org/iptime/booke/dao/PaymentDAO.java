@@ -1,112 +1,112 @@
 package org.iptime.booke.dao;
 
-//<<<<<<< Updated upstream
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import org.iptime.booke.common.JDBConnect;
 import org.iptime.booke.dto.PaymentDTO;
 
 public class PaymentDAO extends JDBConnect {
-//	// 사용자 받아오는 메소드
-//	public PaymentDTO delinfo(L) {
-//		PaymentDTO dto = null
-//				
-//				
-//				
-//		try {
-//			
-//			String sql = "SELECT * " + "FROM member_TBL " + "WHERE EMAIL = ? ";
-//			
-//			psmt = con.prepareStatement(sql);
-//			psmt.setString(1, email);
-//			rs = psmt.executeQuery();
+//	public List<PaymentDTO> prodinfo(String[] id, String[] select) {
+//		List<PaymentDTO> booklist = new ArrayList<PaymentDTO>();
 //
-//			if (rs.next()) {
-//				
-//				
-//						
-//				return delinfo;
+//		String sql = "SELECT * " + "FROM book_TBL " + "WHERE ID = ? ";
+//
+//		for (int i = 0; i < id.length; i++) { // {"1","2","3","4"};
+//
+//			Long idNum = Long.parseLong(id[i]); // 1L
+//
+//			try {
+//				psmt = con.prepareStatement(sql);
+//				psmt.setLong(1, idNum);
+//				rs = psmt.executeQuery();
+//
+//				PaymentDTO dto = new PaymentDTO();
+//
+//				if (rs.next()) {
+//
+//					System.out.println("rs값 있음");
+//
+//					dto.setId(rs.getLong(1));
+//					dto.setCoverImg(rs.getString(2));
+//					dto.setTitle(rs.getString(3));
+//					dto.setPrice(rs.getInt(6));
+//					dto.setBookCategoryId(rs.getInt(13));
+//
+//					dto.setQuantity((Integer.parseInt(select[i])));// {"1","1","4","5"} (select)));
+//
+//				}
+//
+////				dto.DTOPrintOut2();
+//				booklist.add(dto);
+//
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//				System.out.println("paymentDAO에서 오류발생");
 //			}
-//		} catch (Exception e) {
-//			System.out.println("Member정보 조회 중 오류발생");
-//			e.printStackTrace();
 //		}
-//		return null;
 //
+//		return booklist;
 //	}
-	// 책 반환
-	public List<PaymentDTO> prodinfo(String[] id, String[] select) {
-		List<PaymentDTO> booklist = new ArrayList<PaymentDTO>();
+	
+	public String makePaymentId() {
+		LocalDate now = LocalDate.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyMMdd");
+		
+		String result = "B"+now.format(formatter);
+		
+//		System.out.println(result);
 
-		String sql = "SELECT * " + "FROM book_TBL " + "WHERE ID = ? ";
-
-		for (int i = 0; i < id.length; i++) { // {"1","2","3","4"};
-
-			Long idNum = Long.parseLong(id[i]); // 1L
-
-			try {
-				psmt = con.prepareStatement(sql);
-				psmt.setLong(1, idNum);
-				rs = psmt.executeQuery();
-
-				PaymentDTO dto = new PaymentDTO();
-
-				if (rs.next()) {
-
-					System.out.println("rs값 있음");
-
-					dto.setId(rs.getLong(1));
-					dto.setCoverImg(rs.getString(2));
-					dto.setTitle(rs.getString(3));
-					dto.setPrice(rs.getInt(6));
-					dto.setBookCategoryId(rs.getInt(13));
-
-					dto.setQuantity((Integer.parseInt(select[i])));// {"1","1","4","5"} (select)));
-
-				}
-
-//				dto.DTOPrintOut2();
-				booklist.add(dto);
-
-			} catch (Exception e) {
-				e.printStackTrace();
-				System.out.println("paymentDAO에서 오류발생");
+		try {
+			String query = "SELECT ID FROM payment_TBL WHERE ID LIKE '"+ result +"%' ORDER BY ID DESC";
+			psmt = con.prepareStatement(query);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+//				System.out.println(rs.getString(1));
+//				System.out.println(rs.getString(1).substring(7));
+				int num = Integer.parseInt(rs.getString(1).substring(7));
+				
+				result += String.format("%05d", num+1);
+			}else {
+				result += String.format("%05d", 1);
 			}
-		}
 
-		return booklist;
+			System.out.println("생성된 paymentID : " + result);
+		} catch (Exception e) {
+			System.out.println("paymentID 생성 중 예외 발생");
+			e.printStackTrace();
+		}
+		return result;
 	}
+	
 
 	public int OrderDetails(PaymentDTO dto) {
 		int result = 0;
-		
+
 		try {
 			String query = "INSERT INTO payment_TBL("
-					+ "ID, MEMBER_ID, BOOK_ID, TOTAL_AMOUNT, POINT_AMOUNT, ACTUAL_AMOUNT, SHIPPING_STATE, PAYMENT_METHOD, SHIPPING_MESSAGE) "
+					+ "ID, MEMBER_ID, TOTAL_AMOUNT, POINT_AMOUNT, ACTUAL_AMOUNT, SHIPPING_STATE, PAYMENT_METHOD, SHIPPING_MESSAGE) "
 					+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
-			
-			psmt = con.prepareStatement(query);
-			psmt.setString(1, "2022101701");
-			psmt.setLong(2, dto.getMemberId());
-			psmt.setLong(3, dto.getBookId());
-			psmt.setLong(4, dto.getTotalAmount());
-			psmt.setLong(5, dto.getPointAmount());
-			psmt.setLong(6, dto.getActualAmount());
-			psmt.setString(7, dto.getShippingState());
-			psmt.setString(8, dto.getPaymentMethod());
-			psmt.setString(9, dto.getShippingMessage());
-			result = psmt.executeUpdate();
-			
-			System.out.println("주문상세내역 저장 성공");
-			
-			} catch (Exception e) {
-				System.out.println("문의 등록 중 예외 발생");
-				e.printStackTrace();
-			}
-			return result;
-	}
-			
-			
-		}
 
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, dto.getId());
+			psmt.setLong(2, dto.getMemberId());
+			psmt.setLong(3, dto.getTotalAmount());
+			psmt.setLong(4, dto.getPointAmount());
+			psmt.setLong(5, dto.getActualAmount());
+			psmt.setString(6, dto.getShippingState());
+			psmt.setString(7, dto.getPaymentMethod());
+			psmt.setString(8, dto.getShippingMessage());
+			result = psmt.executeUpdate();
+
+			System.out.println("주문상세내역 저장 성공");
+
+		} catch (Exception e) {
+			System.out.println("주문상세내역 등록 중 예외 발생");
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+}

@@ -72,7 +72,12 @@ public class ListPageController extends HttpServlet {
 		List<Map<String, Object>> bookList = new ArrayList<Map<String, Object>>();
 		
 		ListPageDAO dao = new ListPageDAO();
-		if(searchFeild.equals("title"))
+		if(searchFeild.equals("total")) {
+			System.out.println("전체 검색");
+			List<Long> list = dao.searchAuthorForName(searchWord);
+			bookList = dao.searchBookTotal(searchWord, list);
+		}
+		else if(searchFeild.equals("title"))
 			bookList = dao.searchBookForTitle(searchWord);
 		else if(searchFeild.equals("author")) {
 			List<Long> list = dao.searchAuthorForName(searchWord);
