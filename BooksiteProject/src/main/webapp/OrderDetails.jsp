@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
@@ -27,8 +28,8 @@
 			</tr>
 			<tr>
 				<td>2022-10-18</td>
-				<td>B22101800001</td>
-				<td>김하영</td>
+				<td>${ OrderDetails.id }</td>
+				<td>${ delinfo.name }</td>
 				<td>기분이 태도가 되지 않게 외 총2권</td>
 				<td>비고</td>
 			</tr>
@@ -64,19 +65,19 @@
 			<table class="delinfo" border="1">
 				<tr>
 					<th class="col">주문하신 분</th>
-					<td style="width: 372px;">김하영</td>
+					<td style="width: 372px;">${ delinfo.name }</td>
                     <th class="col">받으시는 분</th>
-                    <td>김하영</td>
+                    <td>${ delinfo.name }</td>
                 </tr>
 				<tr>
 					<th class="col">배송주소</th>
-					<td colspan="3">경기도 성남시 분당구 돌마로45 5층</td>
+					<td colspan="3">${delinfo.address }</td>
 				</tr>
 				<tr>
 					<th class="col">전화번호</th>
 					<td>없음</td>
 					<th class="col">휴대전화</th>
-					<td>010-1234-2345</td>
+					<td>${ delinfo.phoneNum }</td>
 				</tr>
 				<tr>
 					<th class="col">배송메세지</th>
@@ -99,6 +100,7 @@
 					<th>적립예정금액</th>
 					<th>비고</th>
 				</tr>
+				<c:forEach var="prod" items="">
 				<tr>
 					<td><a href=""></a><b>기분이 태도가 되지 않게</b></a></td>
 					<td><b>1</b></td>
@@ -106,15 +108,7 @@
 					<td><b>적립예정금액 : 700원(5%)</b></td>
 					<td></td>
 				</tr>
-				<tr>
-					<td><b>기분이 태도가 되지 않게</b></td>
-					<td><b>1</b></td>
-					<td><b>13,500원</b></td>
-					<td><b>적립예정금액 : 700원(5%)</b></td>
-					<td></td>
-				</tr>
-
-
+				</c:forEach>
 			</table>
 		</div>
 		<div class="payinfo">

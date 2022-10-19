@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.iptime.booke.dao.BookDAO;
 import org.iptime.booke.dao.OrderDAO;
 import org.iptime.booke.dto.OrderDTO;
+import org.jsoup.select.Evaluator.Id;
 
 @WebServlet("/OrderController")
 public class OrderController extends HttpServlet {
@@ -28,7 +29,7 @@ public class OrderController extends HttpServlet {
 		
 		
 		
-		ArrayList<OrderDTO> orderList = dao.Orderinfo();
+		ArrayList<OrderDTO> orderList = dao.Orderinfo(Long id);
 		String[] bookList = new String[orderList.size()];
 		
 		for(int i=0; i<orderList.size();i++) {
@@ -49,7 +50,6 @@ public class OrderController extends HttpServlet {
 	}
 	
 	
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
