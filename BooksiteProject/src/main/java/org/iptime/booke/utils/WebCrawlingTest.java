@@ -152,8 +152,8 @@ public class WebCrawlingTest {
 //				System.out.println(weight);
 //				System.out.println(totalPages);
 					
-					dto.setIsbn13(Long.parseLong(isbn13));
-					dto.setIsbn10(Long.parseLong(isbn10));
+					dto.setIsbn13(isbn13);
+					dto.setIsbn10(isbn10);
 					dto.setWeight(Integer.parseInt(weight));
 					dto.setTotalPages(Integer.parseInt(totalPages));
 				}

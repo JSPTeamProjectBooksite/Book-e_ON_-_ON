@@ -12,8 +12,8 @@ public class BookDTO {
 	private Integer price;//
 	private Integer totalPages;//
 	private Integer weight;//
-	private Long isbn13;//
-	private Long isbn10;//
+	private String isbn13;//
+	private String isbn10;//
 	private Integer bookCategoryId;//
 	private String introduce;//
 	private String introduceImg;//
@@ -133,7 +133,7 @@ public class BookDTO {
 	
 	//매니저 책 정보
 	public BookDTO(Long id, String coverImg, String title, Long authorId, String translator, Integer price,
-			Integer totalPages, Integer weight, Long isbn13, Long isbn10, Integer bookCategoryId, String introduce,
+			Integer totalPages, Integer weight, String isbn13, String isbn10, Integer bookCategoryId, String introduce,
 			String introduceImg, String publisher, String publisherReview, Integer deliveryFee,
 			Integer estimatedDeliveryDate, String contents, Integer visit, Integer quantity, String catchphrase,
 			LocalDate publicationDate, LocalDateTime registDate, LocalDateTime updateDate) {
@@ -251,19 +251,19 @@ public class BookDTO {
 		this.weight = weight;
 	}
 
-	public Long getIsbn13() {
+	public String getIsbn13() {
 		return isbn13;
 	}
 
-	public void setIsbn13(Long isbn13) {
+	public void setIsbn13(String isbn13) {
 		this.isbn13 = isbn13;
 	}
 
-	public Long getIsbn10() {
+	public String getIsbn10() {
 		return isbn10;
 	}
 
-	public void setIsbn10(Long isbn10) {
+	public void setIsbn10(String isbn10) {
 		this.isbn10 = isbn10;
 	}
 

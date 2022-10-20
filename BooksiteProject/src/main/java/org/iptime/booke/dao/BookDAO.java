@@ -136,8 +136,8 @@ public class BookDAO extends DBConnPool{
 				dto.setEstimatedDeliveryDate(rs.getInt(8));
 				dto.setTotalPages(rs.getInt(9));
 				dto.setWeight(rs.getInt(10));
-				dto.setIsbn13(rs.getLong(11));
-				dto.setIsbn10(rs.getLong(12));
+				dto.setIsbn13(rs.getString(11));
+				dto.setIsbn10(rs.getString(12));
 				dto.setBookCategoryId(rs.getInt(13));
 				dto.setIntroduce(rs.getString(14));
 				dto.setIntroduceImg(rs.getString(15));
@@ -169,55 +169,16 @@ public class BookDAO extends DBConnPool{
 		boolean reselt = false;
 		
 		try {
-			String query = "INSERT INTO BOOK_TBL("
-					+ "	ID,"
-					+ "	COVER_IMG,"
-					+ " TITLE,"
-					+ "	AUTHOR_ID,"
-					+ " TRANSLATOR,"
-					+ " PRICE,"
-					+ " DELIVERY_FEE,"
-					+ " ESTIMATED_DELIVERY_DATE,"
-					+ "	TOTAL_PAGES,"
-					+ " WEIGHT,"
-					+ " ISBN13,"
-					+ " ISBN10,"
-					+ " BOOK_CATEGORY_ID,"
-					+ "	INTRODUCE,"
-					+ " INTRODUCE_IMG,"
-					+ "	PUBLISHER,"
-					+ " PUBLISHER_REVIEW,"
-					+ "	CONTENTS,"
-					+ " VISIT,"
-					+ "	CATCHPHRASE,"
-					+ "	PUBLICATION_DATE"
-					+ ")"
-					+ "VALUES("
-					+ "	BOOK_SEQ.nextval,"
-					+ "	?,"
-					+ " ?,"
-					+ "	?," //작가 아이디
-					+ " ?,"
-					+ " ?,"
-					+ " ?,"
-					+ " ?,"
-					+ "	?,"
-					+ " ?,"
-					+ " ?,"
-					+ " ?,"
-					+ " ?,"
-					+ "	?,"
-					+ " ?,"
-					+ "	?,"
-					+ " ?,"
-					+ "	?,"
-					+ " ?,"
-					+ "	?,"
-					+ "	?"
-					+ ")";
+			String query = "INSERT INTO BOOK_TBL( ID, COVER_IMG, TITLE, AUTHOR_ID, TRANSLATOR, PRICE, DELIVERY_FEE, ESTIMATED_DELIVERY_DATE, TOTAL_PAGES, WEIGHT, ISBN13, ISBN10, BOOK_CATEGORY_ID, INTRODUCE, INTRODUCE_IMG, PUBLISHER, PUBLISHER_REVIEW, CONTENTS, VISIT, CATCHPHRASE, PUBLICATION_DATE ) VALUES( BOOK_SEQ.nextval";
 			
 			System.out.println("쿼리문:");
 			System.out.println(query);
+			
+			Date date = null;
+			if(dto.getPublicationDate() != null)
+				date = Date.valueOf(dto.getPublicationDate());
+			
+			query += ", ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, dto.getCoverImg());
@@ -226,10 +187,7 @@ public class BookDAO extends DBConnPool{
 			psmt.setString(4, dto.getTranslator());
 			psmt.setInt(5, dto.getPrice());
 			psmt.setInt(6, dto.getDeliveryFee());
-			//psmt.setInt(7, dto.getEstimatedDeliveryDate());
-			System.out.println("예상 배송일 : " + dto.getEstimatedDeliveryDate());
-			psmt.setInt(7, 2);
-			
+			psmt.setInt(7, 2); //예상 배송일
 			psmt.setObject(8, dto.getTotalPages());
 			psmt.setObject(9, dto.getWeight());
 			psmt.setObject(10, dto.getIsbn13());
@@ -242,17 +200,32 @@ public class BookDAO extends DBConnPool{
 			psmt.setString(17, dto.getContents());
 			psmt.setObject(18, 0);
 			psmt.setString(19, dto.getCatchphrase());
-			
-			Date date = null;
-			if(dto.getPublicationDate() != null)
-				date = Date.valueOf(dto.getPublicationDate());
 			psmt.setDate(20, date);
 			
-//			System.out.println("만들어진 쿼리문 :");
-//			System.out.println(psmt.toString());
+//			query += ", '" + dto.getCoverImg() + "'";
+//			query += ", '" + dto.getTitle() + "'";
+//			query += ", " + dto.getAuthorId();
+//			query += ", '" + dto.getTranslator() + "'";
+//			query += ", " + dto.getPrice();
+//			query += ", " + dto.getDeliveryFee();
+//			query += ", " + 2; //예상 배송일
+//			query += ", " + dto.getTotalPages();
+//			query += ", " + dto.getWeight();
+//			query += ", " + dto.getIsbn13();
+//			query += ", " + dto.getIsbn10();
+//			query += ", " + dto.getBookCategoryId();
+//			query += ", '" + dto.getIntroduce() + "'";
+//			query += ", '" + dto.getIntroduceImg() + "'";
+//			query += ", '" + dto.getPublisher() + "'";
+//			query += ", '" + dto.getPublisherReview() + "'";
+//			query += ", '" + dto.getContents() + "'";
+//			query += ", " + 0;
+//			query += ", '" + dto.getCatchphrase() + "'";
+//			query += ", '" + date + "')";
+//			System.out.println("query: " + query);
 			
 			int applyResult = psmt.executeUpdate();
-			
+						
 			System.out.println("psmt.executeUpdate() : " + applyResult);
 			
 			reselt = (applyResult == 1)? true: false;
@@ -360,8 +333,8 @@ public class BookDAO extends DBConnPool{
 						rs.getInt(6), 
 						rs.getInt(7), 
 						rs.getInt(8), 
-						rs.getLong(9), 
-						rs.getLong(10), 
+						rs.getString(9), 
+						rs.getString(10), 
 						rs.getInt(11), 
 						rs.getString(12), 
 						rs.getString(13), 
@@ -401,8 +374,8 @@ public class BookDAO extends DBConnPool{
 						rs.getInt(6), 
 						rs.getInt(7), 
 						rs.getInt(8), 
-						rs.getLong(9), 
-						rs.getLong(10), 
+						rs.getString(9), 
+						rs.getString(10), 
 						rs.getInt(11), 
 						rs.getString(12), 
 						rs.getString(13), 

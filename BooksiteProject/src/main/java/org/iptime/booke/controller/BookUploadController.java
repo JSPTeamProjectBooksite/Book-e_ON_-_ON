@@ -66,9 +66,9 @@ public class BookUploadController extends HttpServlet {
 			if (weight != null && weight.length() > 0)
 				dto.setWeight(Integer.parseInt(weight));
 			if (isbn13 != null && isbn13.length() > 0)
-				dto.setIsbn13(Long.parseLong(isbn13));
+				dto.setIsbn13(isbn13);
 			if (isbn10 != null && isbn10.length() > 0)
-				dto.setIsbn10(Long.parseLong(isbn10));
+				dto.setIsbn10(isbn10);
 			if (categoryId != null && categoryId.length() > 0)
 				dto.setBookCategoryId(Integer.parseInt(categoryId));
 			dto.setIntroduce(introduce);
