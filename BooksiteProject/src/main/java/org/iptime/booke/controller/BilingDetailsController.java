@@ -19,11 +19,11 @@ import org.iptime.booke.dto.OrderDTO;
 import org.iptime.booke.dto.PaymentDTO;
 
 @WebServlet("/orderDetailInfo")
-public class OrderDetailsController extends HttpServlet {
+public class BilingDetailsController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	 
 
-    public OrderDetailsController() {
+    public BilingDetailsController() {
 
     }
 
@@ -46,27 +46,6 @@ public class OrderDetailsController extends HttpServlet {
 		paymentDao.close();
 		
 		//책정보(bookid, 구매수량)
-		Long bookinfo = Long.parseLong(request.getParameter("id"));
-		System.out.println(bookinfo);
-		
-		OrderDAO dao = new OrderDAO();
-		BookDAO bdao = new BookDAO();
-		
-		
-		
-		ArrayList<OrderDTO> orderList = dao.orderinfo(bookinfo);
-		String[] bookList = new String[orderList.size()];
-		
-		for(int i=0; i<orderList.size();i++) {
-			
-			Long bookId = orderList.get(i).getBookId();
-			bookList[i] = bdao.readBookforReview(bookId).getTitle();
-			
-			System.out.println(bookList[i]);
-			
-		}
-		Long Id = orderList.get(1).getBookId();
-		System.out.println(Id);
 		
 	
 	

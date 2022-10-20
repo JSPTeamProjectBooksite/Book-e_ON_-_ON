@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="../css/mypage.css">
 <link rel="stylesheet" href="./css/public.css">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>마이페이지</title>
 </head>
 <body>
 	<div id="wrap">
@@ -79,31 +79,33 @@
 				</div>
 			</div>
 
-			<!-- Tab Container 3 -->
+				<!-- Tab Container 2 -->
 			<input class="tab-radio" id="main-tab-3" name="main-group"
 				type="radio" />
 			<div class="tab-content">
 				<div class="sub-tabs-container"></div>
-				<input class="tab-radio" id="sub-tab3-1" name="sub-group3"
+				<input class="tab-radio" id="sub-tab3-1" name="sub-group2"
 					type="radio" checked="checked">
 				<div class="sub-tab-content">
-					<h1>Sub-Tab 3</h1>
-					<p>Sub-Tab content</p>
+					<iframe src="./UserInquiryWrite.jsp" width="100%" height="1230px"
+							frameborder=0 framespacing=0 marginheight=0 marginwidth=0
+							scrolling=yes vspace=0></iframe>
 				</div>
-			</div>
+			</div>	
 
-			<!-- Tabs Container 1 -->
-			<input class="tab-radio" id="main-tab-4" name="main-group"
-				type="radio" checked="checked" />
-			<div class="tab-content">
-				<div class="sub-tabs-container"></div>
-				<input class="tab-radio" id="sub-tab4-1" name="sub-group4"
-					type="radio" checked="checked">
-				<div class="sub-tab-content">
-					<h1>Sub-Tab 4</h1>
-					<p>Sub-Tab content</p>
+				<!-- Tabs Container 1 -->
+				<input class="tab-radio" id="main-tab-4" name="main-group"
+					type="radio" checked="checked" />
+				<div class="tab-content">
+					<div class="sub-tabs-container"></div>
+					<input class="tab-radio" id="sub-tab4-1" name="sub-group4"
+						type="radio" checked="checked">
+					<div class="sub-tab-content">
+						<iframe src="./ServicePage.jsp" width="100%" height="1230px"
+							frameborder=0 framespacing=0 marginheight=0 marginwidth=0
+							scrolling=yes vspace=0></iframe>
+					</div>
 				</div>
-			</div>
 		</section>
 		<%@ include file="Footer.jsp"%>
 	</div>

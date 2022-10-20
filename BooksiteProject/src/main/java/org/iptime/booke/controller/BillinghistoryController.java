@@ -1,7 +1,7 @@
 package org.iptime.booke.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,24 +15,27 @@ import org.iptime.booke.dto.OrderDTO;
 
 
 @WebServlet("/OrderController")
-public class OrderController extends HttpServlet {
+public class BillinghistoryController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
        
-    public OrderController() {
+    public BillinghistoryController() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		Long id = Long.parseLong(request.getParameter("id"));
+		String id = request.getParameter("id");
 		System.out.println(id);
 		
-		OrderDAO dao = new OrderDAO();
+		OrderDAO odao = new OrderDAO();
 		BookDAO bdao = new BookDAO();
 		
-		ArrayList<OrderDTO> orderList = dao.orderinfo(id);
-		String[] bookList = new String[orderList.size()];
+		//주문 정보 가져옴
+		List<OrderDTO> orderList = odao.orderdetailinfo(id);
+		List<OrderDTO> bookList = bdao.
+		
+
 		
 		for(int i=0; i<orderList.size();i++) {
 			
@@ -42,6 +45,9 @@ public class OrderController extends HttpServlet {
 			System.out.println(bookList[i]);
 			
 		}
+		
+		
+		
 		Long Id = orderList.get(1).getBookId();
 		System.out.println(Id);
 		

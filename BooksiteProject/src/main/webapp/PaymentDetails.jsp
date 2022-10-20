@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
@@ -81,7 +81,7 @@
 				</tr>
 				<tr>
 					<th class="col">배송메세지</th>
-					<td colspan="3">없음</td>
+					<td colspan="3"> ${ orderinfo.shippingmessage }</td>
 				</tr>
 
 			</table>
@@ -100,10 +100,10 @@
 					<th>적립예정금액</th>
 					<th>비고</th>
 				</tr>
-				<c:forEach var="prod" items="">
+				<c:forEach var="prod" items="${ orderList }" varStatus="status">
 				<tr>
-					<td><a href=""></a><b>기분이 태도가 되지 않게</b></a></td>
-					<td><b>1</b></td>
+					<td><b>${ bookList[status.index] }</b></td>
+					<td><b>${ orderList.quantity}</b></td>
 					<td><b>13,500원</b></td>
 					<td><b>적립예정금액 : 700원(5%)</b></td>
 					<td></td>

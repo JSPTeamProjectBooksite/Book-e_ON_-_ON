@@ -17,7 +17,7 @@
 <body>
 
 	<div class="wrap">
-		<%@ include file="Header.jsp"%>
+<%-- 		<%@ include file="Header.jsp"%> --%>
 
 		<div class="wrapper">
 			<div class="search">
@@ -92,7 +92,7 @@
 			<div class="block3"></div>
 
 		</div>
-		<%@ include file="Footer.jsp"%></div>
+<%-- 		<%@ include file="Footer.jsp"%></div> --%>
 </body>
 
 </html>

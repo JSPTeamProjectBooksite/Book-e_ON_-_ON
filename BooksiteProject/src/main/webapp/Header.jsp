@@ -71,7 +71,7 @@ boolean login = (userID == null) ? false : true; //로그인 되었는지 안되
 					//최상단부 스크립틀릿에 보시면 세션에서 로그인 됐을 경우 아이디가 저장돼있습니다.
 					//로그인값(false)이 아닐경우 출력됩니다.
 					%>
-					<a href="/userInfo" title="마이페이지">
+					<a href="/mypage" title="마이페이지">
 						<div id="myPageIco">
 							<svg id="Icons_User" overflow="hidden" version="1.1" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 								<g>

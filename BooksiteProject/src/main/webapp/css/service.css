@@ -1,5 +1,5 @@
 .wrap {
-    width: 1280px;
+/*     width: 1280px; */
     margin: 0 auto;
 }
 
@@ -13,7 +13,7 @@
 }
 
 .search {
-    width: 1280px;
+/*     width: 1280px; */
     display: flex;
     text-align: center;
     justify-content: center;
@@ -23,7 +23,7 @@
 
 .container {
     display: grid;
-    width: 1280px;
+/*     width: 1280px; */
     grid-template-columns: repeat(4, 160px);
     grid-template-rows: repeat(3, 140px);
     gap: 12px;

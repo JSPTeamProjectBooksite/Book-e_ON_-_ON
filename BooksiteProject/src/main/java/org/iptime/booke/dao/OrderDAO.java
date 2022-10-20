@@ -2,6 +2,7 @@ package org.iptime.booke.dao;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.iptime.booke.common.JDBConnect;
 import org.iptime.booke.dto.OrderDTO;
@@ -12,21 +13,26 @@ public class OrderDAO extends JDBConnect {
 		OrderDTO dto = null;
 		
 		try {
-			String sql = "SELECT * FROM ORDER_TBL payment_id = ?";
+			String sql = "SELECT * FROM ORDER_TBL WHERE payment_id = ?";
 			psmt = con.prepareStatement(sql);
-			psmt.setString(2, paymentId);
+			psmt.setString(1, paymentId);
 			rs = psmt.executeQuery();
 			
 			if(rs.next()) {
 				dto = new OrderDTO();
 				
 				dto.setId(rs.getLong(1));
-				dto.setPaymentId(rs.getNString(2));
+				dto.setPaymentId(rs.getString(2));
 				dto.setBookId(rs.getLong(3));
 				dto.setQuantity(rs.getInt(4));
 				
 				System.out.println("주문내역 조회 성공");
 				
+//				System.out.println(rs.getLong(1));
+//				System.out.println(rs.getString(2));
+//				System.out.println(rs.getLong(3));
+//				System.out.println(rs.getInt(4));
+//				
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -35,20 +41,25 @@ public class OrderDAO extends JDBConnect {
 		return dto;
 	}
 	
-	public ArrayList<OrderDTO> orderinfo(Long id){  //주문상세정보
+	public List<OrderDTO> orderdetailinfo(String id){  //주문상세정보
 		ArrayList<OrderDTO> values = new ArrayList<OrderDTO>();
 		
 		try {
-			String sql = " SELECT * FROM ORDER_TBL WHERE MEMBER_ID =" + id;
+			String sql = " SELECT * FROM ORDER_TBL WHERE PAYMENT_ID =" + id;
 			psmt =con.prepareStatement(sql);
 			rs = psmt.executeQuery(sql);
 			
 			while(rs.next()) {
-				OrderDTO orderDTO = new OrderDTO(rs.getLong(1), rs.getString(2), rs.getLong(3),
-						rs.getInt(4), rs.getTimestamp(5).toLocalDateTime());
+				OrderDTO orderDTO = new OrderDTO(
+						rs.getLong(1),
+						rs.getString(2),
+						rs.getLong(3),
+						rs.getInt(4),
+						rs.getTimestamp(5).toLocalDateTime());
 				
 				values.add(orderDTO);
 			}
+			
 		
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -73,4 +84,9 @@ public class OrderDAO extends JDBConnect {
 			e.printStackTrace();
 		}
 	}
+	
+//	public static void main(String[] args) {
+//		OrderDAO dao = new OrderDAO();
+//		dao.orderinfo(1L);
+//	}
 }
