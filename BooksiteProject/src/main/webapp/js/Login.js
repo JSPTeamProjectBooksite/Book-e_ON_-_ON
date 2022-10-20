@@ -1,10 +1,12 @@
 function validateForm(form) {
 	if (!form.email.value) {
 		alert("이메일을 입력하세요.");
+		form.email.focus();
 		return false;
 	}
 	if (!form.password.value) {
 		alert("비밀번호을 입력하세요.");
+		form.password.focus();
 		return false;
 	}
 }

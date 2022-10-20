@@ -18,10 +18,11 @@ public class WebCrawlingTest {
 				"https://product.kyobobook.co.kr/detail/S000000581727",
 				"https://product.kyobobook.co.kr/detail/S000001983540",
 				"https://product.kyobobook.co.kr/detail/S000001983540",
-				"https://product.kyobobook.co.kr/detail/S000001913217"};
+				"https://product.kyobobook.co.kr/detail/S000001913217",
+				"https://product.kyobobook.co.kr/detail/S000200062763"};
 		
 		
-		WebCrawlingTest.webCrawling(URL[3]);
+		WebCrawlingTest.webCrawling(URL[4]);
 		
 		
 		
@@ -142,20 +143,21 @@ public class WebCrawlingTest {
 				String totalPages;
 				
 				if(bookInfo.size() > 0) {
+					System.out.println(bookInfo.toString());
+					
 					isbn13 = bookInfo.get(0).substring(0,bookInfo.get(0).indexOf(" "));
-					isbn10 = bookInfo.get(0).substring(bookInfo.get(0).indexOf(" ( ")+3,bookInfo.get(0).indexOf(" )"));
-					weight = bookInfo.get(1).substring(0,bookInfo.get(1).indexOf("쪽"));
-					totalPages = bookInfo.get(2).substring(bookInfo.get(2).indexOf(" / ")+3,bookInfo.get(2).indexOf(" g "));
-					
-//				System.out.println(isbn13);
-//				System.out.println(isbn10);
-//				System.out.println(weight);
-//				System.out.println(totalPages);
-					
 					dto.setIsbn13(isbn13);
+					isbn10 = bookInfo.get(0).substring(bookInfo.get(0).indexOf(" ( ")+3,bookInfo.get(0).indexOf(" )"));
 					dto.setIsbn10(isbn10);
-					dto.setWeight(Integer.parseInt(weight));
-					dto.setTotalPages(Integer.parseInt(totalPages));
+					if(bookInfo.get(1).indexOf("쪽") != -1) {
+						totalPages = bookInfo.get(1).substring(0,bookInfo.get(1).indexOf("쪽"));
+						dto.setTotalPages(Integer.parseInt(totalPages));
+					}
+					if(bookInfo.get(2).indexOf("g") != -1) {
+						weight = bookInfo.get(2).substring(bookInfo.get(2).indexOf(" / ")+3,bookInfo.get(2).indexOf(" g "));
+						dto.setWeight(Integer.parseInt(weight));
+					}
+					
 				}
 				
 				

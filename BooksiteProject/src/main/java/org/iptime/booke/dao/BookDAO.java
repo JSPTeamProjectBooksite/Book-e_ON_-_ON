@@ -67,43 +67,42 @@ public class BookDAO extends DBConnPool{
 	//책 읽어오기
 	//메인 페이지
 	//인기도서 읽어오기
-	public List<Map<String, Object>> selectPopularList(long[] popbid){
+	public List<Map<String, Object>> selectPopularList(int num){
 		List<Map<String, Object>> booklist = new ArrayList<>();
 		
-		String query = "SELECT ID, COVER_IMG, TITLE, AUTHOR_ID " + "FROM BOOK_TBL " + "WHERE ID = ? ";
+		String query = "SELECT ID, COVER_IMG, TITLE, AUTHOR_ID FROM BOOK_TBL ORDER BY VISIT DESC";
 		
-		for(long l : popbid) {
-			try {
-				psmt = con.prepareStatement(query);
-				psmt.setLong(1, l);
-				rs = psmt.executeQuery();
+		try {
+			psmt = con.prepareStatement(query);
+			rs = psmt.executeQuery();
+			
+			int i = 0;
+			
+			while(rs.next() && i++ < num) {
+				Map<String, Object> book = new HashMap<>();
 				
-				if(rs.next()) {
-					Map<String, Object> book = new HashMap<>();
-					
-					BookDTO bookDto = new BookDTO();
-					
-					bookDto.setId(rs.getLong(1));
-					bookDto.setCoverImg(rs.getString(2));
-					bookDto.setTitle(rs.getString(3));
-					bookDto.setAuthorId(rs.getLong(4));
-					// 작가 아이디로 작가 조회
-					AuthorDAO authorDao = new AuthorDAO();
-					AuthorDTO authorDto = authorDao.findAuthor(bookDto.getAuthorId());
-					authorDao.close();
-					
-					book.put("book", bookDto);
-					book.put("author", authorDto);
-					
-					
-					booklist.add(book);
-				}
+				BookDTO bookDto = new BookDTO();
 				
-			} catch (Exception e) {
-				// TODO: handle exception
-				System.out.println("메인 인기항목 불러오는 중 오류발생");
-				e.printStackTrace();
+				bookDto.setId(rs.getLong(1));
+				bookDto.setCoverImg(rs.getString(2));
+				bookDto.setTitle(rs.getString(3));
+				bookDto.setAuthorId(rs.getLong(4));
+				// 작가 아이디로 작가 조회
+				AuthorDAO authorDao = new AuthorDAO();
+				AuthorDTO authorDto = authorDao.findAuthor(bookDto.getAuthorId());
+				authorDao.close();
+				
+				book.put("book", bookDto);
+				book.put("author", authorDto);
+				
+				
+				booklist.add(book);
 			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("메인 인기항목 불러오는 중 오류발생");
+			e.printStackTrace();
 		}
 		
 		return booklist;
@@ -275,10 +274,7 @@ public class BookDAO extends DBConnPool{
 			psmt.setString(4, dto.getTranslator());
 			psmt.setInt(5, dto.getPrice());
 			psmt.setInt(6, dto.getDeliveryFee());
-			//psmt.setInt(7, dto.getEstimatedDeliveryDate());
-			System.out.println("예상 배송일 : " + dto.getEstimatedDeliveryDate());
 			psmt.setInt(7, 2);
-			
 			psmt.setObject(8, dto.getTotalPages());
 			psmt.setObject(9, dto.getWeight());
 			psmt.setObject(10, dto.getIsbn13());
@@ -313,6 +309,22 @@ public class BookDAO extends DBConnPool{
 		
 		return reselt;
 	}
+	
+	//책 수정
+		public void updateVisit(Long id) {
+			
+			try {
+				String query = "UPDATE BOOK_TBL SET VISIT = VISIT + 1 WHERE ID = " + id;
+				
+				psmt = con.prepareStatement(query);
+				psmt.executeUpdate();
+				
+				System.out.println("("+id+")책을 조회합니다.");
+			} catch (Exception e) {
+				System.out.println("조회수 UPDATE 중 예외 발생");
+				e.printStackTrace();
+			}
+		}
 	
 	
 	//관리자페이지
@@ -439,10 +451,19 @@ public class BookDAO extends DBConnPool{
 		int result = 0;
 		
 		try {
-			String sql = "DELETE FROM BOOK_TBL WHERE ID = ?";
+			System.out.println("도서를 삭제하기전, 해당페이지의 댓글을 우선 삭제합니다.");
+			String sql = "DELETE FROM book_review_TBL WHERE BOOK_ID = ?";
 			psmt = con.prepareStatement(sql);
 			psmt.setNString(1, idx);
 			result = psmt.executeUpdate();
+			System.out.println("해당페이지의 댓글을 전부 삭제했습니다.");
+			
+			sql = "DELETE FROM BOOK_TBL WHERE ID = ?";
+			psmt = con.prepareStatement(sql);
+			psmt.setNString(1, idx);
+			result = psmt.executeUpdate();
+			System.out.println("도서 삭제가 완료되었습니다.");
+			
 		} catch (Exception e) {
 			System.out.println("책 삭제 중 예외 발생");
 			e.printStackTrace();

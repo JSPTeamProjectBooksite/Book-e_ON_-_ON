@@ -55,7 +55,7 @@
                     <td>
                         <div class="tableMenu">
                             <div>판매가</div>
-                            <div>${ price } 원</div>
+                            <div><span id="price">0</span> 원</div>
                         </div>
                     </td>
                 </tr>
@@ -391,6 +391,8 @@
 <script>
     var userId = '<%= (Long)session.getAttribute("LoginID") %>';
     var userName = '<%= (String)session.getAttribute("LoginName") %>';
+
+    var price = ${ bookInfo.price }*1;
     
     function reveiwBtnAction(form){
         if(userId == "null"){
@@ -466,6 +468,13 @@
         var gradient_value = 100 / event.target.attributes.max.value;
         event.target.style.background = 'linear-gradient(to right, #83f7ff 0%, #83f7ff '+gradient_value * event.target.value +'%, rgb(236, 236, 236) ' +gradient_value *  event.target.value + '%, rgb(236, 236, 236) 100%)';
     });
+
+    //자바스크립트로 셋팅하는 부분
+    function setPage(){
+        document.getElementById("price").innerHTML = price.toLocaleString('ko-KR');
+    }
+
+    setPage();
 
     //로그인 확인
     // alert(userId);
