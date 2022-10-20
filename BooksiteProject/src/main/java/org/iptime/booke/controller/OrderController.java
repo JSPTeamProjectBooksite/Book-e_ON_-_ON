@@ -26,11 +26,10 @@ public class OrderController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Long id = Long.parseLong(request.getParameter("id"));
+		System.out.println(id);
 		
 		OrderDAO dao = new OrderDAO();
 		BookDAO bdao = new BookDAO();
-		
-		
 		
 		ArrayList<OrderDTO> orderList = dao.orderinfo(id);
 		String[] bookList = new String[orderList.size()];
