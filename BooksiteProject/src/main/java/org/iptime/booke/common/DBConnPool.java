@@ -23,7 +23,7 @@ public class DBConnPool {
 
 			con = source.getConnection();
 
-			System.out.println("DB 커넥션 풀 연결 성공");
+//			System.out.println("DB 커넥션 풀 연결 성공");
 		} catch (Exception e) {
 			System.out.println("DB 컬렉션 풀 연결 실패");
 			e.printStackTrace();
@@ -41,7 +41,7 @@ public class DBConnPool {
 			if (con != null)
 				con.close();
 
-			System.out.println("DB 커넥션 풀 자원 반납");
+//			System.out.println("DB 커넥션 풀 자원 반납");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

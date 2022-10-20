@@ -12,10 +12,15 @@ import org.iptime.booke.dto.MemberDTO;
 import org.iptime.booke.utils.LocalDateABC;
 
 public class MemberDAO extends JDBConnect {
+	
+	public static void main(String[] args) {
+		MemberDAO dao = new MemberDAO();
+		dao.checkName("user01");
+	}
 
 	public MemberDTO getMemberDTO(String uid, String upass) {
 		MemberDTO dto = null;
-		String query = "SELECT ID, NAME, EMAIL, PASSWORD FROM member_TBL WHERE email=? and password=? AND  MEMBER_STATE_ID=0";
+		String query = "SELECT ID, NAME, EMAIL, PASSWORD, MEMBER_STATE_ID FROM member_TBL WHERE email=? and password=? AND MEMBER_STATE_ID = 0";
 
 		System.out.println("로그인시도 아이디 : " + uid);
 		System.out.println("로그인시도 비밀번호 : " + upass);
@@ -32,8 +37,9 @@ public class MemberDAO extends JDBConnect {
 				dto.setName(rs.getString(2));
 				dto.setEmail(rs.getString(3));
 				dto.setPassword(rs.getString(4));
+				dto.setMemberStateId(rs.getShort(5));
 
-				System.out.println("로그인 성공 : '" + dto.getName() + "'님이 로그인 하셨습니다.");
+				System.out.println("유저 정보 탐색 완료");
 			} else {
 				System.out.println("로그인 하려는 아이디가 없습니다.");
 			}
@@ -44,6 +50,76 @@ public class MemberDAO extends JDBConnect {
 
 		return dto;
 	}
+	
+	//로그인 가능 상태
+	public int checkLoginState(String email,String password) {
+		String query;
+//		= "SELECT ID, NAME, EMAIL, PASSWORD FROM member_TBL WHERE email=? and password=? AND  MEMBER_STATE_ID=0";
+
+		System.out.println("로그인시도 아이디 : " + email);
+		try {
+			query = "SELECT MEMBER_STATE_ID FROM member_TBL WHERE email=? and password=? ORDER BY MEMBER_STATE_ID ASC";
+			
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, email);
+			psmt.setString(2, password);
+			rs = psmt.executeQuery();
+			
+			if (rs.next()) {
+				return rs.getShort(1);
+			}else {
+				query = "SELECT ID FROM member_TBL WHERE email=? and MEMBER_STATE_ID = 0";
+				
+				psmt = con.prepareStatement(query);
+				psmt.setString(1, email);
+				rs = psmt.executeQuery();
+				if(rs.next()) {
+					return -1;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("로그인 시도중 오류발생");
+		}
+		return -2;//로그인 하는 아이디 없음
+	}
+	
+	public boolean checkName(String name) {
+		try {
+			String query = "SELECT ID FROM member_TBL WHERE NAME = '" + name + "'";
+			psmt = con.prepareStatement(query);
+			rs = psmt.executeQuery();
+
+			if (rs.next()) {
+				System.out.println("사용중인 이름입니다.");
+				return false;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("사용가능한 이름입니다.");
+		return true;
+	}
+	
+	public boolean checkEmail(String email) {
+		try {
+			String query = "SELECT ID FROM member_TBL WHERE EMAIL = '" + email + "'";
+			psmt = con.prepareStatement(query);
+			rs = psmt.executeQuery();
+
+			if (rs.next()) {
+				System.out.println("사용중인 이메일입니다.");
+				return false;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("사용가능한 이메일입니다.");
+		return true;
+	}
+	
 
 	public int SignUp(MemberDTO dto) {
 		int result = 0;

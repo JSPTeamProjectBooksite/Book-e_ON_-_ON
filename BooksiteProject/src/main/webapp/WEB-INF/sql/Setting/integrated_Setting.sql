@@ -92,11 +92,11 @@ CREATE SEQUENCE book_category_SEQ
 CREATE TABLE member_TBL (
 	id 				number 			NOT NULL	PRIMARY KEY,
 	name 			nvarchar2(30)	NOT NULL, 
-	email 			nvarchar2(320) 	NOT NULL	UNIQUE, 
+	email 			nvarchar2(320) 	NOT NULL, 
 	password 		varchar2(30)	NOT NULL, 
 	birth 			DATE 				NULL, 
 	gender			nchar(1) 			NULL, 
-	phone_num		CHAR(11) 			NULL,
+	phone_num		CHAR(13) 			NULL,
 	address 		nvarchar2(100) 		NULL,
 	point 			number(8) 		DEFAULT 0,
 	member_state_id	number(1)		DEFAULT 0,
@@ -433,10 +433,11 @@ CREATE SEQUENCE order_SEQ
 -- ============================================================
 -- 멤버 상태
 -- ============================================================
-INSERT INTO member_state_TBL(id, name) VALUES(0, '활동');
-INSERT INTO member_state_TBL(id, name) VALUES(1, '삭제 유예');
-INSERT INTO member_state_TBL(id, name) VALUES(2, '정지');
-INSERT INTO member_state_TBL(id, name) VALUES(3, '휴면');
+INSERT INTO member_state_TBL(id, name) VALUES(0, '사용가능');
+INSERT INTO member_state_TBL(id, name) VALUES(1, '로그인 중');
+INSERT INTO member_state_TBL(id, name) VALUES(2, '삭제 유예');
+INSERT INTO member_state_TBL(id, name) VALUES(3, '정지');
+INSERT INTO member_state_TBL(id, name) VALUES(4, '휴면');
 
 -- ============================================================
 -- 카테고리

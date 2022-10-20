@@ -10,7 +10,7 @@
 <body>
 	<div class="container">
 		<h1>회원정보</h1>
-		<table>
+		<table border="1">
 			<thead>
 				<tr>
 					<th>이름</th>
