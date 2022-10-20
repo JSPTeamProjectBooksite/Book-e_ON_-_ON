@@ -1,5 +1,6 @@
 package org.iptime.booke.dao;
 
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -107,6 +108,39 @@ public class PaymentDAO extends JDBConnect {
 			e.printStackTrace();
 		}
 		return result;
+	}
+	
+	public PaymentDTO orderInfo(String id) {
+		PaymentDTO dto = null;
+		
+		try {
+			String sql = "SELECT * FROM PAYMENT_TBL WHERE ID = ?";
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, id);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				dto = new PaymentDTO();
+				
+				dto.setId(rs.getString(1));
+				dto.setMemberId(rs.getLong(2));
+				dto.setTotalAmount(rs.getInt(3));
+				dto.setPointAmount(rs.getInt(4));
+				dto.setActualAmount(rs.getInt(5));
+				dto.setShippingState(rs.getString(6));
+				dto.setPaymentMethod(rs.getString(7));
+				dto.setShippingMessage(rs.getString(8));
+				dto.setRegisterDate(new Timestamp(rs.getDate(9).getTime()).toLocalDateTime());
+				
+				System.out.println("상세 주문정보 조회 성공");
+				
+			}
+		}
+		 catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("상세주문 정보 조회 중 오류발생");
+		}
+		return dto;
 	}
 
 }

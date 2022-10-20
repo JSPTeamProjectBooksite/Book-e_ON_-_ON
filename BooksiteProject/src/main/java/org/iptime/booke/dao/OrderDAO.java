@@ -8,7 +8,7 @@ import org.iptime.booke.dto.OrderDTO;
 
 public class OrderDAO extends JDBConnect {
 	
-	public OrderDTO orderDTO(String paymentId) {
+	public OrderDTO orderDTO(String paymentId) { //오더정보
 		OrderDTO dto = null;
 		
 		try {
@@ -35,7 +35,7 @@ public class OrderDAO extends JDBConnect {
 		return dto;
 	}
 	
-	public ArrayList<OrderDTO> Orderinfo(Long id){
+	public ArrayList<OrderDTO> orderinfo(Long id){  //주문상세정보
 		ArrayList<OrderDTO> values = new ArrayList<OrderDTO>();
 		
 		try {
@@ -49,6 +49,7 @@ public class OrderDAO extends JDBConnect {
 				
 				values.add(orderDTO);
 			}
+		
 		}catch (Exception e) {
 			e.printStackTrace();
 		}

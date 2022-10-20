@@ -27,8 +27,8 @@
 				<th>비고</th>
 			</tr>
 			<tr>
-				<td>2022-10-18</td>
-				<td>${ OrderDetails.id }</td>
+				<td>${ orderinfo.registerDate }</td>
+				<td>${ orderinfo.id }</td>
 				<td>${ delinfo.name }</td>
 				<td>기분이 태도가 되지 않게 외 총2권</td>
 				<td>비고</td>
@@ -40,19 +40,19 @@
 				<h4>▶기본배송정보</h4>
 				<tr>
 					<th>주문번호</th>
-					<td style="width: 372px;">B22101800001</td>
+					<td style="width: 372px;">${ orderinfo.registerDate}</td>
 					<th style="width: 213px;">배송방법</th>
 					<td style="width: 407px;">택배수령</td>
 				</tr>
 				<tr>
 					<th>주문일</th>
-					<td>결제하기버튼 누른시간</td>
+					<td>${ orderinfo.registerDate }</td>
 					<th>결제일</th>
-					<td>결제하기버튼 누른시간</td>
+					<td>${ orderinfo.registerDate }</td>
 				</tr>
 				<tr>
 					<th>배송상태</th>
-					<td colspan="3">배송준비 중</td>
+					<td colspan="3">${ orderinfo.shippingMessage }</td>
 				</tr>
 				<tr>
 					<th>수령예상일</th>
@@ -116,25 +116,25 @@
 				<h4>▶결제정보</h4>
 				<tr>
 					<th>총 주문금액</th>
-					<td>28,100원(상품가격 25,600원+ 배송료 2,500원)</td>
+					<td>${ orderinfo.totalAmount }(상품가격 25,600원+ 배송료 2,500원)</td>
 				</tr>
 				<tr>
 					<th>적립금 결제</th>
-					<td>5,000원</td>
+					<td>${ orderinfo.pointAmount }</td>
 				</tr>
 				<tr>
 					<th>실 결제금액</th>
-					<td style="color: red;"><b> 23,100</b>원</td>
+					<td style="color: red;"><b> ${ orderinfo.actualAmount }</b>원</td>
 				</tr>
 				<tr>
 					<th>결제방법</th>
-					<td>카카오페이 간편결제</td>
+					<td>${ orderinfo.paymentMethod }</td>
 				</tr>
 			</table>
 
 		</div>
 		<div class="closebtn">
-			<button type="button" onclick="./main">닫기</button>
+			<button type="button" onclick="location.href='./main';">닫기</button>
 		</div>
 		<%@ include file="Footer.jsp"%>
 	</div>

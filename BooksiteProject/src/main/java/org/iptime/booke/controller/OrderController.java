@@ -12,24 +12,27 @@ import javax.servlet.http.HttpServletResponse;
 import org.iptime.booke.dao.BookDAO;
 import org.iptime.booke.dao.OrderDAO;
 import org.iptime.booke.dto.OrderDTO;
-import org.jsoup.select.Evaluator.Id;
+
 
 @WebServlet("/OrderController")
 public class OrderController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
        
     public OrderController() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		
+		Long id = Long.parseLong(request.getParameter("id"));
+		
 		OrderDAO dao = new OrderDAO();
 		BookDAO bdao = new BookDAO();
 		
 		
 		
-		ArrayList<OrderDTO> orderList = dao.Orderinfo(Long id);
+		ArrayList<OrderDTO> orderList = dao.orderinfo(id);
 		String[] bookList = new String[orderList.size()];
 		
 		for(int i=0; i<orderList.size();i++) {
@@ -45,7 +48,7 @@ public class OrderController extends HttpServlet {
 		
 		request.setAttribute("orderList", orderList);
 		request.setAttribute("bookList", bookList);
-		request.getRequestDispatcher("./OrderList.jsp").forward(request, response);
+		request.getRequestDispatcher("./PaymentList.jsp").forward(request, response);
 		
 	}
 	

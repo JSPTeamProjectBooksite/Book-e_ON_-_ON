@@ -26,7 +26,7 @@
 				<c:forEach var="order" items="${orderList }" varStatus="status">
 					<tr align="center">
 						<td>${ order.id }</td>
-						<td><a href="/OrderDetails.jsp">${ order.paymentId }</a></td>
+						<td><a href="/PaymentDetails.jsp">${ order.paymentId }</a></td>
 						<td>${ bookList[status.index] }</td>
 						<td>배송준비 중</td>
 						<td>${ order.registerDate }</td>
@@ -36,7 +36,7 @@
 			</table>
 		</form>
 		<div class="closebtn">
-			<button type="button" onclick="./main">닫기</button>
+			<button type="button" onclick="location.href='./main';">닫기</button>
 		</div>
 		<%@ include file="Footer.jsp"%>
 	</div>
