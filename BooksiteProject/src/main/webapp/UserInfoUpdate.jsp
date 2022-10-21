@@ -9,13 +9,14 @@
 </head>
 <body>
 	<div class="container">
-		<form action="" method="get">
+		<form action="/changepassword" method="get">
 			<h1>비밀번호 변경</h1>
 			<div>
 				<input class="wrap" type="password" placeholder="Your password">
 			</div>
 			<div>
-				<input class="wrap" type="password" placeholder="New password">
+				<input class="wrap" type="password" placeholder="New password"
+					name="newPassword">
 			</div>
 			<div>
 				<input class="wrap" type="password" placeholder="New password check">
@@ -24,4 +25,5 @@
 		</form>
 	</div>
 </body>
+
 </html>

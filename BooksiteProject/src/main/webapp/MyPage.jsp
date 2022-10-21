@@ -26,7 +26,6 @@
 				<input class="tab-radio" id="sub-tab1-1" name="sub-group1"
 					type="radio" checked="checked">
 				<div class="sub-tab-content">
-					<h1>회원정보</h1>
 					<table border="1">
 						<thead>
 							<tr>
@@ -63,6 +62,10 @@
 							</tr>
 						</thead>
 					</table>
+					<div class="Resign">
+						<a class="button" href="./UserInfoUpdate.jsp">비밀번호 변경</a> <a
+							class="button" onclick="resignBtn()"> 회원탈퇴 </a>
+					</div>
 				</div>
 			</div>
 
@@ -79,7 +82,7 @@
 				</div>
 			</div>
 
-				<!-- Tab Container 2 -->
+			<!-- Tab Container 2 -->
 			<input class="tab-radio" id="main-tab-3" name="main-group"
 				type="radio" />
 			<div class="tab-content">
@@ -88,26 +91,36 @@
 					type="radio" checked="checked">
 				<div class="sub-tab-content">
 					<iframe src="./UserInquiryWrite.jsp" width="100%" height="1230px"
-							frameborder=0 framespacing=0 marginheight=0 marginwidth=0
-							scrolling=yes vspace=0></iframe>
+						frameborder=0 framespacing=0 marginheight=0 marginwidth=0
+						scrolling=yes vspace=0></iframe>
 				</div>
-			</div>	
+			</div>
 
-				<!-- Tabs Container 1 -->
-				<input class="tab-radio" id="main-tab-4" name="main-group"
-					type="radio" checked="checked" />
-				<div class="tab-content">
-					<div class="sub-tabs-container"></div>
-					<input class="tab-radio" id="sub-tab4-1" name="sub-group4"
-						type="radio" checked="checked">
-					<div class="sub-tab-content">
-						<iframe src="./ServicePage.jsp" width="100%" height="1230px"
-							frameborder=0 framespacing=0 marginheight=0 marginwidth=0
-							scrolling=yes vspace=0></iframe>
-					</div>
+			<!-- Tabs Container 1 -->
+			<input class="tab-radio" id="main-tab-4" name="main-group"
+				type="radio" checked="checked" />
+			<div class="tab-content">
+				<div class="sub-tabs-container"></div>
+				<input class="tab-radio" id="sub-tab4-1" name="sub-group4"
+					type="radio" checked="checked">
+				<div class="sub-tab-content">
+					<iframe src="./ServicePage.jsp" width="100%" height="1230px"
+						frameborder=0 framespacing=0 marginheight=0 marginwidth=0
+						scrolling=yes vspace=0></iframe>
 				</div>
+			</div>
 		</section>
 		<%@ include file="Footer.jsp"%>
 	</div>
 </body>
+<script type="text/javascript">
+	function resignBtn() {
+		if (confirm("고객의 모든 정보가 삭제됩니다.\n탈퇴하시겠습니까?")) {
+			window.location.href = './resign';
+			alert("회원이 탈퇴 되었습니다. 이용해 주셔서 감사합니다.");
+		} else {
+			alert("가지마!!!");
+		}
+	}
+</script>
 </html>
