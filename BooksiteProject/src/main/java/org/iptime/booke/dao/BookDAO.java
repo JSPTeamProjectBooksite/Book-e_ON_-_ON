@@ -500,4 +500,31 @@ public class BookDAO extends DBConnPool{
 		
 		return dto;
 	}
+
+	
+	public BookDTO paybookinfo(Long id) {
+		BookDTO bookdto = null;
+		
+		try {
+			String sql = "SELECT ID, TITLE, PRICE, QUANTITY FROM BOOK_TBL WHERE ID = " + id;
+			psmt = con.prepareStatement(sql);
+			rs = psmt.executeQuery(sql);
+
+			System.out.println("sql:"+sql);
+			System.out.println("이건되냐?");
+			while (rs.next()) {
+				bookdto = new BookDTO(
+						rs.getLong(1),
+						rs.getString(2),
+						rs.getInt(3),
+						rs.getInt(4));
+				System.out.println("책정보 불러옴");
+			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("책정보 불러오는중 오류 발생");
+		}
+		return bookdto;
+	}
 }

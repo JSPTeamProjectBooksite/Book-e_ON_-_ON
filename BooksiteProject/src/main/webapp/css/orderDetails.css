@@ -3,9 +3,9 @@
 *{
     margin: 0;
     padding: 0;
-    border-collapse: collapse;
+    box-sizing: border-box;
 }
-.wrap { max-width: 1200px; min-width:800px; margin: 0 auto; }
+.wrap { margin: 0 auto; }
 
 h2{ padding: 20px 0px 0px 0px; color: #495057;}
 

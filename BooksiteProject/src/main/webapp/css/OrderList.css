@@ -3,13 +3,13 @@
 *{
     margin: 0;
     padding: 0;
-    border-collapse: collapse;
+    box-sizing: border-box;
 }
-.wrap { max-width: 1200px; min-width:800px; margin: 0 auto; }
+.wrap { width: 100%; margin: 0 auto; }
 
 h2{ padding: 20px 0px 20px 0px; color: #495057;}
 
-table.List{ width: 100%; font-size: 15px;}
+#paymentTable{width: 100%; font-size: 15px;}
 
 .List th{ background: #f1F3F5; height: 40px;}
 .List td{ height: 40px;}
