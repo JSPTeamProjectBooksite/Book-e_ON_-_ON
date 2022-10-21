@@ -121,8 +121,6 @@
 		if (confirm("고객의 모든 정보가 삭제됩니다.\n탈퇴하시겠습니까?")) {
 			window.location.href = './resign';
 			alert("회원이 탈퇴 되었습니다. 이용해 주셔서 감사합니다.");
-		} else {
-			alert("가지마!!!");
 		}
 	}
 
