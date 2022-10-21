@@ -23,9 +23,9 @@
         </tr>
         <tr>
             <th>
-	*작가
-	<button type="button" onclick="window.open('/authorSearch?do=authorSearchFrom', '', 'width=500, height=650'); return false;">작가 조회</button>
-</th>
+                *작가
+                <button type="button" onclick="window.open('/authorSearch?do=authorSearchFrom', '', 'width=500, height=650'); return false;">작가 조회</button>
+            </th>
             <td>
             	<input type="text" name="author" value="${ authorID }${ book.authorId }" readonly>
             </td>
@@ -37,6 +37,10 @@
         <tr>
             <th>*가격</th>
             <td><input type="text" name="price" value="${ book.price }"></td>
+        </tr>
+        <tr>
+            <th>*재고 수량</th>
+            <td><input type="text" name="quantity" value="${ book.quantity }"></td>
         </tr>
         <tr>
             <th>배송비</th>
@@ -53,19 +57,19 @@
         <tr>
             <th>ISBN</th>
             <td style="
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: 5px;
-">
-	<div><input type="text" name="isbn13" placeholder="ISBN13" value="${ book.isbn13 }"></div>
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 5px;
+            ">
+                <div><input type="text" name="isbn13" placeholder="ISBN13" value="${ book.isbn13 }"></div>
             	<div><input type="text" name="isbn10" placeholder="ISBN10" value="${ book.isbn10 }"></div>
             </td>
         </tr>
         <tr>
             <th>
-	카테고리
-	<button type="button">카테고리 조회</button>
-</th>
+                카테고리
+                <button type="button">카테고리 조회</button>
+            </th>
             <td>
             	<input type="text" name="categoryId">
             </td>

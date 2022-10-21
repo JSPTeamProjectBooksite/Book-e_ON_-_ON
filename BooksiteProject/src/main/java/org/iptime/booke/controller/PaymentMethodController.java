@@ -1,7 +1,7 @@
 package org.iptime.booke.controller;
 
 import java.io.IOException;
-import java.util.Arrays;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.iptime.booke.dao.BookDAO;
 import org.iptime.booke.dao.OrderDAO;
 import org.iptime.booke.dao.PaymentDAO;
 import org.iptime.booke.dto.OrderDTO;
@@ -31,11 +32,22 @@ public class PaymentMethodController extends HttpServlet {
 		String paymentMethod = request.getParameter("paymentMethod");
 		String[] deliveryTotalPointFinal = request.getParameter("DTPF").split(",");
 		
-		System.out.println(memberId);
-		System.out.println(Arrays.toString(bookId));
-		System.out.println(Arrays.toString(selectCount));
-		System.out.println(paymentMethod);
-		System.out.println(Arrays.toString(deliveryTotalPointFinal));
+		BookDAO bdao = new BookDAO();
+		System.out.println("수량확인");
+		Map<String, Object> stateMap = bdao.checkQuantity(bookId, selectCount);
+		bdao.close();
+		
+		if(stateMap != null) {
+			request.setAttribute("map", stateMap);
+			request.getRequestDispatcher("ERRORPAGE.jsp").forward(request, response);
+			return;
+		}
+		
+//		System.out.println(memberId);
+//		System.out.println(Arrays.toString(bookId));
+//		System.out.println(Arrays.toString(selectCount));
+//		System.out.println(paymentMethod);
+//		System.out.println(Arrays.toString(deliveryTotalPointFinal));
 		
 		PaymentDAO paymentDao = new PaymentDAO();
 		PaymentDTO paymentDto = new PaymentDTO();

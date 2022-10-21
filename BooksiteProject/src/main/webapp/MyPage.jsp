@@ -4,10 +4,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="../css/mypage.css">
-<link rel="stylesheet" href="./css/public.css">
 <meta charset="UTF-8">
 <title>마이페이지</title>
+<link rel="stylesheet" href="../css/mypage.css">
+<link rel="stylesheet" href="./css/public.css">
 </head>
 <body>
 	<div id="wrap">
@@ -70,31 +70,32 @@
 			</div>
 
 			<!-- Tab Container 2 -->
-			<input class="tab-radio" id="main-tab-2" name="main-group"
-				type="radio" />
+			<input class="tab-radio" id="main-tab-2" name="main-group" type="radio" />
 			<div class="tab-content">
 				<div class="sub-tabs-container"></div>
-				<input class="tab-radio" id="sub-tab2-1" name="sub-group2"
-					type="radio" checked="checked">
+				<input class="tab-radio" id="sub-tab2-1" name="sub-group2" type="radio" checked="checked">
 				<div class="sub-tab-content">
-					<h1>Sub-Tab 2</h1>
-					<p>Sub-Tab content</p>
+					<iframe src="/payment/list" onload="onResize(this)" style="height: 1000px;" scrolling=”no” width="100%" frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=yes vspace=0></iframe>
 				</div>
 			</div>
 
-			<!-- Tab Container 2 -->
+
+			<!-- Tab Container 3 -->
 			<input class="tab-radio" id="main-tab-3" name="main-group"
 				type="radio" />
 			<div class="tab-content">
 				<div class="sub-tabs-container"></div>
-				<input class="tab-radio" id="sub-tab3-1" name="sub-group2"
+				<input class="tab-radio" id="sub-tab3-1" name="sub-group3"
 					type="radio" checked="checked">
 				<div class="sub-tab-content">
+
 					<iframe src="./UserInquiryWrite.jsp" width="100%" height="1230px"
 						frameborder=0 framespacing=0 marginheight=0 marginwidth=0
 						scrolling=yes vspace=0></iframe>
+
 				</div>
 			</div>
+
 
 			<!-- Tabs Container 1 -->
 			<input class="tab-radio" id="main-tab-4" name="main-group"
@@ -107,12 +108,14 @@
 					<iframe src="./ServicePage.jsp" width="100%" height="1230px"
 						frameborder=0 framespacing=0 marginheight=0 marginwidth=0
 						scrolling=yes vspace=0></iframe>
+
 				</div>
 			</div>
 		</section>
 		<%@ include file="Footer.jsp"%>
 	</div>
 </body>
+
 <script type="text/javascript">
 	function resignBtn() {
 		if (confirm("고객의 모든 정보가 삭제됩니다.\n탈퇴하시겠습니까?")) {
@@ -122,5 +125,11 @@
 			alert("가지마!!!");
 		}
 	}
+
+	function onResize(obj){
+		var height = (obj).contentWindow.document.body.scrollHeight;
+		(obj).height = height + 20;
+	}
+
 </script>
 </html>

@@ -3,6 +3,8 @@ package org.iptime.booke.dao;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.iptime.booke.common.JDBConnect;
 import org.iptime.booke.dto.PaymentDTO;
@@ -118,7 +120,7 @@ public class PaymentDAO extends JDBConnect {
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1, id);
 			rs = psmt.executeQuery();
-			
+			System.out.println("이거 나오냐?");
 			if(rs.next()) {
 				dto = new PaymentDTO();
 				
@@ -133,14 +135,44 @@ public class PaymentDAO extends JDBConnect {
 				dto.setRegisterDate(new Timestamp(rs.getDate(9).getTime()).toLocalDateTime());
 				
 				System.out.println("상세 주문정보 조회 성공");
+			}
+		}
+		 catch (Exception e) {
+			 System.out.println("상세주문 정보 조회 중 오류발생");
+			e.printStackTrace();
+		}
+		return dto;
+	}
+
+	public List<PaymentDTO> paymentInfo(Long id) {
+		List<PaymentDTO> dtoList = new ArrayList<PaymentDTO>();
+		
+		try {
+			String sql = "SELECT * FROM PAYMENT_TBL WHERE MEMBER_ID = " + id + " ORDER BY ID DESC";
+			psmt = con.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				PaymentDTO dto = new PaymentDTO();
 				
+				dto.setId(rs.getString(1));
+				dto.setMemberId(rs.getLong(2));
+				dto.setTotalAmount(rs.getInt(3));
+				dto.setPointAmount(rs.getInt(4));
+				dto.setActualAmount(rs.getInt(5));
+				dto.setShippingState(rs.getString(6));
+				dto.setPaymentMethod(rs.getString(7));
+				dto.setShippingMessage(rs.getString(8));
+				dto.setRegisterDate(new Timestamp(rs.getDate(9).getTime()).toLocalDateTime());
+				
+				System.out.println("상세 주문정보 조회 성공");
+				dtoList.add(dto);
 			}
 		}
 		 catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("상세주문 정보 조회 중 오류발생");
 		}
-		return dto;
+		return dtoList;
 	}
-
 }

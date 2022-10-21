@@ -115,7 +115,7 @@
         }
         name.value = name.value.trim();
         
-		alert("'" + name.value + "'님을 검색합니다.");
+		//alert("'" + name.value + "'님을 검색합니다.");
     }
 
 	function findAuthor(){
@@ -125,8 +125,8 @@
 		
 		form.action = '/authorSearch?do=searchAuthorName';
 		
-		alert("'" + form.action + "'로전송.");
-		alert("'" + form.authorName.value + "'님을 검색합니다.");
+		//alert("'" + form.action + "'로전송.");
+		//alert("'" + form.authorName.value + "'님을 검색합니다.");
 		
 		form.submit();
 	}
@@ -139,7 +139,7 @@
 			return false;
 		}
 		
-		alert("' " + radio.value + " 'id 선택됨");
+		//alert("' " + radio.value + " 'id 선택됨");
 
 		opener.document.getElementById("bookAddForm").author.value = radio.value;
 

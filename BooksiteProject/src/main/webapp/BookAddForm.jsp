@@ -70,6 +70,7 @@
 		var coverImgUrl = form.coverImgUrl;
 		var author = form.author;
 		var price = form.price;
+		var quantity = form.quantity;
 		var introduce = form.introduce;
 		var publisher = form.publisher;
 		var publicationDate = form.publicationDate;
@@ -102,6 +103,13 @@
             return false;
         }
 		price.value = price.value.trim();
+        
+        if(quantity.value.trim() == ""){
+            alert("재고수량을 입력해주세요.");
+            form.quantity.focus();
+            return false;
+        }
+		quantity.value = quantity.value.trim();
 
 
         if(introduce.value.trim() == ""){

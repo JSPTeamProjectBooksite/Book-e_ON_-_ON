@@ -24,7 +24,7 @@
 			<img src="/source/ico/checked_icon.png"> 상품 주문서
 		</h2>
 
-		<form action="/payment.do" method="get" id="paymentForm">
+		<form action="/payment.do" method="post" id="paymentForm">
 			<!-- 히든으로 결제 정보 전송 -->
 			<input type="hidden" name="memberId" value="${ delinfo.id }">
 
