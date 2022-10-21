@@ -3,6 +3,9 @@
 <!DOCTYPE html>
 <html>
 <script type="text/javascript">
+	alert("새로고침함");
+	opener.location.reload();
+	
 	window.close();
 </script>
 </html>

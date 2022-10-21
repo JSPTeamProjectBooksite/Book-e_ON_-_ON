@@ -86,7 +86,7 @@ public class ListPageDAO extends DBConnPool{
 			
 			String query = "SELECT ID, COVER_IMG, TITLE, AUTHOR_ID, TRANSLATOR, PRICE, book_category_id, PUBLISHER, CATCHPHRASE  FROM BOOK_TBL ";
 			if(searchWord != null) {
-				query += " WHERE TITLE LIKE '%" + searchWord + "%'";
+				query += " WHERE QUANTITY >= 0 AND TITLE LIKE '%" + searchWord + "%'";
 			}
 			
 			

@@ -160,6 +160,8 @@ public class WebCrawlingTest {
 					
 				}
 				
+				dto.setVisit(0);
+				dto.setQuantity(500);
 				
 				dto.setDeliveryFee(2500);
 				

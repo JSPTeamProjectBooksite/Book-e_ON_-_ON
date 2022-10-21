@@ -31,9 +31,10 @@ public class BookUploadController extends HttpServlet {
 //		System.out.println("coverImgUrl : "+coverImgUrl);
 		// String author = mr.getParameter("author");
 		String authorId = request.getParameter("author");
-		System.out.println("authorId : " + authorId);
+//		System.out.println("authorId : " + authorId);
 		String translator = request.getParameter("translator");
 		String price = request.getParameter("price");
+		String quantity = request.getParameter("quantity");
 //		System.out.println("price:"+price);
 		String deliveryFee = request.getParameter("deliveryFee");
 		String totalPages = request.getParameter("totalPages");
@@ -59,6 +60,7 @@ public class BookUploadController extends HttpServlet {
 			dto.setAuthorId(Long.parseLong(authorId));
 			dto.setTranslator(translator);
 			dto.setPrice(Integer.parseInt(price));
+			dto.setQuantity(Integer.parseInt(quantity));
 			dto.setDeliveryFee(Integer.parseInt(deliveryFee));
 			
 			if (totalPages != null && totalPages.length() > 0)

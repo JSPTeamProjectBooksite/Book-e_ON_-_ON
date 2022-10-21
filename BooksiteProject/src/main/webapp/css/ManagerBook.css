@@ -5,9 +5,11 @@
 }
 
 #wrap {
-    margin: auto;
-    max-width: 1500px;
+    /* margin: auto;
+    width: 100%; */
+    height: 100vh;
     min-width: 400px;
+    background: powderblue;
 }
 
 h1 {
@@ -18,8 +20,18 @@ h1 {
     white-space: nowrap;
     text-align: center;
 }
-.bookTable tr,td,th{
-    padding: 2px;
+.bookTable tr, .bookTable td, .bookTable th{
+    padding: 5px;
+}
+.bookTable tr{
+    background: #c3ddfc;
+}
+.bookTable tr:nth-child(odd){
+    background: #9ebcfc;
+}
+.bookTable tr:hover{
+    background: #4b7cc5;
+    color: white;
 }
 
 /* table {
@@ -36,4 +48,31 @@ h1 {
 
 .radioBox {
     text-align: center;
+}
+
+#optionBtn{
+    margin: 1%;
+    width: 200px;
+    height: 35px;
+    float: right;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 5px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+#optionBtn button{
+    color: white;
+    background:#4b7cc5;
+    border-color: white;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 5px;
+    border-width: 1px;
+}
+#optionBtn button:hover{
+    color: #999;
+    background:#9ebcfc;
+    font-weight: 800;
 }

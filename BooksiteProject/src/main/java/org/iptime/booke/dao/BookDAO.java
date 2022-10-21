@@ -12,6 +12,40 @@ import org.iptime.booke.dto.AuthorDTO;
 import org.iptime.booke.dto.BookDTO;
 
 public class BookDAO extends DBConnPool{
+	//재고 수량 확인
+	public Map<String, Object> checkQuantity(String[] bookIds, String[] selectCount){
+		Map<String, Object> result = null;
+		String query = "SELECT QUANTITY FROM BOOK_TBL WHERE ID = ?";
+		
+		try {
+			
+			System.out.println(java.util.Arrays.toString(bookIds));
+			
+			for(int i = 0; i < bookIds.length; i++) {
+				
+				psmt = con.prepareStatement(query);
+				psmt.setLong(1, Long.parseLong(bookIds[i]));
+				rs = psmt.executeQuery();
+				
+				
+				if(rs.next() && rs.getInt(1) < Integer.parseInt(selectCount[i])) {
+					System.out.println("("+bookIds[i]+")도서 남은 재고:"+rs.getInt(1));
+					result = new HashMap<String, Object>();
+					
+					result.put("state", false);
+					result.put("message_1", "재고가 없는 상품이 있습니다.");
+					result.put("message_2", "도서의 재고를 확인 후 시도해주세요.");
+					
+					return result;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("재고 확인중 오류 발생");
+		}
+
+		return result;
+	}
 	
 	public Long nextNumber() {
 		String query = "SELECT * FROM book_review_TBL";
@@ -70,7 +104,7 @@ public class BookDAO extends DBConnPool{
 	public List<Map<String, Object>> selectPopularList(int num){
 		List<Map<String, Object>> booklist = new ArrayList<>();
 		
-		String query = "SELECT ID, COVER_IMG, TITLE, AUTHOR_ID FROM BOOK_TBL ORDER BY VISIT DESC";
+		String query = "SELECT ID, COVER_IMG, TITLE, AUTHOR_ID FROM BOOK_TBL WHERE QUANTITY >= 0 ORDER BY VISIT DESC";
 		
 		try {
 			psmt = con.prepareStatement(query);
@@ -168,7 +202,7 @@ public class BookDAO extends DBConnPool{
 		boolean reselt = false;
 		
 		try {
-			String query = "INSERT INTO BOOK_TBL( ID, COVER_IMG, TITLE, AUTHOR_ID, TRANSLATOR, PRICE, DELIVERY_FEE, ESTIMATED_DELIVERY_DATE, TOTAL_PAGES, WEIGHT, ISBN13, ISBN10, BOOK_CATEGORY_ID, INTRODUCE, INTRODUCE_IMG, PUBLISHER, PUBLISHER_REVIEW, CONTENTS, VISIT, CATCHPHRASE, PUBLICATION_DATE ) VALUES( BOOK_SEQ.nextval";
+			String query = "INSERT INTO BOOK_TBL( ID, COVER_IMG, TITLE, AUTHOR_ID, TRANSLATOR, PRICE, DELIVERY_FEE, ESTIMATED_DELIVERY_DATE, TOTAL_PAGES, WEIGHT, ISBN13, ISBN10, BOOK_CATEGORY_ID, INTRODUCE, INTRODUCE_IMG, PUBLISHER, PUBLISHER_REVIEW, CONTENTS, QUANTITY, CATCHPHRASE, PUBLICATION_DATE ) VALUES( BOOK_SEQ.nextval";
 			
 			System.out.println("쿼리문:");
 			System.out.println(query);
@@ -197,7 +231,7 @@ public class BookDAO extends DBConnPool{
 			psmt.setString(15, dto.getPublisher());
 			psmt.setString(16, dto.getPublisherReview());
 			psmt.setString(17, dto.getContents());
-			psmt.setObject(18, 0);
+			psmt.setObject(18, dto.getQuantity());
 			psmt.setString(19, dto.getCatchphrase());
 			psmt.setDate(20, date);
 			
@@ -259,13 +293,13 @@ public class BookDAO extends DBConnPool{
 					+ "	PUBLISHER = ?,"
 					+ " PUBLISHER_REVIEW = ?,"
 					+ "	CONTENTS = ?,"
-					+ " VISIT = ?,"
+					+ " QUANTITY = ?,"
 					+ "	CATCHPHRASE = ?,"
 					+ "	PUBLICATION_DATE = ?"
 					+ " WHERE ID = " + id;
 			
-			System.out.print("쿼리문:");
-			System.out.println(query);
+//			System.out.print("쿼리문:");
+//			System.out.println(query);
 			
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, dto.getCoverImg());
@@ -285,7 +319,7 @@ public class BookDAO extends DBConnPool{
 			psmt.setString(15, dto.getPublisher());
 			psmt.setString(16, dto.getPublisherReview());
 			psmt.setString(17, dto.getContents());
-			psmt.setObject(18, 0);
+			psmt.setObject(18, dto.getQuantity());
 			psmt.setString(19, dto.getCatchphrase());
 			
 			Date date = null;
@@ -449,16 +483,22 @@ public class BookDAO extends DBConnPool{
 	
 	public int deleteBook(String idx) {
 		int result = 0;
+		String sql;
 		
 		try {
-			System.out.println("도서를 삭제하기전, 해당페이지의 댓글을 우선 삭제합니다.");
-			String sql = "DELETE FROM book_review_TBL WHERE BOOK_ID = ?";
-			psmt = con.prepareStatement(sql);
-			psmt.setNString(1, idx);
-			result = psmt.executeUpdate();
-			System.out.println("해당페이지의 댓글을 전부 삭제했습니다.");
+//			System.out.println("도서를 삭제하기전, 해당페이지의 댓글을 우선 삭제합니다.");
+//			sql = "DELETE FROM book_review_TBL WHERE BOOK_ID = ?";
+//			psmt = con.prepareStatement(sql);
+//			psmt.setNString(1, idx);
+//			result = psmt.executeUpdate();
+//			System.out.println("해당페이지의 댓글을 전부 삭제했습니다.");
 			
-			sql = "DELETE FROM BOOK_TBL WHERE ID = ?";
+//			sql = "DELETE FROM BOOK_TBL WHERE ID = ?";
+//			psmt = con.prepareStatement(sql);
+//			psmt.setNString(1, idx);
+//			result = psmt.executeUpdate();
+
+			sql = "UPDATE BOOK_TBL SET QUANTITY = -1 WHERE ID = ?";
 			psmt = con.prepareStatement(sql);
 			psmt.setNString(1, idx);
 			result = psmt.executeUpdate();
