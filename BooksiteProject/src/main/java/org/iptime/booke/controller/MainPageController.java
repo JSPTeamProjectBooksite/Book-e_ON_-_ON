@@ -20,10 +20,9 @@ public class MainPageController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		BookDAO dao = new BookDAO();
-		//인기항목으로 띄울 책의 bid들
-		long[] poplist = new long[]{1,2,3,4,5,6};
+		
 		//책 정보와 작가정보가 각각 다른 테이블에 저장되어 있으므로 map형태로 저장한다.
-		List<Map<String, Object>> popularList = dao.selectPopularList(poplist);
+		List<Map<String, Object>> popularList = dao.selectPopularList(6);
 		
 		dao.close();
 		

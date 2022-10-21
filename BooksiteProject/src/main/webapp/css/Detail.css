@@ -54,7 +54,7 @@
     transition: all 0.2s linear;
 }
 .animation_2:hover{
-    transform: scale( 1.1 ) skewY( -5deg );
+    transform: scale( 1.05 ) skewY( -3deg );
     box-shadow: -20px -5px 10px 10px #91b5ea;
 }
 .animation_3{
