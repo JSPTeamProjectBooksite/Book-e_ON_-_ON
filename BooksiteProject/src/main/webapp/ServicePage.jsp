@@ -10,6 +10,7 @@
 <script src="js/includeHTML.js"></script>
 <meta http-equiv="X-UA-Compatible" content="chrome">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/public.css">
 <link rel="stylesheet" href="css/service.css">
 <title>고객센터</title>
 </head>
@@ -17,7 +18,7 @@
 <body>
 
 	<div class="wrap">
-		<%@ include file="Header.jsp"%>
+<%-- 		<%@ include file="Header.jsp"%> --%>
 
 		<div class="wrapper">
 			<div class="search">
@@ -25,8 +26,8 @@
 			</div>
 
 			<div class="container">
-				<div class="rect">
-					<button type = "button" id="bnt" onclick=""><img src="/source/ico/고객센터_계정.png"><span>계정</span></button>
+				<div class="rect" onclick="location.href='';">
+			        <img src="/source/ico/고객센터_계정.png"><span>계정</span>
 				</div>
 				<div class="rect">
 					<img src="/source/ico/고객센터_개인정보.png"><span>개인정보</span>
@@ -50,12 +51,12 @@
 					<img src="/source/ico/고객센터_전자책.png"><span>전자책</span>
 				</div>
 				<div class="rect">
-					<button type = "button" id="bnt" onclick='http:/booke.iptime.org/main'><img src="/source/ico/고객센터_고객상담.png"><span>고객상담</span></button>
+					<img src="/source/ico/고객센터_고객상담.png"><span>고객상담</span>
 				</div>
-				<div class="rect">
+				<div class="rect" onclick="window.open('./login')">
 					<span>로그인 바로가기</span>
 				</div>
-				<div class="rect">
+				<div class="rect" onclick="window.open('./main')">
 					<span>메인 바로가기</span>
 				</div>
 				<div class="rect">
@@ -92,7 +93,7 @@
 			<div class="block3"></div>
 
 		</div>
-		<%@ include file="Footer.jsp"%></div>
+<%-- 		<%@ include file="Footer.jsp"%></div> --%>
 </body>
 
 </html>

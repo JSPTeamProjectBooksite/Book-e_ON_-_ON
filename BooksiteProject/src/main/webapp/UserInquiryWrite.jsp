@@ -13,13 +13,14 @@ SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일");
 
 <meta charset="UTF-8">
 <title>1:1 고객문의</title>
+<!-- <link rel="stylesheet" href="css/public.css"> -->
 <link rel="stylesheet" href="/css/customerinquiry.css">
 </head>
 <body>
 	<div class="wrap">
-		<%@ include file="Header.jsp"%>
-
-		<h2>▶1:1 고객문의</h2>
+<%-- 		<%@ include file="Header.jsp"%> --%>
+	
+<!-- 		<h2>▶1:1 고객문의</h2> -->
 		<form name="inquireFrm" method="post" action="/inquiryWrite.do"
 			onsubmit="return notice(this);">
 
@@ -88,7 +89,7 @@ SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일");
 			</div>
 		</form>
 
-<%@ include file="Footer.jsp"%> 
+<%-- <%@ include file="Footer.jsp"%>  --%>
 
 	</div>
 </body>

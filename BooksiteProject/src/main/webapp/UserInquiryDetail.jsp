@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>나의 질문과 답변(1:1문의)</title>
+<link rel="stylesheet" href="css/public.css">
 <link rel="stylesheet" href="/css/inquirydetail.css">
 </head>
 <body>

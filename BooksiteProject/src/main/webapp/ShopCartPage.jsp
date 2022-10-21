@@ -51,8 +51,8 @@
 	                    <c:forEach var="book" items="${bookList}">
 	                    <tr class="bookItem ">
 	                        <td class="bookCheck">
-		                        <img src="${pageContext.request.contextPath}/source/ico/check_box_false.svg" alt="체크박스">
-		                        <input class="bookCheckBox" name="selectedBooks" type="checkbox" value="${ book.id }">
+		                        <img src="${pageContext.request.contextPath}/source/ico/check_box_true.svg" alt="체크박스">
+		                        <input class="bookCheckBox" name="selectedBooks" type="checkbox" value="${ book.id }" checked>
 	                        </td>
 	                        <td class="bookImg"><img src="${pageContext.request.contextPath}/${book.coverImg}" alt="상품 이미지"></td>
 	                        <td class="bookTitle">${ book.title }</td>
@@ -103,7 +103,13 @@
     function fromUpdate(from, action, method){
     	from.attr('action', action);
     	from.find("input[name=_method]").val(method);
-    	from.submit();
+    }
+    
+    function isSeleckCheckBox(){
+    	$('input[name=selectedBooks]:checked').each(function(){
+    		return true;   		
+    	});
+    	return false;
     }
     
     // 선택된 상품 삭제
@@ -115,6 +121,17 @@
     
    	// 선택된 모든 상품 결제, 삭제, 저장
     const fromTag = $('#cartForm');
+   	
+   	// 선택된 항목이 있다면 submit작동, 없다면 경고문 출력
+    $(fromTag).submit(function(event){
+    	if(isSeleckCheckBox()) {
+    		return true;
+    	}else{
+    		alert("선택된 상품이 없습니다");
+    		return false;
+    	}
+    });
+   	
     $('.selectBookPaymentBtn').click(function(){	fromUpdate(fromTag, '/payment', 'post');});
     $('.selectBookSaveBtn').click(function(){		fromUpdate(fromTag, '#', 'post');});
     $('.selectBookDeleteBtn').click(function(){		fromUpdate(fromTag, '/cart', 'DELETE');});

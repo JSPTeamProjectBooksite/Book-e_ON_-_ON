@@ -12,21 +12,25 @@ body {
     align-items: center;
 }
 
-h1 {
+.container {
+    width: 1200px;
+}
+
+.container h1 {
     height: 100%;
     text-align: left;
     margin-bottom: 30px;
 }
 
-hr {
+.container hr {
     margin-bottom: 30px;
 }
 
-p {
+.container p {
     margin-bottom: 200px;
 }
 
-table {
+.container table {
     border-collapse: collapse;
     width: 100%;
     border-right: 1px solid #999;
@@ -35,17 +39,37 @@ table {
     text-align: left;
 }
 
-table th {
+.container table th {
     padding: 10px;
 }
 
-table td {
+.container table td {
     padding: 10px;
 }
 
-.button {
+.btn button {
     font-family: 'noto sans kr', sans-serif;
-    
+    width: 120px;
+    height: 40px;
+    color: #fff;
+    background: #999;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 16px #999;
+    transition: 0.3s;
+    position: absolute;
+    transform: translate(-50%,-50%);
+}
+
+.btn button:focus {
+    outline: 0;
+}
+
+.btn button:hover{
+    background: #999;
+    cursor: pointer;
+    box-shadow: 0 2px 4px #999;
 }
 
 .btn {

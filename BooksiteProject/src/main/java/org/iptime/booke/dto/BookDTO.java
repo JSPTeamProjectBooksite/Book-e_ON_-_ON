@@ -169,6 +169,15 @@ public class BookDTO {
 		this.title = title;
 		this.price = price;
 	}
+	
+	//결제상세내역
+	public BookDTO(Long id, String title, Integer price, Integer quantity) {
+		this.id = id;
+		this.title = title;
+		this.price = price;
+		this.quantity = quantity;
+		
+	}
 
 
 	public Long getId() {

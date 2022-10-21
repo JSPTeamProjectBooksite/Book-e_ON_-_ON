@@ -6,39 +6,47 @@
 <head>
 <meta charset="UTF-8">
 <title>주문내역 조회</title>
-<link rel="stylesheet" href="css/OrderList.css">
+<link rel="stylesheet" href="/css/OrderList.css">
 </head>
 <body>
-	<div class="wrap">
-		<%@ include file="Header.jsp"%>
-
-		<h2>【주문내역조회】</h2>
-		<form method="get">
-			<table class="List" border="1">
-				<tr>
-					<th>No</th>
-					<th>주문번호</th>
-					<th>구매도서</th>
-					<th>배송상태</th>
-					<th>구매일자</th>
-					<th>비고</th>
+	<h2>【주문내역조회】</h2>
+	<form method="get">
+		<table id="paymentTable" border="1">
+			<tr>
+				<th>주문번호</th>
+				<th>상품금액</th>
+				<th>배송상태</th>
+				<th>구매일자</th>
+				<th>비고</th>
+			</tr>
+			<c:forEach var="payment" items="${ paymentList }" varStatus="status">
+				<tr align="center">
+					<td><a href="/payment/detail?id=${ payment.id }">${ payment.id }</a></td>
+					<td class="price">${ payment.actualAmount }</td>
+					<td>${ payment.shippingState }</td>
+					<td class="date" >${ payment.registerDate }</td>
+					<td id="state_${status.index}"></td>
 				</tr>
-				<c:forEach var="order" items="${orderList }" varStatus="status">
-					<tr align="center">
-						<td>${ order.id }</td>
-						<td><a href="/PaymentDetails.jsp">${ order.paymentId }</a></td>
-						<td>${ bookList[status.index] }</td>
-						<td>배송준비 중</td>
-						<td>${ order.registerDate }</td>
-						<td></td>
-					</tr>
-				</c:forEach>
-			</table>
-		</form>
-		<div class="closebtn">
-			<button type="button" onclick="location.href='./main';">닫기</button>
-		</div>
-		<%@ include file="Footer.jsp"%>
-	</div>
+			</c:forEach>
+		</table>
+	</form>
 </body>
+<script>
+
+	function setPage(){
+		var dates = document.getElementsByClassName("date");
+
+		for(var i=0; i < dates.length; i++){
+			dates[i].innerHTML = dates[i].innerHTML.replace('T', ' ');
+		}
+
+		var prices = document.getElementsByClassName("price");
+
+		for(var i=0; i < prices.length; i++){
+			prices[i].innerHTML = (prices[i].innerHTML*1).toLocaleString('ko-KR');
+		}
+	}
+
+	setPage();
+</script>
 </html>

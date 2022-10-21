@@ -1,9 +1,14 @@
 package org.iptime.booke.dao;
 
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.iptime.booke.common.JDBConnect;
+import org.iptime.booke.dto.BookDTO;
 import org.iptime.booke.dto.OrderDTO;
 
 public class OrderDAO extends JDBConnect {
@@ -12,21 +17,26 @@ public class OrderDAO extends JDBConnect {
 		OrderDTO dto = null;
 		
 		try {
-			String sql = "SELECT * FROM ORDER_TBL payment_id = ?";
+			String sql = "SELECT * FROM ORDER_TBL WHERE payment_id = ?";
 			psmt = con.prepareStatement(sql);
-			psmt.setString(2, paymentId);
+			psmt.setString(1, paymentId);
 			rs = psmt.executeQuery();
 			
 			if(rs.next()) {
 				dto = new OrderDTO();
 				
 				dto.setId(rs.getLong(1));
-				dto.setPaymentId(rs.getNString(2));
+				dto.setPaymentId(rs.getString(2));
 				dto.setBookId(rs.getLong(3));
 				dto.setQuantity(rs.getInt(4));
 				
 				System.out.println("주문내역 조회 성공");
 				
+//				System.out.println(rs.getLong(1));
+//				System.out.println(rs.getString(2));
+//				System.out.println(rs.getLong(3));
+//				System.out.println(rs.getInt(4));
+//				
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -35,25 +45,44 @@ public class OrderDAO extends JDBConnect {
 		return dto;
 	}
 	
-	public ArrayList<OrderDTO> orderinfo(Long id){  //주문상세정보
-		ArrayList<OrderDTO> values = new ArrayList<OrderDTO>();
+	public List<Map<String, Object>> orderdetailinfo(String id){  //주문상세정보
+		List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
+		Map<String, Object> map = new HashMap<String, Object>();
 		
 		try {
-			String sql = " SELECT * FROM ORDER_TBL WHERE MEMBER_ID =" + id;
+			String sql = "SELECT * FROM ORDER_TBL WHERE PAYMENT_ID = '" + id + "' ORDER BY ID DESC";
+			System.out.println("sql:"+sql);
+			
 			psmt =con.prepareStatement(sql);
 			rs = psmt.executeQuery(sql);
 			
+			System.out.println("order이거나오냐?");
+			
+			BookDAO bdao = new BookDAO();
 			while(rs.next()) {
-				OrderDTO orderDTO = new OrderDTO(rs.getLong(1), rs.getString(2), rs.getLong(3),
-						rs.getInt(4), rs.getTimestamp(5).toLocalDateTime());
+				OrderDTO orderDTO = new OrderDTO();
 				
-				values.add(orderDTO);
+				orderDTO.setId(rs.getLong(1));
+				orderDTO.setPaymentId(rs.getString(2));
+				orderDTO.setBookId(rs.getLong(3));
+				orderDTO.setQuantity(rs.getInt(4));
+				orderDTO.setRegisterDate(new Timestamp(rs.getDate(5).getTime()).toLocalDateTime());
+				
+				BookDTO bdto = bdao.paybookinfo(orderDTO.getBookId());
+				
+				map.put("order", orderDTO);
+				map.put("book", bdto);
+				
+				result.add(map);
 			}
+			bdao.close();
+			
 		
 		}catch (Exception e) {
+			System.out.println("주문 상세 내역 불러오는중 오류 발생함까륵");
 			e.printStackTrace();
 		}
-		return values;
+		return result;
 	}
 	
 	public void sendOrder(OrderDTO order) {
@@ -73,4 +102,9 @@ public class OrderDAO extends JDBConnect {
 			e.printStackTrace();
 		}
 	}
+	
+//	public static void main(String[] args) {
+//		OrderDAO dao = new OrderDAO();
+//		dao.orderinfo(1L);
+//	}
 }
