@@ -12,7 +12,7 @@ import org.iptime.booke.dto.MemberDTO;
 import org.iptime.booke.utils.LocalDateABC;
 
 public class MemberDAO extends JDBConnect {
-	
+
 	public static void main(String[] args) {
 		MemberDAO dao = new MemberDAO();
 		dao.checkName("user01");
@@ -50,30 +50,30 @@ public class MemberDAO extends JDBConnect {
 
 		return dto;
 	}
-	
-	//로그인 가능 상태
-	public int checkLoginState(String email,String password) {
+
+	// 로그인 가능 상태
+	public int checkLoginState(String email, String password) {
 		String query;
 //		= "SELECT ID, NAME, EMAIL, PASSWORD FROM member_TBL WHERE email=? and password=? AND  MEMBER_STATE_ID=0";
 
 		System.out.println("로그인시도 아이디 : " + email);
 		try {
 			query = "SELECT MEMBER_STATE_ID FROM member_TBL WHERE email=? and password=? ORDER BY MEMBER_STATE_ID ASC";
-			
+
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, email);
 			psmt.setString(2, password);
 			rs = psmt.executeQuery();
-			
+
 			if (rs.next()) {
 				return rs.getShort(1);
-			}else {
+			} else {
 				query = "SELECT ID FROM member_TBL WHERE email=? and MEMBER_STATE_ID = 0";
-				
+
 				psmt = con.prepareStatement(query);
 				psmt.setString(1, email);
 				rs = psmt.executeQuery();
-				if(rs.next()) {
+				if (rs.next()) {
 					return -1;
 				}
 			}
@@ -81,9 +81,9 @@ public class MemberDAO extends JDBConnect {
 			e.printStackTrace();
 			System.out.println("로그인 시도중 오류발생");
 		}
-		return -2;//로그인 하는 아이디 없음
+		return -2;// 로그인 하는 아이디 없음
 	}
-	
+
 	public boolean checkName(String name) {
 		try {
 			String query = "SELECT ID FROM member_TBL WHERE NAME = '" + name + "'";
@@ -101,7 +101,7 @@ public class MemberDAO extends JDBConnect {
 		System.out.println("사용가능한 이름입니다.");
 		return true;
 	}
-	
+
 	public boolean checkEmail(String email) {
 		try {
 			String query = "SELECT ID FROM member_TBL WHERE EMAIL = '" + email + "'";
@@ -119,7 +119,6 @@ public class MemberDAO extends JDBConnect {
 		System.out.println("사용가능한 이메일입니다.");
 		return true;
 	}
-	
 
 	public int SignUp(MemberDTO dto) {
 		int result = 0;
@@ -164,7 +163,7 @@ public class MemberDAO extends JDBConnect {
 
 		return false;
 	}
-	
+
 	public String NameSearch(Long id) {
 		try {
 			String query = " SELECT NAME FROM member_TBL WHERE ID =? ";
@@ -185,8 +184,6 @@ public class MemberDAO extends JDBConnect {
 
 		return null;
 	}
-	
-	
 
 //	public String findId(String member_name, String member_address) {
 //		String mid = null;
@@ -296,38 +293,39 @@ public class MemberDAO extends JDBConnect {
 		return values;
 	}
 
-//	public int updateUserEdit(MemberDTO dto) {
-//		int result = 0;
-//
-//		try {
-//			String query = "UPDATE TBL_USER SET password = ? WHERE id = ?";
-//
-//			psmt = con.prepareStatement(query);
-//			psmt.setString(1, dto.getPassword());
-//			psmt.setString(2, dto.getId());
-//
-//			result = psmt.executeUpdate();
-//		} catch (Exception e) {
-//			System.out.println("회원정보 수정 중 예외 발생");
-//			e.printStackTrace();
-//		}
-//		return result;
-//	}
-//
-//	public int ReSign(String id) {
-//		int result = 0;
-//		try {
-//			String query = "DELETE FROM TBL_USER WHERE ID = '" + id + "'";
-//			psmt = con.prepareStatement(query);
-//
-//			result = psmt.executeUpdate();
-//
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//
-//		return result;
-//	}
+	public int updateUserEdit(MemberDTO dto) {
+		int result = 0;
+
+		try {
+			String query = "UPDATE MEMBER_TBL SET password = ? WHERE id = ?";
+
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, dto.getPassword());
+			psmt.setLong(2, dto.getId());
+
+			result = psmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println("회원정보 수정 중 예외 발생");
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	public int ReSign(Long id) {
+		int result = 0;
+		try {
+			String query = "DELETE FROM MEMBER_TBL WHERE ID = '" + id + "'";
+			psmt = con.prepareStatement(query);
+
+			result = psmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("회원 탈퇴 중 예외 발생!");
+		}
+
+		return result;
+	}
 
 	public int deleteUser(String idx) {
 		int result = 0;
@@ -349,32 +347,31 @@ public class MemberDAO extends JDBConnect {
 //		dao.ManagerUserInfo();
 //	}
 
-	//리뷰용 멤버정보 조회
+	// 리뷰용 멤버정보 조회
 	public MemberDTO readMemberForReview(Long id) {
 		MemberDTO dto = null;
-		
+
 		try {
 
 			String sql = "SELECT ID, NAME, EMAIL FROM member_TBL WHERE ID = ?";
 			psmt = con.prepareStatement(sql);
 			psmt.setLong(1, id);
 			rs = psmt.executeQuery();
-			
+
 			if (rs.next()) {
 				dto = new MemberDTO();
-				
+
 				dto.setId(rs.getLong(1));
 				dto.setName(rs.getString(2));
-				
-				
+
 				String email = rs.getString(3);
-				if(email.length()>3) {
-					email = email.substring(0,3);
-					for(int i = 3, n = rs.getString(3).length(); i < n; i++)
+				if (email.length() > 3) {
+					email = email.substring(0, 3);
+					for (int i = 3, n = rs.getString(3).length(); i < n; i++)
 						email += "*";
 				}
 				dto.setEmail(email);
-				
+
 				System.out.println("리뷰용 유저정보 성공적 조회");
 			}
 		} catch (Exception e) {
@@ -384,14 +381,14 @@ public class MemberDAO extends JDBConnect {
 
 		return dto;
 	}
-	
+
 	public int updateUserInfo(MemberDTO dto) {
 		int result = 0;
-		
+
 		try {
-			
+
 			String sql = "UPDATE MEMBER_TBL SET name = ?, EMAIL = ?, PASSWORD = ?, BIRTH = ?, GENDER = ?, PHONE_NUM = ?, ADDRESS = ?, POINT = ?, MEMBER_STATE_ID = ?, REGISTER_DATE = ? WHERE id = ?";
-			
+
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1, dto.getName());
 			psmt.setString(2, dto.getEmail());
@@ -404,15 +401,14 @@ public class MemberDAO extends JDBConnect {
 			psmt.setLong(9, dto.getMemberStateId());
 			psmt.setDate(10, LocalDateABC.dateValueOf(dto.getRegisterDate()));
 			psmt.setLong(11, dto.getId());
-			
+
 			result = psmt.executeUpdate();
-			
-		} catch(Exception e) {
+
+		} catch (Exception e) {
 			System.out.println("회원 정보 수정 중 오류 발생");
 			e.printStackTrace();
 		}
 		return result;
 	}
-	
-	
+
 }

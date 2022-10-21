@@ -15,8 +15,8 @@
     <%@include file="./Header.jsp" %>
 	<div id="contents">
         <div style="padding:10px">
+            <div style="color:red; width: 700px; font-size: 38px; font-weight: 700;" id="titleState"></div>
             <div style="
-                width: 700px;
                 font-size: 38px;
                 font-weight: 700;
                 font-family: 고딕;
@@ -31,9 +31,7 @@
             ${ bookInfo.catchphrase }
             </div>
             <div style="height:5px"></div>
-            <div style="
-                width: 200px;
-            " id="author">${ author.name }</div>
+            <div id="author">${ author.name }</div>
 	        <hr>
         </div>
     
@@ -108,7 +106,7 @@
                                         height: 38px; 
                                         font-size: 24px;
                                         text-align: right;
-                                        " name="bookCount" value="1" min="1">
+                                        " name="bookCount" value="1" min="1" max="999">
                                     권
                                 </form>
                             </div>
@@ -116,7 +114,7 @@
                                 background:skyblue;
                             " onclick="clickBtn('shopCart')" >장바구니</div>
                             <div class="btnStyle animation_3" style="
-                                background:darksalmon;
+                                background:steelblue;
                             " onclick="clickBtn('pay')" >바로구매</div>
                         </div>
                     </td>
@@ -391,6 +389,8 @@
 <script>
     var userId = '<%= (Long)session.getAttribute("LoginID") %>';
     var userName = '<%= (String)session.getAttribute("LoginName") %>';
+    
+    var quantity = ${ bookInfo.quantity }*1;
 
     var price = ${ bookInfo.price }*1;
     
@@ -447,9 +447,15 @@
 
     function clickBtn(btn){
 
-        if(btn=="locker"){ // 보관함 기능 삭제
-            document.getElementById("sendForm").action = "./Locker.jsp";
-        }else if(btn=="pay"){
+        if(quantity < 1){
+            alert("재고가 없습니다.\n이 책은 구매할 수 없습니다.");
+            return;
+        }
+
+        // if(btn=="locker"){ // 보관함 기능 삭제
+        //     document.getElementById("sendForm").action = "./Locker.jsp";
+        // }else 
+        if(btn=="pay"){
             //로그인 기록이 없을경우(로그인이 되어있지 않을때)
             if(userName == "null"){
                 alert("로그인 후 이용할 수 있는 서비스입니다.\n로그인 페이지로 이동합니다.");
@@ -472,6 +478,14 @@
     //자바스크립트로 셋팅하는 부분
     function setPage(){
         document.getElementById("price").innerHTML = price.toLocaleString('ko-KR');
+        
+        if(quantity > 0){
+        	document.getElementById("sendForm").bookCount.max = quantity;
+        }else{
+        	document.getElementById("sendForm").bookCount.value = 0;
+        	document.getElementById("sendForm").bookCount.disabled = true;
+        	document.getElementById("titleState").innerHTML = '[ 구매불가 ]';
+        }
     }
 
     setPage();

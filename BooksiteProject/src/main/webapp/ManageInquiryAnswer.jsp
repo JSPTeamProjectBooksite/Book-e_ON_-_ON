@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>1:1문의 답변(관리자)</title>
+<link rel="stylesheet" href="css/public.css">
 <link rel="stylesheet" href="/css/inquirydetail.css">
 </head>
 <body>

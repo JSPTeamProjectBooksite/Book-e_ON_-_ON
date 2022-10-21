@@ -13,6 +13,7 @@ SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일");
 
 <meta charset="UTF-8">
 <title>1:1 고객문의</title>
+<!-- <link rel="stylesheet" href="css/public.css"> -->
 <link rel="stylesheet" href="/css/customerinquiry.css">
 </head>
 <body>
