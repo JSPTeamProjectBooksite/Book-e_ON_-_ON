@@ -83,7 +83,7 @@
 <script type="text/javascript">
 
 	function checkForm(form){
-		var name = form.name;
+		var name = form.authorName;
         
         if(name.value.trim() == ""){
             alert("작가님 이름을 입력해주세요.");
@@ -92,8 +92,9 @@
         }
         name.value = name.value.trim();
         
-
-        alert("전부 정상적으로 작성되었습니다.");
+        //alert("전부 정상적으로 작성되었습니다.\n부모창으로 "+name.value+"를 전송합니다.");
+        opener.document.getElementById("authorSearchForm").authorName.value = name.value;
+        window.open("about:blank", "_self").close();
     }
 	
 </script>

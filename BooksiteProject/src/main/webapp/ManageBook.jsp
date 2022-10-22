@@ -10,23 +10,35 @@
 </head>
 <body>
 	<div id="wrap">
-		<div style="height: 10vh"></div>
-		<h1>책 정보</h1>
-		<div style="height: 10vh"></div>
-		<!-- 검색창 -->
-		<div style="text-align: center; padding: 10px;">
-			<span>
-				<input type="text"><input type="submit" value="검색">
+		<div style=" height: 20vh; position: relative;">
+			<div style="height: 20%"></div>
+			<h1>책 정보</h1>
+			<!-- <div style="height: 20%"></div> -->
+			<!-- 검색창 -->
+			<div style="padding: 10px;">
+				<form action="#" style="display: grid;
+					grid-template-columns: 9fr 1.5fr;
+					align-items: center;
+					height: 30px;
+					width: 300px;
+					margin: auto;
+				">
+					<input type="text" style="height: 100%; width:100%; padding: 2px;"><input type="submit" value="검색" style="width:100%; height: 100%;">
+				</form>
+			</div>
+			<span id="optionBtn">
+				<button type="button" onClick="window.open('/MANAGE/BOOKADD', '', 'width=700, height=800'); return false;">추가</button>
+				<button type="button" onclick="return reviseBook()">수정</button>
+				<button type="button" onclick="return deleteBook()">삭제</button>
 			</span>
 		</div>
-			
-
 		<!-- 오버플로테이블 -->
-		<div style="width: 100%; height: 60vh; overflow: auto; padding: 10px;">
+		<div style="width: 98%; height: 75vh; overflow: auto; padding: 5px; background: whitesmoke; margin: auto;">
 			<form action="#" method="post" id="sendForm">
-				<table border="1" class="bookTable">
-					<tr>
+				<table class="bookTable">
+					<tr style="height: 40px; font-size: 20px; background: cornflowerblue; color: black;">
 						<th style="width: 35px;">선택</th>
+						<th>상태</th>
 						<th>BID</th>
 						<th>책 이름</th>
 						<th>이미지</th>
@@ -50,11 +62,12 @@
 						<th>수정일자</th>
 					</tr>
 					<c:forEach var="book" items="${bookList}" varStatus="state">
-						<tr>
+						<tr style="height: 34px;" class="tableIndex" id="tr_${ state.index }" onclick="checkRadio(${ book.id })">
 							<td class="radioBox">
 								<input type="radio" name="chooseBook" value="${ book.id }">
 							</td>
-							<td>${ book.id }</td>
+							<td id="state_${ state.index }"></td>
+							<td >${ book.id }</td>
 							<td>${ book.title }</td>
 							<td>${ book.coverImg }</td>
 							<td>${ authorList[state.index] }</td>
@@ -71,7 +84,7 @@
 							<td>${ book.deliveryFee }</td>
 							<td>${ book.estimatedDeliveryDate }</td>
 							<td>${ book.visit }</td>
-							<td>${ book.quantity }</td>
+							<td class="quantity">${ book.quantity }</td>
 							<td>${ book.publicationDate }</td>
 							<td>${ book.registDate }</td>
 							<td>${ book.updateDate }</td>
@@ -79,11 +92,6 @@
 					</c:forEach>
 				</table>
 			</form>
-		</div>
-		<div style="text-align: right; padding: 10px;">
-			<button type="button" onClick="window.open('/MANAGE/BOOKADD', '', 'width=700, height=800'); return false;">추가</button>
-			<button type="button" onclick="return reviseBook()">수정</button>
-			<button type="button" onclick="return deleteBook()">삭제</button>
 		</div>
 	</div>
 </body>
@@ -95,6 +103,7 @@
 			alert("선택된 책이 없습니다.");
 			return false;
 		}
+		alert("("+form.chooseBook.value+")도서를 삭제합니다.");
 		form.action = "/ManageBookDelete";
 		form.submit();
 	}
@@ -108,5 +117,24 @@
 		window.open('/ManageBookRevise?chooseBook=' + form.chooseBook.value, '', 'width=700, height=800');
 		return false;
 	}
+	function checkRadio(num){
+		form.chooseBook.value = num;
+	}
+	function setstate(){
+		var quantities = document.getElementsByClassName("quantity");
+
+		for(var i = 0; i < quantities.length; i++){
+			console.log (quantities[i].innerHTML);
+			if(quantities[i].innerHTML == 0){
+				document.getElementById("tr_"+i).style.color = 'red';
+				document.getElementById("state_"+i).innerHTML = '[재고없음]';
+			}else if(quantities[i].innerHTML < 0){
+				document.getElementById("tr_"+i).style.color = '#555';
+				document.getElementById("state_"+i).innerHTML = '[삭제]';
+			}
+		}
+	}
+
+	setstate();
 </script>
 </html>
