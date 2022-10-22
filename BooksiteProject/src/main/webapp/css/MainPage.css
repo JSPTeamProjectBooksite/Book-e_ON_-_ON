@@ -3,23 +3,13 @@
     margin: auto;
 }
 
-#container{
-    position: relative;
-    /* background-color: aquamarine; */
-}
 
 #list_contents{
     height: 550px;
     /* background-color: blueviolet; */
 }
 
-.slideBookStyle{
-    float: left;
-    width: 13%;
-    height: 100%;
-    display: flex;
-    line-height : 300px;
-}
+
 
 .bookImageStyle{
     width: 100%;

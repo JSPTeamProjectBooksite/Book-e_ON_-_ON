@@ -134,7 +134,6 @@ public class BookDAO extends DBConnPool{
 			}
 			
 		} catch (Exception e) {
-			// TODO: handle exception
 			System.out.println("메인 인기항목 불러오는 중 오류발생");
 			e.printStackTrace();
 		}
@@ -184,7 +183,6 @@ public class BookDAO extends DBConnPool{
 			
 			
 		}catch (Exception e) {
-			// TODO: handle exception
 			System.out.println("bid 조회중 예외발생");
 			System.out.println("dto 저장내용");
 			dto.DTOPrintOut();
@@ -202,16 +200,13 @@ public class BookDAO extends DBConnPool{
 		boolean reselt = false;
 		
 		try {
-			String query = "INSERT INTO BOOK_TBL( ID, COVER_IMG, TITLE, AUTHOR_ID, TRANSLATOR, PRICE, DELIVERY_FEE, ESTIMATED_DELIVERY_DATE, TOTAL_PAGES, WEIGHT, ISBN13, ISBN10, BOOK_CATEGORY_ID, INTRODUCE, INTRODUCE_IMG, PUBLISHER, PUBLISHER_REVIEW, CONTENTS, QUANTITY, CATCHPHRASE, PUBLICATION_DATE ) VALUES( BOOK_SEQ.nextval";
+			String query = "INSERT INTO BOOK_TBL( ID, COVER_IMG, TITLE, AUTHOR_ID, TRANSLATOR, PRICE, DELIVERY_FEE, ESTIMATED_DELIVERY_DATE, TOTAL_PAGES, WEIGHT, ISBN13, ISBN10, BOOK_CATEGORY_ID, INTRODUCE, INTRODUCE_IMG, PUBLISHER, PUBLISHER_REVIEW, CONTENTS, QUANTITY, CATCHPHRASE, PUBLICATION_DATE ) VALUES( BOOK_SEQ.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			
-			System.out.println("쿼리문:");
-			System.out.println(query);
+			
 			
 			Date date = null;
 			if(dto.getPublicationDate() != null)
 				date = Date.valueOf(dto.getPublicationDate());
-			
-			query += ", ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, dto.getCoverImg());

@@ -94,7 +94,7 @@
         
         //alert("전부 정상적으로 작성되었습니다.\n부모창으로 "+name.value+"를 전송합니다.");
         opener.document.getElementById("authorSearchForm").authorName.value = name.value;
-        window.open("about:blank", "_self").close();
+        //window.open("about:blank", "_self").close();
     }
 	
 </script>

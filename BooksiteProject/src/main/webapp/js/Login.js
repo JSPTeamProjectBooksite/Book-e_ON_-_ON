@@ -9,6 +9,7 @@ function validateForm(form) {
 		form.password.focus();
 		return false;
 	}
+	console.log("로그인 시도");
 }
 
 const inputs = document.querySelectorAll(".input");

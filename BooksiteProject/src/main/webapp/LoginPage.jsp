@@ -18,7 +18,7 @@
 			<img src="./source/Login/reading.png">
 		</div>
 		<div class="login-content">
-			<form action="/login" method="post" name="login" onsubmit="return validateForm(this);" target="param">
+			<form action="/loginCheck" method="post" name="login" onsubmit="return validateForm(this);" target="param">
 				<img src="./source/Login/avatar.png">
 				<h2 class="title">로그인</h2>
 				<div class="input-div one">
@@ -41,7 +41,8 @@
 				</div>
 				<a href="./FindID.jsp">Forgot Email?</a>
 				<a href="/findPassword">Forgot Password?</a>
-				<button type="button" class="btn" onclick="checkAbleLogin()">로그인</button>
+				<input type="submit" value="로그인">
+				<!-- <button type="button" class="btn" onclick="checkAbleLogin()">로그인</button> -->
 				<input type="button" class="btn" value="회원가입" onclick="location.href='./Register.jsp'">
 				<iframe id="ableLogin" name="param" style="border: none;"></iframe>
 			</form>
@@ -52,11 +53,11 @@
 <script>
 	var form = document.login;
 
-	function checkAbleLogin(){
-		//alert("로그인 시도함");
-		form.action="/loginCheck";
-		form.submit();
-	}
+	// function checkAbleLogin(){
+	// 	//alert("로그인 시도함");
+	// 	form.action="/loginCheck";
+	// 	form.submit();
+	// }
 
 	function printAlert(str){
 		alert(str);

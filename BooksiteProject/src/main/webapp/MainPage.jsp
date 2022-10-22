@@ -8,7 +8,6 @@
 <title>메인 페이지</title>
 <link rel="stylesheet" href="./css/public.css">
 <link rel="stylesheet" href="./css/MainPage.css">
-<!-- <script src="./js/ListPage.js"></script> -->
 <script type="text/javascript">
     console.log("메인페이지들어옴");
 	function goToDetailPage(bid){
@@ -29,14 +28,16 @@
         border-radius: 10px;
         border: 1px lightgray solid;
     }
-</style>
-<style>
-    
     #popList{
         display: grid;
         grid-template-columns: repeat(6, 1fr);
         gap: 2vh;
         align-items: end;
+    }
+    .slideImg{
+        position: absolute;
+        top: 0;
+        opacity: 0;
     }
 
 </style>
@@ -58,11 +59,36 @@
         <%@ include file="./SearchBar.jsp" %>
     
         <!-- 공간 띄우기 -->
-        <div style="height: 25px;"></div>
+        <div style="height: 50px;"></div>
 
         <!-- 슬라이드 광고 -->
-        <div style="text-align: center;">
-            <img src="./source/MainPage/슬라이드 예시 이미지.png" alt="" style="width: 80%; border-radius: 20px;">
+        <div style="position:relative;">
+
+            <div id="slideImg_0" style="text-align: center;">
+                <img src="./source/ad/광고기본.png" alt="" style="width: 100%;">
+            </div>
+
+            <img id="button_Left" src="./source/ad/arr_L.png" alt="" style="cursor: pointer; width: 5%; position: absolute; top: 32%; margin-left: 1%; z-index: 5;" onclick="clickLeft()">
+            <img id="button_Right" src="./source/ad/arr_R.png" alt="" style="cursor: pointer; width: 5%; position: absolute; top: 32%; right: 0; margin-right: 1%; z-index: 5;" onclick="clickRight()">
+
+            <div id="slideImg_1" class="slideImg" style="text-align: center;">
+                <img src="./source/ad/광고1.png" alt="" style="width: 100%; border: 3px solid #5986c8; border-radius: 5vh;">
+            </div>
+            <div id="slideImg_2" class="slideImg" style="text-align: center;">
+                <img src="./source/ad/광고2.png" alt="" style="width: 100%; border: 3px solid #935252; border-radius: 5vh;">
+            </div>
+            <div id="slideImg_3" class="slideImg" style="text-align: center;">
+                <img src="./source/ad/광고3.png" alt="" style="width: 100%; border: 3px solid #ccc; border-radius: 5vh;">
+            </div>
+            <div id="slideImg_4" class="slideImg" style="text-align: center;">
+                <img src="./source/ad/광고4.png" alt="" style="width: 100%; border: 3px solid #60a05a; border-radius: 5vh;">
+            </div>
+            <div id="slideImg_5" class="slideImg" style="text-align: center;">
+                <img src="./source/ad/광고5.png" alt="" style="width: 100%; border: 3px solid #5e4eb6; border-radius: 5vh;">
+            </div>
+            <div id="slideImg_6" class="slideImg" style="text-align: center;">
+                <img src="./source/ad/광고6.png" alt="" style="width: 100%; border: 3px solid #faa8a8; border-radius: 5vh;">
+            </div>
         </div>
     
         <!-- 공간 띄우기 -->
@@ -96,6 +122,92 @@
     </div>
     <%@include file="./Footer.jsp" %>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js"
+            integrity="sha512-0xrMWUXzEAc+VY7k48pWd5YT6ig03p4KARKxs4Bqxb9atrcn2fV41fWs+YXTKb8lD2sbPAmZMjKENiyzM/Gagw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"
+            integrity="sha512-DkPsH9LzNzZaZjCszwKrooKwgjArJDiEjA5tTgr3YX4E6TYv93ICS8T41yFHJnnSmGpnf0Mvb5NhScYbwvhn2w=="
+            crossorigin="anonymous" referrerpolicy="no-referrer">
+</script>
+<!--  -->
+<script>
+    var Left = true;
+    var Right = true;
 
+    const slideImg_1 = document.querySelector('#slideImg_1');
+    const slideImg_2 = document.querySelector('#slideImg_2');
+    const slideImg_3 = document.querySelector('#slideImg_3');
+    const slideImg_4 = document.querySelector('#slideImg_4');
+    const slideImg_5 = document.querySelector('#slideImg_5');
+    const slideImg_6 = document.querySelector('#slideImg_6');
+
+    const t1 = new TimelineMax();
+
+    const slideImg = [slideImg_1, slideImg_2, slideImg_3, slideImg_4, slideImg_5, slideImg_6];
+    var index = 0;
+
+    t1.set(slideImg[index], { opacity: 1 })
+
+    function clickLeft(){
+        console.log("L버튼 눌림");
+        if(Left){
+            Left = false;
+            var indexBefore = index--;
+            if(index < 0){
+                index = slideImg.length-1;
+            }
+            var indexafter = index;
+
+            t1.fromTo(
+                slideImg[indexBefore],
+                1,
+                {opacity: 1, x: 0 },
+                {opacity: 0, x: 30 }
+            ).fromTo(
+                slideImg[indexafter],
+                1,
+                {opacity: 0, x: -30 },
+                {opacity: 1, x: 0, onComplete: setLeftTrue},
+                "-=1"
+            )
+        }
+        console.log("L버튼 동작 마침");
+    }
+
+    function clickRight(){
+        console.log("R버튼 눌림");
+        if(Right){
+            Right = false;
+            var indexBefore = index++;
+            if(index == slideImg.length){
+                index = 0;
+            }
+            var indexafter = index;
+
+            t1.fromTo(
+                slideImg[indexBefore],
+                1,
+                {opacity: 1, x: 0 },
+                {opacity: 0, x: -30 }
+            ).fromTo(
+                slideImg[indexafter],
+                1,
+                {opacity: 0, x: 30 },
+                {opacity: 1, x: 0, onComplete: setRightTrue},
+                "-=1"
+            )
+        }
+        console.log("R버튼 동작 마침");
+    }
+
+    function setLeftTrue(){
+        Left = true;
+    }
+
+    function setRightTrue(){
+        Right = true;
+    }
+</script>
 </body>
 </html>
