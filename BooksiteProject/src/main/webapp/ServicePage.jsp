@@ -15,7 +15,7 @@
 <title>고객센터</title>
 </head>
 
-<body>
+<body style="background: #fff;">
 
 	<div class="wrap">
 <%-- 		<%@ include file="Header.jsp"%> --%>
@@ -59,7 +59,7 @@
 				<div class="rect" onclick="window.open('./main')">
 					<span>메인 바로가기</span>
 				</div>
-				<div class="rect">
+				<div class="rect" onclick="window.open('./login')">
 					<span>1:1문의 바로가기</span>
 				</div>
 
