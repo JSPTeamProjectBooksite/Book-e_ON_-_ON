@@ -4,6 +4,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 .wrap { margin: 0 auto; }
 
@@ -13,7 +14,7 @@ h4{ padding: 10px 0px 10px 0px; }
 
 .delinfo{ padding-bottom: 10px;}
 
-table { width: 100%; font-size: 14px;}
+table { width: 100%; font-size: 14px; border: 0.5px;}
 
 table th.col{ width: 150px; 
     width: 211px;

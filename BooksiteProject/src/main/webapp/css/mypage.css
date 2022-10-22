@@ -6,11 +6,8 @@
 
 /* General */
 body {
-  width: 70%;
-  margin: 10px auto;
-  background-color: #ecf0f1;
-  font-family: 'noto sans kr', sans-serif;
-  letter-spacing: 1px;
+	/*   width: 70%; */
+	letter-spacing: 1px;
 }
 
 *, *:hover {
@@ -19,7 +16,7 @@ body {
 
 .top-tabs-container{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   gap: 2px;
 }
 

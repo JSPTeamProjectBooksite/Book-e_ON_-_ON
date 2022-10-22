@@ -9,15 +9,18 @@
 <title>주문내역 상세조회</title>
 <!-- <link rel="stylesheet" href="css/public.css"> -->
 <link rel="stylesheet" href="/css/orderDetails.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" 교차 출처>
+<link href="https: //fonts.googleapis.com/css2? family= Noto+Sans+KR & display=swap" rel="stylesheet">
 </head>
 <body>
 	<div class="wrap">
 		
-		<h2>【주문/배송 상세조회】</h2>
+		<h2>주문/배송 상세조회</h2>
 		
 		<div class="block"></div>
 		
-		<table class="confirm" border="1">
+		<table class="confirm">
 			<h4>▶상세주문내역</h4>
 			<tr>
 				<th>주문일</th>
