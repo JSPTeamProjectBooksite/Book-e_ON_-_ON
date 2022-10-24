@@ -20,7 +20,7 @@
 		
 		<div class="block"></div>
 		
-		<table class="confirm">
+		<table class="confirm" border="1">
 			<h4>▶상세주문내역</h4>
 			<tr>
 				<th>주문일</th>
@@ -30,7 +30,7 @@
 				<th>비고</th>
 			</tr>
 			<tr>
-				<td>${ payInfo.registerDate }</td>
+				<td class="date">${ payInfo.registerDate }</td>
 				<td>${ payInfo.id }</td>
 				<td>${ userInfo.name }</td>
 				<td id="bookTitle">${ orderInfoList[0].book.title }</td>
@@ -49,9 +49,9 @@
 				</tr>
 				<tr>
 					<th>주문일</th>
-					<td>${ payInfo.registerDate }</td>
+					<td class="date">${ payInfo.registerDate }</td>
 					<th>결제일</th>
-					<td>${ payInfo.registerDate }</td>
+					<td class="date">${ payInfo.registerDate }</td>
 				</tr>
 				<tr>
 					<th>배송상태</th>
@@ -98,17 +98,17 @@
 				</h4>
 				<tr>
 					<th>상품명</th>
+					<th>상품금액</th>
 					<th>주문수량</th>
-					<th>금액</th>
 					<th>적립예정금액</th>
 					<th>비고</th>
 				</tr>
 				<c:forEach var="order" items="${ orderInfoList }" varStatus="status">
 					<tr>
 						<td><b>${ order.book.title }</b></td>
-						<td><b>${ order.order.quantity }</b></td>
-						<td><b>${ order.book.price }</b></td>
-						<td><b>??</b></td>
+						<td class="price" align="right" ><b>${ order.book.price }</b></td>
+						<td align="right"><b>${ order.order.quantity }</b></td>
+						<td class="price" align="right"><b>${ order.book.price }</b></td>
 						<td></td>
 					</tr>
 				</c:forEach>
@@ -119,11 +119,11 @@
 				<h4>▶결제정보</h4>
 				<tr>
 					<th>총 주문금액</th>
-					<td>${ payInfo.totalAmount }</td>
+					<td class="price">${ payInfo.totalAmount }</td>
 				</tr>
 				<tr>
 					<th>적립금 결제</th>
-					<td>${ payInfo.pointAmount }</td>
+					<td class="price">${ payInfo.pointAmount }</td>
 				</tr>
 				<tr>
 					<th>실 결제금액</th>
@@ -145,6 +145,18 @@
 	function setPage(){
 		if(orderSize > 1){
 			document.getElementById("bookTitle").innerHTML += " 외 " + (orderSize-1) + "권";
+		}
+
+		var dates = document.getElementsByClassName("date");
+
+		for(var i=0; i < dates.length; i++){
+			dates[i].innerHTML = dates[i].innerHTML.replace('T', ' ');
+		}
+
+		var prices = document.getElementsByClassName("price");
+
+		for(var i=0; i < prices.length; i++){
+			prices[i].innerHTML = (prices[i].innerHTML*1).toLocaleString('ko-KR');
 		}
 	}
 

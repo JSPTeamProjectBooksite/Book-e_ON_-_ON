@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'NanumGothic';
+    border-collapse: collapse;
+}
+
+.wrap { width: 100%; margin: 0 auto; }
+h2 { padding: 20px 0px 20px 0px; color: #495057;}
+
+.InquiryList { width: 100%; font-size: 14px; border: 1px;}
+
+.InquiryList th{ background:#f9f9f9; height: 40px;}
+
+.InquiryList td{ height: 40px;}

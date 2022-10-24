@@ -10,6 +10,7 @@
 <script src="js/includeHTML.js"></script>
 <meta http-equiv="X-UA-Compatible" content="chrome">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-gothic.css" rel="stylesheet">
 <link rel="stylesheet" href="css/public.css">
 <link rel="stylesheet" href="css/service.css">
 <title>고객센터</title>

@@ -26,7 +26,7 @@ public class PaymentListController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 //		String id = request.getParameter("id");
-		
+		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		
 		Long id = (Long)session.getAttribute("LoginID");
