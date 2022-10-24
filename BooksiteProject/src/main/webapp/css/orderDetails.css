@@ -5,6 +5,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Noto Sans KR', sans-serif;
+    border-collapse: collapse;
 }
 .wrap { margin: 0 auto; }
 
@@ -31,5 +32,7 @@ table.confirm td, th{ height: 45px;}
 .confirm th, .delinfo th, .order th, .pay th{ background: #F1F3F5;}
 
 .order td{ height: 40px;}
+
+
 
 /* rgb(241, 243, 245); */

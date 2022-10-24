@@ -7,15 +7,15 @@
 <meta charset="UTF-8">
 <title>주문내역 조회</title>
 <link rel="stylesheet" href="/css/OrderList.css">
-<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css" rel="stylesheet">
+<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-gothic.css" rel="stylesheet">
 </head>
 <body>
 	<h2>주문내역조회</h2>
 	<form method="get">
-		<table id="paymentTable">
+		<table id="paymentTable" border="1">
 			<tr>
 				<th>주문번호</th>
-				<th>상품금액</th>
+				<th>주문금액</th>
 				<th>배송상태</th>
 				<th>구매일자</th>
 				<th>비고</th>

@@ -2,6 +2,7 @@ package org.iptime.booke.controller;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import javax.servlet.ServletException;
@@ -82,8 +83,8 @@ public class BookUpdateController extends HttpServlet {
 			dto.setPublisherReview(publisherReview);
 			dto.setContents(contents);
 			dto.setCatchphrase(catchphrase);
-			// 안됨;;
 			dto.setPublicationDate(LocalDate.parse(publicationDate, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+			dto.setUpdateDate(LocalDateTime.now());
 
 			BookDAO dao = new BookDAO();
 			dao.updateBook(dto,id);

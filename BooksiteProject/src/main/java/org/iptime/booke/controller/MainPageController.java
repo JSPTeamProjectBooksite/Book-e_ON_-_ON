@@ -23,10 +23,12 @@ public class MainPageController extends HttpServlet {
 		
 		//책 정보와 작가정보가 각각 다른 테이블에 저장되어 있으므로 map형태로 저장한다.
 		List<Map<String, Object>> popularList = dao.selectPopularList(6);
+		List<Map<String, Object>> totalList = dao.selectTotalList();
 		
 		dao.close();
 		
 		request.setAttribute("popularList", popularList);
+		request.setAttribute("totalList", totalList);
 		request.getRequestDispatcher("/MainPage.jsp").forward(request, response);
 	}
 

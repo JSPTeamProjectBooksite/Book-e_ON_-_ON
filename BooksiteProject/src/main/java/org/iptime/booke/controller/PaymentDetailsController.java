@@ -26,7 +26,7 @@ public class PaymentDetailsController extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		request.setCharacterEncoding("UTF-8");
 		String id = request.getParameter("id");
 
 		System.out.println("결제정보 아이디:"+id);

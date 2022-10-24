@@ -6,6 +6,11 @@
     width: 100%;
 }
 
+#contents{
+    width: 98%;
+    margin: auto;
+}
+
 .block0{ height: 10px;}
 .block{ height: 10px;}
 

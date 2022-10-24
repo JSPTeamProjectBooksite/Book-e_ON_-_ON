@@ -17,8 +17,7 @@
 <body>
 	<div id="wrap">
 		<%@ include file="Header.jsp"%>
-		
-		<h2 style="padding-bottom: 20px">1:1고객문의(답변대기 건수 : n건)</h2>
+		<h2 style="padding-bottom: 20px">[답변대기]1:1고객문의</h2>
 
 		<form method="get">
 			<table class="search" border="1">
@@ -59,8 +58,6 @@
 				</tr>
 			</c:forEach>
 		</table>
-
-		<%@ include file="Footer.jsp"%>
 	</div>
 	
 	<script>

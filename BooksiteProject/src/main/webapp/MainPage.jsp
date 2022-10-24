@@ -79,37 +79,37 @@
             <img id="button_Right" class="animation_2" src="./source/ad/arr_R.png" alt="" style="cursor: pointer; width: 5%; position: absolute; top: 32%; right: 0; margin-right: 1%; z-index: 5;" onclick="clickRight()">
 
             <div id="slideImg_1" class="slideImg" style="text-align: center;">
-                <img src="./source/ad/광고1.png" alt="" style="width: 100%; border: 3px solid #5986c8; border-radius: 5vh;">
+                <img src="./source/ad/광고1.png" alt="" style="width: 100%; border: 3px solid #5986c8; border-radius: 25px;">
             </div>
             <div id="slideImg_2" class="slideImg" style="text-align: center;">
                 <a href="/detail?BID=2">
-                    <img src="./source/ad/광고2.png" alt="" style="width: 100%; border: 3px solid #935252; border-radius: 5vh;">
+                    <img src="./source/ad/광고2.png" alt="" style="width: 100%; border: 3px solid #935252; border-radius: 25px;">
                 </a>
             </div>
             <div id="slideImg_3" class="slideImg" style="text-align: center;">
                 <a href="/list?searchFeild=author&searchWord=아니+에르노">
-                    <img src="./source/ad/광고3.png" alt="" style="width: 100%; border: 3px solid #ccc; border-radius: 5vh;">
+                    <img src="./source/ad/광고3.png" alt="" style="width: 100%; border: 3px solid #ccc; border-radius: 25px;">
                 </a>
             </div>
             <div id="slideImg_4" class="slideImg" style="text-align: center;">
                 <a href="/detail?BID=5">
-                    <img src="./source/ad/광고4.png" alt="" style="width: 100%; border: 3px solid #60a05a; border-radius: 5vh;">
+                    <img src="./source/ad/광고4.png" alt="" style="width: 100%; border: 3px solid #60a05a; border-radius: 25px;">
                 </a>
             </div>
             <div id="slideImg_5" class="slideImg" style="text-align: center;">
                 <a href="/detail?BID=7">
-                    <img src="./source/ad/광고5.png" alt="" style="width: 100%; border: 3px solid #5e4eb6; border-radius: 5vh;">
+                    <img src="./source/ad/광고5.png" alt="" style="width: 100%; border: 3px solid #5e4eb6; border-radius: 25px;">
                 </a>
             </div>
             <div id="slideImg_6" class="slideImg" style="text-align: center;">
                 <a href="/detail?BID=6">
-                    <img src="./source/ad/광고6.png" alt="" style="width: 100%; border: 3px solid #faa8a8; border-radius: 5vh;">
+                    <img src="./source/ad/광고6.png" alt="" style="width: 100%; border: 3px solid #faa8a8; border-radius: 25px;">
                 </a>
             </div>
         </div>
     
         <!-- 공간 띄우기 -->
-        <div style="height: 100px;"></div>
+        <div style="height: 25px;"></div>
         
         <!-- 주제별 선정 -->
         <!-- 타입 1 -->
@@ -124,10 +124,34 @@
         </div>
         <div id="popList">
             <c:forEach var="info" items="${popularList}">
+                <div style="width: 100%;">
+                    <a href="/detail?BID=${ info.book.id }">
+                        <div class="bookImage">
+                            <img class="animation_1 imgBox1" alt="${ info.book.title }" src="${ info.book.coverImg }"  style="width: 100%;">
+                        </div>
+                    </a>
+                    <div style="height:100px; text-align:center;">
+                    	${ info.book.title }
+                    	<br>
+                    	${ info.author.name }
+                    </div>
+            	</div>
+            </c:forEach>
+        </div>
+        <div style="
+            height: 75px;
+            font-size: 32px;
+            font-weight: 600;
+            color: gray;
+        ">
+            전체 도서 <span style="color:#999; font-size: 26px; font-weight: 400;">(업데이트 순 정렬)</span>
+        </div>
+        <div id="popList">
+            <c:forEach var="info" items="${totalList}">
             	<div style="width: 100%;">
                     <a href="/detail?BID=${ info.book.id }">
                         <div class="bookImage">
-                            <img class="animation_1 imgBox1" id="popularityBookImage" alt="" src="${ info.book.coverImg }"  style="width: 100%;">
+                            <img class="animation_1 imgBox1" alt="${ info.book.title }" src="${ info.book.coverImg }"  style="width: 100%;">
                         </div>
                     </a>
                     <div style="height:100px; text-align:center;">

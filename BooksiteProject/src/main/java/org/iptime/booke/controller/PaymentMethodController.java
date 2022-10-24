@@ -24,7 +24,7 @@ public class PaymentMethodController extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		request.setCharacterEncoding("UTF-8");
 		
 		String memberId = request.getParameter("memberId");
 		String[] bookId = request.getParameterValues("bookId");
@@ -35,13 +35,17 @@ public class PaymentMethodController extends HttpServlet {
 		BookDAO bdao = new BookDAO();
 		System.out.println("수량확인");
 		Map<String, Object> stateMap = bdao.checkQuantity(bookId, selectCount);
-		bdao.close();
 		
 		if(stateMap != null) {
-			request.setAttribute("map", stateMap);
-			request.getRequestDispatcher("ERRORPAGE.jsp").forward(request, response);
+//			request.setAttribute("map", stateMap);
+//			request.getRequestDispatcher("ERRORPAGE.jsp").forward(request, response);
+			response.sendRedirect("error.html");
 			return;
 		}
+		
+		bdao.updateQuantity(bookId, selectCount);
+		
+		bdao.close();
 		
 //		System.out.println(memberId);
 //		System.out.println(Arrays.toString(bookId));
@@ -78,7 +82,7 @@ public class PaymentMethodController extends HttpServlet {
 			System.out.println("주문 내역 "+(i+1)+"개 등록함");
 		}
 		
-		request.getRequestDispatcher("/SuccessOrder.jsp").forward(request, response);
+		request.getRequestDispatcher("/payment_done.html").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

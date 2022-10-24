@@ -2,6 +2,7 @@ package org.iptime.booke.dao;
 
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -44,6 +45,31 @@ public class BookDAO extends DBConnPool{
 			System.out.println("재고 확인중 오류 발생");
 		}
 
+		return result;
+	}
+	//재고 수량 확인
+	public Map<String, Object> updateQuantity(String[] bookIds, String[] selectCount){
+		Map<String, Object> result = null;
+		
+		try {
+			String query = "UPDATE BOOK_TBL SET QUANTITY = QUANTITY - ? WHERE ID = ?";
+			
+			System.out.println(java.util.Arrays.toString(bookIds));
+			int num = 0;
+			for(int i = 0; i < bookIds.length; i++) {
+				
+				psmt = con.prepareStatement(query);
+				psmt.setInt(1, Integer.parseInt(selectCount[i]));
+				psmt.setLong(2, Long.parseLong(bookIds[i]));
+				
+				num =+ psmt.executeUpdate();
+			}
+			System.out.println(num+"회의 결제와 재고감소가 일어났습니다.");
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("재고 확인중 오류 발생");
+		}
+		
 		return result;
 	}
 	
@@ -140,6 +166,47 @@ public class BookDAO extends DBConnPool{
 		
 		return booklist;
 	}
+	
+	//전체도서 읽어오기
+	public List<Map<String, Object>> selectTotalList(){
+		List<Map<String, Object>> booklist = new ArrayList<>();
+		
+		String query = "SELECT ID, COVER_IMG, TITLE, AUTHOR_ID FROM BOOK_TBL WHERE QUANTITY >= 0 ORDER BY UPDATE_DATE DESC";
+		
+		try {
+			psmt = con.prepareStatement(query);
+			rs = psmt.executeQuery();
+			
+			
+			AuthorDAO authorDao = new AuthorDAO();
+			while(rs.next()) {
+				Map<String, Object> book = new HashMap<>();
+				
+				BookDTO bookDto = new BookDTO();
+				
+				bookDto.setId(rs.getLong(1));
+				bookDto.setCoverImg(rs.getString(2));
+				bookDto.setTitle(rs.getString(3));
+				bookDto.setAuthorId(rs.getLong(4));
+				// 작가 아이디로 작가 조회
+				AuthorDTO authorDto = authorDao.findAuthor(bookDto.getAuthorId());
+				
+				book.put("book", bookDto);
+				book.put("author", authorDto);
+				
+				
+				booklist.add(book);
+			}
+			authorDao.close();
+			
+		} catch (Exception e) {
+			System.out.println("메인 인기항목 불러오는 중 오류발생");
+			e.printStackTrace();
+		}
+		
+		return booklist;
+	}
+
 	//디테일 페이지
 	//책 정보 읽어오기
 	public BookDTO bookDetail(Long bid) {
@@ -290,7 +357,8 @@ public class BookDAO extends DBConnPool{
 					+ "	CONTENTS = ?,"
 					+ " QUANTITY = ?,"
 					+ "	CATCHPHRASE = ?,"
-					+ "	PUBLICATION_DATE = ?"
+					+ "	PUBLICATION_DATE = ?,"
+					+ "	UPDATE_DATE = ?"
 					+ " WHERE ID = " + id;
 			
 //			System.out.print("쿼리문:");
@@ -321,6 +389,11 @@ public class BookDAO extends DBConnPool{
 			if(dto.getPublicationDate() != null)
 				date = Date.valueOf(dto.getPublicationDate());
 			psmt.setDate(20, date);
+			
+			Date date2 = null;
+			if(dto.getUpdateDate() != null)
+				date2 = new Date(Timestamp.valueOf(dto.getUpdateDate()).getTime());
+			psmt.setDate(21, date2);
 			
 //			System.out.print("만들어진 쿼리문 :");
 //			System.out.println(psmt.toString());

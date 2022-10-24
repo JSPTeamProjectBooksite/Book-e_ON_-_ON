@@ -15,17 +15,6 @@
     width: 100%;
 }
 
-#slideTable{
-    border-radius: 25px;
-    background-color:darkgrey;
-    width: 100%;
-}
-
-#slideTable th,td{
-    padding: 5px;
-    text-align: center;
-}
-
 
 .bookTh{
     vertical-align: bottom;
