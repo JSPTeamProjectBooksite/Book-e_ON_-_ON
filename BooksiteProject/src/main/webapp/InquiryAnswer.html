@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+</head>
+<body>
+<div class="details">
+	<table border="1">
+		<tr>
+			<th>문의유형 </th>
+			<td>카테고리</td>
+			<th>등록일시</th>
+			<td>정보</td>
+			<th>문의상태</th>
+			<td>상태</td>
+		</tr>
+		<tr>
+			<th>제목</th>
+			<td colspan="5">DB정보</td>
+		</tr>
+		<tr>
+			<th>문의내용</th>
+			<td id="inquireInput" colspan="5"><textarea style="width: 100%; height: 300px" readonly></textarea></td>
+		</tr>
+		<tr>
+			<th id="reply">답변내용</th>
+			<td id="replyInput" colspan="5">
+				<form action="/inquiryAnswer" method="post">
+				<input type="hidden" name='inquiryId' value="">
+				<input type="text" name="reply" style="width: 100%; height: 100px">
+				<button style="float: right;">답변</button>
+				</form>
+			</td>
+		</tr>
+	</table>
+</div>
+
+<script>
+	const inquire_txt = $('#inquireInput textarea');
+	const input_reply = $('input[name=reply]');
+	const input_inquiryId = $('input[name=inquiryId]');
+
+	jQuery(function ($) {
+	    $.fn.getUrlParameter = function (sParam) {
+	        var sPageURL = decodeURIComponent(window.location.search.substring(1)), sURLVariables = sPageURL.split('&'), sParameterName, i;
+	
+	        for (i = 0; i < sURLVariables.length; i++) {
+	            sParameterName = sURLVariables[i].split('=');
+	
+	            if (sParameterName[0] === sParam) {
+	                return sParameterName[1] === undefined ? true : sParameterName[1];
+	            }
+	        }
+	    };
+	    
+	    var inquiryIndex = $.fn.getUrlParameter('inquiryIndex');
+		var inquiryItem = $(".inquiryItem", opener.document).eq(inquiryIndex - 1);
+
+	    inquire_txt.val(inquiryItem.find('.content').html());
+	    input_reply.val(inquiryItem.find('.reply').html());
+	    input_inquiryId.val(inquiryItem.find('.inpuiry_id').html())
+
+	});
+</script>
+</body>
+</html>

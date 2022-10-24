@@ -94,21 +94,20 @@
 			<table class="order" border="1">
 				<h4>
 					▶주문상품정보
-					<button>엑셀저장</button>
 				</h4>
 				<tr>
 					<th>상품명</th>
 					<th>상품금액</th>
 					<th>주문수량</th>
-					<th>적립예정금액</th>
+		<!-- 			<th>적립예정금액</th> -->
 					<th>비고</th>
 				</tr>
 				<c:forEach var="order" items="${ orderInfoList }" varStatus="status">
 					<tr>
 						<td><b>${ order.book.title }</b></td>
-						<td class="price" align="right" ><b>${ order.book.price }</b></td>
+						<td class="price bprice" align="right" >${ order.book.price }</td>
 						<td align="right"><b>${ order.order.quantity }</b></td>
-						<td class="price" align="right"><b>${ order.book.price }</b></td>
+				<%-- 		<td class="point" align="right">${ order.book.price }</td> --%>
 						<td></td>
 					</tr>
 				</c:forEach>
@@ -127,7 +126,15 @@
 				</tr>
 				<tr>
 					<th>실 결제금액</th>
-					<td style="color: red;"><b>${ payInfo.actualAmount }</b> 원</td>
+					<td  style="color: red;">
+						<span id="actualprice" class="price">${ payInfo.actualAmount }</span> 원
+					</td>
+				</tr>
+				<tr>
+					<th>적립예정금액</th>
+					<td>
+						<span id="point" class="price">0</span> 원
+					</td>
 				</tr>
 				<tr>
 					<th>결제방법</th>
@@ -153,6 +160,15 @@
 			dates[i].innerHTML = dates[i].innerHTML.replace('T', ' ');
 		}
 
+	/* 	var bprices = document.getElementsByClassName("bprice");
+		var points = document.getElementsByClassName("point");
+
+		for(var i=0; i < bprices.length; i++){
+			points[i].innerHTML = (bprices[i].innerHTML*0.05).toLocaleString('ko-KR');
+		} */
+		
+		document.getElementById("point").innerHTML = document.getElementById("actualprice").innerHTML*0.05;
+		
 		var prices = document.getElementsByClassName("price");
 
 		for(var i=0; i < prices.length; i++){

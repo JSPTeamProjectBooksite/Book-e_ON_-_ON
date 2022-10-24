@@ -22,22 +22,22 @@ SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일");
 <%-- 		<%@ include file="Header.jsp"%> --%>
 	
 <!-- 		<h2>▶1:1 고객문의</h2> -->
-		<form name="inquireFrm" method="post" action="/inquiryWrite.do"
+		<form name="inquireFrm" method="post" action="/UserInquiryWrite.do"
 			onsubmit="return notice(this);" style="padding-top: 50px">
 
 			<table class="CustomerInquiry" border="1">
 			
 				<tr><h5 align-items: "left">* 공란인 정보란은 필수정보이니, 모두 작성해주세요.</h5>
 					<td class="title">작성자</td>
-					<td>${ userInfo.name }</td>
+					<td>${ delinfo.name }</td>
 					<td class="title">ID(이메일)</td>
-					<td>${ userInfo.email }</td>
+					<td>${ delinfo.email }</td>
 				</tr>
 				<tr>
 					<td class="title">작성일자</td>
 					<td><%=sf.format(nowTime)%></td>
 					<td class="title">연락처</td>
-					<td>${ userInfo.phoneNum }</td>
+					<td>${ delinfo.phoneNum }</td>
 				</tr>
 				<tr>
 					<td class="title">질문유형</td>

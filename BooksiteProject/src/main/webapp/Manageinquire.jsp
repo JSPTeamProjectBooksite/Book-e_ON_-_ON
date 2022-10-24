@@ -9,12 +9,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>1:1고객문의(관리자)</title>
-<link rel="stylesheet" href="css/public.css">
-<link rel="stylesheet" href="css/ManageInquire.css">
+<link rel="stylesheet" href="/css/public.css">
+<link rel="stylesheet" href="/css/ManageInquire.css">
+<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 </head>
 
 <body>
-	<div class="wrap">
+	<div id="wrap">
+		<%@ include file="Header.jsp"%>
 		<h2 style="padding-bottom: 20px">[답변대기]1:1고객문의</h2>
 
 		<form method="get">
@@ -30,7 +32,7 @@
 			</table>
 		</form>
 
-		<table border="1" style="width: 1200px;">
+		<table border="1" style="width: 1200px;" id="manageInquire">
 			<tr>
 				<th>번호</th>
 				<th>ID(이메일)</th>
@@ -38,19 +40,54 @@
 				<th>문의유형</th>
 				<th>답변상태</th>
 				<th>등록일</th>
+				
+				<th class="hidden">문의</th>
+				<th class="hidden">답변</th>
 			</tr>
 			<c:forEach items="${ inquiryList }" var="inq" varStatus="status">
-				<tr align="center">
-					<td>${ inq.id }</td>
+				<tr align="center" class="inquiryItem">
+					<td class="inpuiry_id">${ inq.id }</td>
 					<td>${ nameList[status.index] }</td>
-					<td><a href="">${ inq.title }</a></td>
+					<td><span class="answer" onclick="windowPopup(this);">${ inq.title }</span></td>
 					<td>${ inq.categroy }</td>
 					<td>${ inq.state }
 					<td>${ inq.rigisterDate}</td>
+					
+					<td class="hidden content">${ inq.content }</td>
+					<td class="hidden reply">${ inq.reply }</td>
 				</tr>
 			</c:forEach>
 		</table>
 	</div>
+	
+	<script>
+	var windowPopup = function(e){
+		
+		var pIndex = $(e).closest('.inquiryItem').index();
+				
+		var xPos = (document.body.offsetWidth/2) - (400/2);
+		xPos += window.screenLeft; // 듀얼 모니터일 때
+		var yPos = (document.body.offsetHeight/2) - (600/2);
+		
+		var popup = window.open('/InquiryAnswer.html?inquiryIndex=' + pIndex, '답변', 'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=400,height=600,left='+xPos+',top=' + yPos);
+		
+  		popup.addEventListener('unload', function() {
+  			window.location.reload(true);
+  			console.log("팝업창 닫음");
+  			
+  		});
+	}
+	
+	function reloadDivArea() {
+	    $('#manageInquire').load(location.href+' #manageInquire');
+	}
+	
+	setInterval(function(){
+		reloadDivArea() // this will run after every 5 seconds
+	}, 5000);
+	
+	</script>
+	
 </body>
 
 </html>

@@ -10,11 +10,7 @@
     <link rel="stylesheet" href="/css/public.css">
     <link rel="stylesheet" href="/css/shopCartPage.css">
     
-    <script
-        src="https://code.jquery.com/jquery-3.6.1.js"
-        integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
-        crossorigin="anonymous">
-    </script>
+    <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
     <script type="text/javascript"> 
     	sessionStorage.setItem("contextpath", "${pageContext.request.contextPath}"); 
     </script>
@@ -81,7 +77,7 @@
                 </table>
 
                 <div class="submitBtns">
-                    <button type="submit" form="cartForm" class="selectBookDeleteBtn" >선택한 상품 삭제</button>
+                    <button type="button" form="cartForm" class="selectBookDeleteBtn" >선택한 상품 삭제</button>
                     <button type="submit" form="cartForm" class="selectBookPaymentBtn" >선택한 상품 구매</button>
                     <button type="submit" form="cartForm" class="selectBookSaveBtn" >보관함 저장</button>
                 </div>
@@ -140,7 +136,25 @@
    	
     $('.selectBookPaymentBtn').click(function(){	fromUpdate(fromTag, '/payment', 'post');});
     $('.selectBookSaveBtn').click(function(){		fromUpdate(fromTag, '#', 'post');});
-    $('.selectBookDeleteBtn').click(function(){		fromUpdate(fromTag, '/cart', 'DELETE');});
+    $('.selectBookDeleteBtn').click(function(){	
+    	if(!isSeleckCheckBox()) {
+    		alert("선택된 상품이 없습니다");
+    		return false;
+    	}
+    	
+    	if(confirm('정말로 삭제하시겠습니까?')){
+    		$('.bookItem').each(function(){
+    			var inp = $(this).find('input[name=selectedBooks]');
+    			if(inp.is(":checked")){
+    				setCookie(inp.val(), null, 0);
+    			}
+    		})
+    		location.reload();
+    	}
+    	
+    	
+		fromUpdate(fromTag, '/cart', 'DELETE');
+	});
     
     //Number Formatting Setting
     const bookValue = $('.bookValue .num');
@@ -176,10 +190,8 @@
     	
     	bookValue.attr('data-value', totalValue);
     	
-    	if(totalValue > bookDeliveryValue_num)
-    		bookLastValue.attr('data-value', totalValue - bookDeliveryValue_num);
-    	else
-    		bookLastValue.attr('data-value', totalValue);
+    	if(totalValue > 0)
+    		bookLastValue.attr('data-value', totalValue + Number(bookDeliveryValue_num));
     	
     	allFormatting();
     }

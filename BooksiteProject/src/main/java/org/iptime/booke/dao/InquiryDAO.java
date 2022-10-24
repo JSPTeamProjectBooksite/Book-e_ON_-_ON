@@ -25,8 +25,8 @@ public class InquiryDAO extends JDBConnect {
 				dto.setId(rs.getLong(1));
 				dto.setMemberId(rs.getLong(2));
 				dto.setTitle(rs.getString(3));
-				dto.setmContent(rs.getString(4));
-				dto.setaContent(rs.getString(5));
+				dto.setContent(rs.getString(4));
+				dto.setReply (rs.getString(5));
 				dto.setCategroy(rs.getString(6));
 				dto.setState(rs.getString(7));
 //			psmt.setString(7, LocalDateABC.toLocalDateTime(dto.getRigisterDate());
@@ -67,15 +67,15 @@ public class InquiryDAO extends JDBConnect {
 	}
 	
 	public int InquireRegister(InquiryDTO dto) {
-		int result = 0;
+		int result = 1;
 
 		try {
-			String query = "INSERT INTO INQUIRY_TBL(ID, MEMBER_ID, TITLE, M_CONTENT, CATEGROY) VALUES(INQUIRY_SEQ.nextval, ?, ?, ?, ?)";
+			String query = "INSERT INTO INQUIRY_TBL(ID, MEMBER_ID, TITLE, CONTENT, CATEGROY) VALUES(INQUIRY_SEQ.nextval, ?, ?, ?, ?)";
 			
 			psmt = con.prepareStatement(query);
-			psmt.setLong(1, 1);
+			psmt.setLong(1, dto.getMemberId());
 			psmt.setString(2, dto.getTitle());
-			psmt.setString(3, dto.getmContent());
+			psmt.setString(3, dto.getContent());
 			psmt.setString(4, dto.getCategroy());
 			result = psmt.executeUpdate();
 			
@@ -86,10 +86,27 @@ public class InquiryDAO extends JDBConnect {
 		} catch (Exception e) {
 			System.out.println("문의 등록 중 예외 발생");
 			e.printStackTrace();
+			result  = 0;
 		}
 		return result;
 	}
 	
+	public void adminAnswer(Long id, String reply) {
+
+		try {
+			String query = "UPDATE INQUIRY_TBL SET reply = ? WHERE ID = ?";
+			
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, reply);
+			psmt.setLong(2, id);
+			psmt.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println("문의 답변 중 예외 발생");
+			e.printStackTrace();
+		}
+	}
+
 	public List<InquiryDTO> inquiryinfo(Long id){
 		List<InquiryDTO> inquirylist = new ArrayList<InquiryDTO>();
 		
@@ -104,8 +121,8 @@ public class InquiryDAO extends JDBConnect {
 				dto.setId(rs.getLong(1));
 				dto.setMemberId(rs.getLong(2));
 				dto.setTitle(rs.getString(3));
-				dto.setmContent(rs.getString(4));
-				dto.setaContent(rs.getString(5));
+				dto.setContent(rs.getString(4));
+				dto.setReply(rs.getString(5));
 				dto.setCategroy(rs.getString(6));
 				dto.setState(rs.getString(7));
 				dto.setRigisterDate(new Timestamp(rs.getDate(8).getTime()).toLocalDateTime());

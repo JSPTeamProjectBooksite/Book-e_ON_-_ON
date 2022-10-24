@@ -102,7 +102,7 @@
 				<input class="tab-radio" id="sub-tab3-1" name="sub-group3"
 					type="radio" checked="checked">
 				<div class="sub-tab-content">
-					<iframe src="./UserInquiryWrite.jsp" width="100%" height="1180px"
+					<iframe src="/customerinquiry" width="100%" height="1180px"
 						frameborder=0 framespacing=0 marginheight=0 marginwidth=0
 						scrolling=yes vspace=0></iframe>
 				</div>

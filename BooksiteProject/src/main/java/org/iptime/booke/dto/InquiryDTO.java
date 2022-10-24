@@ -6,10 +6,8 @@ public class InquiryDTO {
 	private Long id;
 	private Long memberId;
 	private String title;
-	private String mContent;
-	private String aContent;
+	private String content;
 	private String reply;
-
 	private String categroy;
 	private String state;
 	private LocalDateTime rigisterDate;
@@ -18,28 +16,15 @@ public class InquiryDTO {
 	public InquiryDTO() {}
 
 
-	public InquiryDTO(Long id, Long memberId, String title, String mContent, String aContent, String reply,
-			String categroy, String state, LocalDateTime rigisterDate) {
-		super();
-		this.id = id;
-		this.memberId = memberId;
-		this.title = title;
-		this.mContent = mContent;
-		this.aContent = aContent;
-		this.reply = reply;
-		this.categroy = categroy;
-		this.state = state;
-		this.rigisterDate = rigisterDate;
-	}
 	
 	// 관리자 전용 문의 페이지 호환용
-	public InquiryDTO(Long id, Long memberId, String title, String mContent, String reply,
+	public InquiryDTO(Long id, Long memberId, String title, String content, String reply,
 			String categroy, String state, LocalDateTime rigisterDate) {
 		super();
 		this.id = id;
 		this.memberId = memberId;
 		this.title = title;
-		this.mContent = mContent;
+		this.content = content;
 		this.reply = reply;
 		this.categroy = categroy;
 		this.state = state;
@@ -76,26 +61,13 @@ public class InquiryDTO {
 		this.title = title;
 	}
 
-
-	public String getmContent() {
-		return mContent;
+	public String getContent() {
+		return content;
 	}
 
-
-	public void setmContent(String mContent) {
-		this.mContent = mContent;
+	public void setContent(String content) {
+		this.content = content;
 	}
-
-
-	public String getaContent() {
-		return aContent;
-	}
-
-
-	public void setaContent(String aContent) {
-		this.aContent = aContent;
-	}
-
 
 	public String getReply() {
 		return reply;

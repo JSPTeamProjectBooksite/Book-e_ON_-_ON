@@ -47,7 +47,6 @@ public class OrderDAO extends JDBConnect {
 	
 	public List<Map<String, Object>> orderdetailinfo(String id){  //주문상세정보
 		List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
-		Map<String, Object> map = new HashMap<String, Object>();
 		
 		try {
 			String sql = "SELECT * FROM ORDER_TBL WHERE PAYMENT_ID = '" + id + "' ORDER BY ID DESC";
@@ -60,6 +59,7 @@ public class OrderDAO extends JDBConnect {
 			
 			BookDAO bdao = new BookDAO();
 			while(rs.next()) {
+				Map<String, Object> map = new HashMap<String, Object>();
 				OrderDTO orderDTO = new OrderDTO();
 				
 				orderDTO.setId(rs.getLong(1));
