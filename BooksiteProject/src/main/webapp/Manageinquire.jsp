@@ -32,7 +32,7 @@
 			</table>
 		</form>
 
-		<table border="1" style="width: 1200px;" class="manageInquire">
+		<table border="1" style="width: 1200px;" id="manageInquire">
 			<tr>
 				<th>번호</th>
 				<th>ID(이메일)</th>
@@ -53,8 +53,8 @@
 					<td>${ inq.state }
 					<td>${ inq.rigisterDate}</td>
 					
-					<td class="hidden member_content">${ inq.mContent }</td>
-					<td class="hidden admin_content">${ inq.aContent }</td>
+					<td class="hidden content">${ inq.content }</td>
+					<td class="hidden reply">${ inq.reply }</td>
 				</tr>
 			</c:forEach>
 		</table>
@@ -64,19 +64,27 @@
 	var windowPopup = function(e){
 		
 		var pIndex = $(e).closest('.inquiryItem').index();
-		
-		console.log(pIndex);
-		
+				
 		var xPos = (document.body.offsetWidth/2) - (400/2);
 		xPos += window.screenLeft; // 듀얼 모니터일 때
 		var yPos = (document.body.offsetHeight/2) - (600/2);
 		
 		var popup = window.open('/InquiryAnswer.html?inquiryIndex=' + pIndex, '답변', 'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=400,height=600,left='+xPos+',top=' + yPos);
 		
-	    popup.onbeforeunload= function (){
-	        window.location.reload();
-	    }
+  		popup.addEventListener('unload', function() {
+  			window.location.reload(true);
+  			console.log("팝업창 닫음");
+  			
+  		});
 	}
+	
+	function reloadDivArea() {
+	    $('#manageInquire').load(location.href+' #manageInquire');
+	}
+	
+	setInterval(function(){
+		reloadDivArea() // this will run after every 5 seconds
+	}, 5000);
 	
 	</script>
 	

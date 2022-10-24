@@ -17,13 +17,13 @@ public class InquiryAnswer extends HttpServlet {
 
 		request.setCharacterEncoding("utf-8");
 		Long inquiryId = Long.parseLong(request.getParameter("inquiryId"));
-		String aContent = request.getParameter("aContent");
+		String reply = request.getParameter("reply");
 		
 		InquiryDAO iDao = new InquiryDAO();
-		iDao.adminAnswer(inquiryId, aContent);
+		iDao.adminAnswer(inquiryId, reply);
 		
 		
-		response.getWriter().println("<script>history.back();</script>");
+		response.getWriter().println("<script>window.close();</script>");
 	}
 
 
