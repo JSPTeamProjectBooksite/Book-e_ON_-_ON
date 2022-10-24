@@ -51,11 +51,11 @@
 	                    <c:forEach var="book" items="${bookList}">
 	                    <tr class="bookItem ">
 	                        <td class="bookCheck">
-		                        <img src="${pageContext.request.contextPath}/source/ico/check_box_true.svg" alt="체크박스">
+		                        <img src="/source/ico/check_box_true.svg" alt="체크박스">
 		                        <input class="bookCheckBox" name="selectedBooks" type="checkbox" value="${ book.id }" checked>
 	                        </td>
-	                        <td class="bookImg"><img src="${pageContext.request.contextPath}/${book.coverImg}" alt="상품 이미지"></td>
-	                        <td class="bookTitle">${ book.title }</td>
+	                        <td class="bookImg"><img src="${book.coverImg}" alt="상품 이미지"></td>
+	                        <td class="bookTitle"><a href="/detail?BID=${ book.id }">${ book.title }</a></td>
 	                        <td class="bookPrice"><span class="num" data-value="${book.price}"><fmt:formatNumber value="${book.price}"/></span>원</td>
 	                        <td class="bookCount"><input type="number" min="1" max="999" name="bookCount" value="${ book.quantity }" onchange="onChangeFunction(${book.price}, this)"></td>
 	                        <td class="bookPriceSum"><span class="num" value="${book.price * book.quantity}"><fmt:formatNumber value="${book.price * book.quantity}"/></span>원</td>
@@ -106,10 +106,16 @@
     }
     
     function isSeleckCheckBox(){
-    	$('input[name=selectedBooks]:checked').each(function(){
-    		return true;   		
+    	let flag = false;
+    	
+    	$('input[name=selectedBooks]').each(function(){
+    		if($(this).is(":checked") == true){    
+    			flag = true;
+    			return false;   
+    		}		
     	});
-    	return false;
+    	
+    	return flag;
     }
     
     // 선택된 상품 삭제
@@ -163,7 +169,7 @@
     	let bookDeliveryValue_num = bookDeliveryValue.attr('data-value');
     	
     	$('.bookItem').each(function(index, item){
-	    	let bookPriceSum_num = $(item).find('.bookPriceSum .num').attr('data-value');
+	    	let bookPriceSum_num = Number($(item).find('.bookPriceSum .num').attr('data-value'));
 	    	
     		totalValue += bookPriceSum_num;
     	});
