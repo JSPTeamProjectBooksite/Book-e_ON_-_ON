@@ -25,8 +25,8 @@ public class InquiryDAO extends JDBConnect {
 				dto.setId(rs.getLong(1));
 				dto.setMemberId(rs.getLong(2));
 				dto.setTitle(rs.getString(3));
-				dto.setmContent(rs.getString(4));
-				dto.setaContent(rs.getString(5));
+				dto.setContent(rs.getString(4));
+				dto.setReply (rs.getString(5));
 				dto.setCategroy(rs.getString(6));
 				dto.setState(rs.getString(7));
 //			psmt.setString(7, LocalDateABC.toLocalDateTime(dto.getRigisterDate());
@@ -75,7 +75,7 @@ public class InquiryDAO extends JDBConnect {
 			psmt = con.prepareStatement(query);
 			psmt.setLong(1, 1);
 			psmt.setString(2, dto.getTitle());
-			psmt.setString(3, dto.getmContent());
+			psmt.setString(3, dto.getContent());
 			psmt.setString(4, dto.getCategroy());
 			result = psmt.executeUpdate();
 			
@@ -90,13 +90,13 @@ public class InquiryDAO extends JDBConnect {
 		return result;
 	}
 	
-	public void adminAnswer(Long id, String aContent) {
+	public void adminAnswer(Long id, String reply) {
 
 		try {
-			String query = "UPDATE INQUIRY_TBL SET A_CONTENT = ? WHERE ID = ?";
+			String query = "UPDATE INQUIRY_TBL SET reply = ? WHERE ID = ?";
 			
 			psmt = con.prepareStatement(query);
-			psmt.setString(1, aContent);
+			psmt.setString(1, reply);
 			psmt.setLong(2, id);
 			psmt.executeUpdate();
 			
@@ -120,8 +120,8 @@ public class InquiryDAO extends JDBConnect {
 				dto.setId(rs.getLong(1));
 				dto.setMemberId(rs.getLong(2));
 				dto.setTitle(rs.getString(3));
-				dto.setmContent(rs.getString(4));
-				dto.setaContent(rs.getString(5));
+				dto.setContent(rs.getString(4));
+				dto.setReply(rs.getString(5));
 				dto.setCategroy(rs.getString(6));
 				dto.setState(rs.getString(7));
 				dto.setRigisterDate(new Timestamp(rs.getDate(8).getTime()).toLocalDateTime());
