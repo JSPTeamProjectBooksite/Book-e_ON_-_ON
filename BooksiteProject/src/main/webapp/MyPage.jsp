@@ -16,7 +16,6 @@
 		location.href='/main';
 	}
 </script>
-
 </head>
 <body>
 	<div id="wrap">

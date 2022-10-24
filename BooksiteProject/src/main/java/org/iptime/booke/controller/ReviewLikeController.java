@@ -23,11 +23,14 @@ public class ReviewLikeController extends HttpServlet {
 			reviewID = Long.parseLong(request.getParameter("whatReviewLike"));
 		}
 		BookReviewDAO dao = new BookReviewDAO();
-		if(dao.likeReview(reviewID))
+		if(dao.likeReview(reviewID)) {
 			System.out.println("좋아요~♥");
+			request.setAttribute("message", "성공");
+		}
+		
 		dao.close();
 		
-		request.getRequestDispatcher("/HistoryBack.jsp").forward(request, response);
+		request.getRequestDispatcher("/reveiwAction.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

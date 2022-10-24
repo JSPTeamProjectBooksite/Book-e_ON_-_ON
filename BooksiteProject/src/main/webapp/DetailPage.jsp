@@ -240,7 +240,7 @@
 						<!-- 버튼류 -->
 						<div class="btnSpace">
                             <!-- 좋아요 버튼 -->
-                            <form action="/like.do?whatReviewLike=" method="post" id="likeForm"></form>
+                            <form action="/like.do?whatReviewLike=" method="post" id="likeForm" target="param"></form>
 							<span class="likeBtn">
 								${ review.review.likeCount }
 								<button type="button" onclick="likey(${ review.review.id })">
@@ -266,7 +266,7 @@
 				</c:forEach>
             </div>
 			<!-- 리뷰 작성 폼 -->
-            <form action="/reveiw.do?bookID=${ bookInfo.id }" method="post" id="reveiwWriteForm" onsubmit="return reveiwBtnAction(this);">
+            <form action="/reveiw.do?bookID=${ bookInfo.id }" method="post" id="reveiwWriteForm" onsubmit="return reveiwBtnAction(this);" target="param">
                 <div id="starScoreDiv">
                     <span>
                         <img src="./source/Detail/starscore/10score.png" alt="" style="width:150px" id="starScoreImg"><br>
@@ -282,6 +282,7 @@
                     </div>
                 </div>
             </form>
+            <iframe src="" name="param" style="display: none;"></iframe>
         </div>
 
         <!-- 환불 -->
@@ -378,8 +379,10 @@
 <!-- 팝업창 -->
 <div id="popup">
     <div id="popupBox">
-        <h2>장바구니에 담겼습니다.</h2>
-        <div>
+        <div style="height: 50px;"></div>
+        <h2 style="text-align: center;">장바구니에 담겼습니다.</h2>
+        <div style="height: 70px;"></div>
+        <div style="text-align: center;">
             <button type="button" onclick="location.href='/cart/list'">장바구니가기</button>
             <button type="button" onclick="hidePopup()">닫기</button>
         </div>
@@ -424,10 +427,6 @@
         alert("리뷰를 작성했습니다.");
 
         form.submit();
-        
-        setTimeout(function(){
-            location.reload();
-        },100);
     }
 
     function likey(reviewID) {
@@ -441,10 +440,6 @@
 
         form.action += reviewID;
         form.submit();
-
-        setTimeout(function(){
-            location.reload();
-        },100);
 	}
 
     function starscore(val){

@@ -35,11 +35,13 @@ public class ReveiwControllor extends HttpServlet {
 		System.out.println("리퀘스크 받은 리뷰 : " + comment);
 		
 		BookReviewDAO dao = new BookReviewDAO();
-		if(dao.writeReview(bookID, memberID, score, comment))
+		if(dao.writeReview(bookID, memberID, score, comment)) {
 			System.out.println("리뷰가 성공적으로 작성 됨");
+			request.setAttribute("message", "성공");			
+		}
 		dao.close();
 		
-		request.getRequestDispatcher("/HistoryBack.jsp").forward(request, response);
+		request.getRequestDispatcher("/reveiwAction.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
