@@ -393,6 +393,22 @@
     var quantity = ${ bookInfo.quantity }*1;
 
     var price = ${ bookInfo.price }*1;
+
+    if(quantity < 0){
+        alert("본 도서는 삭제 되었습니다.")
+        history.back();
+    }
+
+    document.getElementById("sendForm").bookCount.onblur = function(){
+        if(document.getElementById("sendForm").bookCount.value > quantity){
+            alert("현제 ("+quantity+")권의 재고가 있습니다.");
+            document.getElementById("sendForm").bookCount.value = quantity;
+        }
+        else if(document.getElementById("sendForm").bookCount.value < 1){
+            alert("최소 1권 단위로 구매할 수 있습니다.");
+            document.getElementById("sendForm").bookCount.value = 1;
+        }
+    }
     
     function reveiwBtnAction(form){
         if(userId == "null"){

@@ -13,7 +13,7 @@
 	<div class="container">
 		<img class="wave" src="./source/Login/wave.png">
 		<div class="img">
-			<img src="./source/Login/reading.png">
+			<!-- <img src="./source/Login/reading.png"> -->
 		</div>
 		<div class="login-content">
 			<form action="/register" name="registerForm">

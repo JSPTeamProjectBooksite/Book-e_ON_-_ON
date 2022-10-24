@@ -37,6 +37,13 @@ boolean login = (userID == null) ? false : true; //로그인 되었는지 안되
     .button{
         width: 75px;
     }
+    .button svg{
+		transition: all 0.05s linear;
+    }
+    .button:hover svg{
+        transform: scale( 1.05 );
+		fill:#d4e5ff;
+    }
     #noticeIco svg{
 		width: 50%;
 		fill:white;
@@ -68,17 +75,16 @@ boolean login = (userID == null) ? false : true; //로그인 되었는지 안되
 				<th style="text-align: left;">
 					<h3 id="logo" onclick="location.href='/main'">BOOK-e On & On</h3>
 				</th>
+				<%
+				if (login) {
+					//out.print("\"" + userName + "\"님이 접속하셨습니다.");
+				//최상단부 스크립틀릿에 보시면 세션에서 로그인 됐을 경우 아이디가 저장돼있습니다.
+				//로그인값(false)이 아닐경우 출력됩니다.
+				%>
 				<th class="button">
-					<%
-					if (login) {
-						//out.print("\"" + userName + "\"님이 접속하셨습니다.");
-					//최상단부 스크립틀릿에 보시면 세션에서 로그인 됐을 경우 아이디가 저장돼있습니다.
-					//로그인값(false)이 아닐경우 출력됩니다.
-					%>
 					<a href="#" title="알림">
 						<div id="noticeIco">
-							<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-								width="510px" height="510px" viewBox="0 0 510 510" style="enable-background:new 0 0 510 510;" xml:space="preserve">
+							<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 510 510" xml:space="preserve">
 								<g id="notifications">
 									<path d="M255,510c28.05,0,51-22.95,51-51H204C204,487.05,226.95,510,255,510z M420.75,357V216.75
 										c0-79.05-53.55-142.8-127.5-160.65V38.25C293.25,17.85,275.4,0,255,0c-20.4,0-38.25,17.85-38.25,38.25V56.1
@@ -87,6 +93,8 @@ boolean login = (userID == null) ? false : true; //로그인 되었는지 안되
 							</svg>
 						</div>
 					</a>
+				</th>
+				<th class="button">
 					<a href="/mypage" title="마이페이지">
 						<div id="myPageIco">
 							<svg id="Icons_User" overflow="hidden" version="1.1" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -97,10 +105,10 @@ boolean login = (userID == null) ? false : true; //로그인 되었는지 안되
 							</svg>
 						</div>
 					</a>
-					<%
-					}
-					%>
 				</th>
+				<%
+				}
+				%>
 				<th class="button">
 					<a href="/cart/list" title="장바구니">
 						<div id="cartIco">

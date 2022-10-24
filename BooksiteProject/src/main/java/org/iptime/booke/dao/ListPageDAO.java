@@ -86,7 +86,7 @@ public class ListPageDAO extends DBConnPool{
 			
 			String query = "SELECT ID, COVER_IMG, TITLE, AUTHOR_ID, TRANSLATOR, PRICE, book_category_id, PUBLISHER, CATCHPHRASE  FROM BOOK_TBL ";
 			if(searchWord != null) {
-				query += " WHERE QUANTITY >= 0 AND TITLE LIKE '%" + searchWord + "%'";
+				query += " WHERE QUANTITY >= 0 AND (TITLE LIKE '%" + searchWord + "%'";
 			}
 			
 			
@@ -95,7 +95,7 @@ public class ListPageDAO extends DBConnPool{
 					query += " OR AUTHOR_ID = " + ID;
 				}
 			}
-			
+			query += ")";
 			System.out.println(query);
 			
 			try {
@@ -142,7 +142,7 @@ public class ListPageDAO extends DBConnPool{
 		
 		String query = "SELECT ID, COVER_IMG, TITLE, AUTHOR_ID, TRANSLATOR, PRICE, book_category_id, PUBLISHER, CATCHPHRASE  FROM BOOK_TBL ";
 		if(searchWord != null) {
-			query += " WHERE TITLE LIKE '%" + searchWord + "%'";
+			query += " WHERE QUANTITY >= 0 AND TITLE LIKE '%" + searchWord + "%'";
 		}
 		
 		try {
@@ -210,7 +210,7 @@ public class ListPageDAO extends DBConnPool{
 	public List<Map<String, Object>> searchBookForAuthor(List<Long> authorList){
 		List<Map<String, Object>> board = new Vector<Map<String, Object>>();
 		
-		String query = "SELECT ID, COVER_IMG, TITLE, AUTHOR_ID, TRANSLATOR, PRICE, book_category_id, PUBLISHER, CATCHPHRASE  FROM BOOK_TBL WHERE";
+		String query = "SELECT ID, COVER_IMG, TITLE, AUTHOR_ID, TRANSLATOR, PRICE, book_category_id, PUBLISHER, CATCHPHRASE  FROM BOOK_TBL WHERE QUANTITY >= 0 AND";
 		
 		boolean tem = false;
 		
