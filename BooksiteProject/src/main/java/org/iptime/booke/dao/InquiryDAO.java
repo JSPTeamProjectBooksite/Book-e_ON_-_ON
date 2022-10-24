@@ -23,9 +23,10 @@ public class InquiryDAO extends JDBConnect {
 				dto.setId(rs.getLong(1));
 				dto.setMemberId(rs.getLong(2));
 				dto.setTitle(rs.getString(3));
-				dto.setContent(rs.getString(4));
-				dto.setCategroy(rs.getString(5));
-				dto.setState(rs.getString(6));
+				dto.setmContent(rs.getString(4));
+				dto.setaContent(rs.getString(5));
+				dto.setCategroy(rs.getString(6));
+				dto.setState(rs.getString(7));
 //			psmt.setString(7, LocalDateABC.toLocalDateTime(dto.getRigisterDate());
 
 				System.out.println("문의내용 조회 성공");
@@ -67,12 +68,12 @@ public class InquiryDAO extends JDBConnect {
 		int result = 0;
 
 		try {
-			String query = "INSERT INTO INQUIRY_TBL(ID, MEMBER_ID, TITLE, CONTENT, CATEGROY) VALUES(INQUIRY_SEQ.nextval, ?, ?, ?, ?)";
+			String query = "INSERT INTO INQUIRY_TBL(ID, MEMBER_ID, TITLE, M_CONTENT, CATEGROY) VALUES(INQUIRY_SEQ.nextval, ?, ?, ?, ?)";
 			
 			psmt = con.prepareStatement(query);
 			psmt.setLong(1, 1);
 			psmt.setString(2, dto.getTitle());
-			psmt.setString(3, dto.getContent());
+			psmt.setString(3, dto.getmContent());
 			psmt.setString(4, dto.getCategroy());
 			result = psmt.executeUpdate();
 			

@@ -31,6 +31,20 @@ public class InquiryDTO {
 		this.state = state;
 		this.rigisterDate = rigisterDate;
 	}
+	
+	// 관리자 전용 문의 페이지 호환용
+	public InquiryDTO(Long id, Long memberId, String title, String mContent, String reply,
+			String categroy, String state, LocalDateTime rigisterDate) {
+		super();
+		this.id = id;
+		this.memberId = memberId;
+		this.title = title;
+		this.mContent = mContent;
+		this.reply = reply;
+		this.categroy = categroy;
+		this.state = state;
+		this.rigisterDate = rigisterDate;
+	}
 
 
 	public Long getId() {
