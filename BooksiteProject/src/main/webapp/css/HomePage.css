@@ -71,7 +71,7 @@ section{
     position: absolute;
     top: 70%;
     left: 8%;
-    font-family: '휴먼편지체';
+    font-family: '휴먼편지체', 'a두리둥실';
     letter-spacing: 10px;
     font-size: 75px;
     /* text-shadow: -1px 0 #FFFFFF, 0 1px #FFFFFF, 1px 0 #FFFFFF, 0 -1px #FFFFFF; */

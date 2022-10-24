@@ -69,7 +69,7 @@ public class authorSearchController extends HttpServlet {
 			dto.setName(request.getParameter("authorName"));
 			dto.setProfileImg(request.getParameter("profileImg"));
 			dto.setNationality(request.getParameter("nationality"));
-			dto.setProfileContents(request.getParameter("profileContents"));
+			dto.setProfileContents(request.getParameter("profileContents").replace("\r\n", "<br>"));
 			if(!request.getParameter("birth").equals(""))
 				dto.setBirth(LocalDate.parse(request.getParameter("birth"), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
 			if(!request.getParameter("death").equals(""))
