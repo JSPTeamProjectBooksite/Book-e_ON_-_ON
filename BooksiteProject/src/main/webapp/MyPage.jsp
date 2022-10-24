@@ -16,17 +16,17 @@
 		location.href='/main';
 	}
 </script>
+
 </head>
 <body>
 	<div id="wrap">
 		<%@ include file="Header.jsp"%>
 		<section>
 			<div class="top-tabs-container">
-				<label for="main-tab-1"> 내 정보 </label> 
-				<label for="main-tab-2"> 주문내역 </label> 
-				<label for="main-tab-3"> 1:1문의상담 </label> 
-				<label for="main-tab-4"> 1:1문의내역 </label>
-				<label for="main-tab-5"> 고객센터 </label>
+				<label for="main-tab-1"> 내 정보 </label> <label for="main-tab-2">
+					주문내역 </label> <label for="main-tab-3"> 1:1문의상담 </label> <label
+					for="main-tab-4"> 1:1문의내역 </label> <label for="main-tab-5">
+					고객센터 </label>
 			</div>
 
 			<!-- Tabs Container 1 -->
@@ -81,12 +81,16 @@
 			</div>
 
 			<!-- Tab Container 2 -->
-			<input class="tab-radio" id="main-tab-2" name="main-group" type="radio" />
+			<input class="tab-radio" id="main-tab-2" name="main-group"
+				type="radio" />
 			<div class="tab-content">
 				<div class="sub-tabs-container"></div>
-				<input class="tab-radio" id="sub-tab2-1" name="sub-group2" type="radio" checked="checked">
+				<input class="tab-radio" id="sub-tab2-1" name="sub-group2"
+					type="radio" checked="checked">
 				<div class="sub-tab-content">
-					<iframe src="/payment/list" onload="onResize(this)" style="height: 1000px;" scrolling=”no” width="100%" frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=yes vspace=0></iframe>
+					<iframe src="/payment/list" onload="onResize(this)"
+						style="height: 1200px;" scrolling=”no” width="100%" frameborder=0
+						framespacing=0 marginheight=0 marginwidth=0 scrolling=yes vspace=0></iframe>
 				</div>
 			</div>
 
@@ -99,51 +103,37 @@
 				<input class="tab-radio" id="sub-tab3-1" name="sub-group3"
 					type="radio" checked="checked">
 				<div class="sub-tab-content">
-					<iframe src="./UserInquiryWrite.jsp" width="100%" height="1230px"
+					<iframe src="./UserInquiryWrite.jsp" width="100%" height="1180px"
 						frameborder=0 framespacing=0 marginheight=0 marginwidth=0
 						scrolling=yes vspace=0></iframe>
 				</div>
 			</div>
 
-				<!-- Tabs Container 4 -->
-				<input class="tab-radio" id="main-tab-4" name="main-group"
-					type="radio" />
-				<div class="tab-content">
-					<div class="sub-tabs-container"></div>
-					<input class="tab-radio" id="sub-tab4-1" name="sub-group4"
-						type="radio" checked="checked">
-					<div class="sub-tab-content">
-						<iframe src="" width="100%" height="1230px"
-							frameborder=0 framespacing=0 marginheight=0 marginwidth=0
-							scrolling=yes vspace=0></iframe>
-					</div>
-				</div>
-				
-				<!-- Tabs Container 5 -->
-				<input class="tab-radio" id="main-tab-5" name="main-group"
-					type="radio" />
-				<div class="tab-content">
-					<div class="sub-tabs-container"></div>
-					<input class="tab-radio" id="sub-tab5-1" name="sub-group5"
-						type="radio" checked="checked">
-					<div class="sub-tab-content">
-						<iframe src="./ServicePage.jsp" width="100%" height="1230px"
-							frameborder=0 framespacing=0 marginheight=0 marginwidth=0
-							scrolling=yes vspace=0></iframe>
-					</div>
-				</div>
-			<!-- Tabs Container 1 -->
+			<!-- Tabs Container 4 -->
 			<input class="tab-radio" id="main-tab-4" name="main-group"
-				type="radio" checked="checked" />
+				type="radio" />
 			<div class="tab-content">
 				<div class="sub-tabs-container"></div>
 				<input class="tab-radio" id="sub-tab4-1" name="sub-group4"
 					type="radio" checked="checked">
 				<div class="sub-tab-content">
+					<iframe src="/customerinquiry/list" width="100%"
+						height="1230px" frameborder=0 framespacing=0 marginheight=0
+						marginwidth=0 scrolling=yes vspace=0></iframe>
+				</div>
+			</div>
+
+			<!-- Tabs Container 5 -->
+			<input class="tab-radio" id="main-tab-5" name="main-group"
+				type="radio" />
+			<div class="tab-content">
+				<div class="sub-tabs-container"></div>
+				<input class="tab-radio" id="sub-tab5-1" name="sub-group5"
+					type="radio" checked="checked">
+				<div class="sub-tab-content">
 					<iframe src="./ServicePage.jsp" width="100%" height="1230px"
 						frameborder=0 framespacing=0 marginheight=0 marginwidth=0
 						scrolling=yes vspace=0></iframe>
-
 				</div>
 			</div>
 		</section>
@@ -159,10 +149,9 @@
 		}
 	}
 
-	function onResize(obj){
+	function onResize(obj) {
 		var height = (obj).contentWindow.document.body.scrollHeight;
 		(obj).height = height + 20;
 	}
-
 </script>
 </html>

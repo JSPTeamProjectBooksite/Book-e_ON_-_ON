@@ -19,7 +19,7 @@
 		</div>
 		<div class="login-content">
 			<form action="/loginCheck" method="post" name="login" onsubmit="return validateForm(this);" target="param">
-				<!-- <img src="./source/Login/avatar.png"> -->
+
 
 				<h2 class="title">로그인</h2>
 				<div class="input-div one">

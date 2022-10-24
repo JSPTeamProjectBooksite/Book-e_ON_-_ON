@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.iptime.booke.common.JDBConnect;
+import org.iptime.booke.dto.InquiryDTO;
 import org.iptime.booke.dto.PaymentDTO;
 
 public class PaymentDAO extends JDBConnect {

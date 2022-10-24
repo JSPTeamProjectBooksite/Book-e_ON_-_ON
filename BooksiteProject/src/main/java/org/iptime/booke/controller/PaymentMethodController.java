@@ -24,7 +24,7 @@ public class PaymentMethodController extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		request.setCharacterEncoding("UTF-8");
 		
 		String memberId = request.getParameter("memberId");
 		String[] bookId = request.getParameterValues("bookId");
