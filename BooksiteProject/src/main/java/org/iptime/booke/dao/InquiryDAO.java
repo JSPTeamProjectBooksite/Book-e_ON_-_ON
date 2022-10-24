@@ -87,6 +87,22 @@ public class InquiryDAO extends JDBConnect {
 		}
 		return result;
 	}
+	
+	public void adminAnswer(Long id, String aContent) {
+
+		try {
+			String query = "UPDATE INQUIRY_TBL SET A_CONTENT = ? WHERE ID = ?";
+			
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, aContent);
+			psmt.setLong(2, id);
+			psmt.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println("문의 답변 중 예외 발생");
+			e.printStackTrace();
+		}
+	}
 }
 
 //// public InquiryDAO() {

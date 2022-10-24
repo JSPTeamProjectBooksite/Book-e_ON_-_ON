@@ -9,5 +9,10 @@
 
 h2{ padding: 10px 0px 20px 0px;}
 
-table { width: 100%;}
-table th{width: 70px; height: 40px;}
+table.manageInquire, table.search { width: 100%;}
+table.manageInquire th{width: 70px; height: 40px;}
+
+.hidden{ display:none;}
+
+.answer{color:blue ;}
+.answer:hover{text-decoration : underline; cursor : pointer;}

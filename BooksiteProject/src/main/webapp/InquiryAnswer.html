@@ -24,9 +24,15 @@
 			<th>문의내용</th>
 			<td id="inquireInput" colspan="5"><textarea style="width: 100%; height: 300px" readonly>DB정보로 불러오기</textarea></td>
 		</tr>
-		<tr style="display: '';">
+		<tr>
 			<th id="reply">답변내용</th>
-			<td id="replyInput" colspan="5"><input type="text" style="width: 100%; height: 100px"></td>
+			<td id="replyInput" colspan="5">
+				<form action="/inquiryAnswer" method="post">
+				<input type="hidden" name='inquiryId' value="">
+				<input type="text" name="aContent" style="width: 100%; height: 100px">
+				<button style="float: right;">답변</button>
+				</form>
+			</td>
 		</tr>
 	</table>
 </div>
@@ -34,6 +40,7 @@
 <script>
 	const inquire_txt = $('#inquireInput> textarea');
 	const reply_txt = $('#replyInput> textarea');
+	const input_inquiryId = $('input[name=inquiryId]');
 	
 
 	jQuery(function ($) {
@@ -52,9 +59,9 @@
 	    var inquiryIndex = $.fn.getUrlParameter('inquiryIndex');
 		var inquiryItem = $(".inquiryItem", opener.document).eq(inquiryIndex - 1);
 
-	    $(inquire_txt).val($(inquiryItem).find('.member_content').html());
-	    $(reply_txt).val($(inquiryItem).find('.admin_content').html());
-		
+	    inquire_txt.val(inquiryItem.find('.member_content').html());
+	    reply_txt.val(inquiryItem.find('.admin_content').html());
+	    input_inquiryId.val(inquiryItem.find('.inpuiry_id').html())
 
 	});
 </script>
