@@ -22,7 +22,6 @@ DROP TABLE ADMIN_TBL;
 DROP TABLE INQUIRY_TBL;
 DROP TABLE MEMBER_TBL;
 DROP TABLE MEMBER_STATE_TBL;
-DROP TABLE GENDER_TBL;
 
 DROP SEQUENCE book_category_SEQ;
 DROP SEQUENCE BOOK_REVIEW_SEQ;
@@ -41,15 +40,6 @@ DROP SEQUENCE author_SEQ;
 -- 4. book
 -- 5. book_review, payment, locker
 
--- ============================================================
--- 성별
--- ============================================================
-CREATE TABLE gender_TBL (	
-	id 		NUMBER 			NOT NULL	PRIMARY KEY, 
-	name 	VARCHAR2(30) 	NOT NULL
-);
-COMMENT ON COLUMN GENDER_TBL.ID IS '성별 식별 번호';
-COMMENT ON COLUMN GENDER_TBL.NAME IS '성별 상태';
 
 -- ============================================================
 -- 멤버 상태
@@ -828,7 +818,7 @@ INSERT INTO MEMBER_TBL(id, name, email, password, birth, gender, phone_num, addr
 INSERT INTO MEMBER_TBL(id, name, email, password, birth, gender, phone_num, address, point) VALUES(member_SEQ.nextval, 'user03', 'user03@gmail.com', 'user03', '2022-10-01', 'E', '0100010003', '경기도 어딘가 무슨곳 좋은동', 30000);
 INSERT INTO MEMBER_TBL(id, name, email, password, birth, gender, phone_num, address, point) VALUES(member_SEQ.nextval, 'user04', 'user04@gmail.com', 'user04', '2022-10-01', NULL, '0100010004', '경기도 어딘가 무슨곳 좋은동', 30000);
 
-INSERT INTO MEMBER_TBL(id, name, email, password, birth, gender, phone_num, address, point) VALUES(member_SEQ.nextval, 'd', 'd', 'd', '2022-10-20', 'M', '0100010005', 'd', 10000);
+INSERT INTO MEMBER_TBL(id, name, email, password, birth, gender, phone_num, address, point) VALUES(member_SEQ.nextval, 'd', 'd@d', 'd', '2022-10-20', 'M', '0100010005', 'd', 10000);
 
 
 
