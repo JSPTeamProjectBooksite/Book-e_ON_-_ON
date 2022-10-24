@@ -67,13 +67,13 @@ public class InquiryDAO extends JDBConnect {
 	}
 	
 	public int InquireRegister(InquiryDTO dto) {
-		int result = 0;
+		int result = 1;
 
 		try {
-			String query = "INSERT INTO INQUIRY_TBL(ID, MEMBER_ID, TITLE, M_CONTENT, CATEGROY) VALUES(INQUIRY_SEQ.nextval, ?, ?, ?, ?)";
+			String query = "INSERT INTO INQUIRY_TBL(ID, MEMBER_ID, TITLE, CONTENT, CATEGROY) VALUES(INQUIRY_SEQ.nextval, ?, ?, ?, ?)";
 			
 			psmt = con.prepareStatement(query);
-			psmt.setLong(1, 1);
+			psmt.setLong(1, dto.getMemberId());
 			psmt.setString(2, dto.getTitle());
 			psmt.setString(3, dto.getContent());
 			psmt.setString(4, dto.getCategroy());
@@ -86,6 +86,7 @@ public class InquiryDAO extends JDBConnect {
 		} catch (Exception e) {
 			System.out.println("문의 등록 중 예외 발생");
 			e.printStackTrace();
+			result  = 0;
 		}
 		return result;
 	}

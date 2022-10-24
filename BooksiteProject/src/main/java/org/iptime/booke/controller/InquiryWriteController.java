@@ -6,9 +6,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.iptime.booke.dao.InquiryDAO;
+import org.iptime.booke.dao.MemberDAO;
 import org.iptime.booke.dto.InquiryDTO;
+import org.iptime.booke.dto.MemberDTO;
 
 @WebServlet("/UserInquiryWrite.do")
 /* inquiryWrite.do */
@@ -24,15 +27,28 @@ public class InquiryWriteController extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 		
+		HttpSession session = request.getSession();
+		Long UserId = (Long) session.getAttribute("LoginID"); // memberId
+
+		System.out.println("문의페이지 로그인 유저 : " + UserId);
+
+		// 유저
+
+		MemberDAO memberDao = new MemberDAO();
+		MemberDTO member = memberDao.userInfo(UserId);
+		memberDao.close();
+
 		String inquireTitle = request.getParameter("title");
 		String inquireContent = request.getParameter("content");
 		String inquireCategory = request.getParameter("category");
+		
 		
 		System.out.println(inquireTitle);
 		System.out.println(inquireContent);
 		System.out.println(inquireCategory);
 
 		InquiryDTO inquiryDTO = new InquiryDTO();
+		inquiryDTO.setMemberId(UserId);
 		inquiryDTO.setTitle(inquireTitle);
 		inquiryDTO.setContent(inquireContent);
 		inquiryDTO.setCategroy(inquireCategory);
@@ -43,7 +59,7 @@ public class InquiryWriteController extends HttpServlet {
 
 		if (iResult == 1) {
 			System.out.println("등록 성공");
-			response.sendRedirect("./main");
+			response.sendRedirect("/mypage");
 			return;
 		}
 		System.out.println("등록 실패");
