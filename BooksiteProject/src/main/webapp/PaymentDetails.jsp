@@ -11,12 +11,12 @@
 <link rel="stylesheet" href="/css/orderDetails.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" 교차 출처>
-<link href="https: //fonts.googleapis.com/css2? family= Noto+Sans+KR & display=swap" rel="stylesheet">
+<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-gothic.css" rel="stylesheet">
 </head>
 <body>
 	<div class="wrap">
 		
-		<h2>주문/배송 상세조회</h2>
+		<h2>주문배송 상세조회</h2>
 		
 		<div class="block"></div>
 		
@@ -59,7 +59,7 @@
 				</tr>
 				<tr>
 					<th>수령예상일</th>
-					<td colspan="3">? 일 이내</td>
+					<td colspan="3">2022년 10월 28일 이내</td>
 				</tr>
 
 			</table>

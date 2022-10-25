@@ -41,8 +41,8 @@
 			</thead>
 		</table>
 		<div class="Resign">
-			<a class="button" href="./UserInfoUpdate.jsp">비밀번호 변경</a> <a
-				class="button" onclick="resignBtn()"> 회원탈퇴 </a>
+			<a class="button" onclick="window.open('./UserInfoUpdate.jsp')">비밀번호 변경</a> <a
+				class="button"  onclick="resignBtn()"> 회원탈퇴 </a>
 		</div>
 	</div>
 </body>

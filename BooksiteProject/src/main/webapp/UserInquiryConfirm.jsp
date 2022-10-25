@@ -30,8 +30,7 @@ SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일");
 			<table class="CustomerInquiry" border="1">
 
 				<tr>
-					<h2
-						align-items: "left" style="padding-left: 175px; padding-bottom: 15px;">나의
+					<h2 align-items: "left" style="padding-left: 175px; padding-bottom: 16px;">나의
 						1:1문의내역</h2>
 					<td class="title">작성자</td>
 					<td>${ userInfo.name }</td>
@@ -62,7 +61,7 @@ SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일");
 					<td colspan="3"><textarea
 							style="border: none; font-size: 14px;" name="content"
 							placeholder="&#13;&#10;문의유형을 선택 후 자세하게 작성해주세요.
-							&#13;&#10;자세한 내용과 함께 보내주시면 더욱 신속하게 답변 드리겠습니다!">${ Inqinfo.content }</textarea>
+							&#13;&#10;자세한 내용과 함께 보내주시면 더욱 신속하게 답변 드리겠습니다!">${ Inqinfo.content }</span></textarea>
 					</td>
 
 				</tr>
@@ -73,7 +72,7 @@ SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일");
 					<td colspan="3"><textarea
 							style="border: none; font-size: 14px;" name="content"
 							placeholder="&#13;&#10;담당자 확인 후 3일 이내 답변 드립니다.
-							&#13;&#10;답변내용은 마이페이지>1:1문의에서 확인 가능합니다."></textarea>
+							&#13;&#10;답변내용은 마이페이지>1:1문의에서 확인 가능합니다.">${ Inqinfo.reply }</textarea>
 					</td>
 
 				</tr>

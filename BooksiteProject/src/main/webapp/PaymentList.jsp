@@ -23,7 +23,7 @@
 			<c:forEach var="payment" items="${ paymentList }" varStatus="status">
 				<tr align="center">
 					<td><a href="/payment/detail?id=${ payment.id }">${ payment.id }</a></td>
-					<td class="price">${ payment.actualAmount }</td>
+					<td><span class="price">${ payment.actualAmount }</span> 원</td>
 					<td>${ payment.shippingState }</td>
 					<td class="date" >${ payment.registerDate }</td>
 					<td id="state_${status.index}"></td>
