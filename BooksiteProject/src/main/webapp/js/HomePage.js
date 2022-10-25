@@ -2,7 +2,7 @@ const hero = document.querySelector('.hero');
 const slider = document.querySelector('.slider');
 const slider2 = document.querySelector('.slider2');
 const logo = document.querySelector('#logo');
-const hamburger = document.querySelector('.hamburger');
+// const hamburger = document.querySelector('.hamburger');
 const headline = document.querySelector('.headline');
 const listPageBtn = document.querySelector('#listPageBtn');
 
@@ -58,13 +58,13 @@ tl.fromTo(
     {opacity: 1, x: 0 },
     "-=0.5"
 )
-.fromTo(
-    hamburger,
-    0.5,
-    {opacity: 0, x: 30 }, //
-    {opacity: 1, x: 0 },
-    "-=0.5"
-)
+// .fromTo(
+//     hamburger,
+//     0.5,
+//     {opacity: 0, x: 30 }, //
+//     {opacity: 1, x: 0 },
+//     "-=0.5"
+// )
 .fromTo(
     headline,
     0.5,

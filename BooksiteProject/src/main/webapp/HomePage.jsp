@@ -12,7 +12,7 @@
         <header>
             <nav>
                 <h3 id="logo">BOOK-e On & On</h3>
-                <img class="hamburger" src="./source/HomePage/burger.svg" alt="hamburger">
+                <!-- <img class="hamburger" src="./source/HomePage/burger.svg" alt="hamburger"> -->
             </nav>
             <section>
                 <div class="hero">
@@ -21,13 +21,24 @@
                     <h1 class="headline">온앤온에서<br>하루종일 독서On</h1>
                     <div style="
                     position: absolute;
-                    top: 63%;
+                    top: 65%;
                     right: 10%;
-                    width: 20%;
+                    width: 250px;
+                    height: 75px;
                     z-index: 4;
                     text-align: center;
+
+                    padding: 8px;
+                    background: #64c3cf;
+                    border: 3px solid #d8fbff;
+                    border-radius: 25px;
+                    font-size: 5vh;
+                    font-family: '휴먼편지체', 'a두리둥실';
+                    color: white;
+                    cursor: pointer;
                     " id="listPageBtn" onclick="clickListPage()">
-                        <img src="./source/HomePage/goToRead.png" alt="">
+                        <!-- <img src="./source/HomePage/goToRead.png" alt=""> -->
+                        goToRead
                     </div>
                 </div>
             </section>
