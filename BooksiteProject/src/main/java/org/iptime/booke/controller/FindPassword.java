@@ -19,17 +19,17 @@ public class FindPassword extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String userEmail = request.getParameter("user_email");
 		String userName = request.getParameter("user_name");
-		String userId = request.getParameter("user_id");
 		String userAddress = request.getParameter("user_address");
 
 		MemberDTO memberDTO = new MemberDTO();
+		memberDTO.setEmail(userEmail);
 		memberDTO.setName(userName);
-		memberDTO.setId(userId);
 		memberDTO.setAddress(userAddress);
 
 		MemberDAO dao = new MemberDAO();
-		String iResult = dao.findPassword(userName, userId, userAddress);
+		String iResult = dao.findPassword(userEmail, userName, userAddress);
 		dao.close();
 
 		// 성공 or 실패?

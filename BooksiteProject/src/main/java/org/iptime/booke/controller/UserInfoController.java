@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.iptime.booke.dao.MemberDAO;
 import org.iptime.booke.dto.MemberDTO;
 
-@WebServlet("/mypage")
+@WebServlet("/userInfo")
 public class UserInfoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -31,7 +31,7 @@ public class UserInfoController extends HttpServlet {
 		dao.close();
 
 		request.setAttribute("userInfo", userInfo);
-		request.getRequestDispatcher("./MyPage.jsp").forward(request, response);
+		request.getRequestDispatcher("./UserInfo.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
