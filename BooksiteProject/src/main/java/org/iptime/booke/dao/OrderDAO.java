@@ -55,7 +55,7 @@ public class OrderDAO extends JDBConnect {
 			psmt =con.prepareStatement(sql);
 			rs = psmt.executeQuery(sql);
 			
-			System.out.println("order이거나오냐?");
+			System.out.println("order이거나오니");
 			
 			BookDAO bdao = new BookDAO();
 			while(rs.next()) {

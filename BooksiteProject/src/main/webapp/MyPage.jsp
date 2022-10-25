@@ -36,7 +36,10 @@
 				<input class="tab-radio" id="sub-tab1-1" name="sub-group1"
 					type="radio" checked="checked">
 				<div class="sub-tab-content">
-					<table border="1">
+				<iframe src="/payment/list" onload="onResize(this)"
+						style="height: 1200px;" scrolling=”no” width="100%" frameborder=0
+						framespacing=0 marginheight=0 marginwidth=0 scrolling=yes vspace=0></iframe>
+					<%-- <table border="1">
 						<thead>
 							<tr>
 								<th>이름</th>
@@ -71,7 +74,7 @@
 								<td>${ userInfo.point }</td>
 							</tr>
 						</thead>
-					</table>
+					</table> --%>
 					<div class="Resign">
 						<a class="button" href="./UserInfoUpdate.jsp">비밀번호 변경</a> <a
 							class="button" onclick="resignBtn()"> 회원탈퇴 </a>
