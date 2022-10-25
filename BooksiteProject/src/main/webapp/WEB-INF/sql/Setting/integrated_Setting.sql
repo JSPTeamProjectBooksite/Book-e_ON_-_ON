@@ -126,7 +126,7 @@ CREATE TABLE inquiry_TBL(
 	content 		varchar2(4000) 	NOT NULL,
 	reply 		varchar2(4000) 		NULL,
 	categroy 		varchar2(100) 	NOT NULL,
-	state			varchar2(50)	DEFAULT '답변 대기중',
+	state			varchar2(50)	DEFAULT '답변 대기',
 	rigister_DATE 	DATE 			DEFAULT sysdate 
 );
 
@@ -186,12 +186,13 @@ CREATE SEQUENCE author_SEQ
 -- 알림
 -- ============================================================
 CREATE TABLE notice_TBL(
-	id 				NUMBER 			NOT NULL 	PRIMARY KEY,
-	member_id		NUMBER 			NOT NULL,
-	title 			varchar2(100) 	NOT NULL,
-	category 		nvarchar2(5) 	NOT NULL,
-	content			varchar2(4000) 	NOT NULL,
-	register_DATE 	DATE 			DEFAULT sysdate
+	id 					NUMBER 			NOT NULL 	PRIMARY KEY,
+	member_id			NUMBER 			NOT NULL,
+	title 				varchar2(100) 	NOT NULL,
+	category 			nvarchar2(5) 	NOT NULL,
+	content				varchar2(4000) 	NOT NULL,
+	target_member_id	NUMBER				NULL,
+	register_DATE 		DATE 			DEFAULT sysdate
 );
 
 ALTER TABLE notice_TBL ADD CONSTRAINT notice_member_id_FK FOREIGN KEY(member_id) REFERENCES member_TBL(id);
@@ -201,6 +202,7 @@ COMMENT ON COLUMN Notice_TBL.MEMBER_ID  IS '작성자 id';
 COMMENT ON COLUMN Notice_TBL.TITLE  IS '알림 제목';
 COMMENT ON COLUMN Notice_TBL.CATEGORY  IS '알림 카테고리';
 COMMENT ON COLUMN Notice_TBL.CONTENT  IS '알림 내용';
+COMMENT ON COLUMN Notice_TBL.TARGET_MEMBER_ID  IS '알림을 받을 대상 (null=전체)';
 COMMENT ON COLUMN Notice_TBL.REGISTER_DATE  IS '생성 일자';
 
 CREATE SEQUENCE notice_SEQ 
@@ -851,7 +853,18 @@ INSERT INTO AUTHOR_TBL (ID,PROFILE_IMG,NAME,BIRTH,DEATH,NATIONALITY,PROFILE_CONT
 -- ============================================================
 INSERT INTO NOTICE_TBL(ID, MEMBER_ID, TITLE, CATEGORY, CONTENT) VALUES(notice_SEQ.nextval, 1, '올해 놓치면 안되는 특가 상품 TOP 10', '이벤트', '이벤트 경로& 안내');
 INSERT INTO NOTICE_TBL(ID, MEMBER_ID, TITLE, CATEGORY, CONTENT) VALUES(notice_SEQ.nextval, 1, '올해 놓치면 애매한 특가 상품 TOP 10', '이벤트', '이벤트 경로& 안내');
-INSERT INTO NOTICE_TBL(ID, MEMBER_ID, TITLE, CATEGORY, CONTENT) VALUES(notice_SEQ.nextval, 1, '버전1.2.2 업데이트 알림', '공지', '버전 안내');
+INSERT INTO NOTICE_TBL(ID, MEMBER_ID, TITLE, CATEGORY, CONTENT) VALUES(notice_SEQ.nextval, 1, '올해 놓치면 애매한 특가 상품 TOP 10', '이벤트', '이벤트 경로& 안내');
+INSERT INTO NOTICE_TBL(ID, MEMBER_ID, TITLE, CATEGORY, CONTENT) VALUES(notice_SEQ.nextval, 1, '버전1.0.0 업데이트 알림', '공지', '북이온앤온 웹 사이트가 출시되었습니다');
+INSERT INTO NOTICE_TBL(ID, MEMBER_ID, TITLE, CATEGORY, CONTENT, TARGET_MEMBER_ID) VALUES(notice_SEQ.nextval, 1, '문의 답변 알림1', '문의 알림', '문의 답변 내용', 2);
+INSERT INTO NOTICE_TBL(ID, MEMBER_ID, TITLE, CATEGORY, CONTENT, TARGET_MEMBER_ID) VALUES(notice_SEQ.nextval, 1, '문의 답변 알림2', '문의 알림', '문의 답변 내용', 2);
+INSERT INTO NOTICE_TBL(ID, MEMBER_ID, TITLE, CATEGORY, CONTENT, TARGET_MEMBER_ID) VALUES(notice_SEQ.nextval, 1, '문의 답변 알림3', '문의 알림', '문의 답변 내용', 2);
+INSERT INTO NOTICE_TBL(ID, MEMBER_ID, TITLE, CATEGORY, CONTENT, TARGET_MEMBER_ID) VALUES(notice_SEQ.nextval, 1, '문의 답변 알림4', '문의 알림', '문의 답변 내용', 2);
+INSERT INTO NOTICE_TBL(ID, MEMBER_ID, TITLE, CATEGORY, CONTENT, TARGET_MEMBER_ID) VALUES(notice_SEQ.nextval, 1, '문의 답변 알림5', '문의 알림', '문의 답변 내용', 2);
+INSERT INTO NOTICE_TBL(ID, MEMBER_ID, TITLE, CATEGORY, CONTENT, TARGET_MEMBER_ID) VALUES(notice_SEQ.nextval, 1, '문의 답변 알림6', '문의 알림', '문의 답변 내용', 2);
+INSERT INTO NOTICE_TBL(ID, MEMBER_ID, TITLE, CATEGORY, CONTENT, TARGET_MEMBER_ID) VALUES(notice_SEQ.nextval, 1, '문의 답변 알림7', '문의 알림', '문의 답변 내용', 2);
+INSERT INTO NOTICE_TBL(ID, MEMBER_ID, TITLE, CATEGORY, CONTENT, TARGET_MEMBER_ID) VALUES(notice_SEQ.nextval, 1, '문의 답변 알림8', '문의 알림', '문의 답변 내용', 2);
+INSERT INTO NOTICE_TBL(ID, MEMBER_ID, TITLE, CATEGORY, CONTENT, TARGET_MEMBER_ID) VALUES(notice_SEQ.nextval, 1, '문의 답변 알림9', '문의 알림', '문의 답변 내용', 2);
+INSERT INTO NOTICE_TBL(ID, MEMBER_ID, TITLE, CATEGORY, CONTENT, TARGET_MEMBER_ID) VALUES(notice_SEQ.nextval, 1, '문의 답변 알림10', '문의 알림', '문의 답변 내용', 2);
 
 -- ============================================================
 -- 관리자

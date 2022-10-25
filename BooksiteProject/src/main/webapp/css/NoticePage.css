@@ -1,7 +1,4 @@
-a{
-    text-decoration: none;
-    color: initial;
-}
+a{ text-decoration: none; color: inherit;}
 
 #wrap{margin: 0 auto;}
 main.notice { max-width: 1000px; margin: 20px auto 70px auto; position: relative;}
@@ -20,5 +17,8 @@ main.notice { max-width: 1000px; margin: 20px auto 70px auto; position: relative
 .postItem .postExpandIcon { width: 5%; display: flex; justify-content: center; }
 .postItem .postExpandIcon img { width: 30px; height: 30px; }
 
-.leftBtn { position: absolute; top: 50%; left: -50px; transform: translate(-100%, -50%); width: 50px; height: 200px; }
-.rightBtn { position: absolute; top: 50%; right: -50px; transform: translate(100%, -50%); width: 50px; height: 200px; }
+ul.pageNumber { list-style: none; display: flex; justify-content: space-between;}
+ul.pageNumber li { width: 70px; height: 50px; background: gray; line-height: 50px; text-align: center;}
+ul.pageNumber li a.on { background: #000000; color: #ffffff; }
+ul.pageNumber li a:hover { background: #000000; color: #ffffff; }
+ul.pageNumber li a{ display: block; width: 100%; height: 100%;}

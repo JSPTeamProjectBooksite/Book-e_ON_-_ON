@@ -7,18 +7,24 @@ public class NoticeDTO {
 	private Long memberId;
 	private String title;
 	private String category;
-	private String Content;
+	private String content;
+	private Long targetMemberId;
 	private LocalDateTime registerDate;
 	
 	
-	public NoticeDTO(Long id, Long memberId, String title, String category, String content, LocalDateTime registerDate) {
+	public NoticeDTO() {
+	}
+	public NoticeDTO(Long id, Long memberId, String title, String category, String content, Long targetMemberId, LocalDateTime registerDate) {
 		this.id = id;
 		this.memberId = memberId;
 		this.title = title;
 		this.category = category;
-		Content = content;
+		this.content = content;
+		this.targetMemberId = targetMemberId;
 		this.registerDate = registerDate;
 	}
+
+
 
 
 	public Long getId() {
@@ -55,11 +61,19 @@ public class NoticeDTO {
 	}
 
 	public String getContent() {
-		return Content;
+		return content;
 	}
 
 	public void setContent(String content) {
-		Content = content;
+		this.content = content;
+	}
+
+	public Long getTargetMemberId() {
+		return targetMemberId;
+	}
+
+	public void setTargetMemberId(Long targetMemberId) {
+		this.targetMemberId = targetMemberId;
 	}
 
 	public LocalDateTime getRegisterDate() {

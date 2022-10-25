@@ -30,7 +30,7 @@ public class ShopCartSetController extends HttpServlet implements CartCookie{
 		} else {
 			System.out.printf("[쿠키 생성][실패] bookId=%s, count=%s \n", bookId, count);
 		}
-		response.getWriter().println("<script>history.back();</script>");
+//		response.getWriter().println("<script>history.back();</script>");
 	}
 	
 	@Override

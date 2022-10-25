@@ -25,16 +25,17 @@ public class ManageinquireController extends HttpServlet{
 		MemberDAO mdao = new MemberDAO();
 
 		ArrayList<InquiryDTO> inquiryList = dao.Manamgeinquiryinfo();
+		dao.close();
+		
 		String [] nameList = new String[inquiryList.size()];
 		
 		for(int i=0; i<inquiryList.size();i++) {
-			
 			long memberId = inquiryList.get(i).getMemberId();
-//			mdao.NameSearch(memberId);
 			nameList[i] = mdao.NameSearch(memberId);
 			System.out.println(nameList[i]);
 		}
-//		String name = nameList[0];
+		mdao.close();
+		
 		Long Id =  inquiryList.get(1).getMemberId();
 		System.out.println(Id);
 

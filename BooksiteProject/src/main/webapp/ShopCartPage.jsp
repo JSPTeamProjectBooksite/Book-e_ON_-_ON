@@ -11,10 +11,7 @@
     <link rel="stylesheet" href="/css/shopCartPage.css">
     
     <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
-    <script type="text/javascript"> 
-    	sessionStorage.setItem("contextpath", "${pageContext.request.contextPath}"); 
-    </script>
-    <script src="${pageContext.request.contextPath}/js/shopCartPage.js">
+    <script src="/js/shopCartPage.js">
     </script>
     <title>장바구니</title>
 </head>
@@ -79,7 +76,6 @@
                 <div class="submitBtns">
                     <button type="button" form="cartForm" class="selectBookDeleteBtn" >선택한 상품 삭제</button>
                     <button type="submit" form="cartForm" class="selectBookPaymentBtn" >선택한 상품 구매</button>
-                    <button type="submit" form="cartForm" class="selectBookSaveBtn" >보관함 저장</button>
                 </div>
             </div>
         </main>
@@ -135,7 +131,6 @@
     });
    	
     $('.selectBookPaymentBtn').click(function(){	fromUpdate(fromTag, '/payment', 'post');});
-    $('.selectBookSaveBtn').click(function(){		fromUpdate(fromTag, '#', 'post');});
     $('.selectBookDeleteBtn').click(function(){	
     	if(!isSeleckCheckBox()) {
     		alert("선택된 상품이 없습니다");

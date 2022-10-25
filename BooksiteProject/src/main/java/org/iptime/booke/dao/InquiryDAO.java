@@ -93,14 +93,15 @@ public class InquiryDAO extends JDBConnect {
 		return result;
 	}
 	
-	public void adminAnswer(Long id, String reply) {
+	public void adminAnswer(Long id, String reply, String inquiryState) {
 
 		try {
-			String query = "UPDATE INQUIRY_TBL SET reply = ? WHERE ID = ?";
+			String query = "UPDATE INQUIRY_TBL SET reply = ?, state = ? WHERE ID = ?";
 			
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, reply);
-			psmt.setLong(2, id);
+			psmt.setString(2, inquiryState);
+			psmt.setLong(3, id);
 			psmt.executeUpdate();
 			
 		} catch (Exception e) {
