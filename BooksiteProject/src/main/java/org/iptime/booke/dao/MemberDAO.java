@@ -410,7 +410,7 @@ public class MemberDAO extends JDBConnect {
 		}
 		return result;
 	}
-	
+
 	public int updateUserAddress(Long memberId, String address) {
 		int result = 0;
 
@@ -427,6 +427,29 @@ public class MemberDAO extends JDBConnect {
 			e.printStackTrace();
 		}
 		return result;
+	}
+
+	public boolean PwCheck(Long member_id, String member_pw) {
+		try {
+			String query = "SELECT password FROM MEMBER_TBL WHERE id = ? AND PASSWORD = ?";
+			psmt = con.prepareStatement(query);
+			psmt.setLong(1, member_id);
+			psmt.setString(2, member_pw);
+			rs = psmt.executeQuery();
+			rs.next();
+
+			if (rs.getRow() == 0) {
+				System.out.println("0 row selected...");
+			} else {
+				return true;
+			}
+
+		} catch (Exception e) {
+			System.out.println("현재 비밀번호 체크 중 예외 발생!!!");
+			e.printStackTrace();
+		}
+
+		return false;
 	}
 
 }
