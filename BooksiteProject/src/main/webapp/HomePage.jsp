@@ -55,19 +55,19 @@
                 <h1>On & On 에 잘 오셨습니다.</h1>
             </div>
             <div id="text2" class="text">
-                <h1>이제가세요.</h1>
+                <h1>혹시 오늘...</h1>
             </div>
             <div id="text3" class="text">
-                <h1>장난입니다 가지마세요.</h1>
+                <h1>독서를 하지 않으셨나요?</h1>
             </div>
             <div id="text4" class="text">
-                <h1>책 읽어야죠</h1>
+                <h1>독서는 마음의 양식이라고 합니다.</h1>
             </div>
             <div id="text5" class="text">
-                <h1>이거 만드는거 힘들었어요.</h1>
+                <h1>지금부터 마음의 양식을 쌓아봅시다.</h1>
             </div>
             <div id="text6" class="text">
-                <h1>누가 감성맨트 좀 생각해줘요.</h1>
+                <h1>On & On에서 함께해요.</h1>
             </div>
             <div id="text7" class="text" style="background: #e9ffff;">
             </div>
