@@ -1,9 +1,5 @@
-const checkBoxTrueImg = getContextPath() + "/source/ico/check_box_true.svg";
-const checkBoxFalseImg = getContextPath() + "/source/ico/check_box_false.svg";
-
-function getContextPath() {
-  return sessionStorage.getItem("contextpath");
-}
+const checkBoxTrueImg = "/source/ico/check_box_true.svg";
+const checkBoxFalseImg = "/source/ico/check_box_false.svg";
 
 $(function (){   
     // 장바구니에 있는 책을 누르면 버튼처럼 작동됨
