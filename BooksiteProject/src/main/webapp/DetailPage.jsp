@@ -480,7 +480,7 @@
 	        document.getElementById("sendForm").submit();
         }else if(btn=="shopCart"){
             document.getElementById("sendForm").action = "/cart";
-            document.getElementById("sendForm").target = "prame";
+            document.getElementById("sendForm").target = "param";
 	        document.getElementById("sendForm").submit();
             showPopup();
         }
