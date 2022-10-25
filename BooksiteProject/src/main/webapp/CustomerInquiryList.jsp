@@ -13,7 +13,6 @@
 </head>
 <body>
 	<h2>나의 문의내역</h2>
-	<form method="get">
 		<table class="InquiryList" border="1">
 			<tr>
 				<th>등록일자</th>
@@ -24,23 +23,21 @@
 			</tr>
 			<c:forEach var="cutomerinquiry" items="${ cinquirylist }">
 				<tr align="center">
-					<td class="date"><a
-						href="/payment/detail?rigisterdate=${ cutomerinquiry.rigisterDate }">${ cutomerinquiry.rigisterDate }</a></td>
+					<%-- <td class="hidden">${ cutomerinquiry.id }</td> --%>
+					<td class="date">${ cutomerinquiry.rigisterDate }</td>
 					<td>${ cutomerinquiry.categroy }</td>
-					<td>${ cutomerinquiry.title }</td>
+					<td><a href="/UserInquiryDetailController?id=${ cutomerinquiry.id }">${ cutomerinquiry.title }</a></td>
 					<td>${ cutomerinquiry.state }</td>
 					<td></td>
 				</tr>
 			</c:forEach>
 		</table>
-	</form>
 </body>
 <script>
-
-	function setPage(){
+	function setPage() {
 		var dates = document.getElementsByClassName("date");
 
-		for(var i=0; i < dates.length; i++){
+		for (var i = 0; i < dates.length; i++) {
 			dates[i].innerHTML = dates[i].innerHTML.replace('T', ' ');
 		}
 	}
