@@ -91,7 +91,7 @@ public class BookDAO extends DBConnPool{
 	
 	public BookDTO readBook(Long bId) {
 		BookDTO dto = null;
-		String query = "SELECT ID, COVER_IMG, TITLE, AUTHOR_ID, TRANSLATOR, PRICE, DELIVERY_FEE, ESTIMATED_DELIVERY_DATE, book_category_id "
+		String query = "SELECT ID, COVER_IMG, TITLE, AUTHOR_ID, TRANSLATOR, PRICE, DELIVERY_FEE, ESTIMATED_DELIVERY_DATE, QUANTITY, book_category_id "
 				+ "FROM book_TBL "
 				+ "WHERE ID = ? ";
 		
@@ -113,7 +113,8 @@ public class BookDAO extends DBConnPool{
 				dto.setPrice(rs.getInt(6));
 				dto.setDeliveryFee(rs.getInt(7));
 				dto.setEstimatedDeliveryDate(rs.getInt(8));
-				dto.setBookCategoryId(rs.getInt(9));
+				dto.setQuantity(rs.getInt(9));
+				dto.setBookCategoryId(rs.getInt(10));
 			}
 			
 			return dto;
