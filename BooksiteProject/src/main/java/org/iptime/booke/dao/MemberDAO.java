@@ -185,46 +185,46 @@ public class MemberDAO extends JDBConnect {
 		return null;
 	}
 
-//	public String findId(String member_name, String member_address) {
-//		String mid = null;
-//
-//		try {
-//			String sql = "SELECT ID FROM TBL_USER WHERE NAME=? AND ADDRESS =?";
-//			psmt = con.prepareStatement(sql);
-//			psmt.setString(1, member_name);
-//			psmt.setString(2, member_address);
-//			rs = psmt.executeQuery();
-//
-//			if (rs.next()) {
-//				mid = rs.getString("id");
-//			}
-//
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		return mid;
-//	}
-//
-//	public String findPassword(String member_name, String member_id, String member_address) {
-//		String mpass = null;
-//
-//		try {
-//			String sql = "SELECT PASSWORD FROM TBL_USER WHERE NAME=? AND ID=? and ADDRESS =?";
-//			psmt = con.prepareStatement(sql);
-//			psmt.setString(1, member_name);
-//			psmt.setString(2, member_id);
-//			psmt.setString(3, member_address);
-//			rs = psmt.executeQuery();
-//
-//			if (rs.next()) {
-//				mpass = rs.getString("password");
-//			}
-//
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		return mpass;
-//	}
+	public String findId(String member_name, String member_address) {
+		String mid = null;
+
+		try {
+			String sql = "SELECT EMAIL FROM MEMBER_TBL WHERE NAME = ? AND ADDRESS = ?";
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, member_name);
+			psmt.setString(2, member_address);
+			rs = psmt.executeQuery();
+
+			if (rs.next()) {
+				mid = rs.getString("EMAIL");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mid;
+	}
+
+	public String findPassword(String member_email, String member_name, String member_address) {
+		String mpass = null;
+
+		try {
+			String sql = "SELECT PASSWORD FROM MEMBER_TBL WHERE EMAIL=? AND NAME =? and ADDRESS =?";
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, member_email);
+			psmt.setString(2, member_name);
+			psmt.setString(3, member_address);
+			rs = psmt.executeQuery();
+
+			if (rs.next()) {
+				mpass = rs.getString("password");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mpass;
+	}
 
 	public MemberDTO userInfo(Long id) {
 		MemberDTO dto = null;

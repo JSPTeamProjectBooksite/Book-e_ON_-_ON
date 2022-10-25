@@ -9,11 +9,14 @@
 <link rel="stylesheet" href="./css/public.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" 교차 출처>
-<link href="https: //fonts.googleapis.com/css2? family= Noto+Sans+KR & display=swap" rel="stylesheet">
+<link
+	href="https: //fonts.googleapis.com/css2? family= Noto+Sans+KR & display=swap"
+	rel="stylesheet">
 <script>
-	if('<%= (String)session.getAttribute("LoginName") %>' == 'null'){
+	if('<%=(String) session.getAttribute("LoginName")%>
+	' == 'null') {
 		alert('로그인 정보가 없습니다. 메인페이지로 갑니다.');
-		location.href='/main';
+		location.href = '/main';
 	}
 </script>
 </head>
@@ -36,46 +39,9 @@
 				<input class="tab-radio" id="sub-tab1-1" name="sub-group1"
 					type="radio" checked="checked">
 				<div class="sub-tab-content">
-					<table border="1">
-						<thead>
-							<tr>
-								<th>이름</th>
-								<td>${ userInfo.name }</td>
-							</tr>
-							<tr>
-								<th>이메일</th>
-								<td>${ userInfo.email }</td>
-							</tr>
-							<tr>
-								<th>비밀번호</th>
-								<td>${ userInfo.password }</td>
-							</tr>
-							<tr>
-								<th>생년월일</th>
-								<td>${ userInfo.birth }</td>
-							</tr>
-							<tr>
-								<th>성별</th>
-								<td>${ userInfo.gender }</td>
-							</tr>
-							<tr>
-								<th>전화번호</th>
-								<td>${ userInfo.phoneNum }</td>
-							</tr>
-							<tr>
-								<th>주소</th>
-								<td>${ userInfo.address }</td>
-							</tr>
-							<tr>
-								<th>포인트</th>
-								<td>${ userInfo.point }</td>
-							</tr>
-						</thead>
-					</table>
-					<div class="Resign">
-						<a class="button" href="./UserInfoUpdate.jsp">비밀번호 변경</a> <a
-							class="button" onclick="resignBtn()"> 회원탈퇴 </a>
-					</div>
+					<iframe src="/userInfo" onload="onResize(this)"
+						style="height: 1200px;" scrolling=”no” width="100%" frameborder=0
+						framespacing=0 marginheight=0 marginwidth=0 scrolling=yes vspace=0></iframe>
 				</div>
 			</div>
 
@@ -116,9 +82,9 @@
 				<input class="tab-radio" id="sub-tab4-1" name="sub-group4"
 					type="radio" checked="checked">
 				<div class="sub-tab-content">
-					<iframe src="/customerinquiry/list" width="100%"
-						height="1230px" frameborder=0 framespacing=0 marginheight=0
-						marginwidth=0 scrolling=yes vspace=0></iframe>
+					<iframe src="/customerinquiry/list" width="100%" height="1230px"
+						frameborder=0 framespacing=0 marginheight=0 marginwidth=0
+						scrolling=yes vspace=0></iframe>
 				</div>
 			</div>
 
@@ -139,15 +105,7 @@
 		<%@ include file="Footer.jsp"%>
 	</div>
 </body>
-
 <script type="text/javascript">
-	function resignBtn() {
-		if (confirm("고객의 모든 정보가 삭제됩니다.\n탈퇴하시겠습니까?")) {
-			window.location.href = './resign';
-			alert("회원이 탈퇴 되었습니다. 이용해 주셔서 감사합니다.");
-		}
-	}
-
 	function onResize(obj) {
 		var height = (obj).contentWindow.document.body.scrollHeight;
 		(obj).height = height + 20;

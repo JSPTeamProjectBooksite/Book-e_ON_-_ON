@@ -40,11 +40,11 @@
 						<input type="password" class="input" name="password">
 					</div>
 				</div>
-				<a href="./FindID.jsp">Forgot Email?</a>
+				<a href="/findID">Forgot Email?</a>
 				<a href="/findPassword">Forgot Password?</a>
 				<input type="submit" class="btn" value="로그인">
 				<!-- <button type="button" class="btn" onclick="checkAbleLogin()">로그인</button> -->
-				<input type="button" class="btn" value="회원가입" onclick="location.href='./Register.jsp'">
+				<input type="button" class="btn" value="회원가입" onclick="location.href='/Register.jsp'">
 				<iframe id="ableLogin" name="param" style="border: none;"></iframe>
 			</form>
 		</div>
