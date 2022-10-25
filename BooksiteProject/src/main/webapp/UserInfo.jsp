@@ -29,16 +29,8 @@
 					<td>${ userInfo.birth }</td>
 				</tr>
 				<tr>
-					<th>성별</th>
-					<td>${ userInfo.gender }</td>
-				</tr>
-				<tr>
 					<th>전화번호</th>
 					<td>${ userInfo.phoneNum }</td>
-				</tr>
-				<tr>
-					<th>주소</th>
-					<td>${ userInfo.address }</td>
 				</tr>
 				<tr>
 					<th>포인트</th>
@@ -47,9 +39,17 @@
 			</thead>
 		</table>
 		<div class="Resign">
-			<a class="button" href="./UserInfoUpdate.jsp">비밀번호 변경</a> 
-			<a class="button" href=""> 회원탈퇴 </a>
+			<a class="button" href="./UserInfoUpdate.jsp">비밀번호 변경</a> <a
+				class="button" onclick="resignBtn()"> 회원탈퇴 </a>
 		</div>
 	</div>
 </body>
+<script type="text/javascript">
+	function resignBtn() {
+		if (confirm("고객의 모든 정보가 삭제됩니다.\n탈퇴하시겠습니까?")) {
+			window.location.href = './resign';
+			alert("회원이 탈퇴 되었습니다. 이용해 주셔서 감사합니다.");
+		}
+	}
+</script>
 </html>

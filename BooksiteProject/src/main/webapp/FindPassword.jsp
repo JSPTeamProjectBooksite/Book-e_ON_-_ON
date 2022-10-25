@@ -10,15 +10,15 @@
 <body>
 	<div class="container">
 		<h1>비밀번호 재설정</h1>
-		<form action="./findPassword" method="get">
+		<form action="/findPassword" method="get">
 			<div>
-				<input class="inputGroup" type="text" placeholder="Your name" name="user_name">
+				<input class="inputGroup" type="text" placeholder="Your Email" name="user_email">
 			</div>
 			<div>
-				<input class="inputGroup" type="text" placeholder="Your id" name="user_id">
+				<input class="inputGroup" type="text" placeholder="Your Name" name="user_name">
 			</div>
 			<div>
-				<input class="inputGroup" type="address" placeholder="Your address" name="user_address">
+				<input class="inputGroup" type="text" placeholder="Your Address" name="user_address">
 			</div>
 			<input class="submit" type="submit" value="비밀번호 찾기">
 		</form>

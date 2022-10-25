@@ -23,7 +23,7 @@
            		   		<i class="fas fa-user"></i>
            		   </div>
            		   <div class="div">
-           		   		<h5>Username</h5>
+           		   		<h5>Name</h5>
            		   		<input type="text" class="input"  name="user_name">
            		   </div>
            		</div>
@@ -32,12 +32,12 @@
            		    	<i class="fas fa-lock"></i>
            		   </div>
            		   <div class="div">
-           		    	<h5>Email</h5>
-           		    	<input type="Email" class="input" name="user_address">
+           		    	<h5>Address</h5>
+           		    	<input type="text" class="input" name="user_address">
             	   </div>
             	</div>
             	<a href="#">Forgot Password?</a>
-            	<input type="submit" class="btn" value="Login">
+            	<input type="submit" class="btn" value="아이디 찾기">
             </form>
         </div>
     </div>
