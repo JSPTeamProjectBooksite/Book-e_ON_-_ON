@@ -16,3 +16,5 @@ h2 { padding: 20px 0px 20px 0px; color: #495057;}
 .InquiryList th{ background:#f9f9f9; height: 40px;}
 
 .InquiryList td{ height: 40px;}
+
+.hidden { display: none;}
