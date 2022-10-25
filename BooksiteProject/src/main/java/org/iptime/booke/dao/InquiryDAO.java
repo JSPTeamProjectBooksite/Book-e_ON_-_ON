@@ -2,10 +2,12 @@ package org.iptime.booke.dao;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.iptime.booke.common.JDBConnect;
 import org.iptime.booke.dto.InquiryDTO;
+import org.iptime.booke.utils.LocalDateABC;
 
 public class InquiryDAO extends JDBConnect {
 
@@ -29,7 +31,7 @@ public class InquiryDAO extends JDBConnect {
 				dto.setReply (rs.getString(5));
 				dto.setCategroy(rs.getString(6));
 				dto.setState(rs.getString(7));
-//			psmt.setString(7, LocalDateABC.toLocalDateTime(dto.getRigisterDate());
+			    dto.setRigisterDate(LocalDateABC.toLocalDateTime(rs.getDate(8)));
 
 				System.out.println("문의내용 조회 성공");
 			}
@@ -137,6 +139,39 @@ public class InquiryDAO extends JDBConnect {
 			System.out.println("고객문의 리스트 조회 중 오류발생");
 		}
 		return inquirylist;
+		
+	}
+	
+	public List<InquiryDTO> inquiryinfoDetail(Long id){
+		List<InquiryDTO> inquiryDetaillist = new ArrayList<InquiryDTO>();
+		
+		try{
+			String sql = "SELECT * FROM INQUIRY_TBL WHERE id = "+ id +" ORDER BY ID DESC";
+			psmt = con.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				InquiryDTO dto = new InquiryDTO();
+				
+				dto.setId(rs.getLong(1));
+				dto.setMemberId(rs.getLong(2));
+				dto.setTitle(rs.getString(3));
+				dto.setContent(rs.getString(4));
+				dto.setReply(rs.getString(5));
+				dto.setCategroy(rs.getString(6));
+				dto.setState(rs.getString(7));
+				dto.setRigisterDate(new Timestamp(rs.getDate(8).getTime()).toLocalDateTime());
+				
+				System.out.println("고객문의 리스트 조회 성공");
+				inquiryDetaillist.add(dto);
+				/* System.out.println("여긴 지나오니?"); */
+			}
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("고객문의 리스트 조회 중 오류발생");
+		}
+		return inquiryDetaillist;
 		
 	}
 }
