@@ -12,14 +12,14 @@
 		<form action="/changepassword" method="get" onsubmit="return vaildateForm(this);" target="pass" id="changepasswordform">
 			<h1>비밀번호 변경</h1>
 			<div>
-				<input class="wrap" type="password" placeholder="Your password">
+				<input class="wrap" type="password" placeholder="Your password" name="Password">
 			</div>
 			<div>
 				<input class="wrap" type="password" placeholder="New password"
-					name="newPassword">
+					name="NewPassword">
 			</div>
 			<div>
-				<input class="wrap" type="password" placeholder="New password check">
+				<input class="wrap" type="password" placeholder="New password check" name="NewPasswordCheck">
 			</div>
 			<input class="submit" type="submit" value="변경하기">
 		</form>
