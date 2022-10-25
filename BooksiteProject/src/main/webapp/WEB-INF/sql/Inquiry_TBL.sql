@@ -7,7 +7,7 @@ CREATE TABLE inquiry_TBL(
 	content 		varchar2(4000) 	NOT NULL,
 	reply 		varchar2(4000) 		NULL,
 	categroy 		varchar2(100) 	NOT NULL,
-	state			varchar2(50)	DEFAULT '답변 대기중',
+	state			varchar2(50)	DEFAULT '답변 대기',
 	rigister_DATE 	DATE 			DEFAULT sysdate 
 );
 
