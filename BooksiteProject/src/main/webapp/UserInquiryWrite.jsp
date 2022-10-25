@@ -70,7 +70,7 @@ SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일");
 					<tr>
 						<td class="title" rowspan="2">내용</td>
 						<td colspan="3">
-						<textarea style="border: none; font-size: 14px;" name="content"
+						<textarea style="border: none; font-size: 15px;" name="content"
 								placeholder="&#13;&#10;문의유형을 선택 후 자세하게 작성해주세요.
 							&#13;&#10;자세한 내용과 함께 보내주시면 더욱 신속하게 답변 드리겠습니다!"></textarea>
 					</td>

@@ -3,25 +3,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="css/UserInfo.css">
+<link rel="stylesheet" href="/css/UserInfo.css">
+<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-gothic.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>회원 정보 조회</title>
 </head>
 <body>
-	<div class="container">
-		<h1>회원정보</h1>
+	<div class="wrap">
+		<h2>기본회원정보</h2>
 		<table border="1">
 			<thead>
 				<tr>
 					<th>이름</th>
 					<td>${ userInfo.name }</td>
+					
 				</tr>
 				<tr>
 					<th>이메일</th>
 					<td>${ userInfo.email }</td>
 				</tr>
 				<tr>
-					<th>비밀번호</th>
+					<th style="width: 271px">비밀번호</th>
 					<td>${ userInfo.password }</td>
 				</tr>
 				<tr>
@@ -33,7 +35,7 @@
 					<td>${ userInfo.phoneNum }</td>
 				</tr>
 				<tr>
-					<th>포인트</th>
+					<th>가용 적립금(원)</th>
 					<td>${ userInfo.point }</td>
 				</tr>
 			</thead>
