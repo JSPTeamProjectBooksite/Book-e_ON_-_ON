@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.iptime.booke.dao.AdminDAO;
 import org.iptime.booke.dao.MemberDAO;
 import org.iptime.booke.dto.MemberDTO;
 
@@ -30,7 +31,7 @@ public class LoginController extends HttpServlet {
 		
 		if(userEmail == null || userPwd == null) {
 			
-			if (request.getParameter("bntclick") != null) {
+			if ("1".equals(request.getParameter("bntclick"))) {
 				//헤더의 버튼 클릭으로 로그인이 요청될 시 로그인이 요청된 페이지 저장
 				
 				Referer = (request.getHeader("Referer").substring(8)); //"http://booke.iptime.org"제거 후 주소 저장
@@ -55,6 +56,18 @@ public class LoginController extends HttpServlet {
 				
 				System.out.println("LoginID : " + session.getAttribute("LoginID"));
 				System.out.println("LoginName : " + session.getAttribute("LoginName"));
+				
+				
+				AdminDAO adao = new AdminDAO();
+				String jobPosition = adao.checkManager(memberDTO.getId());
+				boolean heIsManager = (jobPosition != null);
+				adao.close();
+				
+				if(heIsManager) {
+					//관리자 계정일 경우 메니저 직위 설정
+					session.setAttribute("JobPosition", jobPosition);
+				}
+				
 				
 				Referer = (String)session.getAttribute("Referer");
 				

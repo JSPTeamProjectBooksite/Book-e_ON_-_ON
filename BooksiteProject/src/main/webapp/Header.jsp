@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+//로그인 여부 확인
 Long userID = (Long)session.getAttribute("LoginID"); // 세션에서 아이디르 받아 LoginID에 저장합니다.
 String userName = (String)session.getAttribute("LoginName");
 boolean login = (userID == null) ? false : true; //로그인 되었는지 안되었는지 여부를 login에 불린으로 저장합니다.
-
+//관리자 여부확인
+String jobPosition = (String)session.getAttribute("JobPosition");
+boolean manager = (jobPosition == null) ? false : true;//관리자 여부를 manager에 불린으로 저장합니다.
 %>
 <!DOCTYPE html>
 <html>
@@ -44,8 +47,8 @@ boolean login = (userID == null) ? false : true; //로그인 되었는지 안되
         transform: scale( 1.05 );
 		fill:#d4e5ff;
     }
-    #noticeIco svg{
-		width: 50%;
+    #managerIco svg{
+		width: 70%;
 		fill:white;
 	}
     .loginInOut svg{
@@ -61,7 +64,7 @@ boolean login = (userID == null) ? false : true; //로그인 되었는지 안되
 		fill:white;
 	}
 
-	.loginInOut, #cartIco, #myPageIco, #noticeIco{
+	.loginInOut, #cartIco, #myPageIco, #managerIco{
 		margin-top: 15px;
 	}
 
@@ -73,27 +76,29 @@ boolean login = (userID == null) ? false : true; //로그인 되었는지 안되
 			<tr>
 				<th style="width: 20px;"></th>
 				<th style="text-align: left;">
-					<h3 id="logo" onclick="location.href='/main'">BOOK-e On & On</h3>
+					<a href="/main" style="text-decoration: none;">
+						<h3 id="logo">BOOK-e On & On</h3>
+					</a>
 				</th>
 				<%
 				if (login) {
 					//out.print("\"" + userName + "\"님이 접속하셨습니다.");
 				//최상단부 스크립틀릿에 보시면 세션에서 로그인 됐을 경우 아이디가 저장돼있습니다.
 				//로그인값(false)이 아닐경우 출력됩니다.
+					if(manager){
 				%>
-				<th class="button">
-					<a href="#" title="알림">
-						<div id="noticeIco">
-							<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 510 510" xml:space="preserve">
-								<g id="notifications">
-									<path d="M255,510c28.05,0,51-22.95,51-51H204C204,487.05,226.95,510,255,510z M420.75,357V216.75
-										c0-79.05-53.55-142.8-127.5-160.65V38.25C293.25,17.85,275.4,0,255,0c-20.4,0-38.25,17.85-38.25,38.25V56.1
-										c-73.95,17.85-127.5,81.6-127.5,160.65V357l-51,51v25.5h433.5V408L420.75,357z"/>
-								</g>
-							</svg>
-						</div>
-					</a>
-				</th>
+					<th class="button">
+						<a href="/MANAGE" title="관리자">
+							<div id="managerIco">
+								<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="mdi-alpha-m-box" viewBox="0 0 24 24">
+									<path d="M9,7A2,2 0 0,0 7,9V17H9V9H11V16H13V9H15V17H17V9A2,2 0 0,0 15,7H9M5,3H19A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3Z" />
+								</svg>
+							</div>
+						</a>
+					</th>
+					<%
+					}
+					%>
 				<th class="button">
 					<a href="/mypage" title="마이페이지">
 						<div id="myPageIco">
@@ -136,13 +141,16 @@ boolean login = (userID == null) ? false : true; //로그인 되었는지 안되
 				} else {
 				%>
 				<th class="button">
-					<a href="/login?bntclick=1" title="로그인">
-						<div class="loginInOut">
-							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 16">
-								<path fill-rule="evenodd" d="M7 6.75V12h4V8h1v4c0 .55-.45 1-1 1H7v3l-5.45-2.72c-.33-.17-.55-.52-.55-.91V1c0-.55.45-1 1-1h9c.55 0 1 .45 1 1v3h-1V1H3l4 2v2.25L10 3v2h4v2h-4v2L7 6.75z"/>
-							</svg>
-						</div>
-					</a>
+					<form action="/login" method="post">
+						<input type="hidden" name="bntclick" value="1">
+						<button style="border: none; background: transparent;">
+							<div class="loginInOut">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 16">
+									<path fill-rule="evenodd" d="M7 6.75V12h4V8h1v4c0 .55-.45 1-1 1H7v3l-5.45-2.72c-.33-.17-.55-.52-.55-.91V1c0-.55.45-1 1-1h9c.55 0 1 .45 1 1v3h-1V1H3l4 2v2.25L10 3v2h4v2h-4v2L7 6.75z"/>
+								</svg>
+							</div>
+						</button>
+					</form>
 				</th>
 				<%
 				}

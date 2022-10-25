@@ -60,14 +60,20 @@
 						<table>
 							<tr>
 								<th>배송지</th>
-								<td class="block1">[기본배송지]<br>${ delinfo.address }
+								<td class="block1">[최근 배송지]<br><span id="lastAddress">최근배송지</span>
 								</td>
 							</tr>
 							<tr>
 								<th>상세 정보</th>
-								<td>${ delinfo.name }/${ delinfo.address }<br>배송메세지 |
-									없음
-									<button type="button" name="주소수정버튼" style="text-align: center">수정하기</button>
+								<td>
+									<div>
+										[신규 배송지] <button type="button" onclick="changeAddress()">배송지 수정</button><br>
+										<input type="text" name="newAddress" id="addressBox" value="" style="width: 400px;" disabled>
+									</div>
+									<br>
+									<div>[배송메세지]<br>
+										<textarea name="" id="" style="width: 400px; height:100px; resize: none;"></textarea>
+									</div>
 								</td>
 							</tr>
 						</table>
@@ -234,6 +240,7 @@
 	var usedPoint = 0; //사용하는 포인트
 	var totalPrice = ${ priceInfo.totalPrice }*1; //전체금액
 	var finalPrice = ${ priceInfo.finalPrice }*1; //최종금액
+	var address = "${ delinfo.address }";
 
 
 	function setPage(){
@@ -242,6 +249,10 @@
 		document.getElementById("userPoint").value = usedPoint;
 		document.getElementById("usedPoint").innerHTML = usedPoint.toLocaleString('ko-KR');
 		document.getElementById("totalPrice").innerHTML = totalPrice.toLocaleString('ko-KR');
+
+		if(address != 'null'){
+			document.getElementById('lastAddress').innerHTML = address;
+		}
 	
 		var tem = document.getElementsByClassName("finalPrice");
 	
@@ -269,6 +280,11 @@
 
 		alert("적립금을 사용합니다!");
 		setPage();
+	}
+
+	function changeAddress(){
+		var bol = document.getElementById('addressBox').disabled;
+		document.getElementById('addressBox').disabled = !bol;
 	}
 
 	function allCheck(btn){
@@ -303,6 +319,14 @@
 
 	//결제 버튼 눌림
 	function payBtn(){
+
+		if(document.getElementById('lastAddress').innerHTML == '' && document.getElementById('newAddress') == null){
+			alert("주문이력이 없습니다.\n주소를 입력해주세요.");
+
+			document.getElementById('addressBox').disabled = false;
+			document.getElementById('addressBox').focus();
+			return false;
+		}
 		
 		if(paymentForm.paymentMethod.value == ""){
 			alert("결제방식을 선택해주세요.");

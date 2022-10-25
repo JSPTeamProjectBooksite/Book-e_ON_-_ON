@@ -388,6 +388,10 @@
         </div>
     </div>
 </div>
+<!-- 로그인 페이지 이동 기능을 구현하기 위한 히든폼 -->
+<form action="/login" method="post" name="login">
+    <input type="hidden" name="bntclick" value="1">
+</form>
 </body>
 <script>
     var userId = '<%= (Long)session.getAttribute("LoginID") %>';
@@ -470,7 +474,7 @@
             //로그인 기록이 없을경우(로그인이 되어있지 않을때)
             if(userName == "null"){
                 alert("로그인 후 이용할 수 있는 서비스입니다.\n로그인 페이지로 이동합니다.");
-                location.href = "/login?bntclick=1";
+                document.login.submit();
                 return;
             }
             document.getElementById("sendForm").action = "/payment";
