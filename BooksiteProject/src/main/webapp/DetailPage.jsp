@@ -97,7 +97,7 @@
                                 background:darkgray;
                             " onclick="clickBtn('locker')">보관함</div> -->
                             <div>
-                                <form action="" method="get" id="sendForm">
+                                <form action="" method="get" id="sendForm" target="_self">
                                     <!-- 선택한 책과 갯수를 다음 폼에 전송 -->
                                     <input type="hidden" name="selectedBooks" value="${ bookInfo.id }">
                                     선택 수량:
@@ -110,12 +110,8 @@
                                     권
                                 </form>
                             </div>
-                            <div class="btnStyle animation_3" style="
-                                background:skyblue;
-                            " onclick="clickBtn('shopCart')" >장바구니</div>
-                            <div class="btnStyle animation_3" style="
-                                background:steelblue;
-                            " onclick="clickBtn('pay')" >바로구매</div>
+                            <div class="btnStyle animation_3" style=" background:skyblue;" onclick="clickBtn('shopCart')" >장바구니</div>
+                            <div class="btnStyle animation_3" style=" background:steelblue;" onclick="clickBtn('pay')" >바로구매</div>
                         </div>
                     </td>
                 </tr>
@@ -282,8 +278,8 @@
                     </div>
                 </div>
             </form>
-            <iframe src="" name="param" style="display: none;"></iframe>
         </div>
+        <iframe src="" name="param" style="display: none;"></iframe>
 
         <!-- 환불 -->
         <div>
@@ -392,6 +388,8 @@
 <form action="/login" method="post" name="login">
     <input type="hidden" name="bntclick" value="1">
 </form>
+<!-- 페이지 이동을 막기 위한 iframe -->
+<iframe src="" name="param" style="display: none;"></iframe>
 </body>
 <script>
     var userId = '<%= (Long)session.getAttribute("LoginID") %>';
@@ -478,11 +476,14 @@
                 return;
             }
             document.getElementById("sendForm").action = "/payment";
+            document.getElementById("sendForm").target = "_self";
+	        document.getElementById("sendForm").submit();
         }else if(btn=="shopCart"){
             showPopup();
             document.getElementById("sendForm").action = "/cart";
+            document.getElementById("sendForm").target = "param";
+	        document.getElementById("sendForm").submit();
         }
-        document.getElementById("sendForm").submit();
     }
 
     document.querySelector('.rangeInput').addEventListener('input',function(event){
