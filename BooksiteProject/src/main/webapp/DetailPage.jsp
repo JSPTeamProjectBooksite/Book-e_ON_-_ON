@@ -479,10 +479,10 @@
             document.getElementById("sendForm").target = "_self";
 	        document.getElementById("sendForm").submit();
         }else if(btn=="shopCart"){
+            showPopup();
             document.getElementById("sendForm").action = "/cart";
             document.getElementById("sendForm").target = "param";
 	        document.getElementById("sendForm").submit();
-            showPopup();
         }
     }
 
