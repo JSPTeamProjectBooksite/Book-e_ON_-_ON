@@ -13,75 +13,66 @@
 	<div class="container">
 		<img class="wave" src="./source/Login/wave.png">
 		<div class="img">
-			<!-- <img src="./source/Login/reading.png"> -->
+			<img src="./source/Login/reading.png">
 		</div>
 		<div class="login-content">
 			<form action="/register" name="registerForm">
 
 				<h2 class="title">회원가입</h2>
-					<div class="input-div one">
-						<div class="i">
-						</div>
-						<div class="div">
-								<h5>Your name
-									<iframe id="nameUseResert" name="param1" style="
-										display: inline;
-										width: 100px;
-										height: 15px;
-										border: none;
-									">
-									</iframe>
-								</h5>
-								<input type="text" class="input" name="name" minlength='2' maxlength='30' required>
-						</div>
+				<div class="input-div one" style="margin-bottom: 5px;">
+					<div class="i">
 					</div>
-					<div class="input-div id">
-						<div class="i"> 
-						</div>
-						<div class="div">
-							<h5>Email
-								<iframe id="emailUseResert" name="param2" style="
-									display: inline;
-									width: 100px;
-									height: 15px;
-									border: none;
-								">
-								</iframe>
-							</h5>
-							<input type="id" class="input" name="email" required>
-					</div>
-				</div>
-				<div class="input-div id">
-					<div class="i"> 
-						</div>
-						<div class="div">
-							<h5>Password</h5>
-							<input type="password" class="input" name="password" maxlength='35' required>
-					</div>
-				</div>
-				<!-- <div class="input-div id">
-					<div class="i"> 
-						</div>
 					<div class="div">
-						<h5>id</h5>
-						<input type="id" class="input" name="id">
+						<h5>Your name
+							<iframe id="nameUseResert" name="param1" style="
+								display: inline;
+								width: 100px;
+								height: 15px;
+								border: none;
+							">
+							</iframe>
+						</h5>
+						<input type="text" class="input" name="name" minlength='2' maxlength='30' required>
 					</div>
 				</div>
-				<div class="div">
-					<select class="selectGroup" name="gender" id="gender">
-						<option value="Select"> Gender </option>
-						<option value="Man"> Man </option>
-						<option value="Woman"> Woman </option>
-						<i class="fa-sharp fa-solid fa-venus-double"></i>
-					</select>
-				</div> -->
-				<div class="input-div id">
+				<div id="nameCheck" style="height: 20px; color: red; font-size: 12px;"></div>
+
+				<div class="input-div id" style="margin: 0px 0px 5px 0px;">
+					<div class="i"> 
+					</div>
+					<div class="div">
+						<h5>Email
+							<iframe id="emailUseResert" name="param2" style="
+								display: inline;
+								width: 100px;
+								height: 15px;
+								border: none;
+								">
+							</iframe>
+						</h5>
+						<input type="id" class="input" name="email" required>
+					</div>
+				</div>
+				<div id="emailCheck" style="height: 20px; color: red; font-size: 12px;"></div>
+				
+				<div class="input-div id" style="margin: 0px 0px 5px 0px;">
+					<div class="i"> 
+					</div>
+					<div class="div">
+						<h5>Password</h5>
+						<input type="password" class="input" name="password" maxlength='35' required>
+					</div>
+				</div>
+				<div id="passwordCheck" style="height: 20px; color: red; font-size: 12px;"></div>
+				
+				<div class="input-div id" style="margin-top: 5px;">
 					<div class="i"> 
 					</div>
 					<div class="div">
 						<input class="inputGroup" type="date" name="birthday" placeholder="Birthday" id="birthday" style="font-weight: bold; color: #999;" required>
 					</div>
 				</div>
+
 				<div class="input-div id">
 					<div class="i"> 
 						</div>
@@ -121,6 +112,7 @@
 				<!-- <input type="submit" class="btn" value="Register">  -->
 				<button type="button" class="btn" onclick="sendForm()">Register</button>
 			</form>
+			<iframe id="" name="param" style="border: none;"></iframe>
 		</div>
 	</div>
 
@@ -142,6 +134,10 @@
 	var birthday = document.registerForm.birthday;
 	var phoneNumber = document.registerForm.phoneNum;
 
+	var check1 = false;
+	var check2 = false;
+	var check3 = false;
+
 	
 	var check_num = /[0-9]/;    // 숫자 
 	var check_eng = /[a-zA-Z]/;    // 문자 
@@ -161,19 +157,24 @@
 		var temp = true;
 		
 		if(regist.name.value.length < 2){
-			alert("최소 2글자 이상의 이름을 사용하셔야 합니다.");
+			// alert("최소 2글자 이상의 이름을 사용하셔야 합니다.");
+			document.getElementById('nameCheck').innerHTML = "최소 2글자 이상의 이름을 사용하셔야 합니다.";
 			temp = false;
 		}
 		else if(/[^가-힣|a-z|A-Z|0-9|]/.test(regist.name.value)){
-			alert("한글,영어,숫자만 사용이 가능합니다.");
+			// alert("한글,영어,숫자만 사용이 가능합니다.");
+			document.getElementById('nameCheck').innerHTML = "한글,영어,숫자만 사용이 가능합니다.";
 			temp = false;
 		}
 		
 		if(temp){
+			document.getElementById('nameCheck').innerHTML = "";
 			checkform.action = "/register/check.do?what=name";
 			checkform.name.value = regist.name.value;
 			checkform.target = "param1";
 			checkform.submit();
+
+			check1 = true;
 		}
 		
 		//console.log(document.getElementById('nameUseResert').contentWindow.getElementById("result"));
@@ -186,25 +187,78 @@
 		console.log(regist.email.value);
 		
 		var temp = true;
-		
-		if(regist.email.value.length < 2){
-			alert("최소 2글자 이상의 이름을 사용하셔야 합니다.");
+
+		var tem1 = regist.email.value;
+		var tem2 = (tem1.split('@').length == 2);
+		var tem3 = (tem1.split('.').length == 2);
+		var tem4 = (tem1.indexOf('@')<tem1.indexOf('.'));
+
+		if(!tem2 || !tem3 || !tem4){
+			document.getElementById('emailCheck').innerHTML = "이메일 규격이 맞지않습니다.";
+			temp = false;
+		}else if(regist.email.value.length < 10){
+			// alert("최소 2글자 이상의 아이디를 사용하셔야 합니다.");
+			document.getElementById('emailCheck').innerHTML = "최소 10글자 이상의 이메일을 사용하셔야 합니다.";
+			temp = false;
+		}
+		else if(regist.email.value.length < 10){
+			// alert("최소 2글자 이상의 아이디를 사용하셔야 합니다.");
+			document.getElementById('emailCheck').innerHTML = "최소 10글자 이상의 이메일을 사용하셔야 합니다.";
 			temp = false;
 		}
 		else if(/[^a-z|A-Z|0-9|!@#$%^&*.]/.test(regist.email.value)){
-			alert("영어,숫자,특수문자(!@#$%^&*) 만 사용이 가능합니다.");
+			// alert("영어,숫자,특수문자(!@#$%^&*) 만 사용이 가능합니다.");
+			document.getElementById('emailCheck').innerHTML = "영어,숫자,특수문자(!@#$%^&*) 만 사용이 가능합니다.";
 			temp = false;
 		}
 		
 		if(temp){
+			document.getElementById('emailCheck').innerHTML = "";
 			checkform.action = "/register/check.do?what=email";
 			checkform.email.value = regist.email.value;
 			checkform.target = "param2";
 			checkform.submit();
+
+			check2 = true;
 		}
 		
 		//console.log(document.getElementById('nameUseResert').contentWindow.getElementById("result"));
 	}
+
+	//비밀번호 양식에 맞게 변경 함수
+	password.onblur = function() {
+		console.log(regist.password.value);
+		
+		var temp = true;
+		
+		if(regist.password.value.length < 6){
+			// alert("최소 6자 이상의 비밀번호를 사용하셔야 합니다.");
+			document.getElementById('passwordCheck').innerHTML = "최소 6자 이상의 비밀번호를 사용하셔야 합니다.";
+			temp = false;
+		}
+		else if(/[^a-z|A-Z|0-9|!@#$%^&*]/.test(regist.password.value)){
+			// alert("영어,숫자,특수문자(!@#$%^&*) 만 사용이 가능합니다.");
+			document.getElementById('passwordCheck').innerHTML = "영어,숫자,특수문자(!@#$%^&*) 만 사용이 가능합니다.";
+			temp = false;
+		}
+		else if(!/[a-z|A-Z|]/.test(regist.password.value)){
+			// alert("영어도 사용해서 비밀번호를 만들어주세요.");
+			document.getElementById('passwordCheck').innerHTML = "영어도 사용해서 비밀번호를 만들어주세요.";
+			temp = false;
+		}
+		else if(!/[0-9|!@#$%^&*]/.test(regist.password.value)){
+			// alert("영어만으론 비밀번호를 만들 수 없습니다.");
+			document.getElementById('passwordCheck').innerHTML = "영어만으론 비밀번호를 만들 수 없습니다.";
+			temp = false;
+		}
+
+		if(temp){
+			document.getElementById('passwordCheck').innerHTML = "";
+			check3 = true;
+		}
+		
+		// alert("사용가능한 비밀번호입니다.");
+	};
 
 	//폰번호 양식에 맞게 변경 함수
 	phoneNumber.onblur = function() {
@@ -223,35 +277,6 @@
 
 			phoneNumber.value = resert;
 		}
-	};
-
-	//비밀번호 양식에 맞게 변경 함수
-	password.onblur = function() {
-		console.log(regist.password.value);
-		
-		var temp = true;
-		
-		if(regist.password.value.length < 6){
-			alert("최소 6자 이상의 비밀번호를 사용하셔야 합니다.");
-			temp = false;
-		}
-		else if(/[^a-z|A-Z|0-9|!@#$%^&*]/.test(regist.password.value)){
-			alert("영어,숫자,특수문자(!@#$%^&*) 만 사용이 가능합니다.");
-			temp = false;
-		}
-		else if(!/[a-z|A-Z|]/.test(regist.password.value)){
-			alert("영어도 사용해서 비밀번호를 만들어주세요.");
-			temp = false;
-		}
-		else if(!/[0-9|!@#$%^&*]/.test(regist.password.value)){
-			alert("영어만으론 비밀번호를 만들 수 없습니다.");
-			temp = false;
-		}
-		// if(!temp){
-		// 	return;
-		// }
-		
-		// alert("사용가능한 비밀번호입니다.");
 	};
 
 	function allCheck(btn){
@@ -285,6 +310,10 @@
 	}
 
 	function sendForm(){
+		if(!(check1&&check2&&check3)){
+			return;
+		}
+
 		var condition1 = (userName.value.length > 0 && document.getElementById('nameUseResert').contentWindow.result()=='사용가능');
 		var condition2 = (email.value.length > 0 && document.getElementById('emailUseResert').contentWindow.result()=='사용가능');
 		var condition3 = (password.value.length > 0);
@@ -328,9 +357,6 @@
 			document.getElementById('allCheckBox').focus();
 			return;
 		}
-		
-
-
 
 		regist.submit();
 	}

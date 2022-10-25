@@ -16,8 +16,7 @@
 			<img src="./source/Login/reading.png">
 		</div>
 		<div class="login-content">
-			<form action="/findID" method="get">
-				<img src="./source/Login/avatar.png">
+			<form action="/findID">
 				<h2 class="title">아이디 찾기</h2>
            		<div class="input-div one">
            		   <div class="i">

@@ -267,7 +267,7 @@ public class MemberDAO extends JDBConnect {
 
 		try {
 
-			String query = "SELECT * FROM MEMBER_TBL mt, MEMBER_STATE_TBL mst WHERE mt.MEMBER_STATE_ID = mst.ID";
+			String query = "SELECT * FROM MEMBER_TBL mt, MEMBER_STATE_TBL mst WHERE mt.MEMBER_STATE_ID = mst.ID ORDER BY mt.ID ASC";
 			psmt = con.prepareStatement(query);
 			rs = psmt.executeQuery(query);
 

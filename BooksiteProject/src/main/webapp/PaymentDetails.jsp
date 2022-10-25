@@ -118,15 +118,15 @@
 				<h4>▶결제정보</h4>
 				<tr>
 					<th>총 주문금액</th>
-					<td class="price">${ payInfo.totalAmount }</td>
+					<td><span class="price">${ payInfo.totalAmount }</span> 원</td>
 				</tr>
 				<tr>
 					<th>적립금 결제</th>
-					<td class="price">${ payInfo.pointAmount }</td>
+					<td><span  class="price">${ payInfo.pointAmount }</span> 원</td>
 				</tr>
 				<tr>
 					<th>실 결제금액</th>
-					<td  style="color: red;">
+					<td  style="color: red; font">
 						<span id="actualprice" class="price">${ payInfo.actualAmount }</span> 원
 					</td>
 				</tr>

@@ -21,9 +21,13 @@ public class ManageBookAddController extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		BookDTO book = new BookDTO();
-		book.setTitle("도서 제목");
-		book.setDeliveryFee(2500);
+		BookDTO book = (BookDTO)request.getAttribute("book");
+		
+		if(book==null) {	
+			book = new BookDTO();
+			book.setTitle("도서 제목");
+			book.setDeliveryFee(2500);
+		}
 		
 		
 		request.setAttribute("book", book);

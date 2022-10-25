@@ -20,8 +20,14 @@ public class ManageBookReviseController extends HttpServlet {
 		
 		System.out.println("ID:"+id);
 		
+		BookDTO book = (BookDTO)request.getAttribute("book");
+		
 		BookDAO dao = new BookDAO();
-		BookDTO book = dao.ManagerBookInfo(Long.parseLong(id));
+		if(book==null) {
+			book = dao.ManagerBookInfo(Long.parseLong(id));
+		}
+		dao.close();
+		
 		
 		System.out.println("작가아이디 : " + book.getAuthorId());
 		

@@ -26,6 +26,7 @@ public class LogoutController extends HttpServlet {
 		
 		session.removeAttribute("LoginID");
 		session.removeAttribute("LoginName");
+		session.removeAttribute("JobPosition");
 
 		response.sendRedirect(referer);
 

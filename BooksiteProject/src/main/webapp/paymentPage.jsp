@@ -222,7 +222,7 @@
 	
 				<!-- 버튼부 -->
 				<div class="fianlpayBnt">
-					<button type="button" name="final" onclick="return payBtn()">
+					<button type="button" name="final" onclick="return payBtn();">
 						<b><span class="finalPrice"></span></b> 원 결제하기
 					</button>
 				</div>
@@ -320,7 +320,7 @@
 	//결제 버튼 눌림
 	function payBtn(){
 
-		if(document.getElementById('lastAddress').innerHTML == '' && document.getElementById('newAddress') == null){
+		if(document.getElementById('lastAddress').innerHTML == '' && document.getElementById('addressBox').value.length < 1){
 			alert("주문이력이 없습니다.\n주소를 입력해주세요.");
 
 			document.getElementById('addressBox').disabled = false;
