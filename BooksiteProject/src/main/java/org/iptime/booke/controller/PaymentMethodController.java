@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.iptime.booke.dao.BookDAO;
+import org.iptime.booke.dao.MemberDAO;
 import org.iptime.booke.dao.OrderDAO;
 import org.iptime.booke.dao.PaymentDAO;
 import org.iptime.booke.dto.OrderDTO;
@@ -26,11 +27,19 @@ public class PaymentMethodController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
-		String memberId = request.getParameter("memberId");
+		Long memberId = Long.parseLong(request.getParameter("memberId"));
 		String[] bookId = request.getParameterValues("bookId");
 		String[] selectCount = request.getParameterValues("selectCount");
 		String paymentMethod = request.getParameter("paymentMethod");
 		String[] deliveryTotalPointFinal = request.getParameter("DTPF").split(",");
+		
+		String newAddress = request.getParameter("newAddress");
+		
+		if(newAddress != null) {
+			MemberDAO mdao = new MemberDAO();
+			mdao.updateUserAddress(memberId, newAddress);
+			mdao.close();
+		}
 		
 		BookDAO bdao = new BookDAO();
 		System.out.println("수량확인");
@@ -60,7 +69,7 @@ public class PaymentMethodController extends HttpServlet {
 		String paymentId = paymentDao.makePaymentId();
 		
 		paymentDto.setId(paymentId);
-		paymentDto.setMemberId(Long.parseLong(memberId));
+		paymentDto.setMemberId(memberId);
 		paymentDto.setTotalAmount(Integer.parseInt(deliveryTotalPointFinal[1]));
 		paymentDto.setPointAmount(Integer.parseInt(deliveryTotalPointFinal[2]));
 		paymentDto.setActualAmount(Integer.parseInt(deliveryTotalPointFinal[3]));

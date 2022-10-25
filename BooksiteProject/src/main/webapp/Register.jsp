@@ -169,13 +169,12 @@
 			temp = false;
 		}
 		
-		if(!temp){
-			return;
+		if(temp){
+			checkform.action = "/register/check.do?what=name";
+			checkform.name.value = regist.name.value;
+			checkform.target = "param1";
+			checkform.submit();
 		}
-		checkform.action = "/register/check.do?what=name";
-		checkform.name.value = regist.name.value;
-		checkform.target = "param1";
-		checkform.submit();
 		
 		//console.log(document.getElementById('nameUseResert').contentWindow.getElementById("result"));
 	}
@@ -197,13 +196,12 @@
 			temp = false;
 		}
 		
-		if(!temp){
-			return;
+		if(temp){
+			checkform.action = "/register/check.do?what=email";
+			checkform.email.value = regist.email.value;
+			checkform.target = "param2";
+			checkform.submit();
 		}
-		checkform.action = "/register/check.do?what=email";
-		checkform.email.value = regist.email.value;
-		checkform.target = "param2";
-		checkform.submit();
 		
 		//console.log(document.getElementById('nameUseResert').contentWindow.getElementById("result"));
 	}
@@ -249,9 +247,9 @@
 			alert("영어만으론 비밀번호를 만들 수 없습니다.");
 			temp = false;
 		}
-		if(!temp){
-			return;
-		}
+		// if(!temp){
+		// 	return;
+		// }
 		
 		// alert("사용가능한 비밀번호입니다.");
 	};

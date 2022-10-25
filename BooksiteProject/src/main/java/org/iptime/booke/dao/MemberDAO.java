@@ -410,5 +410,23 @@ public class MemberDAO extends JDBConnect {
 		}
 		return result;
 	}
+	
+	public int updateUserAddress(Long memberId, String address) {
+		int result = 0;
+
+		try {
+			String query = "UPDATE MEMBER_TBL SET ADDRESS = ? WHERE id = ?";
+
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, address);
+			psmt.setLong(2, memberId);
+
+			result = psmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println("회원정보 수정 중 예외 발생");
+			e.printStackTrace();
+		}
+		return result;
+	}
 
 }
