@@ -18,10 +18,12 @@ public class InquiryAnswer extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		Long inquiryId = Long.parseLong(request.getParameter("inquiryId"));
 		String reply = request.getParameter("reply");
+		String inquiryState = request.getParameter("inquiryState");
 		
-		InquiryDAO iDao = new InquiryDAO();
-		iDao.adminAnswer(inquiryId, reply);
-		
+		if(!("".equals(reply) || reply == null || inquiryId == null)) {
+			InquiryDAO iDao = new InquiryDAO();
+			iDao.adminAnswer(inquiryId, reply, inquiryState);
+		}
 		
 		response.getWriter().println("<script>window.close();</script>");
 	}

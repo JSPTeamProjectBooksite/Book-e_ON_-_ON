@@ -48,13 +48,12 @@
 				<tr align="center" class="inquiryItem">
 					<td class="inpuiry_id">${ inq.id }</td>
 					<td>${ nameList[status.index] }</td>
-					<td><span class="answer" onclick="windowPopup(this);">${ inq.title }</span></td>
-					<td>${ inq.categroy }</td>
-					<td>${ inq.state }
-					<td>${ inq.rigisterDate}</td>
-					
-					<td class="hidden content">${ inq.content }</td>
-					<td class="hidden reply">${ inq.reply }</td>
+					<td class="title"><span class="answer" onclick="windowPopup(this);">${ inq.title }</span></td>
+					<td class="category">${ inq.categroy }</td>
+					<td class="state">${ inq.state }</td>
+					<td class="rigisterDate">${ inq.rigisterDate}</td>
+					<td class="content hidden">${ inq.content }</td>
+					<td class="reply hidden">${ inq.reply }</td>
 				</tr>
 			</c:forEach>
 		</table>
@@ -65,11 +64,13 @@
 		
 		var pIndex = $(e).closest('.inquiryItem').index();
 				
-		var xPos = (document.body.offsetWidth/2) - (400/2);
+		var w = 520;
+		var h = 600;
+		var xPos = (document.body.offsetWidth/2) - (w/2);
 		xPos += window.screenLeft; // 듀얼 모니터일 때
-		var yPos = (document.body.offsetHeight/2) - (600/2);
+		var yPos = (document.body.offsetHeight/2) - (h/2);
 		
-		var popup = window.open('/InquiryAnswer.html?inquiryIndex=' + pIndex, '답변', 'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=400,height=600,left='+xPos+',top=' + yPos);
+		var popup = window.open('/InquiryAnswer.html?inquiryIndex=' + pIndex, '답변', 'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=no,width='+ w +',height='+ h +',left='+xPos+',top=' + yPos);
 		
   		popup.addEventListener('unload', function() {
   			window.location.reload(true);
