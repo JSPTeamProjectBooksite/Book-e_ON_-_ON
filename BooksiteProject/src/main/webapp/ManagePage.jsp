@@ -39,11 +39,6 @@
                         <li><a href="/MANAGE/USER">유저 정보</a></li>
                         <li><a href="/ManagerBook">책 정보</a></li>
                         <li><a href="/MANAGE/INQUIRY">1:1문의(관리자)</a></li>
-                        <li><a href="/inquire?do=writeInquiry">1:1문의작성 폼</a></li>
-                        <li><a href="/inquire?do=userInquiryList">문의 목록(고객)</a></li>
-                        <li><a href="#">무슨 정보</a></li>
-                        <li><a href="#">저런 정보</a></li>
-                        <li><a href="/MANAGE/BOOKADD" onClick="window.open(this.href, '', 'width=700, height=800'); return false;">도서추가(임시)</a></li>
                     </ul>
                 </td>
             </tr>

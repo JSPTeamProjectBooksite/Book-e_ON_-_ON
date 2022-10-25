@@ -27,19 +27,13 @@ public class ShopCartController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		List<BookDTO> bookList = setCookieBookList(request.getCookies());
-		
-		request.setAttribute("bookList", bookList);
-		request.getRequestDispatcher("/ShopCartPage.jsp").forward(request, response);
-	}
-
-	private List<BookDTO> setCookieBookList(Cookie[] cookies) {
 		List<BookDTO> bookList = new ArrayList<BookDTO>();
+		List<Integer> MaxList = new ArrayList<Integer>();
 		BookDAO bookDAO = new BookDAO();
 				
+		Cookie[] cookies = request.getCookies();
 		if(cookies != null) {
 			for(Cookie ck : cookies) {
-				System.out.println("[쿠키 조회] " + ck.getValue());
 				
 				try {
 					String[] val = ck.getValue().split("/");
@@ -48,19 +42,23 @@ public class ShopCartController extends HttpServlet {
 					
 					Long idL = Long.valueOf(id);
 					
+					System.out.println("[쿠키 조회] " + ck.getValue());
 					BookDTO dto = bookDAO.readBook(idL);
+					int max = dto.getQuantity();
 					dto.setQuantity(count);
 					
+					MaxList.add(max);
 					bookList.add(dto);
 				} catch (Exception e) {
-					System.err.println(e.getMessage());
 					continue;
 				}
 			}
 		}
-		
 		bookDAO.close();
-		return bookList;
+		
+		request.setAttribute("bookList", bookList);
+		request.setAttribute("MaxList", MaxList);
+		request.getRequestDispatcher("/ShopCartPage.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

@@ -127,7 +127,7 @@
 
         alert("전부 정상적으로 작성되었습니다.");
 
-		form.action="/BookUpdate.do?chooseBook=" + "${ book.id }";
+		form.action="/BookUpdate.do";
 		form.submit();
     }
 	

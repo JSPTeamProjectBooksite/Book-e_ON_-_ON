@@ -4,6 +4,7 @@
 <html>
 <h1 style="text-align: center;">도서 정보</h1>
 <form action="/webCrawling" method="post">
+<!-- <form action="/webCrawling" method="post" target="param"> -->
 	<div id="webCrawlingDiv">
 		<input type="text" name="URL" value="" placeholder="교보문고 책 정보페이지 주소를 넣어주세요." autofocus>
 		<input type="submit" value="교보문고 링크에서 책 정보 가져오기" style="font-size: 20px;">
@@ -14,6 +15,7 @@
         <tr>
             <th>*도서명</th>
             <td>
+                <input type="hidden" name="chooseBook" value="${ book.id }">
                 <input type="text" name="title" value="${ book.title }">
             </td>
         </tr>
@@ -104,4 +106,5 @@
         </tr>
     </table>
 </form>
+<!-- <iframe src="" style="display: none;" name="param"></iframe> -->
 </html>

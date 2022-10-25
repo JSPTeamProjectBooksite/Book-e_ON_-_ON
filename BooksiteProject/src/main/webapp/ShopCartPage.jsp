@@ -41,7 +41,7 @@
 	                    </tr>
 	                    </c:if>
 	                    
-	                    <c:forEach var="book" items="${bookList}">
+	                    <c:forEach var="book" items="${bookList}" varStatus="status">
 	                    <tr class="bookItem ">
 	                        <td class="bookCheck">
 		                        <img src="/source/ico/check_box_true.svg" alt="체크박스">
@@ -50,7 +50,7 @@
 	                        <td class="bookImg"><img src="${book.coverImg}" alt="상품 이미지"></td>
 	                        <td class="bookTitle"><a href="/detail?BID=${ book.id }">${ book.title }</a></td>
 	                        <td class="bookPrice"><span class="num" data-value="${book.price}"><fmt:formatNumber value="${book.price}"/></span>원</td>
-	                        <td class="bookCount"><input type="number" min="1" max="999" name="bookCount" value="${ book.quantity }" onchange="onChangeFunction(${book.price}, this)"></td>
+	                        <td class="bookCount"><input type="number" min="1" max="${ MaxList[status.index] }" name="bookCount" value="${ book.quantity }" onchange="onChangeFunction(${book.price}, this)"></td>
 	                        <td class="bookPriceSum"><span class="num" value="${book.price * book.quantity}"><fmt:formatNumber value="${book.price * book.quantity}"/></span>원</td>
 	                        <td class="bookDeliveryDate">평균 ${ book.estimatedDeliveryDate }일 소요</td>
 	                        <td class="bookDelete"><button type="button" class="bookDeleteBtn" value="${ book.id }">X</button></td>
