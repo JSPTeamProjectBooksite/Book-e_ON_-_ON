@@ -187,14 +187,14 @@ public class MemberDAO extends JDBConnect {
 		return null;
 	}
 
-	public String findId(String member_name, String member_address) {
+	public String findId(String member_name, String member_phoneNum) {
 		String mid = null;
 
 		try {
-			String sql = "SELECT EMAIL FROM MEMBER_TBL WHERE NAME = ? AND ADDRESS = ?";
+			String sql = "SELECT EMAIL FROM MEMBER_TBL WHERE NAME = ? AND PHONE_NUM = ?";
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1, member_name);
-			psmt.setString(2, member_address);
+			psmt.setString(2, member_phoneNum);
 			rs = psmt.executeQuery();
 
 			if (rs.next()) {
@@ -207,15 +207,15 @@ public class MemberDAO extends JDBConnect {
 		return mid;
 	}
 
-	public String findPassword(String member_email, String member_name, String member_address) {
+	public String findPassword(String member_email, String member_name, String member_phoneNum) {
 		String mpass = null;
 
 		try {
-			String sql = "SELECT PASSWORD FROM MEMBER_TBL WHERE EMAIL=? AND NAME =? and ADDRESS =?";
+			String sql = "SELECT PASSWORD FROM MEMBER_TBL WHERE EMAIL= ? AND NAME = ? and PHONE_NUM = ?";
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1, member_email);
 			psmt.setString(2, member_name);
-			psmt.setString(3, member_address);
+			psmt.setString(3, member_phoneNum);
 			rs = psmt.executeQuery();
 
 			if (rs.next()) {

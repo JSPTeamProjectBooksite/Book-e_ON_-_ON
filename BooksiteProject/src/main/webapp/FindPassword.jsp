@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>find-password</title>
+	<title>비밀번호 찾기</title>
 	<link rel="stylesheet" type="text/css" href="./css/find-password.css">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
 	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
@@ -17,7 +17,7 @@
 		</div>
 		<div class="login-content">
 			<form action="/findPassword" method="get">
-				<h2 class="title">비밀번호 재설정</h2>
+				<h2 class="title">비밀번호 찾기</h2>
            		<div class="input-div one">
            		   <div class="i">
            		   		<i class="fas fa-user"></i>
@@ -41,8 +41,8 @@
            		    	<i class="fas fa-lock"></i>
            		   </div>
            		   <div class="div">
-           		    	<h5>Address</h5>
-           		    	<input type="text" class="input" name="user_address">
+           		    	<h5>Phone Number</h5>
+           		    	<input type="text" class="input" name="user_phoneNum">
             	   </div>
             	</div>
             	<input type="submit" class="btn" value="비밀번호 찾기">

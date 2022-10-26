@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>find-id</title>
+	<title>아이디 찾기</title>
 	<link rel="stylesheet" type="text/css" href="./css/find-id.css">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
 	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
@@ -32,11 +32,11 @@
            		    	<i class="fas fa-lock"></i>
            		   </div>
            		   <div class="div">
-           		    	<h5>Address</h5>
-           		    	<input type="text" class="input" name="user_address">
+           		    	<h5>Phone Number</h5>
+           		    	<input type="text" class="input" name="user_phoneNum">
             	   </div>
             	</div>
-            	<a href="#">Forgot Password?</a>
+            	<a href="/findPassword">Forgot Password?</a>
             	<input type="submit" class="btn" value="아이디 찾기">
             </form>
         </div>

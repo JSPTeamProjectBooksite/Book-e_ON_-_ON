@@ -10,9 +10,9 @@ body {
     justify-content: center;
     align-items: center;
     background-position: center;
-    background: url(../source/PasswordUpdatePage/background.jpg) no-repeat;
+    /* background: url(../source/PasswordUpdatePage/background.jpg) no-repeat;
     background-position: center;
-    background-size: cover;
+    background-size: cover; */
 }
 
 .container {
@@ -22,9 +22,9 @@ body {
     text-align: center;
     border: 1px solid;
     border-radius: 25px;
-    backdrop-filter: blur(10px);
+   /*  backdrop-filter: blur(10px);
     box-shadow: 5px 5px 10px rgba(1, 1, 1, 0.1),
-        inset 3px 3px 10px rgba(0, 0, 0, 0.1);
+        inset 3px 3px 10px rgba(0, 0, 0, 0.1); */
 }
 
 h1 {

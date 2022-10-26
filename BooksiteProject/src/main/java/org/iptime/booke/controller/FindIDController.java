@@ -20,14 +20,14 @@ public class FindIDController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String userName = request.getParameter("user_name");
-		String userAddress = request.getParameter("user_address");
+		String userPhoneNum = request.getParameter("user_phoneNum");
 
 		MemberDTO memberDTO = new MemberDTO();
 		memberDTO.setName(userName);
-		memberDTO.setAddress(userAddress);
+		memberDTO.setPhoneNum(userPhoneNum);
 
 		MemberDAO dao = new MemberDAO();
-		String iResult = dao.findId(userName, userAddress);
+		String iResult = dao.findId(userName, userPhoneNum);
 		dao.close();
 
 		// 성공 or 실패?

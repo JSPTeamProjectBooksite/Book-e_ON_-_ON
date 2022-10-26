@@ -21,15 +21,15 @@ public class FindPassword extends HttpServlet {
 			throws ServletException, IOException {
 		String userEmail = request.getParameter("user_email");
 		String userName = request.getParameter("user_name");
-		String userAddress = request.getParameter("user_address");
+		String userPhoneNum = request.getParameter("user_phoneNum");
 
 		MemberDTO memberDTO = new MemberDTO();
 		memberDTO.setEmail(userEmail);
 		memberDTO.setName(userName);
-		memberDTO.setAddress(userAddress);
+		memberDTO.setPhoneNum(userPhoneNum);
 
 		MemberDAO dao = new MemberDAO();
-		String iResult = dao.findPassword(userEmail, userName, userAddress);
+		String iResult = dao.findPassword(userEmail, userName, userPhoneNum);
 		dao.close();
 
 		// 성공 or 실패?
