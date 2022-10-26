@@ -59,7 +59,7 @@ public class InquiryWriteController extends HttpServlet {
 
 		if (iResult == 1) {
 			System.out.println("등록 성공");
-			response.sendRedirect("/mypage");
+			response.sendRedirect("/ParentReload.jsp");
 			return;
 		}
 		System.out.println("등록 실패");

@@ -8,6 +8,11 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="./css/public.css">
 <link rel="stylesheet" href="./css/Detail.css">
+<link href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css" rel="stylesheet">
+
+<style>
+    * {font-family: ‘SUIT’, sans-serif;}
+</style>
 <title>페이지 이동 중...</title>
 </head>
 <body>
@@ -19,7 +24,7 @@
             <div style="
                 font-size: 38px;
                 font-weight: 700;
-                font-family: 고딕;
+                font-family: SUIT;
             " >${ bookInfo.title }
             </div>
             <div style="
