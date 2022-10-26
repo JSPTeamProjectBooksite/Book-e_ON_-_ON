@@ -38,6 +38,11 @@ public class PaymentPageController extends HttpServlet {
 		
 		System.out.println("결제페이지 로그인 유저 : " + UserId);
 		
+		if(UserId == null) {
+			req.getRequestDispatcher("LogoutSendMain.jsp").forward(req, resp);
+			return;
+		}
+		
 		//유저
 		
 		MemberDAO memberDao = new MemberDAO();

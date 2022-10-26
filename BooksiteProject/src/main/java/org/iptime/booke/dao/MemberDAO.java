@@ -124,16 +124,18 @@ public class MemberDAO extends JDBConnect {
 		int result = 0;
 
 		try {
-			String query = "INSERT INTO member_TBL(id, name, email, password, birth, gender, phone_num, address) VALUES(member_SEQ.nextval, ?, ?, ?, ?, ?, ?, ?)";
+			String query = "INSERT INTO member_TBL(id, name, email, password, birth, phone_num, POINT) VALUES(member_SEQ.nextval, ?, ?, ?, ?, ?, ?)";
+			//String query = "INSERT INTO member_TBL(id, name, email, password, birth, phone_num, address) VALUES(member_SEQ.nextval, ?, ?, ?, ?, ?, ?, ?)";
 
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, dto.getName());
 			psmt.setString(2, dto.getEmail());
 			psmt.setString(3, dto.getPassword());
 			psmt.setDate(4, Date.valueOf(dto.getBirth()));
-			psmt.setString(5, dto.getGender());
-			psmt.setString(6, dto.getPhoneNum());
-			psmt.setString(7, dto.getAddress());
+//			psmt.setString(5, dto.getGender());
+			psmt.setString(5, dto.getPhoneNum());
+//			psmt.setString(7, dto.getAddress());
+			psmt.setInt(6, 30000);
 			result = psmt.executeUpdate();
 		} catch (SQLIntegrityConstraintViolationException e) {
 			System.out.println("중복된 아이디가 있는 경우 오류 발생");
@@ -337,6 +339,24 @@ public class MemberDAO extends JDBConnect {
 			result = psmt.executeUpdate();
 		} catch (Exception e) {
 			System.out.println("회원 삭제 중 예외 발생");
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	public int usePoint(Long memberId, int point) {
+		int result = 0;
+
+		try {
+			String query = "UPDATE MEMBER_TBL SET POINT = POINT - ? WHERE ID = ?";
+			psmt = con.prepareStatement(query);
+			psmt.setInt(1, point);
+			psmt.setLong(2, memberId);
+			result = psmt.executeUpdate();
+			
+			System.out.println("( " + memberId + " )유저 포인트( " + point + " p)차감 완료");
+		} catch (Exception e) {
+			System.out.println("회원 포인트 감소중 오류 발생");
 			e.printStackTrace();
 		}
 		return result;

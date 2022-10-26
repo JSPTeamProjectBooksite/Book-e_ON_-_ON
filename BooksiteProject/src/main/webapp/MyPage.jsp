@@ -9,14 +9,13 @@
 <link rel="stylesheet" href="./css/public.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" 교차 출처>
-<link
-	href="https: //fonts.googleapis.com/css2? family= Noto+Sans+KR & display=swap"
-	rel="stylesheet">
+<link href="https: //fonts.googleapis.com/css2? family= Noto+Sans+KR & display=swap" rel="stylesheet">
 <script>
-	if('<%=(String) session.getAttribute("LoginName")%>
-	' == 'null') {
+	var LoginName = '<%= (String)session.getAttribute("LoginName") %>';
+
+	if(LoginName == 'null'){
 		alert('로그인 정보가 없습니다. 메인페이지로 갑니다.');
-		location.href = '/main';
+		location.href='/main';
 	}
 </script>
 </head>
