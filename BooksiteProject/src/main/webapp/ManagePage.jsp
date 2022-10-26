@@ -23,6 +23,14 @@
     	padding: 10px ;
     }
 </style>
+<script>
+	var JobPosition = '<%= (String)session.getAttribute("JobPosition") %>';
+
+	if(JobPosition == 'null'){
+		alert('권한이 없습니다. 메인페이지로 갑니다.');
+		location.href='/main';
+	}
+</script>
 </head>
 <body>
     <div id="wrap">
