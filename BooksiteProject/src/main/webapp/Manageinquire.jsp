@@ -64,8 +64,8 @@
 		
 		var pIndex = $(e).closest('.inquiryItem').index();
 				
-		var w = 520;
-		var h = 600;
+		var w = 700;
+		var h = 700;
 		var xPos = (document.body.offsetWidth/2) - (w/2);
 		xPos += window.screenLeft; // 듀얼 모니터일 때
 		var yPos = (document.body.offsetHeight/2) - (h/2);

@@ -47,7 +47,7 @@ public class InquiryDAO extends JDBConnect {
 		ArrayList<InquiryDTO> values = new ArrayList<InquiryDTO>();
 
 		try {
-			String sql = " SELECT * FROM INQUIRY_TBL ";
+			String sql = " SELECT * FROM INQUIRY_TBL ORDER BY ID";
 			psmt = con.prepareStatement(sql);
 			rs = psmt.executeQuery(sql);
 
