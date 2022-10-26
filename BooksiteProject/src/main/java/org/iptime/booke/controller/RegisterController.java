@@ -26,9 +26,9 @@ public class RegisterController extends HttpServlet {
 		String userEmail = request.getParameter("email");
 		String userPwd = request.getParameter("password");
 		String userBirth = request.getParameter("birthday");
-		String userGender = request.getParameter("gender");
+//		String userGender = request.getParameter("gender");
 		String userPhoneNumber = request.getParameter("phoneNum");
-		String userAddress = request.getParameter("address");
+//		String userAddress = request.getParameter("address");
 		
 		LocalDate date = null;
 		date = LocalDateABC.stringToLocalDate(userBirth);
@@ -39,9 +39,9 @@ public class RegisterController extends HttpServlet {
 		memberDTO.setEmail(userEmail);
 		memberDTO.setPassword(userPwd);
 		memberDTO.setBirth(date);
-		memberDTO.setGender(userGender);
+//		memberDTO.setGender(userGender);
 		memberDTO.setPhoneNum(userPhoneNumber);
-		memberDTO.setAddress(userAddress);
+//		memberDTO.setAddress(userAddress);
 
 		MemberDAO dao = new MemberDAO();
 		int iResult = dao.SignUp(memberDTO);

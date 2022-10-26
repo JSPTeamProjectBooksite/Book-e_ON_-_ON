@@ -33,6 +33,8 @@ public class PaymentMethodController extends HttpServlet {
 		String paymentMethod = request.getParameter("paymentMethod");
 		String[] deliveryTotalPointFinal = request.getParameter("DTPF").split(",");
 		
+		int point = Integer.parseInt(deliveryTotalPointFinal[2]);
+		
 		String newAddress = request.getParameter("newAddress");
 		
 		if(newAddress != null) {
@@ -71,11 +73,18 @@ public class PaymentMethodController extends HttpServlet {
 		paymentDto.setId(paymentId);
 		paymentDto.setMemberId(memberId);
 		paymentDto.setTotalAmount(Integer.parseInt(deliveryTotalPointFinal[1]));
-		paymentDto.setPointAmount(Integer.parseInt(deliveryTotalPointFinal[2]));
+		paymentDto.setPointAmount(point);
 		paymentDto.setActualAmount(Integer.parseInt(deliveryTotalPointFinal[3]));
 		paymentDto.setShippingState("배송준비중");
 		paymentDto.setPaymentMethod(paymentMethod);
 		paymentDto.setShippingMessage("이상없음");
+		
+		// 포인트를 사용한 경우 해당 유저의 포인트 감소
+		if(point > 0) {
+			MemberDAO mdao = new MemberDAO();
+			mdao.usePoint(memberId, point);
+			mdao.close();
+		}
 		
 		paymentDao.OrderDetails(paymentDto);
 		
@@ -90,6 +99,8 @@ public class PaymentMethodController extends HttpServlet {
 			orderDao.sendOrder(orderDto);
 			System.out.println("주문 내역 "+(i+1)+"개 등록함");
 		}
+		paymentDao.close();
+		orderDao.close();
 		
 		request.getRequestDispatcher("/payment_done.html").forward(request, response);
 	}
