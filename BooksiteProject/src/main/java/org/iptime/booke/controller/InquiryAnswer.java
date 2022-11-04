@@ -23,6 +23,7 @@ public class InquiryAnswer extends HttpServlet {
 		if(!("".equals(reply) || reply == null || inquiryId == null)) {
 			InquiryDAO iDao = new InquiryDAO();
 			iDao.adminAnswer(inquiryId, reply, inquiryState);
+			iDao.close();
 		}
 		
 		response.getWriter().println("<script>window.close();</script>");
